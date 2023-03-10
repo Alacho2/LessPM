@@ -26,3 +26,11 @@ return navigator.credentials.create({publicKey: credentials.publicKey })
 
 You can launch the browser with a uniquely generated ID that the server then 
 checks
+
+Privately signed certificate and private key for HTTPS
+↠ openssl req -x509 -out certificate.pem -keyout privatekey.pem -newkey rsa:2048 -days 1024 -nodes -sha256 -subj "/C=IS/O=ReykjavikUniversity/CN=localhost" -extensions EXT -config domains.txt
+Generating a 2048 bit RSA private key
+............................................+++++
+..............+++++
+writing new private key to 'privatekey.pem'
+

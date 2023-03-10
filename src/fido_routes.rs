@@ -7,7 +7,6 @@ use std::sync::Mutex;
 use axum::body::{Body, BoxBody};
 use axum::http::{header, HeaderMap, HeaderValue, StatusCode};
 use axum::response::{IntoResponse, Response as AxumResponse};
-use tower_cookies::{CookieManagerLayer};
 use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation, Algorithm, TokenData};
 use serde::{Deserialize, Serialize};
 use chrono::{Duration, Timelike, Utc};
@@ -51,11 +50,11 @@ struct User {
   name: String,
 }
 
-// I think this is just going to return the challenge
 async fn start_registration(
   state: State<AppState>,
   Json(body): Json<User>
 ) -> Result<impl IntoResponse, &'static str> {
+  println!("Derp");
 
   let username = body.name;
   let user_id = Uuid::new_v4();
@@ -83,7 +82,9 @@ async fn start_registration(
           .body(serde_json::to_string(&ccr).unwrap().into())
           .unwrap();
 
-      default_response_builder
+      default_response_builder;
+
+      Json(ccr)
 
       // Grab the username, user id and reg_state and encode it in a token
       // println!("Registration successful, {}", token);

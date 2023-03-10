@@ -3,10 +3,11 @@ use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::path::PathBuf;
 use axum::response::Html;
 use axum::{extract::Path, routing::{get, post}, Router, Json};
-use axum::http::StatusCode;
+use axum::http::{header, HeaderValue, StatusCode};
 use axum_server::tls_rustls::RustlsConfig;
 use u2f::protocol::U2f;
 use serde::{Deserialize, Serialize};
+use tower_http::cors::{Any, CorsLayer};
 use crate::app_state::AppState;
 
 mod response;
@@ -28,10 +29,8 @@ struct Ports {
 
 #[tokio::main]
 async fn main() {
-  env::set_var("RUST_BACKTRACE", "1");
-  // For now, we are keeping the client here.
-  // I'll move it down to the fido api if it turns out that I only need it
-  // there.
+  // Set variables
+  // env::set_var("RUST_BACKTRACE", "1");
 
   let ports = Ports {
     http: 8080,
@@ -40,21 +39,23 @@ async fn main() {
 
   let config =
     RustlsConfig::from_pem_file(
-      PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("keys").join("cert.pem"),
-      PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("keys").join("private.pem")
+      PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("keys").join("certificate.pem"),
+      PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("keys").join("privatekey.pem")
   ).await.unwrap();
 
-  // let config = RustlsConfig::from_pem()
   let stringed_ip = IP.iter()
     .map(|i| i.to_string())
-    .collect::<Vec<_>>()
+    .collect::<Vec<String>>()
     .join(".");
 
   let app_state = AppState::new();
 
-
   let app = Router::new()
+    .route("/", get(handler))
     .nest("/fido", fido_routes::api_routes(app_state)) // a nest that lives under API
+    // .layer(CorsLayer::new()
+      // .allow_origin(Any)
+      // .allow_headers(vec![header::CONTENT_TYPE]))
     // .route("/", get(handler).post(post_handler)) // just a cute little getter
     // .route("/todo/:id", get(id)) // dynamic paths
     .fallback(|| async move { StatusCode::NOT_FOUND }) // all other paths
@@ -63,9 +64,10 @@ async fn main() {
 
   println!("Server is listening on: http://{}:{}", stringed_ip, PORT);
 
-  let addr = SocketAddr::from((IP, PORT));
+  let addr = SocketAddr::from((IP, ports.https));
 
-  axum::Server::bind(&addr)
+  axum_server::bind_rustls(addr, config)
+  // axum::Server::bind(&addr)
     .serve(app.into_make_service())
     .await
     .unwrap();

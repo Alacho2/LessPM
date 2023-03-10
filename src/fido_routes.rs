@@ -1,76 +1,114 @@
+use std::convert::Infallible;
 use std::fmt::{Debug, Formatter};
-use axum::{Router, routing, extract::State};
-// use warp::{Filter, path, post, Rejection, Reply};
-// use warp::http::StatusCode;
-// use warp::reply::with_status;
+use axum::{Router, routing, extract::State, Json, http};
 use u2f::protocol::{Challenge, U2f};
-use crate::{U2fClient};
+use u2f::register::Registration;
+use std::sync::Mutex;
+use axum::body::{Body, BoxBody};
+use axum::http::{header, HeaderMap, HeaderValue, StatusCode};
+use axum::response::{IntoResponse, Response as AxumResponse};
+use tower_cookies::{CookieManagerLayer};
+use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation, Algorithm, TokenData};
+use serde::{Deserialize, Serialize};
+use chrono::{Duration, Timelike, Utc};
+use jsonwebtoken::errors::Error;
+use u2f::messages::U2fRegisterRequest;
+
+use webauthn_rs;
+use webauthn_rs::prelude::{PasskeyRegistration, RegisterPublicKeyCredential, Uuid, WebauthnError, WebauthnResult};
+use crate::app_state::AppState;
+use crate::encryption::{ClaimConstructor, Keys};
+use crate::response::Response;
 
 mod fido;
 
-// pub fn register_request() -> impl Filter<
-//   Extract = (impl Reply,),
-//   Error = Rejection> + Clone
-// {
-//   path("register_request_test")
-//     .and(post())
-//     .and_then(|| async move {
-//       let response = with_status("", StatusCode::OK);
-//       Ok::<_, Rejection>(response)
-//     })
-// }
-//
-// pub fn register_request_u2f() -> impl Filter<
-//   Extract = (impl Reply,),
-//   Error = Rejection
-// > + Clone {
-//   path("register_request")
-//     .and(post())
-//     .and_then(fido::register_request)
+
+
+// lazy_static! {
+//   static ref REGISTRATIONS: Mutex<Vec<Registration>> = {
+//     let registrations: Mutex<Vec<Registration>> = Mutex::new(vec![]);
+//     registrations
+//   };
 // }
 
 
-/*
-fn routes<S>(state: AppState) -> Router<S> {
-    Router::new()
-        .route("/", get(|_: State<AppState>| async {}))
-        .with_state(state)
-}
 
-let routes = Router::new().nest("/api", routes(AppState {}));
+// There should probably be some sort of endpoint to SIGN IN to the server.
+// but for now, we just get everything up and run.
 
-axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
-    .serve(routes.into_make_service())
-    .await;
- */
-
-
-pub fn api_routes(state: U2fClient) -> Router {
+pub fn api_routes(state: AppState) -> Router {
   Router::new()
-    .route("/register_request", routing::get(register_request))
-    .route("/sign_request", routing::get(sign_request))
-    .route("/sign_response", routing::post(register_request))
+    .route("/start_registration", routing::post(start_registration))
+    .route("/finish_registration", routing::post(finish_registration))
+    .route("/sign_response", routing::post(sign_response))
     .route("/register_response", routing::post(register_response))
     .with_state(state)
 }
 
-async fn register_request(state: State<U2fClient>) -> String {
 
-  let challenge: Challenge = state.u2f.generate_challenge().unwrap();
-  let something = serde_json::to_string(&challenge).unwrap();
-  println!("{}", something);
-
-  String::new()
+#[derive(Debug, Serialize, Deserialize)]
+struct User {
+  name: String,
 }
 
-async fn sign_request(state: State<U2fClient>) {
+// I think this is just going to return the challenge
+async fn start_registration(
+  state: State<AppState>,
+  Json(body): Json<User>
+) -> Result<impl IntoResponse, &'static str> {
+
+  let username = body.name;
+  let user_id = Uuid::new_v4();
+
+
+
+  let res = match state.authn.start_passkey_registration(
+    user_id,
+    &username,
+    &username,
+    None
+  ) {
+    Ok((ccr, reg_state)) => {
+      let two_minutes = (Utc::now() + Duration::minutes(2)).timestamp();
+      let claim = ClaimConstructor {
+        user_id,
+        username,
+        reg_state,
+        exp: two_minutes as usize,
+      };
+      let token = Keys::new().token(claim);
+
+      let default_response_builder: AxumResponse<Body> =
+        Response::response_builder(StatusCode::OK, token)
+          .body(serde_json::to_string(&ccr).unwrap().into())
+          .unwrap();
+
+      default_response_builder
+
+      // Grab the username, user id and reg_state and encode it in a token
+      // println!("Registration successful, {}", token);
+    }
+    Err(e) => {
+      dbg!("start_registration -> {:?}", e);
+      return Err("Unknown error");
+    }
+  };
+  Ok(res)
+}
+
+async fn finish_registration(
+  state: State<AppState>,
+  Json(reg): Json<RegisterPublicKeyCredential>
+)  {
 
 }
 
-async fn sign_response(state: State<U2fClient>) {
+// POST request
+async fn sign_response(state: State<AppState>) {
 
 }
 
-async fn register_response(state: State<U2fClient>) {
+// POST request
+async fn register_response(state: State<AppState>) {
 
 }

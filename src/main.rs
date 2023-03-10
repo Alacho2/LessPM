@@ -1,45 +1,65 @@
+use std::env;
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
+use std::path::PathBuf;
 use axum::response::Html;
 use axum::{extract::Path, routing::{get, post}, Router, Json};
+use axum::http::StatusCode;
+use axum_server::tls_rustls::RustlsConfig;
 use u2f::protocol::U2f;
 use serde::{Deserialize, Serialize};
+use crate::app_state::AppState;
 
-use u2f::protocol;
-
+mod response;
 mod routes;
+mod app_state;
 mod fido_routes;
+mod encryption;
 
 const IP: [u8; 4] = [127, 0, 0, 1];
 const PORT: u16 = 8080;
 
 const APP_STRING: &'static str = "LessPM-WhereDidWeGo";
 
-#[derive(Clone)]
-pub struct U2fClient {
-  pub u2f: U2f,
+#[derive(Clone, Copy)]
+struct Ports {
+  http: u16,
+  https: u16,
 }
 
 #[tokio::main]
 async fn main() {
-
+  env::set_var("RUST_BACKTRACE", "1");
   // For now, we are keeping the client here.
   // I'll move it down to the fido api if it turns out that I only need it
   // there.
-  let u2f_client = U2fClient {
-    u2f: U2f::new(APP_STRING.into()),
+
+  let ports = Ports {
+    http: 8080,
+    https: 3000,
   };
 
+  let config =
+    RustlsConfig::from_pem_file(
+      PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("keys").join("cert.pem"),
+      PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("keys").join("private.pem")
+  ).await.unwrap();
 
-  let app = Router::new()
-    .nest("/fido", fido_routes::api_routes(u2f_client)) // a nest that lives under API
-    // .route("/", get(handler).post(post_handler)) // just a cute little getter
-    // .route("/todo/:id", get(id)) // dynamic paths
-    ;
-
+  // let config = RustlsConfig::from_pem()
   let stringed_ip = IP.iter()
     .map(|i| i.to_string())
     .collect::<Vec<_>>()
     .join(".");
+
+  let app_state = AppState::new();
+
+
+  let app = Router::new()
+    .nest("/fido", fido_routes::api_routes(app_state)) // a nest that lives under API
+    // .route("/", get(handler).post(post_handler)) // just a cute little getter
+    // .route("/todo/:id", get(id)) // dynamic paths
+    .fallback(|| async move { StatusCode::NOT_FOUND }) // all other paths
+    ;
+
 
   println!("Server is listening on: http://{}:{}", stringed_ip, PORT);
 

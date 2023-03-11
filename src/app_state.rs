@@ -1,17 +1,25 @@
-use std::sync::Arc;
+use std::collections::HashMap;
+use std::sync::{Arc};
+use tokio::sync::Mutex;
 use chrono::format::format;
-use webauthn_rs::prelude::{Url, Webauthn, WebauthnBuilder};
+use webauthn_rs::prelude::{Passkey, Url, Uuid, Webauthn, WebauthnBuilder};
 
-#[derive(Clone, Debug)]
+pub struct Data {
+  pub name_to_id: HashMap<String, Uuid>,
+  pub keys: HashMap<Uuid, Vec<Passkey>>,
+}
+
+#[derive(Clone)]
 pub struct AppState {
   pub authn: Arc<Webauthn>,
+  pub users: Arc<Mutex<Data>>,
 }
 
 impl AppState {
   pub fn new() -> Self {
     let rp_id = "localhost";
     // let url_to_parse = format!("http://{}:{}", host, port);
-    let rp_origin = Url::parse("http://localhost:8080").expect("Invalid url there, buddy");
+    let rp_origin = Url::parse("https://localhost:3000").expect("Invalid url there, buddy");
 
     let auth_builder =
       WebauthnBuilder::new(rp_id, &rp_origin)
@@ -22,6 +30,14 @@ impl AppState {
     let webauthn =
       Arc::new(auth_builder.build().expect("Invalid WebAuthnConfig"));
 
-    Self { authn: webauthn }
+    let users = Arc::new(Mutex::new(Data {
+      name_to_id: HashMap::new(),
+      keys: HashMap::new(),
+    }));
+
+    Self {
+      authn: webauthn,
+      users
+    }
   }
 }

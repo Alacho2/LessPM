@@ -8,8 +8,6 @@ impl Response {
     AxumResponse::builder()
       .status(status_code).status(status_code)
       .header(header::CONTENT_TYPE, "application/json")
-      // .header(header::ACCESS_CONTROL_ALLOW_ORIGIN, "*")
-      // .header(header::ACCESS_CONTROL_ALLOW_HEADERS, "Authorization")
       .header(header::AUTHORIZATION, &format!("Bearer {}", token))
   }
 }

@@ -53,9 +53,9 @@ async fn main() {
   let app = Router::new()
     .route("/", get(handler))
     .nest("/fido", fido_routes::api_routes(app_state)) // a nest that lives under API
-    // .layer(CorsLayer::new()
-      // .allow_origin(Any)
-      // .allow_headers(vec![header::CONTENT_TYPE]))
+    .layer(CorsLayer::new()
+      .allow_origin("https://localhost:3000".parse::<HeaderValue>().unwrap())
+      .allow_headers(vec![header::CONTENT_TYPE]))
     // .route("/", get(handler).post(post_handler)) // just a cute little getter
     // .route("/todo/:id", get(id)) // dynamic paths
     .fallback(|| async move { StatusCode::NOT_FOUND }) // all other paths

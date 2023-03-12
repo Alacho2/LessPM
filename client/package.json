@@ -1,0 +1,24 @@
+{
+  "name": "LessPM",
+  "version": "0.0.1",
+  "description": "A Passowrd Less Password Manager",
+  "author": "Håvard Nordlie Mathisen",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel watch manifest.json --host localhost --config @parcel/config-webextension",
+    "build": "parcel build manifest.json --config @parcel/config-webextension"
+  },
+  "dependencies": {
+    "js-base64": "3.7.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@parcel/config-webextension": "2.8.3",
+    "@parcel/core": "2.8.3",
+    "@parcel/transformer-less": "2.8.3",
+    "buffer": "^5.5.0",
+    "parcel": "2.8.3",
+    "process": "0.11.10"
+  }
+}

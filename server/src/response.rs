@@ -9,5 +9,6 @@ impl Response {
       .status(status_code).status(status_code)
       .header(header::CONTENT_TYPE, "application/json")
       .header(header::AUTHORIZATION, &format!("Bearer {}", token))
+      .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, "Authorization")
   }
 }

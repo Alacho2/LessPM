@@ -124,10 +124,14 @@ async fn start_registration(
       // INTEGRITY FOR THE CLAIM.
 
       let token = Keys::new().token_claim(claim);
+
+      println!("{}", token);
       let default_response_builder: AxumResponse<Body> =
         Response::response_builder(StatusCode::OK, token)
           .body(serde_json::to_string(&ccr).unwrap().into())
           .unwrap();
+
+      // dbg!(&default_response_builder);
 
       default_response_builder
     }

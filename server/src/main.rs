@@ -3,7 +3,7 @@ use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::path::PathBuf;
 use axum::response::Html;
 use axum::{extract::Path, routing::{get, post}, Router, Json};
-use axum::http::{header, HeaderValue, StatusCode};
+use axum::http::{header, HeaderValue, Method, StatusCode};
 use axum_server::tls_rustls::RustlsConfig;
 use u2f::protocol::U2f;
 use serde::{Deserialize, Serialize};
@@ -54,8 +54,18 @@ async fn main() {
     .route("/", get(handler))
     .nest("/fido", fido_routes::api_routes(app_state)) // a nest that lives under API
     .layer(CorsLayer::new()
-      .allow_origin("https://localhost:3000".parse::<HeaderValue>().unwrap())
-      .allow_headers(vec![header::CONTENT_TYPE]))
+      .allow_origin([
+        "chrome-extension://jnpfkofnigkaocfcdcdppaokjkmhjcio".parse::<HeaderValue>().unwrap(),
+        "https://localhost:3000".parse::<HeaderValue>().unwrap()
+      ])
+      // .allow_origin(Any)
+      .allow_credentials(true)
+      .allow_methods([Method::GET, Method::POST])
+      .allow_headers(vec![
+        header::CONTENT_TYPE,
+        header::AUTHORIZATION,
+    ])
+    )
     // .route("/", get(handler).post(post_handler)) // just a cute little getter
     // .route("/todo/:id", get(id)) // dynamic paths
     .fallback(|| async move { StatusCode::NOT_FOUND }) // all other paths

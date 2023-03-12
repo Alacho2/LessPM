@@ -172,3 +172,12 @@ clientDataJSON: Base64.fromUint8Array(new Uint8Array(credentials.response.client
 })
 })});
 }
+
+Exposing the Auth token
+
+List of Stuff To Do:
+[]: Encryption on the passwords
+[]: Stop storing the keys in memory
+[]: Password Creator
+[]: UI
+

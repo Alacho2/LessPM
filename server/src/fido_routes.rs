@@ -26,6 +26,7 @@ use u2f::messages::U2fRegisterRequest;
 use u2f::u2ferror::U2fError::NotTrustedAnchor;
 
 use webauthn_rs;
+use webauthn_rs::prelude::Webauthn;
 use webauthn_rs::prelude::{CredentialID, PasskeyRegistration, PublicKeyCredential, RegisterPublicKeyCredential, Uuid, WebauthnError, WebauthnResult};
 use crate::app_state::AppState;
 use crate::encryption::{AuthConstructor, ClaimConstructor, Keys};
@@ -44,14 +45,7 @@ async fn test_route(
 }
 
 pub fn api_routes(state: AppState) -> Router {
-  let some_router = Router::new();
-    // .route_layer
-  // (middleware::from_fn(auth_middleware));
-
-  // let a_test_route = Router::new()
-  //   .route("/test", routing::post(test_route)).route_layer(middleware::from_fn(auth_middleware));
-
-  let other_router = Router::new()
+  Router::new()
     .route("/finish_registration",
            routing::post(finish_registration)
              .layer(middleware::from_fn(register_middleware))
@@ -63,14 +57,7 @@ pub fn api_routes(state: AppState) -> Router {
     .route("/finish_authentication",
            routing::post(finish_authentication)
              .layer(middleware::from_fn(auth_middleware))
-    );
-
-  let final_router = other_router
-    // .merge(a_test_route)
-    .merge(some_router)
-    .with_state(state);
-  final_router
-
+    ).with_state(state)
 }
 
 
@@ -82,7 +69,7 @@ struct User {
 async fn start_registration(
   state: State<AppState>,
   Json(body): Json<User>
-) -> Result<impl IntoResponse, &'static str> {
+) -> impl IntoResponse {
 
   let username = body.name;
   let user_unique_id = {
@@ -112,12 +99,13 @@ async fn start_registration(
     // exclude_credentials
   ) {
     Ok((ccr, reg_state)) => {
-      let two_minutes = (Utc::now() + Duration::minutes(2)).timestamp();
+      // we use one minute to align with the default in the webauthn-lib
+      let one_minute = (Utc::now() + Duration::minutes(1)).timestamp();
       let claim = ClaimConstructor {
         user_id: user_unique_id,
         username,
         reg_state,
-        exp: two_minutes as usize,
+        exp: one_minute as usize,
       };
 
       // TODO(Håvard) ADD SOME SORT OF STORAGE ON THE SERVER TO MAINTAIN
@@ -125,7 +113,6 @@ async fn start_registration(
 
       let token = Keys::new().token_claim(claim);
 
-      println!("{}", token);
       let default_response_builder: AxumResponse<Body> =
         Response::response_builder(StatusCode::OK, token)
           .body(serde_json::to_string(&ccr).unwrap().into())
@@ -137,10 +124,14 @@ async fn start_registration(
     }
     Err(e) => {
       dbg!("start_registration -> {:?}", e);
-      return Err("Unknown error");
+        AxumResponse::builder()
+          .status(StatusCode::BAD_REQUEST)
+          .body("".to_string().into())
+          .unwrap()
+
     }
   };
-  Ok(res)
+  res
 }
 
 async fn register_middleware<B>(
@@ -184,7 +175,7 @@ async fn finish_registration(
   header: HeaderMap,
   state: State<AppState>,
   Json(reg): Json<RegisterPublicKeyCredential>
-) -> Result<impl IntoResponse, &'static str> {
+) -> StatusCode {
 
   let mut token = header.get(header::AUTHORIZATION).unwrap().to_str().unwrap();
 
@@ -196,7 +187,7 @@ async fn finish_registration(
     user_id,
     username,
     reg_state,
-    exp
+    exp: _
   } = Keys::new().verify_claim(&token).unwrap();
 
   let res = match state.authn
@@ -215,22 +206,14 @@ async fn finish_registration(
       Err(e) => {
         eprintln!("{}", e);
         StatusCode::BAD_REQUEST
+        // AxumResponse::builder()
+        //   .status(StatusCode::BAD_REQUEST)
+        //   .body("".to_string().into())
+        //   .unwrap()
       },
   };
 
-  Ok(res)
-
-
-
-  // for (name, value) in headers.iter() {
-  //   let name = name.as_str();
-  //   let value = value.to_str().unwrap();
-  //   println!("{}: {}", name, value);
-  // }
-  // dbg!(reg);
-
-  // Ok(StatusCode::OK)
-
+  res
 }
 
 async fn auth_middleware<B>(
@@ -263,12 +246,6 @@ async fn auth_middleware<B>(
     None => Err(StatusCode::UNAUTHORIZED)
 
   }
-  // let body = request.body();
-  //
-  // let users_guard = state.users.lock().await;
-
-  // we'll check whether the username exists.
-  // Ok(next.run(request).await)
 }
 
 // POST request
@@ -295,7 +272,7 @@ async fn start_authentication(
 
       let res = match state.authn.start_passkey_authentication(credentials) {
         Ok((rcr, auth_state)) => {
-          let exp = (Utc::now() + Duration::minutes(2)).timestamp();
+          let exp = (Utc::now() + Duration::minutes(1)).timestamp();
           let claim = AuthConstructor {
             user_id: unique_id.clone(),
             auth_state,
@@ -307,7 +284,8 @@ async fn start_authentication(
             .unwrap()
 
         }
-        Err(_) => {
+        Err(e) => {
+          eprintln!("{}", e);
           let value = AxumResponse::builder()
             .status(StatusCode::UNAUTHORIZED).body("".to_string()).unwrap();
           value
@@ -327,7 +305,6 @@ async fn start_authentication(
   Ok(help)
 }
 
-// POST request
 async fn finish_authentication<'buf>(
   headers: HeaderMap,
   state: State<AppState>,

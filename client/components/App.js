@@ -1,6 +1,13 @@
 // import { useState } from 'react';
 import { Base64 } from 'js-base64';
 
+const BASE_URL = "https://localhost:3000/";
+const START_REG_URL = `${BASE_URL}fido/start_registration`;
+const FINISH_REG_URL = `${BASE_URL}fido/finish_registration`;
+const START_AUTH_URL = `${BASE_URL}fido/start_authentication`;
+const FINISH_AUTH_URL = `${BASE_URL}fido/finish_authentication`;
+const AUTH_HEADER = 'authorization';
+
 export function App() {
 
   // We'll start by making a simple function to do authentication
@@ -10,59 +17,161 @@ export function App() {
   // What info the backend expects.
   // Do we need a new key for everything?
 
-  const authenticate = async () => {
-    await fetch('https://localhost:3000/fido/start_registration', {
+
+  // Let's refactor this so it just feels a tonne better
+  const authenticate = async (username) => {
+
+    const registrationStart = await fetch(START_REG_URL, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       credentials: "include",
       method: "post",
-      body: JSON.stringify({name: "bjoggii"})})
-      .then(async resp => {
-        const json = await resp.json();
-        return {
-          ...json, token: resp.headers.get('authorization')
-        }
-      }).then(async credentials => {
-        credentials.publicKey.challenge = Base64.toUint8Array(credentials.publicKey.challenge);
-        credentials.publicKey.user.id = Base64.toUint8Array(credentials.publicKey.user.id);
+      body: JSON.stringify({name: username})
+    });
 
-        await navigator.credentials.create({publicKey: credentials.publicKey});
+    // Early return if the server reported a bad error
+    if (registrationStart.status !== 200) {
+      return;
+    }
 
-        // const created = await navigator.credentials.create({publicKey: credentials.publicKey});
-        // return {
-        //   token: credentials.token,
-        //   credentials: created,
-        // };
+    const credentials = await registrationStart.json();
+    const authToken = registrationStart.headers.get(AUTH_HEADER);
+
+    // Server expects these to be Base64.
+    credentials.publicKey.challenge
+      = Base64.toUint8Array(credentials.publicKey.challenge);
+    credentials.publicKey.user.id
+      = Base64.toUint8Array(credentials.publicKey.user.id);
+
+    const created = await navigator.credentials.create({
+      publicKey: credentials.publicKey,
+    });
+
+    // something bad happened and we should NOT proceed.
+    if (!created) {
+      return;
+    }
+
+    console.log(created);
+
+    // If everything checks out at this point, we can sniffing around at
+    // attestation and finishing the reg process
+    const { clientDataJSON, attestationObject } = created.response;
+
+    const body = {
+      id: created.id,
+      rawId: Base64.fromUint8Array(new Uint8Array(created.id), true),
+      type: created.type,
+      response: {
+        attestationObject: Base64.fromUint8Array(new Uint8Array(attestationObject), true),
+        clientDataJSON: Base64.fromUint8Array(new Uint8Array(clientDataJSON), true),
+      }
+    };
+
+    const finish = await fetch(FINISH_REG_URL, {
+      headers: {
+        'Authorization': authToken,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'post',
+      body: JSON.stringify(body),
+    });
 
 
-      })/*.then(credentials_other => {
-        const { credentials } = credentials_other;
-        fetch('https://localhost:3000/fido/finish_registration', {
-          headers: {
-            'Authorization': credentials_other.token,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          method: "post",
-          body: JSON.stringify({
-            id: credentials.id,
-            rawId: Base64.fromUint8Array(new Uint8Array(credentials.id), true),
-            type: credentials.type,
-            response: {
-              attestationObject: Base64.fromUint8Array(new Uint8Array(credentials.response.attestationObject), true),
-              clientDataJSON: Base64.fromUint8Array(new Uint8Array(credentials.response.clientDataJSON), true),
-            }
-          })
-        })
-      }); */
+    // We goofed up again and should stop the process.
+    // Check the server.
+    if (finish.status !== 200) {
+      return;
+    }
+
+    console.log("The user got registered. Move on with your life");
+  };
+
+  const login = async (username) => {
+      const startAuth = await fetch(START_AUTH_URL, {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({name: username})
+      });
+
+    // We went and goofed up, check the server.
+    if (startAuth.status !== 200) {
+      return;
+    }
+
+    const credentials = await startAuth.json();
+    const authToken = startAuth.headers.get(AUTH_HEADER);
+
+    const { challenge, allowCredentials } = credentials.publicKey;
+
+    credentials.publicKey.challenge = Base64.toUint8Array(challenge);
+    credentials.publicKey.allowCredentials = allowCredentials.map(listItem => ({
+      ...listItem,
+      id: Base64.toUint8Array(listItem.id),
+    }));
+
+    const keys = await navigator.credentials.get({publicKey: credentials.publicKey});
+
+    // Hold your horses, can you don't have the keys you need.
+    if (!keys) {
+      return;
+    }
+
+    const {
+      authenticatorData,
+      clientDataJSON,
+      signature
+    } = keys.response;
+
+    const uint8AuthData
+      = Base64.fromUint8Array(new Uint8Array(authenticatorData));
+    const uint8ClientDataJSON =
+      Base64.fromUint8Array(new Uint8Array(clientDataJSON));
+    const uint8Signature = Base64.fromUint8Array(new Uint8Array(signature));
+
+    const body = {
+      id: keys.id,
+      rawId: Base64.fromUint8Array(new Uint8Array(keys.rawId), true),
+      type: keys.type,
+      response: {
+        authenticatorData: uint8AuthData,
+        clientDataJSON: uint8ClientDataJSON,
+        signature: uint8Signature
+      }
+    };
+
+    const authenticated = await fetch(FINISH_AUTH_URL, {
+      method: "POST",
+      headers: {
+        'Authorization': authToken,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (authenticated.status !== 200) {
+      console.log("Not authenticated");
+      return;
+    }
+
+    console.log("Time for a dance");
+
   };
 
   return (
     <>
       <p>Hello</p>
-      <div onClick={authenticate}>Click me</div>
+      {}
+      <div onClick={() => authenticate("bjoggii")}>Auth</div>
+      <div onClick={() => login("bjoggii")}>Login</div>
+      {/*<div onClick={() => window.open("https://google.com")}>Click me</div>*/}
     </>
   );
   // return (<h1 onClick={() => setName("Eva")}>Hello {name}</h1>);

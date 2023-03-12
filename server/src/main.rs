@@ -52,13 +52,14 @@ async fn main() {
 
   let app = Router::new()
     .route("/", get(handler))
+    // .route("/auth-me", get(auth_me))
     .nest("/fido", fido_routes::api_routes(app_state)) // a nest that lives under API
     .layer(CorsLayer::new()
       .allow_origin([
-        "chrome-extension://jnpfkofnigkaocfcdcdppaokjkmhjcio".parse::<HeaderValue>().unwrap(),
-        "https://localhost:3000".parse::<HeaderValue>().unwrap()
+        // "chrome-extension://jnpfkofnigkaocfcdcdppaokjkmhjcio".parse::<HeaderValue>().unwrap(),
+        "https://localhost:3000".parse::<HeaderValue>().unwrap(),
+        "https://localhost:1234".parse::<HeaderValue>().unwrap()
       ])
-      // .allow_origin(Any)
       .allow_credentials(true)
       .allow_methods([Method::GET, Method::POST])
       .allow_headers(vec![
@@ -88,6 +89,9 @@ struct Kake {
   kake: String,
 }
 
+// async fn auth_me() -> Html<&'static str> {
+//   Html("<script>alert(2)</script>")
+// }
 
 async fn post_handler(Json(body): Json<Kake>) {
   dbg!(body);

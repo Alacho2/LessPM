@@ -2,6 +2,9 @@
   "name": "LessPM Extension",
   "version": "0.0.1",
   "manifest_version": 3,
+  "permissions": [
+    "webauthn"
+  ],
   "action": {
     "default_popup": "static/index.html"
   }

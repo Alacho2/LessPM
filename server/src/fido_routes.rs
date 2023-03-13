@@ -38,12 +38,35 @@ async fn test_route(
   headers: HeaderMap,
   state: State<AppState>,
   // Json(body): Json<User>
-) -> impl IntoResponse {
+) -> Result<StatusCode, StatusCode> {
 
   println!("Hello");
-  let token = headers.get(header::COOKIE).unwrap();
+  let mut cookie = headers.get(header::COOKIE).unwrap().to_str().unwrap();
 
-  println!("{}", token.to_str().unwrap());
+  if let Some(i) = cookie.find('=') {
+    cookie = &cookie[i + 1..];
+  }
+
+  let user = Keys::new().verify_user(&cookie);
+
+  // println!("{}", &user.unwrap());
+
+  match user {
+    Ok(verified) => {
+      // dbg!(verified);
+      // We call the next request.
+      Ok(StatusCode::OK)
+    },
+    Err(e) => {
+      eprintln!("{} derp", e);
+      Err(StatusCode::UNAUTHORIZED)
+    },
+  }
+
+
+
+  // dbg!(cookie);
+
 
   // for (name, value) in headers.iter() {
   //   print!("{}", name.to_string());
@@ -375,6 +398,8 @@ async fn finish_authentication<'buf>(
           exp: (Utc::now() + Duration::minutes(15)).timestamp() as usize,
         };
 
+        println!("{}", &user_id);
+
 
         // You are logged in, awesome, create a jwt with a token that contains
         // user information, THIS is the token that gets sent back and forth
@@ -387,9 +412,13 @@ async fn finish_authentication<'buf>(
         let formatted_expires
           = expires.format("%a, %d %b %Y %H:%M:%S GMT").to_string();
         let cookie
-          = format!("token={}; HttpOnly; SameSite=Strict; Expires={}; Path=/; Secure", token, formatted_expires);
+          = format!("token={}; HttpOnly; SameSite=Strict; Expires={}; Path=/; Secure", user_token,
+                    formatted_expires);
 
-        Response::response_builder(StatusCode::OK, user_token)
+        AxumResponse::builder()
+          .status(StatusCode::OK)
+
+        // Response::response_builder(StatusCode::OK, user_token)
           .header(
             header::SET_COOKIE,
             HeaderValue::from_str(cookie.as_str()).unwrap())

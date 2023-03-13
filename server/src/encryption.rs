@@ -1,3 +1,4 @@
+use std::fmt::{Display, Formatter, write};
 use jsonwebtoken::{Algorithm, decode, DecodingKey, encode, EncodingKey, Header, TokenData, Validation};
 use jsonwebtoken::errors::Error;
 use serde::{Deserialize, Serialize};
@@ -30,6 +31,12 @@ pub struct LoggedInUser {
   pub username: String,
   pub uuid: Uuid,
   pub exp: usize,
+}
+
+impl Display for LoggedInUser {
+  fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+    write!(f, "User({} {})", self.username, self.uuid)
+  }
 }
 
 impl Keys {

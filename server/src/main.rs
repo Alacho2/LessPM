@@ -1,14 +1,16 @@
 use std::env;
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::path::PathBuf;
-use axum::response::Html;
+use axum::response::{Html, IntoResponse, Response as AxumResponse};
 use axum::{extract::Path, routing::{get, post}, Router, Json};
+use axum::body::Body;
 use axum::http::{header, HeaderValue, Method, StatusCode};
 use axum_server::tls_rustls::RustlsConfig;
 use u2f::protocol::U2f;
 use serde::{Deserialize, Serialize};
 use tower_http::cors::{Any, CorsLayer};
 use crate::app_state::AppState;
+use crate::response::Response;
 
 mod response;
 mod routes;
@@ -51,7 +53,6 @@ async fn main() {
   let app_state = AppState::new();
 
   let app = Router::new()
-    .route("/", get(handler))
     // .route("/auth-me", get(auth_me))
     .nest("/fido", fido_routes::api_routes(app_state)) // a nest that lives under API
     .layer(CorsLayer::new()
@@ -65,6 +66,7 @@ async fn main() {
       .allow_headers(vec![
         header::CONTENT_TYPE,
         header::AUTHORIZATION,
+        header::COOKIE,
     ])
     )
     // .route("/", get(handler).post(post_handler)) // just a cute little getter
@@ -97,9 +99,16 @@ async fn post_handler(Json(body): Json<Kake>) {
   dbg!(body);
 }
 
-async fn handler() -> Html<&'static str> {
-  Html("<h1>Hello, World!</h1>")
-}
+// async fn handler() -> impl IntoResponse {
+//   let resp: AxumResponse<Body> = axum::http::Response::builder()
+//     .status(StatusCode::OK)
+//     .header(header::CONTENT_TYPE, "application/json")
+//     .header(header::AUTHORIZATION, &format!("Bearer {}", token))
+    // .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, "Authorization")
+    // .body("".to_string().into())
+    // .unwrap();
+  // resp
+// }
 
 async fn id(Path(id): Path<String>) {
   dbg!(id);

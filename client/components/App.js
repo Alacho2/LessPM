@@ -24,13 +24,12 @@ export function App() {
 
   const renderHome = () => {
     return (
-      <div className="container">
-
-      <p>Hello</p>
-      <Authenticate username={username}/>
-      <Login username={username}/>
-      <p onClick={() => setSection(SECTIONS.other)}>Something</p>
-    </div>
+      <>
+        <p>Hello</p>
+        <Authenticate username={username}/>
+        <Login username={username}/>
+        <p onClick={() => setSection(SECTIONS.other)}>Something</p>
+      </>
     )
   };
 
@@ -57,7 +56,10 @@ export function App() {
             </h1>
         </div>
       </div>
-      {section === SECTIONS.home && renderHome()}
+      <div className="container">
+        {section === SECTIONS.home && renderHome()}
+        {section === SECTIONS.other && renderSomeOtherThing()}
+      </div>
     </>
 )
 }

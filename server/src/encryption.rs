@@ -20,17 +20,17 @@ pub struct ClaimConstructor {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct AuthConstructor {
   pub user_id: Uuid,
+  pub username: String,
   pub auth_state: PasskeyAuthentication,
   pub exp: usize,
 }
 
-// impl ClaimConstructor {
-//   pub fn from_json(json: &str) -> Result<Self, Box<dyn std::error::Error>> {
-//     let claim: ClaimConstructor = serde_json::from_str(json)?;
-//     Ok(claim)
-//   }
-// }
-
+#[derive(Serialize, Deserialize)]
+pub struct LoggedInUser {
+  pub username: String,
+  pub uuid: Uuid,
+  pub exp: usize,
+}
 
 impl Keys {
   pub fn new() -> Self {
@@ -41,7 +41,7 @@ impl Keys {
       = DecodingKey::from_rsa_pem(include_bytes!("../keys/public.pem"))
       .expect("Something went wrong with the decoding key");
     Self {
-      header: Header::new(Algorithm::RS256),
+      header: Header::new(Algorithm::RS512),
       encoding_key,
       decoding_key,
     }
@@ -49,7 +49,7 @@ impl Keys {
 
   // ☣️ THIS NEEDS TO BE ENCRYPTED. OTHERWISE THE CLIENT CAN FUCK WITH
   // THE STORAGE. We encrypt with RSA256. Suck on that, Alexander.
-  pub fn token_claim(&self, claim: ClaimConstructor) -> String {
+  pub fn tokenize_claim(&self, claim: ClaimConstructor) -> String {
     encode(&self.header, &claim, &self.encoding_key)
       .expect("Something bad happened with the encoding")
   }
@@ -58,11 +58,11 @@ impl Keys {
       decode(
         &token,
         &self.decoding_key,
-        &Validation::new(Algorithm::RS256)
+        &Validation::new(Algorithm::RS512)
       ).map(|data: TokenData<ClaimConstructor>| data.claims)
   }
 
-  pub fn token_auth(&self, claim: AuthConstructor) -> String {
+  pub fn tokenize_auth(&self, claim: AuthConstructor) -> String {
     encode(&self.header, &claim, &self.encoding_key)
       .expect("Something bad happened during encoding")
   }
@@ -71,8 +71,23 @@ impl Keys {
     decode(
       &token,
       &self.decoding_key,
-      &Validation::new(Algorithm::RS256)
-    )
-      .map(|data: TokenData<AuthConstructor>| data.claims)
+      &Validation::new(Algorithm::RS512)
+    ).map(|data: TokenData<AuthConstructor>| data.claims)
+  }
+
+  // TODO(Håvard): You need to document that you'd rather use a private key for
+  // each thing.
+
+  pub fn tokenize_user(&self, claim: LoggedInUser) -> String {
+    encode(&self.header, &claim, &self.encoding_key)
+      .expect("Can't tokenize the user")
+  }
+
+  pub fn verify_user(&self, token: &str) -> Result<LoggedInUser, Error> {
+    decode(
+      &token,
+      &self.decoding_key,
+      &Validation::new(Algorithm::RS512)
+    ).map(|data: TokenData<LoggedInUser>| data.claims)
   }
 }

@@ -1,5 +1,5 @@
 use std::convert::Infallible;
-use std::fmt::{Debug, Formatter};
+use std::fmt::{Debug, Display, Formatter};
 use axum::{Router, routing, extract::State, Json, http, Extension, middleware, extract, body, response};
 use u2f::protocol::{Challenge, U2f};
 use u2f::register::Registration;
@@ -20,7 +20,7 @@ use axum::response::{IntoResponse, Response as AxumResponse};
 use axum::routing::get;
 use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation, Algorithm, TokenData};
 use serde::{Deserialize, Serialize};
-use chrono::{Duration, Timelike, Utc};
+use chrono::{Duration, Local, Timelike, Utc};
 use jsonwebtoken::errors::Error;
 use u2f::messages::U2fRegisterRequest;
 use u2f::u2ferror::U2fError::NotTrustedAnchor;
@@ -29,23 +29,45 @@ use webauthn_rs;
 use webauthn_rs::prelude::Webauthn;
 use webauthn_rs::prelude::{CredentialID, PasskeyRegistration, PublicKeyCredential, RegisterPublicKeyCredential, Uuid, WebauthnError, WebauthnResult};
 use crate::app_state::AppState;
-use crate::encryption::{AuthConstructor, ClaimConstructor, Keys};
+use crate::encryption::{AuthConstructor, ClaimConstructor, Keys, LoggedInUser};
 use crate::response::Response;
 
 mod fido;
 
 async fn test_route(
-  header: HeaderMap,
+  headers: HeaderMap,
   state: State<AppState>,
-  Json(body): Json<User>
-) -> StatusCode {
+  // Json(body): Json<User>
+) -> impl IntoResponse {
+
   println!("Hello");
+  let token = headers.get(header::COOKIE).unwrap();
+
+  println!("{}", token.to_str().unwrap());
+
+  // for (name, value) in headers.iter() {
+  //   print!("{}", name.to_string());
+  //   println!("{}", value.to_str().unwrap());
+  // }
+
+  // let cookie
+  //   = format!("{}={}; HttpOnly; SameSite=Strict; Path=/", "token", "henlo");
+
+  // let resp: AxumResponse<Body> = axum::http::Response::builder()
+  //   .status(StatusCode::OK)
+  //   .header(header::CONTENT_TYPE, "application/json")
+  //   .header(header::COOKIE, HeaderValue::from_str(cookie.as_str()).unwrap())
+  //   .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, header::COOKIE)
+  //   .body("".to_string().into())
+  //   .unwrap();
+  // resp
   // dbg!(body);
-  StatusCode::OK
+  // StatusCode::OK
 }
 
 pub fn api_routes(state: AppState) -> Router {
   Router::new()
+    .route("/test", get(test_route))
     .route("/finish_registration",
            routing::post(finish_registration)
              .layer(middleware::from_fn(register_middleware))
@@ -108,10 +130,7 @@ async fn start_registration(
         exp: one_minute as usize,
       };
 
-      // TODO(Håvard) ADD SOME SORT OF STORAGE ON THE SERVER TO MAINTAIN
-      // INTEGRITY FOR THE CLAIM.
-
-      let token = Keys::new().token_claim(claim);
+      let token = Keys::new().tokenize_claim(claim);
 
       let default_response_builder: AxumResponse<Body> =
         Response::response_builder(StatusCode::OK, token)
@@ -270,15 +289,19 @@ async fn start_authentication(
           .get(&unique_id)
           .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
 
-      let res = match state.authn.start_passkey_authentication(credentials) {
+      let res = match state
+        .authn
+        .start_passkey_authentication(credentials) {
         Ok((rcr, auth_state)) => {
           let exp = (Utc::now() + Duration::minutes(1)).timestamp();
           let claim = AuthConstructor {
             user_id: unique_id.clone(),
+            username,
             auth_state,
             exp: exp as usize
           };
-          let token = Keys::new().token_auth(claim);
+          let token = Keys::new().tokenize_auth(claim);
+
           Response::response_builder(StatusCode::OK, token)
             .body::<String>(serde_json::to_string(&rcr).unwrap().into())
             .unwrap()
@@ -286,20 +309,20 @@ async fn start_authentication(
         }
         Err(e) => {
           eprintln!("{}", e);
-          let value = AxumResponse::builder()
-            .status(StatusCode::UNAUTHORIZED).body("".to_string()).unwrap();
-          value
+
+          AxumResponse::builder()
+            .status(StatusCode::UNAUTHORIZED)
+            .body("".to_string())
+            .unwrap()
         }
       };
       res
     }
     _ => {
-      let something = AxumResponse::builder()
+      AxumResponse::builder()
         .status(StatusCode::UNAUTHORIZED)
         .body("".to_string())
-        .unwrap();
-      something
-
+        .unwrap()
     }
   };
   Ok(help)
@@ -321,13 +344,16 @@ async fn finish_authentication<'buf>(
     token = &token[i + 1..]
   }
 
+  let keys = Keys::new();
+
   let AuthConstructor {
     user_id,
+    username,
     auth_state,
     exp: _,
-  } = Keys::new().verify_auth(&token).unwrap();
+  } = keys.verify_auth(&token).unwrap();
 
-  let res = match state
+  let res: AxumResponse<Body> = match state
     .authn
     .finish_passkey_authentication(&auth, &auth_state) {
       Ok(auth_result) => {
@@ -340,12 +366,41 @@ async fn finish_authentication<'buf>(
               sk.update_credential(&auth_result);
             })
           ).ok_or("We goofed").unwrap();
-        StatusCode::OK
 
+        // Contrary to the JWT token standard, the user can be signed in for MAX
+        // 15 minutes.
+        let user = LoggedInUser {
+          username,
+          uuid: user_id,
+          exp: (Utc::now() + Duration::minutes(15)).timestamp() as usize,
+        };
+
+
+        // You are logged in, awesome, create a jwt with a token that contains
+        // user information, THIS is the token that gets sent back and forth
+        // This token will need to validated and NOT just unwrapped.
+        let user_token = keys.tokenize_user(user);
+
+        let now = Local::now();
+        let fifteen_minutes = Duration::minutes(15);
+        let expires = now + fifteen_minutes;
+        let formatted_expires
+          = expires.format("%a, %d %b %Y %H:%M:%S GMT").to_string();
+        let cookie
+          = format!("token={}; HttpOnly; SameSite=Strict; Expires={}; Path=/; Secure", token, formatted_expires);
+
+        Response::response_builder(StatusCode::OK, user_token)
+          .header(
+            header::SET_COOKIE,
+            HeaderValue::from_str(cookie.as_str()).unwrap())
+          .header(header::COOKIE, HeaderValue::from_str(cookie.as_str()).unwrap())
+          .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, header::COOKIE)
+          .body("".to_string().into())
+          .unwrap()
       },
       Err(e) => {
         println!("Not okay challenge {}", e);
-        StatusCode::BAD_REQUEST
+        AxumResponse::builder().status(StatusCode::BAD_REQUEST).body("".to_string().into()).unwrap()
       }
   };
   Ok(res)

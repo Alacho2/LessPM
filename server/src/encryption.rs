@@ -48,7 +48,7 @@ impl Keys {
       = DecodingKey::from_rsa_pem(include_bytes!("../keys/public.pem"))
       .expect("Something went wrong with the decoding key");
     Self {
-      header: Header::new(Algorithm::RS512),
+      header: Header::new(Algorithm::PS512),
       encoding_key,
       decoding_key,
     }
@@ -65,7 +65,7 @@ impl Keys {
       decode(
         &token,
         &self.decoding_key,
-        &Validation::new(Algorithm::RS512)
+        &Validation::new(Algorithm::PS512)
       ).map(|data: TokenData<ClaimConstructor>| data.claims)
   }
 
@@ -78,7 +78,7 @@ impl Keys {
     decode(
       &token,
       &self.decoding_key,
-      &Validation::new(Algorithm::RS512)
+      &Validation::new(Algorithm::PS512)
     ).map(|data: TokenData<AuthConstructor>| data.claims)
   }
 
@@ -94,7 +94,7 @@ impl Keys {
     decode(
       &token,
       &self.decoding_key,
-      &Validation::new(Algorithm::RS512)
+      &Validation::new(Algorithm::PS512)
     ).map(|data: TokenData<LoggedInUser>| data.claims)
   }
 }

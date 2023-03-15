@@ -40,7 +40,6 @@ async fn test_route(
   // Json(body): Json<User>
 ) -> Result<StatusCode, StatusCode> {
 
-  println!("Hello");
   let mut cookie = headers.get(header::COOKIE).unwrap().to_str().unwrap();
 
   if let Some(i) = cookie.find('=') {
@@ -48,8 +47,6 @@ async fn test_route(
   }
 
   let user = Keys::new().verify_user(&cookie);
-
-  // println!("{}", &user.unwrap());
 
   match user {
     Ok(verified) => {
@@ -386,6 +383,7 @@ async fn finish_authentication<'buf>(
           .get_mut(&user_id)
           .map(|keys|
             keys.iter_mut().for_each(|sk| {
+              // let size = std::mem::size_of_val(sk.cred_id());
               sk.update_credential(&auth_result);
             })
           ).ok_or("We goofed").unwrap();
@@ -397,8 +395,6 @@ async fn finish_authentication<'buf>(
           uuid: user_id,
           exp: (Utc::now() + Duration::minutes(15)).timestamp() as usize,
         };
-
-        println!("{}", &user_id);
 
 
         // You are logged in, awesome, create a jwt with a token that contains

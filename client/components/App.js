@@ -1,11 +1,13 @@
 import {useState} from 'react';
 import Authenticate from "./Authenticate.jsx";
 import Login from "./Login.jsx";
-
+import Vault from "./Vault.jsx";
+import CreateItem from "./CreateItem.jsx";
 
 const SECTIONS = Object.freeze({
   home: "HOME",
-  other: "OTHER"
+  vault: "VAULT",
+  create: "CREATE",
 });
 
 export function App() {
@@ -28,15 +30,21 @@ export function App() {
         <p>Hello</p>
         <Authenticate username={username}/>
         <Login username={username}/>
-        <p onClick={() => setSection(SECTIONS.other)}>Something</p>
+        <p onClick={() => setSection(SECTIONS.vault)}>Something</p>
       </>
     )
   };
 
-  const renderSomeOtherThing = () => {
+  const renderVault = () => {
     return (
-      <p>Derp</p>
+      <Vault
+        setSection={setSection}
+        sections={SECTIONS}/>
     )
+  };
+
+  const renderCreateVaultItem = () => {
+    return <CreateItem />;
   };
 
 
@@ -58,7 +66,8 @@ export function App() {
       </div>
       <div className="container">
         {section === SECTIONS.home && renderHome()}
-        {section === SECTIONS.other && renderSomeOtherThing()}
+        {section === SECTIONS.vault && renderVault()}
+        {section === SECTIONS.create && renderCreateVaultItem()}
       </div>
     </>
 )

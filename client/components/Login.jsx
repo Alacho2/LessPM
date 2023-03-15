@@ -40,9 +40,10 @@ const Login = (props) => {
       id: Base64.toUint8Array(listItem.id),
     }));
 
+    console.log(credentials);
+
     const credentialKeys = await navigator.credentials.get({publicKey: credentials.publicKey});
 
-    console.log(credentialKeys);
 
     // Hold your horses, can you don't have the keys you need.
     if (!credentialKeys) {

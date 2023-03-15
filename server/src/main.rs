@@ -17,6 +17,8 @@ mod routes;
 mod app_state;
 mod fido_routes;
 mod encryption;
+mod user_routes;
+mod noncesequencehelper;
 
 const IP: [u8; 4] = [127, 0, 0, 1];
 const PORT: u16 = 8080;
@@ -53,6 +55,7 @@ async fn main() {
   let app_state = AppState::new();
 
   let app = Router::new()
+    .nest("/user", user_routes::user_routes())
     // .route("/auth-me", get(auth_me))
     .nest("/fido", fido_routes::api_routes(app_state)) // a nest that lives under API
     .layer(CorsLayer::new()

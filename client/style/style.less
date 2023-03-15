@@ -39,12 +39,40 @@ body {
     display: flex;
   }
   .havard-class {
+    flex-direction: column;
     display: flex;
     flex-grow: 1;
+    max-width: 50%;
+    .password-options {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      flex-wrap: wrap;
+      .option {
+        width: 50%;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        height: 42px;
+        .form-check-input {
+          margin-right: 12px;
+        }
+        .form-check-label {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
   }
   .input-group {
     input.checkbox-controlled-height {
-      height: 26px;
+      height: 24px; // for some reason, the bootstrap checkbox doesn't like us
+    }
+    .height-helper {
+      .far.fa-clipboard {
+        height: 24px;
+        font-size: 24px;
+      }
     }
   }
 }

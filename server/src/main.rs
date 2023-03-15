@@ -19,6 +19,7 @@ mod fido_routes;
 mod encryption;
 mod user_routes;
 mod noncesequencehelper;
+mod password;
 
 const IP: [u8; 4] = [127, 0, 0, 1];
 const PORT: u16 = 8080;

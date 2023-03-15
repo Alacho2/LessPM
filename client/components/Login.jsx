@@ -44,7 +44,6 @@ const Login = (props) => {
 
     const credentialKeys = await navigator.credentials.get({publicKey: credentials.publicKey});
 
-
     // Hold your horses, can you don't have the keys you need.
     if (!credentialKeys) {
       return;
@@ -113,9 +112,7 @@ const Login = (props) => {
     const incomingCookie = authenticated.headers.get('cookie');
 
     const cookies = incomingCookie.split(";");
-    console.log(cookies);
     const token = cookies[0];
-    console.log(token);
     const [name, value] = token.split("=");
 
     document.cookie = name.trim()+"="+value.trim();

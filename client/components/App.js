@@ -44,7 +44,10 @@ export function App() {
   };
 
   const renderCreateVaultItem = () => {
-    return <CreateItem />;
+    return (
+      <CreateItem
+        sections={SECTIONS}
+        setSection={setSection} />);
   };
 
 

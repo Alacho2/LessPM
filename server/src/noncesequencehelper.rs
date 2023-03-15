@@ -1,32 +1,7 @@
 use base64::Engine;
-use ring::aead;
 use ring::aead::{NonceSequence, Nonce, NONCE_LEN, Algorithm, Aad, SealingKey, BoundKey, UnboundKey, OpeningKey};
 use ring::error::Unspecified;
-
-pub struct FixedNonceSequence {
-  nonce: [u8; NONCE_LEN],
-  increment: u64,
-}
-
-impl FixedNonceSequence {
-  pub fn  new() -> Self {
-    Self {
-      nonce: [0u8; NONCE_LEN],
-      increment: 0,
-    }
-  }
-}
-
-impl NonceSequence for FixedNonceSequence {
-  fn advance(&mut self) -> Result<Nonce, Unspecified> {
-    let mut nonce = self.nonce;
-    self.increment = self.increment.checked_add(1).unwrap_or(0);
-    nonce[4..].copy_from_slice(&self.increment.to_be_bytes());
-    Ok(Nonce::assume_unique_for_key(nonce))
-  }
-}
-
-
+use rand::Rng;
 
 pub struct OneNonceSequence(Option<Nonce>);
 
@@ -42,17 +17,95 @@ impl NonceSequence for OneNonceSequence {
   }
 }
 
+struct KeyHelper {
+  nonce: [u8; 12],
+  random_padding: Vec<u8>,
+  key: [u8; 32],
+}
+
+pub fn encrypt_and_store(
+  input: String,
+  validator_vec: Vec<u8>
+) {
+
+  let size_of_validator_key = std::mem::size_of_val("hello");
+
+  dbg!(size_of_validator_key);
+
+  // Check whether the size of value is smaller than
+
+  // let a = vec![0u8, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // let b = &a; // b: &Vec<u8>
+  // let c: &[u8] = &a; // c: &[u8]
+
+  // What if we just make a type fo this?
+  let mut random_padding: Vec<u8> = Vec::new();
+  let another_bits_attempts: [u8; 32] = if validator_vec.len() >= 24 {
+
+    // Grab 192 bits off of the key
+    let mut bits_192: [u8; 24] = [0u8; 24];
+    for i in 0..24 {
+      bits_192[i] = validator_vec[i];
+    }
+
+    // let bits_192: [u8; 24] = validator_vec.try_into().unwrap();
+    // we are missing 8 bytes
+
+    // Create a random padding to fill up the rest of the key.
+    for _ in 1..8 {
+      let num: u8 = rand::thread_rng().gen();
+      random_padding.push(num);
+    }
+
+    // Construct the remaining 64 bites to create an AESkey
+    let mut aes_key = [0u8; 32];
+    for i in 0..bits_192.len() {
+      aes_key[i] = bits_192[i];
+    }
+
+    for i in 0..random_padding.len() {
+      aes_key[i + bits_192.len()] = random_padding[i];
+    }
+
+    let nonce = rand::thread_rng().gen();
+
+    let value = KeyHelper {
+      nonce,
+      random_padding,
+      key: aes_key,
+    };
+
+
+    // let to_an_arr = random_padding.try_into().unwrap();
+
+    // Now you have the bits and the padding
+    // random_padding: [u8; 8] = rand::thread_rng().gen();
+    [0u8; 32]
+  } else {
+    [0u8; 32]
+  };
+
+  // let bites_24_small_from_validator: [u8; 24] = validator_vec.try_into().unwrap();
+  // let random_padding: [u8; 12] = rand::thread_rng().gen();
+}
+
 pub fn encrypt_and_encode(
   algorithm: &'static Algorithm,
   input: String,
   key: &[u8],
   nonce: &Vec<u8>
 ) -> Result<String, String> {
-  let n = aead::Nonce::try_assume_unique_for_key(nonce)
+  let n = Nonce::try_assume_unique_for_key(nonce)
     .expect("Something");
-    // Ok(n) => n,
-    // Err(e) => eprintln!("Derp"),
-  // };
+
+  let mut some_vec: Vec<u8> = Vec::new();
+
+  for _ in 0..26 {
+    let num: u8 = rand::thread_rng().gen();
+    some_vec.push(num);
+  }
+
+  encrypt_and_store("Hello, World!".to_string(), some_vec);
 
   let mut raw = input.as_bytes().to_owned();
 

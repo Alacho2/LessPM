@@ -1,29 +1,28 @@
-use axum::response::Response;
-use axum::{middleware, Router};
+use axum::response::{IntoResponse, Response as AxumResponse};
+use axum::{middleware, Router, routing};
 use axum::http::{header, Request, StatusCode, HeaderMap};
 use axum::middleware::Next;
-use axum::routing::get;
-use crate::encryption::{Keys, LoggedInUser};
+use axum::routing::{get};
+use chrono::{Duration, Utc};
+use crate::encryption::{AuthConstructor, Keys, LoggedInUser};
 use mongodb::{Client, Collection};
 use mongodb::bson::{doc, Document};
 use mongodb::options::ClientOptions;
 use rand::Rng;
-use ring::aead;
 use ring::aead::{AES_256_GCM, BoundKey, Nonce, NONCE_LEN, NonceSequence, SealingKey, UnboundKey};
-use ring::error::Unspecified;
-use crate::noncesequencehelper::{decrypt_and_decode, encrypt_and_encode, FixedNonceSequence, OneNonceSequence};
+use crate::noncesequencehelper::{decrypt_and_decode, encrypt_and_encode, OneNonceSequence};
 
 pub fn user_routes() -> Router {
   Router::new()
     .route("/user-1", get(basic_route))
     .route("/user-2", get(basic_route_2))
-    // .layer(middleware::from_fn(middleware))
 }
+
 
 async fn middleware<B>(
   request: Request<B>,
   next: Next<B>
-) -> Result<Response, StatusCode> {
+) -> Result<AxumResponse, StatusCode> {
   let headers = request.headers();
 
   let cookie_header = headers.get(header::COOKIE);
@@ -100,15 +99,19 @@ async fn basic_route_2() {
   let collection: Collection<Document> = db.collection("vault");
 
   let passwords = vec![
-    doc! {"website": "https://google.com", "username": "havard@alacho.no", "password": "secret123"},
-    doc! {
-      "website": "https://facebook.com",
-      "username": "havard@alacho.no",
-      "password": "secret123"},
     doc! {
       "website": "https://google.com",
       "username": "havard@alacho.no",
-      "password": "secret123"},
+      "password": "secret123"
+    }, doc! {
+      "website": "https://facebook.com",
+      "username": "havard@alacho.no",
+      "password": "secret123"
+    }, doc! {
+      "website": "https://google.com",
+      "username": "havard@alacho.no",
+      "password": "secret123"
+    },
   ];
 
   // the size of my cred id is always 24 bytes.
@@ -116,42 +119,6 @@ async fn basic_route_2() {
 
 
   // let random_padding: [u8; 8] = rand::thread_rng().gen();
-/*
-  // let size = std::mem::size_of_val(&random_padding);
-  // dbg!(random_padding, size);
-
-  let unbound_key = UnboundKey::new(
-    &aead::AES_256_GCM,
-    &random_padding
-  ).unwrap();
-
-  let nonce_sequence = FixedNonceSequence::new();
-
-  let mut sealing_key =
-    ring::aead::SealingKey::new(unbound_key, nonce_sequence);
-
-  let mut in_out = Vec::from("Hello, Worldddd");
-  dbg!(&in_out);
-
-  sealing_key.seal_in_place_append_tag(ring::aead::Aad::empty(), &mut in_out)
-    .expect("Derpa deeerp");
-
-  dbg!(&in_out);
-
-  let second_unbound_key
-    = UnboundKey::new(&aead::AES_256_GCM, &random_padding)
-    .unwrap();
-
-  let second_nonce_sequence = FixedNonceSequence::new();
-  let mut opening_key
-    = ring::aead::OpeningKey::new(second_unbound_key, second_nonce_sequence);
-
-  opening_key.open_in_place(ring::aead::Aad::empty(), &mut in_out)
-    .expect("Fucked up!");
-
-  let something = String::from_utf8_lossy(&in_out).to_string();
-
-  dbg!(&in_out, something); */
   let random_padding: [u8; 32] = rand::thread_rng().gen();
 
   // let nonce_bytes: [u8; NONCE_LEN] = [0u8; NONCE_LEN];

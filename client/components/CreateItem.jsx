@@ -12,16 +12,129 @@
 // All the information is sent with the auth finish request.
 // That should deal with everything that needs to be in terms of the
 // server accepting info.
-import { useEffect, useState } from "react";
+import { Base64 } from "js-base64";
+import { useState } from "react";
 import GeneratePassword from "./GeneratePassword.jsx";
+import authenticate from "./Authenticate.jsx";
+const BASE_URL = "https://localhost:3000/";
+const START_PASSWORD_CREATION_URL = `${BASE_URL}fido/start_password_creation`;
+const END_PASSWORD_CREATION_URL = `${BASE_URL}fido/end_password_creation`;
+const AUTH_HEADER = 'authorization';
 
-const CreateItem = () => {
+// PROPS:
+// setSection = (SECTION) => void,
+// sections: SECTIONS,
+
+const CreateItem = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [website, setWebsite] = useState("");
   const [checked, setChecked] = useState(true);
 
+  // There is absolutely no guarantee that the server accepts what I am about
+  // to do. But I am SURE as hell going to give it a try.
+  const tryToCreateAnEntry = async (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const user_name = "bjoggii";
+
+    const startPasswordCreation = await fetch(START_PASSWORD_CREATION_URL, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name: user_name})
+    });
+
+    if (startPasswordCreation.status !== 200) {
+      console.log("We booped out");
+      return; // exit early
+    }
+
+    const credentials = await startPasswordCreation.json();
+    const authToken = startPasswordCreation.headers.get(AUTH_HEADER);
+
+    const{ challenge, allowCredentials } = credentials.publicKey;
+
+    credentials.publicKey.challenge = Base64.toUint8Array(challenge);
+    credentials.publicKey.allowCredentials = allowCredentials.map(listItem => ({
+      ...listItem,
+      id: Base64.toUint8Array(listItem.id),
+    }));
+
+    const credentialsKeys
+      = await navigator.credentials.get({publicKey: credentials.publicKey});
+
+    if (!credentialsKeys) {
+      return;
+    }
+
+    const {
+      authenticatorData,
+      clientDataJSON,
+      signature,
+    } = credentialsKeys.response;
+
+    const uint8AuthData
+      = Base64.fromUint8Array(new Uint8Array(authenticatorData));
+    const uint8ClientDataJSON
+      = Base64.fromUint8Array(new Uint8Array(clientDataJSON));
+    const uint8Signature = Base64.fromUint8Array(new Uint8Array(signature));
+
+    const credentials_to_send = {
+      id: credentialsKeys.id,
+      rawId: Base64.fromUint8Array(new Uint8Array(credentialsKeys.rawId), true),
+      type: credentialsKeys.type,
+      response: {
+        authenticatorData: uint8AuthData,
+        clientDataJSON: uint8ClientDataJSON,
+        signature: uint8Signature,
+      },
+    };
+
+    const user_data_to_send = {
+      website,
+      password,
+      username,
+    };
+
+    const body = {
+      credentials: credentials_to_send,
+      userData: user_data_to_send,
+    };
+
+    const authorized = await fetch(END_PASSWORD_CREATION_URL, {
+      method: "POST",
+      headers: {
+        'Authorization': authToken,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(body),
+    });
+
+    if (authorized.status !== 200) {
+      console.log("That didn't work");
+      return;
+    }
+
+    console.log("Check the server");
+
+
+    // Now if this goes through, I want eventually CALL the setSections
+    // props.setSection(props.sections.home)
+  };
+
   // I want the input and password to either be a grid or a flexbox
+
+  // Also, this should have a check about token which makes it just stop
+  // rendering if there is no token. Fuckers. Or maybe everything is there
+  // It just doesn't do anything.
+  // Whichever.
 
   return (
     <div className="mt-4 bg-light border rounded create-item">
@@ -49,6 +162,13 @@ const CreateItem = () => {
                 onChange={({target}) => setWebsite(target.value)}
                 aria-describedby="basic-addon1" value={website} />
             </div>
+            <div className="mt-5"></div>
+            <button
+              onClick={tryToCreateAnEntry}
+              type="button"
+              className="create-button btn btn-primary">
+              Excelsior
+            </button>
           </div>
 
           <div className="havard-class password">
@@ -72,12 +192,14 @@ const CreateItem = () => {
                 placeholder="P4sSwØrd"
                 disabled={checked}
                 aria-label="Text input with checkbox" />
-              <div onClick={() => navigator.clipboard.writeText(password)} className="input-group-append">
+              <div
+                onClick={() => navigator.clipboard.writeText(password)}
+                className="input-group-append">
               </div>
             </div>
-            {!checked
-              ? <small>You realize that this is not as secure, right?</small> :
-              <GeneratePassword setPassword={setPassword} />
+            {checked
+              ? <GeneratePassword setPassword={setPassword}/>
+              : <small>You realize that this is not as secure, right?</small>
             }
           </div>
         </div>

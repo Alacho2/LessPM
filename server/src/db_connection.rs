@@ -1,11 +1,13 @@
 use anyhow::anyhow;
 use mongodb::{Client, Collection, Database};
-use mongodb::bson::doc;
+use mongodb::bson::{doc};
 use mongodb::bson::oid::ObjectId;
 use mongodb::options::{ClientOptions, FindOptions};
 use mongodb::error::Result as MongoDbResult;
+use regex::Regex;
 use tokio_stream::StreamExt;
 use serde::{Deserialize, Serialize};
+use webauthn_rs::prelude::{Passkey, Uuid};
 
 pub struct DbConnection {
   db: Database
@@ -28,6 +30,18 @@ pub struct VaultEntryStripped {
   pub website: String,
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct RegisteredUser {
+  pub username: String,
+  pub uuid: Uuid,
+  pub passkey: Passkey,
+}
+
+pub fn is_valid_username(username: &str) -> bool {
+  let re = Regex::new(r"^[a-zA-Z0-9]{3,24}$").unwrap();
+  re.is_match(username)
+}
+
 impl DbConnection {
   pub async fn new() -> Self {
     let url = "mongodb://localhost:27017";
@@ -41,8 +55,8 @@ impl DbConnection {
   }
 
   // Takes a processed document and inserts it into the db
-  pub async fn insert_one(&self, collection_name: &str, vault_entry: VaultEntry) {
-    let collection = &self.db.collection(collection_name);
+  pub async fn insert_one_to_vault(&self, vault_entry: VaultEntry) {
+    let collection = &self.db.collection("vault");
 
     println!("Got here");
 
@@ -61,13 +75,12 @@ impl DbConnection {
     }
   }
 
-  pub async fn get_one(
+  pub async fn get_one_from_vault(
     &self,
-    collection_name: &str,
     id: ObjectId
   ) -> Option<VaultEntry> {
     let collection: &Collection<VaultEntry>
-      = &self.db.collection(collection_name);
+      = &self.db.collection("vault");
 
     match collection.find_one(Some(doc! {
       "_id": id,
@@ -95,5 +108,46 @@ impl DbConnection {
     let v: Vec<MongoDbResult<VaultEntryStripped>> = cursor.collect().await;
     let entries: Result<Vec<VaultEntryStripped>, _> = v.into_iter().collect();
     entries.map_err(|e| anyhow!("Failed to collect entries: {}", e))
+  }
+
+  pub async fn get_registered_user(
+    &self,
+    username: String
+  ) -> Option<RegisteredUser> {
+    let collection: &Collection<RegisteredUser> =
+      &self.db.collection("users");
+
+    if !is_valid_username(&username) {
+      return None;
+    }
+
+    match collection.find_one(Some(doc! {
+      "username": username,
+    }), None).await {
+      Ok(user) => user,
+      Err(_) => None,
+    }
+  }
+
+  pub async fn register_user(
+    &self,
+    user: RegisteredUser,
+  ) {
+    let collection: &Collection<RegisteredUser> =
+      &self.db.collection("users");
+
+    if !is_valid_username(&user.username) {
+      // Handle this somehow.
+    }
+
+    match collection.insert_one(user, None).await {
+      Ok(doc) => { },
+      Err(e) => {
+        println!("Didn't manage to insert it: {}", e)
+      }
+    }
+
+    // Generate a UUID for the user
+
   }
 }

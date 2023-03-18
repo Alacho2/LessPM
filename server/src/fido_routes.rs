@@ -14,19 +14,18 @@ use axum::response::{IntoResponse, Response as AxumResponse};
 use axum::routing::get;
 use serde::{Deserialize, Serialize};
 use chrono::{Duration, Local, Utc};
+use jsonwebtoken::Header;
+use mongodb::bson;
 use tokio::runtime::Runtime;
 
 use webauthn_rs;
-use webauthn_rs::prelude::{
-  CredentialID,
-  PublicKeyCredential,
-  RegisterPublicKeyCredential,
-  Uuid,
-};
+use webauthn_rs::prelude::{CredentialID, PublicKeyCredential, RegisterPublicKeyCredential, Uuid, WebauthnResult};
 use crate::app_state::AppState;
+use crate::db_connection::{DbConnection, RegisteredUser};
 use crate::encryption::{AuthConstructor, ClaimConstructor, Keys, LoggedInUser};
 use crate::noncesequencehelper::{encrypt_and_encode, encrypt_and_store};
 use crate::response::Response;
+use crate::user_routes::process_cookie;
 
 async fn test_route(
   headers: HeaderMap,
@@ -119,30 +118,61 @@ pub struct User {
   pub name: String,
 }
 
+#[derive(Deserialize, Serialize)]
+struct LessPmAuthError<'buf> {
+  msg: &'buf str,
+}
+
 async fn start_registration(
+  // headers: HeaderMap,
   state: State<AppState>,
   Json(body): Json<User>
 ) -> impl IntoResponse {
 
+  // a registration should contain a unique user_id.
+  // it should contain a username
+  // We need to check for the existing registration
+
   let username = body.name;
-  let user_unique_id = {
-    let users_guard = state.users.lock().await;
-    users_guard
-        .name_to_id
-        .get(&username)
-        .copied()
-        .unwrap_or_else(Uuid::new_v4)
-  };
+  let db = DbConnection::new().await;
 
-  let exclude_credentials: Option<Vec<CredentialID>> = {
-    let users_guard = state.users.lock().await;
-    users_guard
-        .keys
-        .get(&user_unique_id)
-        .map(|keys| keys.iter().map(|sk| sk.cred_id().clone()).collect())
-  };
+  let registered = db.get_registered_user(username.to_string()).await;
 
-  // dbg!(&exclude_credentials);
+  // TODO(Håvard): Check token.
+  // If this is the case, we should map the same uuid to that new user
+  // For now, we just avoid a username hijacking.
+  // if registered.is_some() && process_cookie(headers.get(header::COOKIE)) { }
+  if registered.is_some() {
+    let less_pm_auth_error = LessPmAuthError {
+      msg: "Unavailable Username"
+    };
+
+    return axum::http::Response::builder()
+      .status(StatusCode::UNAUTHORIZED)
+      .body(serde_json::to_string(&less_pm_auth_error).unwrap().into())
+      .unwrap()
+  }
+
+
+
+  // let old_user_unique_id = {
+  //   let users_guard = state.users.lock().await;
+  //   users_guard
+  //       .name_to_id
+  //       .get(&username)
+  //       .copied()
+  //       .unwrap_or_else(Uuid::new_v4)
+  // };
+
+  // let exclude_credentials: Option<Vec<CredentialID>> = {
+  //   let users_guard = state.users.lock().await;
+  //   users_guard
+  //       .keys
+  //       .get(&old_user_unique_id)
+  //       .map(|keys| keys.iter().map(|sk| sk.cred_id().clone()).collect())
+  // };
+
+  let user_unique_id = Uuid::new_v4();
 
   let res = match state.authn.start_passkey_registration(
     user_unique_id,
@@ -154,6 +184,7 @@ async fn start_registration(
     Ok((ccr, reg_state)) => {
       // we use one minute to align with the default in the webauthn-lib
       let one_minute = (Utc::now() + Duration::minutes(1)).timestamp();
+
       let claim = ClaimConstructor {
         user_id: user_unique_id,
         username,
@@ -164,12 +195,9 @@ async fn start_registration(
       let token = Keys::new().tokenize_claim(claim);
 
       let default_response_builder: AxumResponse<Body> =
-          Response::response_builder(StatusCode::OK, token)
-              .body(serde_json::to_string(&ccr).unwrap().into())
-              .unwrap();
-
-      // dbg!(&default_response_builder);
-
+        Response::response_builder(StatusCode::OK, token)
+          .body(serde_json::to_string(&ccr).unwrap().into())
+          .unwrap();
       default_response_builder
     }
     Err(e) => {
@@ -243,23 +271,29 @@ async fn finish_registration(
   let res = match state.authn
       .finish_passkey_registration(&reg, &reg_state) {
     Ok(sk) => {
-      let mut users_guard = state.users.lock().await;
-      users_guard.keys
-          .entry(user_id)
-          .and_modify(|keys| keys.push(sk.clone()))
-          .or_insert_with(|| vec![sk.clone()] );
+      let db = DbConnection::new().await;
 
-      users_guard.name_to_id.insert(username, user_id);
+      let user = RegisteredUser {
+        username,
+        uuid: user_id,
+        passkey: sk.clone(),
+      };
+
+      db.register_user(user).await;
+
+      // let mut users_guard = state.users.lock().await;
+      // users_guard.keys
+      //     .entry(user_id)
+      //     .and_modify(|keys| keys.push(sk.clone()))
+      //     .or_insert_with(|| vec![sk.clone()] );
+      //
+      // users_guard.name_to_id.insert(username, user_id);
 
       StatusCode::OK
     }
     Err(e) => {
       eprintln!("{}", e);
       StatusCode::BAD_REQUEST
-      // AxumResponse::builder()
-      //   .status(StatusCode::BAD_REQUEST)
-      //   .body("".to_string().into())
-      //   .unwrap()
     },
   };
 
@@ -307,62 +341,63 @@ async fn auth_middleware<B>(
 async fn start_authentication(
   state: State<AppState>,
   Json(body): Json<User>
-// ) -> response::Result<impl IntoResponse> {
 ) -> response::Result<impl IntoResponse> {
   let username = body.name;
 
-  let users_guard = state.users.lock().await;
+  // let users_guard = state.users.lock().await;
 
-  let user_unique_id = users_guard
-      .name_to_id
-      .get(&username)
-      .clone()
-      .ok_or(StatusCode::UNAUTHORIZED);
+  let db = DbConnection::new().await;
+  let registered_user_opt = db.get_registered_user(username.clone()).await;
 
-  let help = match user_unique_id {
-    Ok(unique_id) => {
-      let credentials =
-          users_guard.keys
-              .get(&unique_id)
-              .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
+  // TODO(Håvard): Change signature
+  if registered_user_opt.is_none() {
+    let res = axum::http::Response::builder()
+      .status(StatusCode::UNAUTHORIZED)
+      .body("".to_string())
+      .unwrap();
+    return Ok(res); // counter-intuitive, but that's rust for you
+  }
 
-      let res = match state
-          .authn
-          .start_passkey_authentication(credentials) {
-        Ok((rcr, auth_state)) => {
-          let exp = (Utc::now() + Duration::minutes(1)).timestamp();
-          let claim = AuthConstructor {
-            user_id: unique_id.clone(),
-            username,
-            auth_state,
-            exp: exp as usize
-          };
-          let token = Keys::new().tokenize_auth(claim);
+  let RegisteredUser {
+    username,
+    uuid,
+    passkey
+  } = registered_user_opt.unwrap();
 
-          Response::response_builder(StatusCode::OK, token)
-              .body::<String>(serde_json::to_string(&rcr).unwrap().into())
-              .unwrap()
 
-        }
-        Err(e) => {
-          eprintln!("{}", e);
+  // let old_user_unique_id = users_guard
+  //     .name_to_id
+  //     .get(&username)
+  //     .clone()
+  //     .ok_or(StatusCode::UNAUTHORIZED);
 
-          AxumResponse::builder()
-              .status(StatusCode::UNAUTHORIZED)
-              .body("".to_string())
-              .unwrap()
-        }
+  let response = match state.
+    authn
+    .start_passkey_authentication(&[passkey]) {
+    Ok((rcr, auth_state)) => {
+      let exp = (Utc::now() + Duration::minutes(1)).timestamp() as usize;
+      let claim = AuthConstructor {
+        user_id: uuid,
+        username,
+        auth_state,
+        exp,
       };
-      res
+
+      let token = Keys::new().tokenize_auth(claim);
+
+      Response::response_builder(StatusCode::OK, token)
+        .body::<String>(serde_json::to_string(&rcr).unwrap().into())
+        .unwrap()
     }
-    _ => {
-      AxumResponse::builder()
-          .status(StatusCode::UNAUTHORIZED)
-          .body("".to_string())
-          .unwrap()
+    Err(_) => {
+      axum::http::Response::builder()
+        .status(StatusCode::UNAUTHORIZED)
+        .body("".to_string())
+        .unwrap()
     }
   };
-  Ok(help)
+
+  Ok(response)
 }
 
 async fn finish_authentication<'buf>(
@@ -393,17 +428,33 @@ async fn finish_authentication<'buf>(
   let res: AxumResponse<Body> = match state
       .authn
       .finish_passkey_authentication(&auth, &auth_state) {
-    Ok(auth_result) => {
-      let mut users_guard = state.users.lock().await;
+    // Ok(auth_result) => { for the TODO below
+    Ok(_) => {
 
-      users_guard.keys
-          .get_mut(&user_id)
-          .map(|keys|
-              keys.iter_mut().for_each(|sk| {
-                // let size = std::mem::size_of_val(sk.cred_id());
-                sk.update_credential(&auth_result);
-              })
-          ).ok_or("We goofed").unwrap();
+      let db = DbConnection::new().await;
+
+      let registered_user_opt = db.get_registered_user(username.clone()).await;
+
+      if registered_user_opt.is_none() {
+        let res = axum::http::Response::builder()
+          .status(StatusCode::UNAUTHORIZED)
+          .body("".to_string().into())
+          .unwrap();
+        return Ok(res);
+      }
+
+
+
+      // TODO(Håvard): Update the key(s) and put it back. Maybe
+      // let mut users_guard = state.users.lock().await;
+      // users_guard.keys
+      //     .get_mut(&old_user_id)
+      //     .map(|keys|
+      //         keys.iter_mut().for_each(|sk| {
+      //           let size = std::mem::size_of_val(sk.cred_id());
+                // sk.update_credential(&auth_result);
+              // })
+          // ).ok_or("We goofed").unwrap();
 
       // Contrary to the JWT token standard, the user can be signed in for MAX
       // 15 minutes.
@@ -455,6 +506,8 @@ async fn start_password_creation(
   // Instead of sending the username in a body, we should use the cookie header...
   let username = body.name;
 
+  let process_cookie = process_cookie(headers.get(header::COOKIE));
+
   let users_guard = state.users.lock().await;
 
   let user_unique_id = users_guard
@@ -462,6 +515,8 @@ async fn start_password_creation(
       .get(&username)
       .clone()
       .ok_or(());
+
+  let db = DbConnection::new().await;
 
   if user_unique_id.is_err() {
     return AxumResponse::builder().status(StatusCode::UNAUTHORIZED).body("".to_string()).unwrap();

@@ -57,7 +57,7 @@ pub async fn encrypt_and_store(
     nonce,
     random_padding
   };
-  db.insert_one("vault", help).await;
+  db.insert_one_to_vault( help).await;
 
   Ok(())
 
@@ -82,7 +82,7 @@ pub async fn decrypt_and_retrieve(
   id: ObjectId
 ) -> Option<String> {
   let db = DbConnection::new().await;
-  let optional_vault_entry = db.get_one("vault", id).await;
+  let optional_vault_entry = db.get_one_from_vault(id).await;
 
   if optional_vault_entry.is_none() {
     return None;

@@ -1,4 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+function useForceUpdate() {
+  const [value, setValue] = useState(0);
+  return () => setValue(value + 1);
+}
 
 // PROPS:
 // setPassword: (password) => {}
@@ -8,6 +13,7 @@ const GeneratePassword = (props) => {
   const [useNumbers, setUseNumbers] = useState(true);
   const [useSpecialSymbols, setUseSpecialSymbols] = useState(false);
   const [range, setRange] = useState(24);
+  const smallCaseRef = useRef(null);
 
   // componentDidMount
   useEffect(() => generatePasswordBasedOnLength(24), []);
@@ -25,6 +31,8 @@ const GeneratePassword = (props) => {
 
     let alphabet = "";
     if (!useSmallCase && !useCapitalCase && !useNumbers && !useSpecialSymbols) {
+      setUseSmallCase(true);
+      smallCaseRef.current.checked = true;
       alphabet = smallCase;
     } else {
       if (useSmallCase) {
@@ -74,6 +82,7 @@ const GeneratePassword = (props) => {
       <div className="password-options">
         <div className="option form-check">
           <input
+            ref={smallCaseRef}
             className="form-check-input"
             type="checkbox"
             onChange={() => setUseSmallCase(!useSmallCase)}
@@ -102,7 +111,7 @@ const GeneratePassword = (props) => {
           <input
             className="form-check-input"
             type="checkbox"
-            onChange={({target}) => setUseNumbers(target.value)}
+            onChange={() => setUseNumbers(!useNumbers)}
             defaultChecked={true}
             id="numbers-case"/>
           <label
@@ -115,7 +124,7 @@ const GeneratePassword = (props) => {
           <input
             className="form-check-input"
             type="checkbox"
-            onChange={({target}) => setUseSpecialSymbols(target.value)}
+            onChange={() => setUseSpecialSymbols(!useSpecialSymbols)}
             defaultChecked={false}
             id="special-characters-case"/>
           <label

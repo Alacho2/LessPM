@@ -14,6 +14,7 @@ use axum::response::{IntoResponse, Response as AxumResponse};
 use axum::routing::get;
 use serde::{Deserialize, Serialize};
 use chrono::{Duration, Local, Utc};
+use tokio::runtime::Runtime;
 
 use webauthn_rs;
 use webauthn_rs::prelude::{
@@ -24,6 +25,7 @@ use webauthn_rs::prelude::{
 };
 use crate::app_state::AppState;
 use crate::encryption::{AuthConstructor, ClaimConstructor, Keys, LoggedInUser};
+use crate::noncesequencehelper::{encrypt_and_encode, encrypt_and_store};
 use crate::response::Response;
 
 async fn test_route(
@@ -79,22 +81,22 @@ async fn test_route(
 
 pub fn api_routes(state: AppState) -> Router {
   Router::new()
-    .route("/test", get(test_route))
-    .route("/finish_registration",
-           routing::post(finish_registration)
-             .layer(middleware::from_fn(register_middleware))
-    )
-    .route("/start_registration", routing::post(start_registration))
-    .route("/start_authentication",
-           routing::post(start_authentication)
-    )
-    .route("/finish_authentication",
-           routing::post(finish_authentication)
-             .layer(middleware::from_fn(auth_middleware))
-    )
-    .route("/start_password_creation", routing::post(start_password_creation))
-    .route("/end_password_creation", routing::post(end_password_creation))
-    .with_state(state)
+      .route("/test", get(test_route))
+      .route("/finish_registration",
+             routing::post(finish_registration)
+                 .layer(middleware::from_fn(register_middleware))
+      )
+      .route("/start_registration", routing::post(start_registration))
+      .route("/start_authentication",
+             routing::post(start_authentication)
+      )
+      .route("/finish_authentication",
+             routing::post(finish_authentication)
+                 .layer(middleware::from_fn(auth_middleware))
+      )
+      .route("/start_password_creation", routing::post(start_password_creation))
+      .route("/end_password_creation", routing::post(end_password_creation))
+      .with_state(state)
 }
 
 
@@ -112,18 +114,18 @@ async fn start_registration(
   let user_unique_id = {
     let users_guard = state.users.lock().await;
     users_guard
-      .name_to_id
-      .get(&username)
-      .copied()
-      .unwrap_or_else(Uuid::new_v4)
+        .name_to_id
+        .get(&username)
+        .copied()
+        .unwrap_or_else(Uuid::new_v4)
   };
 
   let exclude_credentials: Option<Vec<CredentialID>> = {
     let users_guard = state.users.lock().await;
     users_guard
-      .keys
-      .get(&user_unique_id)
-      .map(|keys| keys.iter().map(|sk| sk.cred_id().clone()).collect())
+        .keys
+        .get(&user_unique_id)
+        .map(|keys| keys.iter().map(|sk| sk.cred_id().clone()).collect())
   };
 
   // dbg!(&exclude_credentials);
@@ -148,9 +150,9 @@ async fn start_registration(
       let token = Keys::new().tokenize_claim(claim);
 
       let default_response_builder: AxumResponse<Body> =
-        Response::response_builder(StatusCode::OK, token)
-          .body(serde_json::to_string(&ccr).unwrap().into())
-          .unwrap();
+          Response::response_builder(StatusCode::OK, token)
+              .body(serde_json::to_string(&ccr).unwrap().into())
+              .unwrap();
 
       // dbg!(&default_response_builder);
 
@@ -158,7 +160,7 @@ async fn start_registration(
     }
     Err(e) => {
       dbg!("start_registration -> {:?}", e);
-        AxumResponse::builder()
+      AxumResponse::builder()
           .status(StatusCode::BAD_REQUEST)
           .body("".to_string().into())
           .unwrap()
@@ -186,7 +188,7 @@ async fn register_middleware<B>(
       }
 
       let claim =
-        Keys::new().verify_claim(token);
+          Keys::new().verify_claim(token);
 
       // TEMP UNTIL STORAGE. If the temp doesn't return an error, it's valid.
       match claim {
@@ -225,26 +227,26 @@ async fn finish_registration(
   } = Keys::new().verify_claim(&token).unwrap();
 
   let res = match state.authn
-    .finish_passkey_registration(&reg, &reg_state) {
-      Ok(sk) => {
-        let mut users_guard = state.users.lock().await;
-        users_guard.keys
+      .finish_passkey_registration(&reg, &reg_state) {
+    Ok(sk) => {
+      let mut users_guard = state.users.lock().await;
+      users_guard.keys
           .entry(user_id)
           .and_modify(|keys| keys.push(sk.clone()))
           .or_insert_with(|| vec![sk.clone()] );
 
-        users_guard.name_to_id.insert(username, user_id);
+      users_guard.name_to_id.insert(username, user_id);
 
-        StatusCode::OK
-      }
-      Err(e) => {
-        eprintln!("{}", e);
-        StatusCode::BAD_REQUEST
-        // AxumResponse::builder()
-        //   .status(StatusCode::BAD_REQUEST)
-        //   .body("".to_string().into())
-        //   .unwrap()
-      },
+      StatusCode::OK
+    }
+    Err(e) => {
+      eprintln!("{}", e);
+      StatusCode::BAD_REQUEST
+      // AxumResponse::builder()
+      //   .status(StatusCode::BAD_REQUEST)
+      //   .body("".to_string().into())
+      //   .unwrap()
+    },
   };
 
   res
@@ -282,6 +284,11 @@ async fn auth_middleware<B>(
   }
 }
 
+// The ideal thing would be if I could find out some kind of way to reuse the user id extraction
+// logic, so that I could plop down a third endpoint.
+
+// I suppose that could be a class or something ?
+
 // POST request
 async fn start_authentication(
   state: State<AppState>,
@@ -293,21 +300,21 @@ async fn start_authentication(
   let users_guard = state.users.lock().await;
 
   let user_unique_id = users_guard
-    .name_to_id
-    .get(&username)
-    .clone()
-    .ok_or(StatusCode::UNAUTHORIZED);
+      .name_to_id
+      .get(&username)
+      .clone()
+      .ok_or(StatusCode::UNAUTHORIZED);
 
   let help = match user_unique_id {
     Ok(unique_id) => {
       let credentials =
-        users_guard.keys
-          .get(&unique_id)
-          .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
+          users_guard.keys
+              .get(&unique_id)
+              .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
 
       let res = match state
-        .authn
-        .start_passkey_authentication(credentials) {
+          .authn
+          .start_passkey_authentication(credentials) {
         Ok((rcr, auth_state)) => {
           let exp = (Utc::now() + Duration::minutes(1)).timestamp();
           let claim = AuthConstructor {
@@ -319,26 +326,26 @@ async fn start_authentication(
           let token = Keys::new().tokenize_auth(claim);
 
           Response::response_builder(StatusCode::OK, token)
-            .body::<String>(serde_json::to_string(&rcr).unwrap().into())
-            .unwrap()
+              .body::<String>(serde_json::to_string(&rcr).unwrap().into())
+              .unwrap()
 
         }
         Err(e) => {
           eprintln!("{}", e);
 
           AxumResponse::builder()
-            .status(StatusCode::UNAUTHORIZED)
-            .body("".to_string())
-            .unwrap()
+              .status(StatusCode::UNAUTHORIZED)
+              .body("".to_string())
+              .unwrap()
         }
       };
       res
     }
     _ => {
       AxumResponse::builder()
-        .status(StatusCode::UNAUTHORIZED)
-        .body("".to_string())
-        .unwrap()
+          .status(StatusCode::UNAUTHORIZED)
+          .body("".to_string())
+          .unwrap()
     }
   };
   Ok(help)
@@ -351,10 +358,10 @@ async fn finish_authentication<'buf>(
 ) -> Result<impl IntoResponse, &'buf str> {
 
   let mut token = headers
-    .get(header::AUTHORIZATION)
-    .unwrap()
-    .to_str()
-    .unwrap();
+      .get(header::AUTHORIZATION)
+      .unwrap()
+      .to_str()
+      .unwrap();
 
   if let Some(i) = token.find(' ') {
     token = &token[i + 1..]
@@ -370,45 +377,45 @@ async fn finish_authentication<'buf>(
   } = keys.verify_auth(&token).unwrap();
 
   let res: AxumResponse<Body> = match state
-    .authn
-    .finish_passkey_authentication(&auth, &auth_state) {
-      Ok(auth_result) => {
-        let mut users_guard = state.users.lock().await;
+      .authn
+      .finish_passkey_authentication(&auth, &auth_state) {
+    Ok(auth_result) => {
+      let mut users_guard = state.users.lock().await;
 
-        users_guard.keys
+      users_guard.keys
           .get_mut(&user_id)
           .map(|keys|
-            keys.iter_mut().for_each(|sk| {
-              // let size = std::mem::size_of_val(sk.cred_id());
-              dbg!(sk.cred_id());
-              sk.update_credential(&auth_result);
-            })
+              keys.iter_mut().for_each(|sk| {
+                // let size = std::mem::size_of_val(sk.cred_id());
+                dbg!(sk.cred_id());
+                sk.update_credential(&auth_result);
+              })
           ).ok_or("We goofed").unwrap();
 
-        // Contrary to the JWT token standard, the user can be signed in for MAX
-        // 15 minutes.
-        let user = LoggedInUser {
-          username,
-          uuid: user_id,
-          exp: (Utc::now() + Duration::minutes(15)).timestamp() as usize,
-        };
+      // Contrary to the JWT token standard, the user can be signed in for MAX
+      // 15 minutes.
+      let user = LoggedInUser {
+        username,
+        uuid: user_id,
+        exp: (Utc::now() + Duration::minutes(15)).timestamp() as usize,
+      };
 
 
-        // You are logged in, awesome, create a jwt with a token that contains
-        // user information, THIS is the token that gets sent back and forth
-        // This token will need to validated and NOT just unwrapped.
-        let user_token = keys.tokenize_user(user);
+      // You are logged in, awesome, create a jwt with a token that contains
+      // user information, THIS is the token that gets sent back and forth
+      // This token will need to validated and NOT just unwrapped.
+      let user_token = keys.tokenize_user(user);
 
-        let now = Local::now();
-        let fifteen_minutes = Duration::minutes(15);
-        let expires = now + fifteen_minutes;
-        let formatted_expires
+      let now = Local::now();
+      let fifteen_minutes = Duration::minutes(15);
+      let expires = now + fifteen_minutes;
+      let formatted_expires
           = expires.format("%a, %d %b %Y %H:%M:%S GMT").to_string();
-        let cookie
+      let cookie
           = format!("token={}; HttpOnly; SameSite=Strict; Expires={}; Path=/; Secure", user_token,
                     formatted_expires);
 
-        AxumResponse::builder()
+      AxumResponse::builder()
           .status(StatusCode::OK)
           .header(
             header::SET_COOKIE,
@@ -417,83 +424,71 @@ async fn finish_authentication<'buf>(
           .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, header::COOKIE)
           .body("".to_string().into())
           .unwrap()
-      },
-      Err(e) => {
-        println!("Not okay challenge {}", e);
-        AxumResponse::builder().status(StatusCode::BAD_REQUEST).body("".to_string().into()).unwrap()
-      }
+    },
+    Err(e) => {
+      println!("Not okay challenge {}", e);
+      AxumResponse::builder().status(StatusCode::BAD_REQUEST).body("".to_string().into()).unwrap()
+    }
   };
   Ok(res)
 }
 
 
 async fn start_password_creation(
+  headers: HeaderMap,
   state: State<AppState>,
   Json(body): Json<User>
 ) -> impl IntoResponse {
+  // Instead of sending the username in a body, we should use the cookie header...
   let username = body.name;
 
   let users_guard = state.users.lock().await;
 
   let user_unique_id = users_guard
-    .name_to_id
-    .get(&username)
-    .clone()
-    .ok_or(StatusCode::UNAUTHORIZED);
+      .name_to_id
+      .get(&username)
+      .clone()
+      .ok_or(());
 
-  let help = match user_unique_id {
-    Ok(unique_id) => {
-      let credentials =
-        users_guard.keys
-          .get(&unique_id)
-          .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
+  if user_unique_id.is_err() {
+    return AxumResponse::builder().status(StatusCode::UNAUTHORIZED).body("".to_string()).unwrap();
+  }
 
-      let res = match state
-        .authn
-        .start_passkey_authentication(credentials) {
-        Ok((rcr, auth_state)) => {
+  let unique_id = user_unique_id.unwrap();
 
-          let exp = (Utc::now() + Duration::minutes(1)).timestamp();
+  let credentials =
+    users_guard.keys
+      .get(&unique_id)
+      .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
 
-          let claim = AuthConstructor {
-            user_id: unique_id.clone(),
-            username,
-            auth_state,
-            exp: exp as usize,
-          };
+  let res = match state
+    .authn
+    .start_passkey_authentication(credentials) {
+    Ok((rcr, auth_state)) => {
 
-          let token = Keys::new().tokenize_auth(claim);
+      let exp = (Utc::now() + Duration::minutes(1)).timestamp();
 
-          Response::response_builder(StatusCode::OK, token)
-            .body::<String>(serde_json::to_string(&rcr).unwrap().into())
-            .unwrap()
-        }
-        Err(e) => {
-          eprintln!("{}", e);
-
-          axum::http::Response::builder()
-            .status(StatusCode::UNAUTHORIZED)
-            .body("".to_string())
-            .unwrap()
-        }
+      let claim = AuthConstructor {
+        user_id: unique_id.clone(),
+        username,
+        auth_state,
+        exp: exp as usize,
       };
-      res
+
+      let token = Keys::new().tokenize_auth(claim);
+
+      Response::response_builder(StatusCode::OK, token)
+          .body::<String>(serde_json::to_string(&rcr).unwrap().into())
+          .unwrap()
     }
     _ => {
       axum::http::Response::builder()
-        .status(StatusCode::UNAUTHORIZED)
-        .body("".to_string())
-        .unwrap()
+          .status(StatusCode::UNAUTHORIZED)
+          .body("".to_string())
+          .unwrap()
     }
   };
-  help
-}
-
-#[derive(Debug, Deserialize, Serialize)]
-struct UserData {
-  website: String,
-  username: String,
-  password: String,
+  res
 }
 
 #[derive(Deserialize, Serialize)]
@@ -503,22 +498,41 @@ struct ValidationOfPassword {
   user_data: UserData,
 }
 
+#[derive(Debug, Deserialize, Serialize)]
+struct UserData {
+  website: String,
+  username: String,
+  password: String,
+}
 
 async fn end_password_creation<'buf>(
   headers: HeaderMap,
   state: State<AppState>,
-  Json(auth): Json<ValidationOfPassword>
-) -> Result<impl IntoResponse, &'buf str> {
-  let credentials = auth.credentials;
-  let user_data = auth.user_data;
+  Json(auth): Json<ValidationOfPassword>,
+) -> Result<impl IntoResponse, &'buf str> { // signature should be impl IntoResponse
 
-  // TODO(Håvard) NEED TO CHECK COOKIE VERIFICATION
+  let mut token = headers.get(header::COOKIE).unwrap().to_str().unwrap();
+
+  if let Some(i) = token.find('=') {
+    token = &token[i + 1..];
+  }
+
+  let verified = Keys::new().verify_user(&token);
+
+  // TEMP until middleware is in place
+  if verified.is_err() {
+    // Change signature, add return here
+    axum::http::Response::builder()
+      .status(StatusCode::UNAUTHORIZED)
+      .body("".to_string())
+      .unwrap();
+  }
 
   let mut token = headers
-    .get(header::AUTHORIZATION)
-    .unwrap()
-    .to_str()
-    .unwrap();
+      .get(header::AUTHORIZATION)
+      .unwrap()
+      .to_str()
+      .unwrap();
 
   if let Some(i) = token.find(' ') {
     token = &token[i + 1..]
@@ -526,47 +540,70 @@ async fn end_password_creation<'buf>(
 
   let keys = Keys::new();
 
-  let AuthConstructor {
-    user_id,
+  let verified_auth_state = keys.verify_auth(&token);
+
+  if verified_auth_state.is_err() {
+    // Change signature, add return here.
+    axum::http::Response::builder()
+        .status(StatusCode::UNAUTHORIZED)
+        .body("".to_string())
+        .unwrap();
+  }
+
+  let unwrapped = verified_auth_state.unwrap();
+  let auth_state = unwrapped.auth_state;
+  let user_id = unwrapped.user_id;
+
+  let credentials = auth.credentials;
+  let user_data = auth.user_data;
+
+  // let id_as_vec: Vec<u8> = credentials.id.chars().map(|x| x as u8).collect();
+  let password = &user_data.password;
+
+  if password.len() == 0 {
+    // Change signature, add return here
+    axum::http::Response::builder()
+        .status(StatusCode::BAD_REQUEST)
+        .body("".to_string())
+        .unwrap();
+  }
+
+  let LoggedInUser {
     username,
-    auth_state,
+    uuid: _,
     exp: _,
-  } = keys.verify_auth(&token).unwrap();
+  } = verified.unwrap();
 
   let res: AxumResponse<Body> = match state.
-    authn
-    .finish_passkey_authentication(&credentials, &auth_state) {
-      Ok(auth_result) => {
-        let mut users_guard = state.users.lock().await;
+      authn
+      .finish_passkey_authentication(&credentials, &auth_state) {
+    Ok(auth_result) => {
+      let mut users_guard = state.users.lock().await;
 
-        // AT SOME POINT, THIS WILL BE GOTTEN FORM THE DATABASE INSTEAD OF IN-
-        // MEMORY
-        users_guard.keys
+      let id_as_vec = auth_result.cred_id().0.to_vec();
+      encrypt_and_store(username, &password, user_data.website, id_as_vec).await;
+
+      // AT SOME POINT, THIS WILL BE GOTTEN FORM THE DATABASE INSTEAD OF IN-
+      // MEMORY
+      users_guard.keys
           .get_mut(&user_id)
           .map(|keys|
-            keys.iter_mut().for_each(|sk| {
-              let cred_id_part_of_key: Vec<u8> = sk.cred_id().0.to_vec();
-              let size = std::mem::size_of_val(&cred_id_part_of_key);
-
-              dbg!(size);
-              // let something: Vec<u8> = sk.cred_id().into();
-              // dbg!(something);
-
-              sk.update_credential(&auth_result);
-            })
+              keys.iter_mut().for_each(|sk| {
+                sk.update_credential(&auth_result);
+              })
           ).ok_or("We goofed").unwrap();
 
-        AxumResponse::builder()
+      AxumResponse::builder()
           .status(StatusCode::OK)
           .body("".to_string().into())
           .unwrap()
-      },
-      Err(_) => {
-        AxumResponse::builder()
+    },
+    Err(_) => {
+      AxumResponse::builder()
           .status(StatusCode::UNAUTHORIZED)
           .body("".to_string().into())
           .unwrap()
-      },
+    },
   };
 
   Ok(res)

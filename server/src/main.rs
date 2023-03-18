@@ -20,6 +20,7 @@ mod encryption;
 mod user_routes;
 mod noncesequencehelper;
 mod password;
+mod db_connection;
 
 const IP: [u8; 4] = [127, 0, 0, 1];
 const PORT: u16 = 8080;

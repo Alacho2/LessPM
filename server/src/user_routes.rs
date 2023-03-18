@@ -10,7 +10,7 @@ use mongodb::bson::{doc, Document};
 use mongodb::options::ClientOptions;
 use rand::Rng;
 use ring::aead::{AES_256_GCM, BoundKey, Nonce, NONCE_LEN, NonceSequence, SealingKey, UnboundKey};
-use crate::noncesequencehelper::{decrypt_and_decode, encrypt_and_encode, OneNonceSequence};
+use crate::noncesequencehelper::{decrypt_and_decode, encrypt_and_encode, encrypt_and_store, OneNonceSequence};
 
 pub fn user_routes() -> Router {
   Router::new()
@@ -89,11 +89,6 @@ async fn basic_route_2() {
   client_options.app_name = Some("LessPM".to_string());
   let client = Client::with_options(client_options).unwrap();
 
-  // for db_names in client.list_database_names(None, None).await.unwrap() {
-  //   println!("{}", db_names);
-  //
-  // }
-
   let db = client.database("lesspm");
 
   let collection: Collection<Document> = db.collection("vault");
@@ -117,17 +112,24 @@ async fn basic_route_2() {
   // the size of my cred id is always 24 bytes.
   // That mean I need to pad it up with 8 bytes.
 
+  let val_vec: Vec<u8>
+    = vec![64, 225, 160, 67, 171, 21, 68, 138, 110, 51, 44, 48, 170, 224, 63,
+           253, 29, 226, 11, 132, 73, 203, 198, 179];
+
+  // encrypt_and_store("secret123", val_vec).await;
+
+
 
   // let random_padding: [u8; 8] = rand::thread_rng().gen();
-  let random_padding: [u8; 32] = rand::thread_rng().gen();
+  // let random_padding: [u8; 32] = rand::thread_rng().gen();
 
   // let nonce_bytes: [u8; NONCE_LEN] = [0u8; NONCE_LEN];
   // let nonce = Nonce::assume_unique_for_key(nonce_bytes);
   //
   // let nonce_sequence = OneNonceSequence::new(nonce);
 
-  let random_nonce: [u8; 12] = rand::thread_rng().gen();
-  let random_nonce_two: [u8; 12] = rand::thread_rng().gen();
+  // let random_nonce: [u8; 12] = rand::thread_rng().gen();
+  // let random_nonce_two: [u8; 12] = rand::thread_rng().gen();
 
   // Details.
   // The nonce needs to be stored with the password,
@@ -136,22 +138,22 @@ async fn basic_route_2() {
   // It says you should through the nonce away, but you can't decrypt
   // it without the nonce, so ... What?
 
-  let hello = encrypt_and_encode(
-    &AES_256_GCM,
-    "Hello, Wårld".to_string(),
-    &random_padding,
-    &random_nonce.to_vec(),
-  ).unwrap();
+  // let hello = encrypt_and_encode(
+  //   &AES_256_GCM,
+  //   "Hello, Wårld".to_string(),
+  //   &random_padding,
+  //   &random_nonce.to_vec(),
+  // ).unwrap();
 
-  println!("{} ", &hello);
-  let decrypted = decrypt_and_decode(
-    &AES_256_GCM,
-    hello,
-    &random_padding,
-    &random_nonce.to_vec()
-  ).unwrap();
+  // println!("{} ", &hello);
+  // let decrypted = decrypt_and_decode(
+  //   &AES_256_GCM,
+  //   hello,
+  //   &random_padding,
+  //   &random_nonce.to_vec()
+  // ).unwrap();
 
-  println!("{}", decrypted);
+  // println!("{}", decrypted);
 
 
 

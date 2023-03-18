@@ -59,7 +59,6 @@ const dummy_passwords = [
 const Vault = (props) => {
 
   const handleImageError = (target) => {
-    console.log("Fired", target);
     target.currentTarget.onerror = null;
     target.currentTarget.style = "background: black";
     target.currentTarget.src = "https://www.ru.is/skin/basic9k/i/foot-logo-mobile.png";

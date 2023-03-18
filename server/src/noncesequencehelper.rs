@@ -1,7 +1,9 @@
+use std::fmt::Error;
 use base64::Engine;
-use ring::aead::{NonceSequence, Nonce, NONCE_LEN, Algorithm, Aad, SealingKey, BoundKey, UnboundKey, OpeningKey};
+use ring::aead::{NonceSequence, Nonce, NONCE_LEN, Algorithm, Aad, SealingKey, BoundKey, UnboundKey, OpeningKey, AES_256_GCM};
 use ring::error::Unspecified;
 use rand::Rng;
+use crate::db_connection::{DbConnection, VaultEntry};
 
 pub struct OneNonceSequence(Option<Nonce>);
 
@@ -23,70 +25,87 @@ struct KeyHelper {
   key: [u8; 32],
 }
 
-pub fn encrypt_and_store(
-  input: String,
+
+
+pub async fn encrypt_and_store(
+  username: String,
+  input: &str,
+  website: String,
   validator_vec: Vec<u8>
-) {
+) -> anyhow::Result<()> {
+  let KeyHelper {
+    key,
+    nonce,
+    random_padding
+  } = generate_aes_key(&validator_vec);
 
-  let size_of_validator_key = std::mem::size_of_val("hello");
+  let algorithm = &AES_256_GCM;
 
-  dbg!(size_of_validator_key);
+  let base64_encoding= encrypt_and_encode(
+    algorithm,
+    input.to_string(),
+    &key,
+    &nonce.to_vec()
+  )?;
 
-  // Check whether the size of value is smaller than
+  let db = DbConnection::new().await;
 
-  // let a = vec![0u8, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  // let b = &a; // b: &Vec<u8>
-  // let c: &[u8] = &a; // c: &[u8]
-
-  // What if we just make a type fo this?
-  let mut random_padding: Vec<u8> = Vec::new();
-  let another_bits_attempts: [u8; 32] = if validator_vec.len() >= 24 {
-
-    // Grab 192 bits off of the key
-    let mut bits_192: [u8; 24] = [0u8; 24];
-    for i in 0..24 {
-      bits_192[i] = validator_vec[i];
-    }
-
-    // let bits_192: [u8; 24] = validator_vec.try_into().unwrap();
-    // we are missing 8 bytes
-
-    // Create a random padding to fill up the rest of the key.
-    for _ in 1..8 {
-      let num: u8 = rand::thread_rng().gen();
-      random_padding.push(num);
-    }
-
-    // Construct the remaining 64 bites to create an AESkey
-    let mut aes_key = [0u8; 32];
-    for i in 0..bits_192.len() {
-      aes_key[i] = bits_192[i];
-    }
-
-    for i in 0..random_padding.len() {
-      aes_key[i + bits_192.len()] = random_padding[i];
-    }
-
-    let nonce = rand::thread_rng().gen();
-
-    let value = KeyHelper {
-      nonce,
-      random_padding,
-      key: aes_key,
-    };
-
-
-    // let to_an_arr = random_padding.try_into().unwrap();
-
-    // Now you have the bits and the padding
-    // random_padding: [u8; 8] = rand::thread_rng().gen();
-    [0u8; 32]
-  } else {
-    [0u8; 32]
+  let help = VaultEntry {
+    username,
+    password: base64_encoding.to_string(),
+    website,
+    nonce,
+    random_padding
   };
+  db.insert_one("vault", help).await;
 
-  // let bites_24_small_from_validator: [u8; 24] = validator_vec.try_into().unwrap();
-  // let random_padding: [u8; 12] = rand::thread_rng().gen();
+
+
+  // println!("{}", base64_encoding);
+  //
+  // let decrypted = decrypt_and_decode(
+  //   algorithm,
+  //   base64_encoding,
+  //   &key,
+  //   &nonce.to_vec()
+  // ).unwrap();
+  //
+  // println!("{}", decrypted);
+
+  // Now that things are encrypted, we can store that in the db
+
+  Ok(())
+}
+
+// Takes the validator vec
+fn generate_aes_key(validator_vec: &Vec<u8>) -> KeyHelper {
+  let mut aes_key = [0u8; 32];
+  let mut random_padding: Vec<u8> = Vec::new();
+  let nonce: [u8; 12] = rand::thread_rng().gen();
+
+  let vec_len = validator_vec.len();
+
+  let remaining_bytes_helper
+    = if vec_len >= 24 { 8 } else { 32 - vec_len };
+  let initial_bytes_helper
+    = if vec_len >= 24 { 24 } else { vec_len };
+
+  for i in 0..initial_bytes_helper {
+    aes_key[i] = validator_vec[i];
+  }
+
+  // The random part of the key
+  for i in 0..remaining_bytes_helper {
+    let num: u8 = rand::thread_rng().gen();
+    aes_key[i + initial_bytes_helper] = num;
+    random_padding.push(num);
+  }
+
+  KeyHelper {
+    random_padding,
+    nonce,
+    key: aes_key,
+  }
 }
 
 pub fn encrypt_and_encode(
@@ -94,18 +113,9 @@ pub fn encrypt_and_encode(
   input: String,
   key: &[u8],
   nonce: &Vec<u8>
-) -> Result<String, String> {
+) -> anyhow::Result<String> {
   let n = Nonce::try_assume_unique_for_key(nonce)
     .expect("Something");
-
-  let mut some_vec: Vec<u8> = Vec::new();
-
-  for _ in 0..26 {
-    let num: u8 = rand::thread_rng().gen();
-    some_vec.push(num);
-  }
-
-  encrypt_and_store("Hello, World!".to_string(), some_vec);
 
   let mut raw = input.as_bytes().to_owned();
 
@@ -113,6 +123,7 @@ pub fn encrypt_and_encode(
     Ok(_v) => _v,
     Err(e) => {
       println!("Bailed on seal {}", e);
+      return Err(anyhow::Error::msg("Hello"));
     }
   };
 

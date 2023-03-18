@@ -401,7 +401,6 @@ async fn finish_authentication<'buf>(
           .map(|keys|
               keys.iter_mut().for_each(|sk| {
                 // let size = std::mem::size_of_val(sk.cred_id());
-                dbg!(sk.cred_id());
                 sk.update_credential(&auth_result);
               })
           ).ok_or("We goofed").unwrap();

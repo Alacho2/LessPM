@@ -1,7 +1,8 @@
 use std::str::FromStr;
 use axum::response::{IntoResponse, Response as AxumResponse};
 use axum::{middleware, Router, routing};
-use axum::http::{header, Request, StatusCode, HeaderMap};
+use axum::extract::Path;
+use axum::http::{header, Request, StatusCode, HeaderMap, HeaderValue};
 use axum::middleware::Next;
 use axum::routing::{get};
 use chrono::{Duration, Utc};
@@ -11,21 +12,85 @@ use mongodb::bson::{doc, Document};
 use mongodb::bson::oid::ObjectId;
 use mongodb::options::ClientOptions;
 use rand::Rng;
+use regex::Regex;
 use ring::aead::{AES_256_GCM, BoundKey, Nonce, NONCE_LEN, NonceSequence, SealingKey, UnboundKey};
 use crate::db_connection::DbConnection;
-use crate::noncesequencehelper::{decrypt_and_decode, encrypt_and_encode, encrypt_and_store, OneNonceSequence};
+use crate::noncesequencehelper::{decrypt_and_decode, decrypt_and_retrieve, encrypt_and_encode, encrypt_and_store, OneNonceSequence};
 
 pub fn user_routes() -> Router {
   Router::new()
     .route("/user-1", get(basic_route))
     .route("/user-2", get(basic_route_2))
     .route("/passwords", get(get_user_passwords))
+    .route("/passwords/:id", get(get_password_in_clear_text))
+}
+
+// The process_cookie should return the logged in user OR ... Nothing?
+pub fn process_cookie(
+  header: Option<&HeaderValue>,
+) -> Option<LoggedInUser> {
+  let header = header?;
+
+  let mut token = header.to_str().unwrap();
+
+  if let Some(i) = token.find("=") {
+    token = &token[i + 1..];
+  }
+
+  match Keys::new().verify_user(token) {
+    Ok(verified) => Some(verified),
+    Err(_) => None,
+  }
+}
+
+fn is_valid_object_id(id: &str) -> bool {
+  let re = Regex::new(r"^[0-9a-fA-F]{24}$").unwrap();
+  re.is_match(id)
+}
+
+
+// This needs to be called from the context of authentication
+// I should extract as much as I can into functions in there, so to create more reusability
+async fn get_password_in_clear_text(
+  headers: HeaderMap,
+  Path(id): Path<String>
+) -> impl IntoResponse {
+  let cookie_header = headers.get(header::COOKIE);
+
+  let processed_cookie = process_cookie(cookie_header);
+
+  let err_response = axum::http::Response::builder()
+    .status(StatusCode::UNAUTHORIZED)
+    .body("".to_string())
+    .unwrap();
+
+  if processed_cookie.is_none() || !is_valid_object_id(&id) {
+    return err_response;
+  }
+
+  let object_id_res = ObjectId::parse_str(id);
+  if object_id_res.is_err() {
+    return err_response;
+  }
+
+
+  let object_id = object_id_res.unwrap();
+  let user = processed_cookie.unwrap();
+  let username = user.username;
+  decrypt_and_retrieve(username, object_id).await;
+  // let optional_vault_entry = db.get_one("vault", object_id).await;
+
+  axum::http::Response::builder()
+    .status(StatusCode::OK)
+    .body("".to_string())
+    .unwrap()
+
 }
 
 async fn get_user_passwords(
-  header: HeaderMap
+  headers: HeaderMap
 ) -> impl IntoResponse {
-  let cookie_header = header.get(header::COOKIE);
+  let cookie_header = headers.get(header::COOKIE);
 
   let error_response = axum::http::Response::builder()
     .status(StatusCode::UNAUTHORIZED)
@@ -59,7 +124,6 @@ async fn get_user_passwords(
 
   let passwords
       = db.get_passwords("vault", &username).await;
-
 
   if passwords.is_err() {
     return error_response;

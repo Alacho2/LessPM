@@ -92,34 +92,48 @@ const Vault = (props) => {
 
   // PARAMS:
   // website: string
-  const tryUrlConstruction = async (website) => {
-    return new Promise((resolve) => {
-      try {
-        resolve(new URL(website));
-      } catch {
-        resolve(new URL(FALLBACK_URL));
-      }
-    })
+  const tryUrlConstruction = (website) => {
+    try {
+      return new URL(website);
+    } catch {
+      return new URL(FALLBACK_URL);
+    }
+  };
+
+  // StrippedVaultItem
+  const getOnePassword = async (item) => {
+    const bson = item["_id"]["$oid"];
+
+    const password = await fetch(`${GET_PASSWORDS_URL}/${bson}`, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (password.status !== 200) {
+      return;
+    }
+
+    // do a fetch request to another part of the API
   };
 
   return (
       <div className="mt-4 bg-light position-relative border rounded vault">
-        <div
+        {passwords.length ? <div
             className="create-button position-absolute top-0 end-0"
             onClick={() => props.setSection(props.sections.create)}>
           Create
-        </div>
+        </div> : null }
         <div className="mx-3 my-5">
           {passwords.length ? passwords.map((item, i) => {
             const { website, username } = item;
 
             const url = tryUrlConstruction(website);
-
+            console.log(url);
             return (
                 <div
                   key={i}
                   className="item d-flex flex-row border"
-                  onClick={() => console.log("server request for auth")}>
+                  onClick={() => getOnePassword(item)}>
                   <img
                     className="favicon"
                     src={`${url.origin}/favicon.ico`}
@@ -131,7 +145,7 @@ const Vault = (props) => {
                 </div>
             );
 
-          }) : "<p>Doesn't seem like you are authenticated, matey</p>"}
+          }) : <p>Doesn't seem like you are authenticated, matey</p>}
         </div>
       </div>
   )

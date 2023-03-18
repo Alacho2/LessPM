@@ -24,8 +24,8 @@ pub struct VaultEntry {
 #[derive(Serialize, Deserialize)]
 pub struct VaultEntryStripped {
   _id: ObjectId,
-  username: String,
-  website: String,
+  pub username: String,
+  pub website: String,
 }
 
 impl DbConnection {
@@ -65,16 +65,14 @@ impl DbConnection {
     &self,
     collection_name: &str,
     id: ObjectId
-  ) -> Option<VaultEntryStripped> {
-    let collection: &Collection<VaultEntryStripped>
+  ) -> Option<VaultEntry> {
+    let collection: &Collection<VaultEntry>
       = &self.db.collection(collection_name);
 
     match collection.find_one(Some(doc! {
       "_id": id,
     }), None).await {
-        Ok(vault_entry) => {
-          return vault_entry;
-        },
+        Ok(vault_entry) => vault_entry,
         Err(_) => None,
     }
   }

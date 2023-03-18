@@ -1,8 +1,10 @@
 use std::fmt::Error;
 use base64::Engine;
+use mongodb::bson::oid::ObjectId;
 use ring::aead::{NonceSequence, Nonce, NONCE_LEN, Algorithm, Aad, SealingKey, BoundKey, UnboundKey, OpeningKey, AES_256_GCM};
 use ring::error::Unspecified;
 use rand::Rng;
+use regex::Regex;
 use crate::db_connection::{DbConnection, VaultEntry};
 
 pub struct OneNonceSequence(Option<Nonce>);
@@ -24,8 +26,6 @@ struct KeyHelper {
   random_padding: Vec<u8>,
   key: [u8; 32],
 }
-
-
 
 pub async fn encrypt_and_store(
   username: String,
@@ -59,6 +59,7 @@ pub async fn encrypt_and_store(
   };
   db.insert_one("vault", help).await;
 
+  Ok(())
 
 
   // println!("{}", base64_encoding);
@@ -74,7 +75,37 @@ pub async fn encrypt_and_store(
 
   // Now that things are encrypted, we can store that in the db
 
-  Ok(())
+}
+
+pub async fn decrypt_and_retrieve(
+  username: String,
+  id: ObjectId
+) -> Option<String> {
+  let db = DbConnection::new().await;
+  let optional_vault_entry = db.get_one("vault", id).await;
+
+  if optional_vault_entry.is_none() {
+    return None;
+  }
+
+  let VaultEntry{
+    username: ve_username,
+    password,
+    website,
+    nonce,
+    random_padding
+  } = optional_vault_entry.unwrap();
+
+  // This value comes from the HttpOnly cookie
+  if ve_username != username {
+    return None;
+  }
+
+  let algorithm = &AES_256_GCM;
+
+  // decrypt_and_decode(algorithm,)
+
+  Some("".to_string())
 }
 
 // Takes the validator vec

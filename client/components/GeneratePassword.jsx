@@ -36,19 +36,19 @@ const GeneratePassword = (props) => {
       alphabet = smallCase;
     } else {
       if (useSmallCase) {
-        alphabet = alphabet + smallCase;
+        alphabet += smallCase;
       }
 
       if (useCapitalCase) {
-        alphabet = alphabet + largeCase;
+        alphabet += largeCase;
       }
 
       if (useNumbers) {
-        alphabet = alphabet + numbers;
+        alphabet += numbers;
       }
 
       if (useSpecialSymbols) {
-        alphabet = alphabet + specialSymbols;
+        alphabet += specialSymbols;
       }
     }
 

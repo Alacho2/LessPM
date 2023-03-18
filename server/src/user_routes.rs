@@ -1,3 +1,4 @@
+use std::str::FromStr;
 use axum::response::{IntoResponse, Response as AxumResponse};
 use axum::{middleware, Router, routing};
 use axum::http::{header, Request, StatusCode, HeaderMap};
@@ -7,17 +8,70 @@ use chrono::{Duration, Utc};
 use crate::encryption::{AuthConstructor, Keys, LoggedInUser};
 use mongodb::{Client, Collection};
 use mongodb::bson::{doc, Document};
+use mongodb::bson::oid::ObjectId;
 use mongodb::options::ClientOptions;
 use rand::Rng;
 use ring::aead::{AES_256_GCM, BoundKey, Nonce, NONCE_LEN, NonceSequence, SealingKey, UnboundKey};
+use crate::db_connection::DbConnection;
 use crate::noncesequencehelper::{decrypt_and_decode, encrypt_and_encode, encrypt_and_store, OneNonceSequence};
 
 pub fn user_routes() -> Router {
   Router::new()
     .route("/user-1", get(basic_route))
     .route("/user-2", get(basic_route_2))
+    .route("/passwords", get(get_user_passwords))
 }
 
+async fn get_user_passwords(
+  header: HeaderMap
+) -> impl IntoResponse {
+  let cookie_header = header.get(header::COOKIE);
+
+  let error_response = axum::http::Response::builder()
+    .status(StatusCode::UNAUTHORIZED)
+    .body("".to_string())
+    .unwrap();
+
+  // If the cookie header isn't there
+  if cookie_header == None {
+    return error_response;
+  }
+
+  let mut token = cookie_header.unwrap().to_str().unwrap();
+
+  if let Some(i) = token.find("=") {
+    token = &token[i + 1..];
+  }
+
+  let logged_in_user_res = Keys::new().verify_user(token);
+
+  if logged_in_user_res.is_err() {
+    return error_response;
+  }
+
+  let LoggedInUser {
+    username,
+    uuid: _,
+    exp: _
+  } = logged_in_user_res.unwrap();
+
+  let db = DbConnection::new().await;
+
+  let passwords
+      = db.get_passwords("vault", &username).await;
+
+
+  if passwords.is_err() {
+    return error_response;
+  }
+
+  let result = passwords.unwrap();
+
+  axum::http::Response::builder()
+      .status(StatusCode::OK)
+      .body(serde_json::to_string(&result).unwrap().into())
+      .unwrap()
+}
 
 async fn middleware<B>(
   request: Request<B>,
@@ -38,7 +92,7 @@ async fn middleware<B>(
       }
 
       // If we get here, the cookie is in place, we try to verify it.
-      // This is the final defence for getting access to the user.
+      // This is the final defence for getting access to the user information.
       match Keys::new().verify_user(cookie) {
         Ok(_) => Ok(next.run(request).await),
         Err(e) => {

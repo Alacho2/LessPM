@@ -1,9 +1,10 @@
+use anyhow::anyhow;
 use mongodb::{Client, Collection, Database};
 use mongodb::bson::doc;
 use mongodb::bson::oid::ObjectId;
-// use mongodb::bson::Bson;
-use mongodb::options::ClientOptions;
-use std::fmt::Display;
+use mongodb::options::{ClientOptions, FindOptions};
+use mongodb::error::Result as MongoDbResult;
+use tokio_stream::StreamExt;
 use serde::{Deserialize, Serialize};
 
 pub struct DbConnection {
@@ -18,6 +19,13 @@ pub struct VaultEntry {
   pub website: String,
   pub nonce: [u8; 12],
   pub random_padding: Vec<u8>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct VaultEntryStripped {
+  _id: ObjectId,
+  username: String,
+  website: String,
 }
 
 impl DbConnection {
@@ -57,8 +65,8 @@ impl DbConnection {
     &self,
     collection_name: &str,
     id: ObjectId
-  ) -> Option<VaultEntry> {
-    let collection: &Collection<VaultEntry>
+  ) -> Option<VaultEntryStripped> {
+    let collection: &Collection<VaultEntryStripped>
       = &self.db.collection(collection_name);
 
     match collection.find_one(Some(doc! {
@@ -69,5 +77,25 @@ impl DbConnection {
         },
         Err(_) => None,
     }
+  }
+
+  pub async fn get_passwords(
+    &self,
+    collection_name: &str,
+    username: &str
+  ) -> anyhow::Result<Vec<VaultEntryStripped>> {
+    let collection: &Collection<VaultEntryStripped> = &self.db.collection(collection_name);
+
+    let find_options = FindOptions::builder()
+        .projection(doc! { "_id": 1, "password": 0, "nonce": 0, "random_padding": 0 })
+        .build();
+
+    let cursor = collection.find(Some(doc! {
+      "username": username
+    }), find_options).await?;
+
+    let v: Vec<MongoDbResult<VaultEntryStripped>> = cursor.collect().await;
+    let entries: Result<Vec<VaultEntryStripped>, _> = v.into_iter().collect();
+    entries.map_err(|e| anyhow!("Failed to collect entries: {}", e))
   }
 }

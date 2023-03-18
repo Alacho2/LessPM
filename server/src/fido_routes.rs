@@ -79,6 +79,20 @@ async fn test_route(
   // StatusCode::OK
 }
 
+#[derive(Deserialize, Serialize)]
+struct ValidationOfPassword {
+  credentials: PublicKeyCredential,
+  #[serde(rename = "userData")]
+  user_data: UserData,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct UserData {
+  website: String,
+  username: String,
+  password: String,
+}
+
 pub fn api_routes(state: AppState) -> Router {
   Router::new()
       .route("/test", get(test_route))
@@ -491,20 +505,6 @@ async fn start_password_creation(
   res
 }
 
-#[derive(Deserialize, Serialize)]
-struct ValidationOfPassword {
-  credentials: PublicKeyCredential,
-  #[serde(rename = "userData")]
-  user_data: UserData,
-}
-
-#[derive(Debug, Deserialize, Serialize)]
-struct UserData {
-  website: String,
-  username: String,
-  password: String,
-}
-
 async fn end_password_creation<'buf>(
   headers: HeaderMap,
   state: State<AppState>,
@@ -607,85 +607,5 @@ async fn end_password_creation<'buf>(
   };
 
   Ok(res)
-
-
-  // dbg!(auth.user_data);
-
-  // return StatusCode::OK;
-  /*
-  let mut token = headers
-    .get(header::AUTHORIZATION)
-    .unwrap()
-    .to_str()
-    .unwrap();
-
-  if let Some(i) = token.find(' ') {
-    token = &token[i + 1..]
-  }
-
-  let keys = Keys::new();
-
-  let AuthConstructor {
-    user_id,
-    username,
-    auth_state,
-    exp: _,
-  } = keys.verify_auth(&token).unwrap();
-
-  let res: AxumResponse<Body> = match state
-    .authn
-    .finish_passkey_authentication(&auth, &auth_state) {
-    Ok(auth_result) => {
-      let mut users_guard = state.users.lock().await;
-
-      users_guard.keys
-        .get_mut(&user_id)
-        .map(|keys|
-          keys.iter_mut().for_each(|sk| {
-            // let size = std::mem::size_of_val(sk.cred_id());
-            dbg!(sk.cred_id());
-            sk.update_credential(&auth_result);
-          })
-        ).ok_or("We goofed").unwrap();
-
-      // Contrary to the JWT token standard, the user can be signed in for MAX
-      // 15 minutes.
-      let user = LoggedInUser {
-        username,
-        uuid: user_id,
-        exp: (Utc::now() + Duration::minutes(15)).timestamp() as usize,
-      };
-
-
-      // You are logged in, awesome, create a jwt with a token that contains
-      // user information, THIS is the token that gets sent back and forth
-      // This token will need to validated and NOT just unwrapped.
-      let user_token = keys.tokenize_user(user);
-
-      let now = Local::now();
-      let fifteen_minutes = Duration::minutes(15);
-      let expires = now + fifteen_minutes;
-      let formatted_expires
-        = expires.format("%a, %d %b %Y %H:%M:%S GMT").to_string();
-      let cookie
-        = format!("token={}; HttpOnly; SameSite=Strict; Expires={}; Path=/; Secure", user_token,
-                  formatted_expires);
-
-      AxumResponse::builder()
-        .status(StatusCode::OK)
-        .header(
-          header::SET_COOKIE,
-          HeaderValue::from_str(cookie.as_str()).unwrap())
-        .header(header::COOKIE, HeaderValue::from_str(cookie.as_str()).unwrap())
-        .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, header::COOKIE)
-        .body("".to_string().into())
-        .unwrap()
-    },
-    Err(e) => {
-      println!("Not okay challenge {}", e);
-      AxumResponse::builder().status(StatusCode::BAD_REQUEST).body("".to_string().into()).unwrap()
-    }
-  };
-  Ok(res) */
 }
 

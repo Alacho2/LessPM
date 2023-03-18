@@ -6,6 +6,8 @@
 // The question is whether we can use the passkey ID as a key, and then pad
 // it up to 32 bit
 
+import {useEffect, useState} from "react";
+
 const dummy_passwords = [
   {
     id: Math.random().toString(36).substring(2),
@@ -56,42 +58,82 @@ const dummy_passwords = [
 // setSection: (SECTION) => {}
 // sections: SECTIONS
 
-const Vault = (props) => {
+const BASE_URL = "https://localhost:3000/";
+const GET_PASSWORDS_URL = `${BASE_URL}user/passwords`;
+const FALLBACK_URL = "https://ru.is";
 
+const Vault = (props) => {
+  const [passwords, setPasswords] = useState([]);
+
+  useEffect(() => {
+    getPasswords();
+  }, []);
+
+
+  const getPasswords = async () => {
+    const fetched_passwords = await fetch(GET_PASSWORDS_URL, {
+      method: "GET",
+      credentials: "include"
+    })
+
+    // User isn't authenticated
+    if (fetched_passwords.status !== 200) {
+      return;
+    }
+
+    const json = await fetched_passwords.json();
+    setPasswords(json);
+  };
   const handleImageError = (target) => {
     target.currentTarget.onerror = null;
     target.currentTarget.style = "background: black";
     target.currentTarget.src = "https://www.ru.is/skin/basic9k/i/foot-logo-mobile.png";
   };
 
+  // PARAMS:
+  // website: string
+  const tryUrlConstruction = async (website) => {
+    return new Promise((resolve) => {
+      try {
+        resolve(new URL(website));
+      } catch {
+        resolve(new URL(FALLBACK_URL));
+      }
+    })
+  };
+
   return (
-    <div className="mt-4 bg-light position-relative border rounded vault">
-      <div
-        className="create-button position-absolute top-0 end-0"
-        onClick={() => props.setSection(props.sections.create)}>
-        Create
+      <div className="mt-4 bg-light position-relative border rounded vault">
+        <div
+            className="create-button position-absolute top-0 end-0"
+            onClick={() => props.setSection(props.sections.create)}>
+          Create
+        </div>
+        <div className="mx-3 my-5">
+          {passwords.length ? passwords.map((item, i) => {
+            const { website, username } = item;
+
+            const url = tryUrlConstruction(website);
+
+            return (
+                <div
+                  key={i}
+                  className="item d-flex flex-row border"
+                  onClick={() => console.log("server request for auth")}>
+                  <img
+                    className="favicon"
+                    src={`${url.origin}/favicon.ico`}
+                    onError={handleImageError}/>
+                  <div>
+                    <p className="website">{website}</p>
+                    <p className="username">{username}</p>
+                  </div>
+                </div>
+            );
+
+          }) : "<p>Doesn't seem like you are authenticated, matey</p>"}
+        </div>
       </div>
-      <div className="mx-3 my-5">
-        {dummy_passwords.map((item, i) => {
-          const { website, favicon, username } = item;
-          return (
-            <div
-              key={i}
-              className="item d-flex flex-row border"
-              onClick={() => console.log("server request for auth")}>
-              <img
-                className="favicon"
-                src={favicon}
-                onError={handleImageError}/>
-              <div>
-              <p className="website">{website}</p>
-              <p className="username">{username}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
   )
 };
 

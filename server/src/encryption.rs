@@ -1,8 +1,11 @@
-use std::fmt::{Display, Formatter, write};
+use std::fmt::{Display, Formatter};
 use jsonwebtoken::{Algorithm, decode, DecodingKey, encode, EncodingKey, Header, TokenData, Validation};
 use jsonwebtoken::errors::Error;
+use rand::Rng;
 use serde::{Deserialize, Serialize};
+use sha2::{Sha512};
 use webauthn_rs::prelude::{PasskeyAuthentication, PasskeyRegistration, Uuid};
+use crate::noncesequencehelper::{decrypt_with_key, encrypt_with_key, generate_aes_key, KeyHelper};
 
 pub struct Keys {
   header: Header,
@@ -96,5 +99,98 @@ impl Keys {
       &self.decoding_key,
       &Validation::new(Algorithm::PS512)
     ).map(|data: TokenData<LoggedInUser>| data.claims)
+  }
+}
+
+const A_TEMP_PEPPER: &str
+  = "g%255Fb6!@uC9K2g2L!cq@bEj#3A9VRn&TkjyS^fxAGMEstAZdQg&gDbbkez!e#XB@";
+
+pub struct EncryptionProcess { }
+
+pub struct Whatever {
+  salt: [u8; 8],
+  nonce: [u8; 12],
+  base64: String,
+}
+
+impl EncryptionProcess {
+  // this function should ONLY return the values needed to store. NOT store.
+  pub fn start(validator_vec: &Vec<u8>, input: &str) -> Whatever {
+    let cred_id_as_arr
+      = EncryptionProcess::generate_320bit_arr_of_vec(validator_vec);
+    let pretended_salt = EncryptionProcess::generate_a_salt();
+
+    let mut key_for_aes = [0u8; 32];
+    pbkdf2::pbkdf2_hmac::<Sha512>(&cred_id_as_arr, &pretended_salt, 4096, &mut key_for_aes);
+
+    let nonce: [u8; 12] = rand::thread_rng().gen();
+
+    let base64 = encrypt_with_key(
+      input,
+      &key_for_aes,
+      &nonce,
+    ).unwrap();
+
+    Whatever {
+      salt: pretended_salt,
+      nonce,
+      base64,
+    }
+  }
+
+  pub fn end(
+    validator_vec: &Vec<u8>,
+    whatever: Whatever
+  ) -> String {
+    let cred_id_as_arr
+      = EncryptionProcess::generate_320bit_arr_of_vec(&validator_vec);
+
+    let pretended_salt = whatever.salt;
+
+    let mut key_for_aes = [0u8; 32];
+    pbkdf2::pbkdf2_hmac::<Sha512>(&cred_id_as_arr, &pretended_salt, 4096, &mut key_for_aes);
+
+    let nonce = whatever.nonce;
+
+    let res = decrypt_with_key(whatever.base64, &key_for_aes, &nonce).unwrap();
+    res
+  }
+
+  fn generate_a_salt() -> [u8; 8] {
+    let salt: [u8; 8] = rand::thread_rng().gen();
+    salt
+  }
+
+  fn generate_320bit_arr_of_vec(validator_vec: &Vec<u8>) -> [u8; 40] {
+    let pepper_as_bytes = A_TEMP_PEPPER.as_bytes();
+
+    // Check the length of the validator
+    let vec_len = validator_vec.len();
+
+    let length_of_key = 24;
+
+    let initial_bytes_helper
+      = if vec_len >= length_of_key { length_of_key } else { vec_len };
+    let remaining_bytes_helper
+      = if initial_bytes_helper >= length_of_key { 0 } else { length_of_key - vec_len };
+
+    let mut arr = [0u8; 40];
+
+    for i in 0..initial_bytes_helper {
+      arr[i] = validator_vec[i];
+    }
+
+    // we probably need to return this as well somehow.
+    for i in 0..remaining_bytes_helper {
+      let num: u8 = rand::thread_rng().gen();
+      arr[i] = num;
+    }
+
+    // Last but not least, add the pepper to the key
+    for i in 0..=15 {
+      arr[i + length_of_key] = pepper_as_bytes[i];
+    }
+
+    arr
   }
 }

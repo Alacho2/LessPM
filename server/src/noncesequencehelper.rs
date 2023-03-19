@@ -21,10 +21,44 @@ impl NonceSequence for OneNonceSequence {
   }
 }
 
-struct KeyHelper {
-  nonce: [u8; 12],
-  random_padding: Vec<u8>,
-  key: [u8; 32],
+pub struct KeyHelper {
+  pub nonce: [u8; 12],
+  pub random_padding: Vec<u8>,
+  pub key: [u8; 32],
+}
+
+pub fn encrypt_with_key(
+  password: &str,
+  key: &[u8; 32],
+  nonce: &[u8; 12],
+) -> anyhow::Result<String> {
+  let base64_encoding = encrypt_and_encode(
+    password.to_string(),
+    key,
+    nonce
+  );
+
+  if base64_encoding.is_err() {
+    return Err(anyhow::Error::msg("Something went wrong during base64"));
+  }
+
+  base64_encoding
+}
+
+pub fn decrypt_with_key(
+  input: String,
+  key: &[u8; 32],
+  nonce: &[u8; 12]
+) -> anyhow::Result<String> {
+
+
+  let decrypted = decrypt_and_decode(input, key, nonce);
+
+  if decrypted.is_err() {
+    return Err(anyhow::Error::msg("Something terrible went wrong when decrypting. That's all we know"));
+  }
+
+  Ok(decrypted.unwrap())
 }
 
 pub async fn encrypt_and_store(
@@ -39,25 +73,23 @@ pub async fn encrypt_and_store(
     random_padding
   } = generate_aes_key(&validator_vec);
 
-  let algorithm = &AES_256_GCM;
 
-  let base64_encoding= encrypt_and_encode(
-    algorithm,
-    input.to_string(),
-    &key,
-    &nonce.to_vec()
-  )?;
-
-  let db = DbConnection::new().await;
-
-  let help = VaultEntry {
-    username,
-    password: base64_encoding.to_string(),
-    website,
-    nonce,
-    random_padding
-  };
-  db.insert_one_to_vault( help).await;
+  // let base64_encoding= encrypt_and_encode(
+  //   input.to_string(),
+  //   &key,
+  //   &nonce.to_vec()
+  // )?;
+  //
+  // let db = DbConnection::new().await;
+  //
+  // let help = VaultEntry {
+  //   username,
+  //   password: base64_encoding.to_string(),
+  //   website,
+  //   nonce,
+  //   random_padding
+  // };
+  // db.insert_one_to_vault( help).await;
 
   Ok(())
 
@@ -109,7 +141,7 @@ pub async fn decrypt_and_retrieve(
 }
 
 // Takes the validator vec
-fn generate_aes_key(validator_vec: &Vec<u8>) -> KeyHelper {
+pub fn generate_aes_key(validator_vec: &Vec<u8>) -> KeyHelper {
   let mut aes_key = [0u8; 32];
   let mut random_padding: Vec<u8> = Vec::new();
   let nonce: [u8; 12] = rand::thread_rng().gen();
@@ -140,15 +172,16 @@ fn generate_aes_key(validator_vec: &Vec<u8>) -> KeyHelper {
 }
 
 pub fn encrypt_and_encode(
-  algorithm: &'static Algorithm,
   input: String,
   key: &[u8],
-  nonce: &Vec<u8>
+  nonce: &[u8; 12]
 ) -> anyhow::Result<String> {
   let n = Nonce::try_assume_unique_for_key(nonce)
     .expect("Something");
 
   let mut raw = input.as_bytes().to_owned();
+
+  let algorithm = &AES_256_GCM;
 
   match seal_with_key(algorithm, key, n, Aad::from(&[0; 0]), &mut raw) {
     Ok(_v) => _v,
@@ -162,10 +195,9 @@ pub fn encrypt_and_encode(
 }
 
 pub fn decrypt_and_decode(
-  algorithm: &'static Algorithm,
   input: String,
   key: &[u8],
-  nonce: &Vec<u8>
+  nonce: &[u8; 12]
 ) -> Result<String, String> {
   let mut raw = match base64::engine::general_purpose::STANDARD.decode(input) {
     Ok(r) => r,
@@ -182,6 +214,8 @@ pub fn decrypt_and_decode(
       Err("Bailed on Nonce".to_string()).unwrap()
     }
   };
+
+  let algorithm = &AES_256_GCM;
 
   let res = match open_with_key(
     algorithm,

@@ -268,8 +268,9 @@ async fn finish_registration(
     exp: _
   } = Keys::new().verify_claim(&token).unwrap();
 
-  let res = match state.authn
-      .finish_passkey_registration(&reg, &reg_state) {
+  let res = match state
+    .authn
+    .finish_passkey_registration(&reg, &reg_state) {
     Ok(sk) => {
       let db = DbConnection::new().await;
 
@@ -635,7 +636,7 @@ async fn end_password_creation<'buf>(
       let mut users_guard = state.users.lock().await;
 
       let id_as_vec = auth_result.cred_id().0.to_vec();
-      encrypt_and_store(username, &password, user_data.website, id_as_vec).await;
+      // encrypt_and_store(username, &password, user_data.website, id_as_vec).await;
 
       // AT SOME POINT, THIS WILL BE GOTTEN FORM THE DATABASE INSTEAD OF IN-
       // MEMORY

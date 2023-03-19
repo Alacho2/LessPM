@@ -1,12 +1,12 @@
 use std::str::FromStr;
 use axum::response::{IntoResponse, Response as AxumResponse};
-use axum::{middleware, Router, routing};
+use axum::{middleware, Router};
 use axum::extract::Path;
 use axum::http::{header, Request, StatusCode, HeaderMap, HeaderValue};
 use axum::middleware::Next;
 use axum::routing::{get};
 use chrono::{Duration, Utc};
-use crate::encryption::{AuthConstructor, Keys, LoggedInUser};
+use crate::encryption::{AuthConstructor, EncryptionProcess, Keys, LoggedInUser};
 use mongodb::{Client, Collection};
 use mongodb::bson::{doc, Document};
 use mongodb::bson::oid::ObjectId;
@@ -14,8 +14,9 @@ use mongodb::options::ClientOptions;
 use rand::Rng;
 use regex::Regex;
 use ring::aead::{AES_256_GCM, BoundKey, Nonce, NONCE_LEN, NonceSequence, SealingKey, UnboundKey};
+use sha2::Sha256;
 use crate::db_connection::DbConnection;
-use crate::noncesequencehelper::{decrypt_and_decode, decrypt_and_retrieve, encrypt_and_encode, encrypt_and_store, OneNonceSequence};
+use crate::noncesequencehelper::{decrypt_and_decode, decrypt_and_retrieve, decrypt_with_key, encrypt_and_encode, encrypt_and_store, OneNonceSequence};
 
 pub fn user_routes() -> Router {
   Router::new()
@@ -200,7 +201,45 @@ async fn basic_route(
 }
 
 async fn basic_route_2() {
+  // we should take in the key
 
+  // let val_vec: Vec<u8>
+  //   = vec![64, 225, 160, 67, 171, 21, 68, 138, 110, 51, 44, 48, 170, 224, 63,
+  //          253, 29, 226, 11, 132, 73, 203, 198, 179];
+  // let res = EncryptionProcess::start(&val_vec, "Hello, Wårld!");
+  //
+  //
+  // let something = EncryptionProcess::end(&val_vec, res);
+  //
+  // dbg!(something);
+
+
+  // the res can now be stored in the db
+
+  /*
+
+  let mut random_vec = [0u8; 24];
+
+  for i in 0..val_vec.len() {
+    random_vec[i] = val_vec[i];
+  }
+
+  // for i in 0..8 {
+  //   let num = rand::thread_rng().gen();
+  //   random_vec[i + val_vec.len()] = num;
+  // }
+  //
+  let random_padding: [u8; 8] = rand::thread_rng().gen();
+
+  // plus the random values
+  let mut key = [0u8; 32];
+  pbkdf2::pbkdf2_hmac::<Sha256>(&random_vec, &random_padding, 4096, &mut key);
+
+  dbg!(key);
+   */
+
+
+  /*
   let mut client_options =
     ClientOptions::parse("mongodb://localhost:27017").await.unwrap();
 
@@ -230,9 +269,6 @@ async fn basic_route_2() {
   // the size of my cred id is always 24 bytes.
   // That mean I need to pad it up with 8 bytes.
 
-  let val_vec: Vec<u8>
-    = vec![64, 225, 160, 67, 171, 21, 68, 138, 110, 51, 44, 48, 170, 224, 63,
-           253, 29, 226, 11, 132, 73, 203, 198, 179];
 
   // encrypt_and_store("secret123", val_vec).await;
 
@@ -289,6 +325,6 @@ async fn basic_route_2() {
   // let result = collection.insert_many(passwords, None).await.unwrap();
 
   // dbg!(result);
-
+ */
 }
 

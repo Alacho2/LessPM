@@ -116,9 +116,12 @@ const Vault = (props) => {
     // do a fetch request to another part of the API
   };
 
+
+  // TODO(Håvard): Create an entry point to check
+  // You have to figure out a way to display the creation button
   return (
       <div className="mt-4 bg-light position-relative border rounded vault">
-        {passwords.length ? <div
+        {true ? <div
             className="create-button position-absolute top-0 end-0"
             onClick={() => props.setSection(props.sections.create)}>
           Create

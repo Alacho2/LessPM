@@ -21,8 +21,8 @@ use tokio::runtime::Runtime;
 use webauthn_rs;
 use webauthn_rs::prelude::{CredentialID, PublicKeyCredential, RegisterPublicKeyCredential, Uuid, WebauthnResult};
 use crate::app_state::AppState;
-use crate::db_connection::{DbConnection, RegisteredUser};
-use crate::encryption::{AuthConstructor, ClaimConstructor, Keys, LoggedInUser};
+use crate::db_connection::{DbConnection, RegisteredUser, VaultEntry};
+use crate::encryption::{AuthConstructor, ClaimConstructor, EncryptionProcess, Keys, LoggedInUser};
 use crate::noncesequencehelper::{encrypt_and_encode, encrypt_and_store};
 use crate::response::Response;
 use crate::user_routes::process_cookie;
@@ -505,41 +505,69 @@ async fn start_password_creation(
   Json(body): Json<User>
 ) -> impl IntoResponse {
   // Instead of sending the username in a body, we should use the cookie header...
-  let username = body.name;
+  // let username = body.name;
+
+  dbg!(headers.get(header::COOKIE));
 
   let process_cookie = process_cookie(headers.get(header::COOKIE));
 
-  let users_guard = state.users.lock().await;
+  let response_err = axum::http::Response::builder()
+    .status(StatusCode::UNAUTHORIZED)
+    .body("".to_string())
+    .unwrap();
 
-  let user_unique_id = users_guard
-      .name_to_id
-      .get(&username)
-      .clone()
-      .ok_or(());
+  if process_cookie.is_none() {
+    dbg!("This is stupied");
+    return response_err;
+  }
+
+  let LoggedInUser {
+    username,
+    uuid: _,
+    exp: _,
+  } = process_cookie.unwrap();
+
+  // let users_guard = state.users.lock().await;
+  //
+  // let user_unique_id = users_guard
+  //     .name_to_id
+  //     .get(&username)
+  //     .clone()
+  //     .ok_or(());
 
   let db = DbConnection::new().await;
 
-  if user_unique_id.is_err() {
-    return AxumResponse::builder().status(StatusCode::UNAUTHORIZED).body("".to_string()).unwrap();
+  let user_opt = db.get_registered_user(username).await;
+
+  if user_opt.is_none() {
+    return response_err;
   }
 
-  let unique_id = user_unique_id.unwrap();
+  let user_from_db = user_opt.unwrap();
 
-  let credentials =
-    users_guard.keys
-      .get(&unique_id)
-      .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
+  let credentials = user_from_db.passkey;
+
+  // if user_unique_id.is_err() {
+  //   return AxumResponse::builder().status(StatusCode::UNAUTHORIZED).body("".to_string()).unwrap();
+  // }
+
+  // let unique_id = user_unique_id.unwrap();
+  //
+  // let credentials =
+  //   users_guard.keys
+  //     .get(&unique_id)
+  //     .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
 
   let res = match state
     .authn
-    .start_passkey_authentication(credentials) {
+    .start_passkey_authentication(&[credentials]) {
     Ok((rcr, auth_state)) => {
 
       let exp = (Utc::now() + Duration::minutes(1)).timestamp();
 
       let claim = AuthConstructor {
-        user_id: unique_id.clone(),
-        username,
+        user_id: user_from_db.uuid.clone(),
+        username: user_from_db.username,
         auth_state,
         exp: exp as usize,
       };
@@ -633,20 +661,32 @@ async fn end_password_creation<'buf>(
       authn
       .finish_passkey_authentication(&credentials, &auth_state) {
     Ok(auth_result) => {
-      let mut users_guard = state.users.lock().await;
+      // let mut users_guard = state.users.lock().await;
 
       let id_as_vec = auth_result.cred_id().0.to_vec();
-      // encrypt_and_store(username, &password, user_data.website, id_as_vec).await;
+      let encrypted_password
+        = EncryptionProcess::start(&id_as_vec, password.as_str());
+
+      let vault_entry = VaultEntry {
+        username,
+        password: encrypted_password.base64,
+        website: user_data.website,
+        nonce: encrypted_password.nonce,
+        random_padding: encrypted_password.salt
+      };
+
+      let db = DbConnection::new().await;
+      db.insert_one_to_vault(vault_entry).await;
 
       // AT SOME POINT, THIS WILL BE GOTTEN FORM THE DATABASE INSTEAD OF IN-
       // MEMORY
-      users_guard.keys
-          .get_mut(&user_id)
-          .map(|keys|
-              keys.iter_mut().for_each(|sk| {
-                sk.update_credential(&auth_result);
-              })
-          ).ok_or("We goofed").unwrap();
+      // users_guard.keys
+      //     .get_mut(&user_id)
+      //     .map(|keys|
+      //         keys.iter_mut().for_each(|sk| {
+      //           sk.update_credential(&auth_result);
+      //         })
+      //     ).ok_or("We goofed").unwrap();
 
       AxumResponse::builder()
           .status(StatusCode::OK)

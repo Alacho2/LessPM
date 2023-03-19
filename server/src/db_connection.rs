@@ -20,7 +20,7 @@ pub struct VaultEntry {
   pub password: String,
   pub website: String,
   pub nonce: [u8; 12],
-  pub random_padding: Vec<u8>,
+  pub random_padding: [u8; 8],
 }
 
 #[derive(Serialize, Deserialize)]
@@ -57,8 +57,6 @@ impl DbConnection {
   // Takes a processed document and inserts it into the db
   pub async fn insert_one_to_vault(&self, vault_entry: VaultEntry) {
     let collection = &self.db.collection("vault");
-
-    println!("Got here");
 
     match collection.insert_one(vault_entry, None).await {
       Ok(doc) => {

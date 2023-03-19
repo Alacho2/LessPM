@@ -105,17 +105,15 @@ impl Keys {
 const A_TEMP_PEPPER: &str
   = "g%255Fb6!@uC9K2g2L!cq@bEj#3A9VRn&TkjyS^fxAGMEstAZdQg&gDbbkez!e#XB@";
 
-pub struct EncryptionProcess { }
-
-pub struct Whatever {
-  salt: [u8; 8],
-  nonce: [u8; 12],
-  base64: String,
+pub struct EncryptionProcess {
+  pub salt: [u8; 8],
+  pub nonce: [u8; 12],
+  pub base64: String,
 }
 
 impl EncryptionProcess {
   // this function should ONLY return the values needed to store. NOT store.
-  pub fn start(validator_vec: &Vec<u8>, input: &str) -> Whatever {
+  pub fn start(validator_vec: &Vec<u8>, input: &str) -> EncryptionProcess {
     let cred_id_as_arr
       = EncryptionProcess::generate_320bit_arr_of_vec(validator_vec);
     let pretended_salt = EncryptionProcess::generate_a_salt();
@@ -131,7 +129,7 @@ impl EncryptionProcess {
       &nonce,
     ).unwrap();
 
-    Whatever {
+    EncryptionProcess {
       salt: pretended_salt,
       nonce,
       base64,
@@ -140,7 +138,7 @@ impl EncryptionProcess {
 
   pub fn end(
     validator_vec: &Vec<u8>,
-    whatever: Whatever
+    whatever: EncryptionProcess
   ) -> String {
     let cred_id_as_arr
       = EncryptionProcess::generate_320bit_arr_of_vec(&validator_vec);

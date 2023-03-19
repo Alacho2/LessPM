@@ -41,7 +41,7 @@ const CreateItem = (props) => {
 
     const startPasswordCreation = await fetch(START_PASSWORD_CREATION_URL, {
       method: "POST",
-      credentials: "same-origin",
+      credentials: "include",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

@@ -30,7 +30,7 @@ pub struct VaultEntryStripped {
   pub website: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct RegisteredUser {
   pub username: String,
   pub uuid: Uuid,

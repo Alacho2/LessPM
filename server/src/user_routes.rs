@@ -1,20 +1,15 @@
-use std::str::FromStr;
+use std::sync::Arc;
 use axum::response::{IntoResponse, Response as AxumResponse};
-use axum::{middleware, Router};
-use axum::extract::Path;
+use axum::{async_trait, body, Json, middleware, Router};
+use axum::body::{BoxBody, Bytes, Full};
+use axum::extract::{FromRequest, Path};
 use axum::http::{header, Request, StatusCode, HeaderMap, HeaderValue};
 use axum::middleware::Next;
 use axum::routing::{get};
-use chrono::{Duration, Utc};
-use crate::encryption::{AuthConstructor, EncryptionProcess, Keys, LoggedInUser};
-use mongodb::{Client, Collection};
-use mongodb::bson::{doc, Document};
+use jsonwebtoken::jwk::KeyOperations::Verify;
+use crate::encryption::{AuthConstructor, ClaimConstructor, Keys, LoggedInUser};
 use mongodb::bson::oid::ObjectId;
-use mongodb::options::ClientOptions;
-use rand::Rng;
 use regex::Regex;
-use ring::aead::{AES_256_GCM, BoundKey, Nonce, NONCE_LEN, NonceSequence, SealingKey, UnboundKey};
-use sha2::Sha256;
 use crate::db_connection::DbConnection;
 use crate::noncesequencehelper::{decrypt_and_decode, decrypt_and_retrieve, decrypt_with_key, encrypt_and_encode, encrypt_and_store, OneNonceSequence};
 
@@ -39,6 +34,39 @@ pub fn process_cookie(
   }
 
   match Keys::new().verify_user(token) {
+    Ok(verified) => Some(verified),
+    Err(_) => None,
+  }
+}
+
+pub fn process_auth_token(
+  header: Option<&HeaderValue>
+) -> Option<AuthConstructor> {
+  let header = header?;
+
+  let mut token = header.to_str().unwrap();
+
+  if let Some(i) = token.find(" ") {
+    token = &token[i + 1..];
+  }
+
+  match Keys::new().verify_auth(&token) {
+    Ok(verified) => Some(verified),
+    Err(_) => None,
+  }
+}
+
+pub fn process_claim_token(
+  header: Option<&HeaderValue>
+) -> Option<ClaimConstructor> {
+  let header = header?;
+
+  let mut token = header.to_str().unwrap();
+  if let Some(i) = token.find(" ") {
+    token = &token[i + 1..];
+  }
+
+  match Keys::new().verify_claim(&token) {
     Ok(verified) => Some(verified),
     Err(_) => None,
   }
@@ -98,20 +126,9 @@ async fn get_user_passwords(
     .body("".to_string())
     .unwrap();
 
-  // If the cookie header isn't there
-  if cookie_header == None {
-    return error_response;
-  }
+  let user_logged_in = process_cookie(cookie_header);
 
-  let mut token = cookie_header.unwrap().to_str().unwrap();
-
-  if let Some(i) = token.find("=") {
-    token = &token[i + 1..];
-  }
-
-  let logged_in_user_res = Keys::new().verify_user(token);
-
-  if logged_in_user_res.is_err() {
+  if user_logged_in.is_none() {
     return error_response;
   }
 
@@ -119,7 +136,7 @@ async fn get_user_passwords(
     username,
     uuid: _,
     exp: _
-  } = logged_in_user_res.unwrap();
+  } = user_logged_in.unwrap();
 
   let db = DbConnection::new().await;
 
@@ -136,43 +153,6 @@ async fn get_user_passwords(
       .status(StatusCode::OK)
       .body(serde_json::to_string(&result).unwrap().into())
       .unwrap()
-}
-
-async fn middleware<B>(
-  request: Request<B>,
-  next: Next<B>
-) -> Result<AxumResponse, StatusCode> {
-  let headers = request.headers();
-
-  let cookie_header = headers.get(header::COOKIE);
-
-  let res = match cookie_header {
-    Some(cookie) => {
-      let mut cookie = cookie.to_str().unwrap_or_else(|e| {
-        println!("Couldn't unwrap the cookie: {}", e);
-        Err(StatusCode::UNAUTHORIZED).unwrap()
-      });
-      if let Some(i) = cookie.find("=") {
-        cookie = &cookie[i + 1..];
-      }
-
-      // If we get here, the cookie is in place, we try to verify it.
-      // This is the final defence for getting access to the user information.
-      match Keys::new().verify_user(cookie) {
-        Ok(_) => Ok(next.run(request).await),
-        Err(e) => {
-          println!("Bailed on the user verification {}", e);
-          Err(StatusCode::UNAUTHORIZED)
-        }
-      }
-    }
-    None => {
-      println!("Bailed on the cookie presence");
-      Err(StatusCode::UNAUTHORIZED)
-    }
-  };
-
-  res
 }
 
 // all validation and stuff happens in the middleware. We can unwrap safely

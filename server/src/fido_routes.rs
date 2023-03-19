@@ -1,6 +1,6 @@
-use std::borrow::Cow;
 use std::fmt::{Debug};
-use axum::{Router, routing, extract::State, Json, middleware, response};
+use std::sync::Arc;
+use axum::{Router, routing, extract::State, Json, middleware};
 use axum::body::{Body};
 use axum::http::{
   header,
@@ -9,55 +9,36 @@ use axum::http::{
   Request,
   StatusCode
 };
-use axum::middleware::Next;
+use axum::middleware::{Next};
 use axum::response::{IntoResponse, Response as AxumResponse};
 use axum::routing::get;
 use serde::{Deserialize, Serialize};
 use chrono::{Duration, Local, Utc};
-use jsonwebtoken::Header;
-use mongodb::bson;
-use tokio::runtime::Runtime;
-
 use webauthn_rs;
-use webauthn_rs::prelude::{CredentialID, PublicKeyCredential, RegisterPublicKeyCredential, Uuid, WebauthnResult};
+use webauthn_rs::prelude::{PublicKeyCredential, RegisterPublicKeyCredential, Uuid};
+use webauthn_rs::Webauthn;
 use crate::app_state::AppState;
 use crate::db_connection::{DbConnection, RegisteredUser, VaultEntry};
 use crate::encryption::{AuthConstructor, ClaimConstructor, EncryptionProcess, Keys, LoggedInUser};
-use crate::noncesequencehelper::{encrypt_and_encode, encrypt_and_store};
 use crate::response::Response;
-use crate::user_routes::process_cookie;
+use crate::user_routes::{process_cookie, process_auth_token, process_claim_token};
 
 async fn test_route(
   headers: HeaderMap,
   state: State<AppState>,
   // Json(body): Json<User>
 ) -> Result<StatusCode, StatusCode> {
+  let cookie_header = headers.get(header::COOKIE);
 
-  let mut cookie = headers.get(header::COOKIE).unwrap().to_str().unwrap();
+  let mut logged_in_user = process_cookie(cookie_header);
 
-  if let Some(i) = cookie.find('=') {
-    cookie = &cookie[i + 1..];
+  if logged_in_user.is_none() {
+    return Err(StatusCode::UNAUTHORIZED);
   }
 
-  let user = Keys::new().verify_user(&cookie);
+  return Ok(StatusCode::OK);
 
-  match user {
-    Ok(verified) => {
-      // dbg!(verified);
-      // We call the next request.
-      Ok(StatusCode::OK)
-    },
-    Err(e) => {
-      eprintln!("{} derp", e);
-      Err(StatusCode::UNAUTHORIZED)
-    },
-  }
-
-
-
-  // dbg!(cookie);
-
-
+  /*
   // for (name, value) in headers.iter() {
   //   print!("{}", name.to_string());
   //   println!("{}", value.to_str().unwrap());
@@ -76,6 +57,8 @@ async fn test_route(
   // resp
   // dbg!(body);
   // StatusCode::OK
+
+   */
 }
 
 #[derive(Deserialize, Serialize)]
@@ -94,22 +77,53 @@ struct UserData {
 
 pub fn api_routes(state: AppState) -> Router {
   Router::new()
-      .route("/test", get(test_route))
-      .route("/finish_registration",
-             routing::post(finish_registration)
-                 .layer(middleware::from_fn(register_middleware))
-      )
-      .route("/start_registration", routing::post(start_registration))
-      .route("/start_authentication",
-             routing::post(start_authentication)
-      )
-      .route("/finish_authentication",
-             routing::post(finish_authentication)
-                 .layer(middleware::from_fn(auth_middleware))
-      )
-      .route("/start_password_creation", routing::post(start_password_creation))
-      .route("/end_password_creation", routing::post(end_password_creation))
-      .with_state(state)
+    .route("/test", get(test_route))
+    .route("/finish_registration",
+           routing::post(finish_registration)
+               .layer(middleware::from_fn(register_middleware))
+    )
+    .route("/start_registration", routing::post(start_registration))
+    .route("/start_authentication",
+           routing::post(start_authentication)
+    )
+    .route("/finish_authentication",
+           routing::post(finish_authentication)
+               .layer(middleware::from_fn(auth_middleware))
+    )
+    .route("/start_password_creation", routing::post(start_password_creation))
+    .route("/end_password_creation", routing::post(end_password_creation))
+    .with_state(state)
+}
+
+
+fn start_passkey_authentication_wrapper(
+  authn: &Arc<Webauthn>,
+  registered_user: &RegisteredUser,
+) -> axum::http::Response<String>{
+  let passkey = &[registered_user.passkey.clone()];
+
+  match authn.start_passkey_authentication(passkey) {
+    Ok((rcr, auth_state)) => {
+      let exp = (Utc::now() + Duration::minutes(1)).timestamp() as usize;
+      let claim = AuthConstructor {
+        user_id: registered_user.uuid,
+        username: registered_user.username.clone(),
+        auth_state,
+        exp,
+      };
+
+      let token = Keys::new().tokenize_auth(claim);
+
+      Response::response_builder(StatusCode::OK, token)
+        .body::<String>(serde_json::to_string(&rcr).unwrap().into())
+        .unwrap()
+    }, Err(_) => {
+      axum::http::Response::builder()
+        .status(StatusCode::UNAUTHORIZED)
+        .body("".to_string())
+        .unwrap()
+    }
+  }
 }
 
 
@@ -128,11 +142,6 @@ async fn start_registration(
   state: State<AppState>,
   Json(body): Json<User>
 ) -> impl IntoResponse {
-
-  // a registration should contain a unique user_id.
-  // it should contain a username
-  // We need to check for the existing registration
-
   let username = body.name;
   let db = DbConnection::new().await;
 
@@ -153,33 +162,16 @@ async fn start_registration(
       .unwrap()
   }
 
-
-
-  // let old_user_unique_id = {
-  //   let users_guard = state.users.lock().await;
-  //   users_guard
-  //       .name_to_id
-  //       .get(&username)
-  //       .copied()
-  //       .unwrap_or_else(Uuid::new_v4)
-  // };
-
-  // let exclude_credentials: Option<Vec<CredentialID>> = {
-  //   let users_guard = state.users.lock().await;
-  //   users_guard
-  //       .keys
-  //       .get(&old_user_unique_id)
-  //       .map(|keys| keys.iter().map(|sk| sk.cred_id().clone()).collect())
-  // };
-
   let user_unique_id = Uuid::new_v4();
 
-  let res = match state.authn.start_passkey_registration(
+  let res = match state
+    .authn
+    .start_passkey_registration(
     user_unique_id,
     &username,
     &username,
-    None
-    // exclude_credentials
+    None // A user can't register more than one device
+      // if we ever want to include two devices, this will need to be not none
   ) {
     Ok((ccr, reg_state)) => {
       // we use one minute to align with the default in the webauthn-lib
@@ -206,7 +198,6 @@ async fn start_registration(
           .status(StatusCode::BAD_REQUEST)
           .body("".to_string().into())
           .unwrap()
-
     }
   };
   res
@@ -217,36 +208,15 @@ async fn register_middleware<B>(
   next: Next<B>
 ) -> Result<AxumResponse, StatusCode> {
   let headers = request.headers();
-
   let token = headers.get(header::AUTHORIZATION);
 
-  match token {
-    Some(token) => {
-      let mut token = token.to_str().unwrap();
+  let auth_claim_token = process_claim_token(token);
 
-      // Remove the Bearer-part of the string
-      if let Some(i) = token.find(' ') {
-        token = &token[i + 1..];
-      }
-
-      let claim =
-          Keys::new().verify_claim(token);
-
-      // TEMP UNTIL STORAGE. If the temp doesn't return an error, it's valid.
-      match claim {
-        Ok(_) => {
-          Ok(next.run(request).await)
-        }
-        Err(e) => {
-          println!("{}", e);
-          Err(StatusCode::UNAUTHORIZED)
-        }
-      }
-    }
-    None => {
-      Err(StatusCode::UNAUTHORIZED)
-    },
+  if auth_claim_token.is_none() {
+    return Err(StatusCode::UNAUTHORIZED);
   }
+
+  Ok(next.run(request).await)
 }
 
 async fn finish_registration(
@@ -254,11 +224,12 @@ async fn finish_registration(
   state: State<AppState>,
   Json(reg): Json<RegisterPublicKeyCredential>
 ) -> StatusCode {
+  let token = header.get(header::AUTHORIZATION);
 
-  let mut token = header.get(header::AUTHORIZATION).unwrap().to_str().unwrap();
+  let auth_claim_token = process_claim_token(token);
 
-  if let Some(i) = token.find(' ') {
-    token = &token[i + 1..]
+  if auth_claim_token.is_none() {
+    return StatusCode::UNAUTHORIZED;
   }
 
   let ClaimConstructor {
@@ -266,7 +237,7 @@ async fn finish_registration(
     username,
     reg_state,
     exp: _
-  } = Keys::new().verify_claim(&token).unwrap();
+  } = auth_claim_token.unwrap();
 
   let res = match state
     .authn
@@ -281,14 +252,6 @@ async fn finish_registration(
       };
 
       db.register_user(user).await;
-
-      // let mut users_guard = state.users.lock().await;
-      // users_guard.keys
-      //     .entry(user_id)
-      //     .and_modify(|keys| keys.push(sk.clone()))
-      //     .or_insert_with(|| vec![sk.clone()] );
-      //
-      // users_guard.name_to_id.insert(username, user_id);
 
       StatusCode::OK
     }
@@ -308,44 +271,22 @@ async fn auth_middleware<B>(
   let headers = request.headers();
   let token = headers.get(header::AUTHORIZATION);
 
-  match token {
-    Some(token) => {
-      let mut token = token.to_str().unwrap();
+  let processed_auth_token = process_auth_token(token);
 
-      if let Some(i) = token.find(' ') {
-        token = &token[i + 1..];
-      }
-
-      let claim = Keys::new().verify_auth(token);
-
-      match claim {
-        Ok(_) => {
-          Ok(next.run(request).await)
-        }
-        Err(e) => {
-          println!("Token invalid {}", e);
-          Err(StatusCode::UNAUTHORIZED)
-        }
-      }
-    }
-    None => Err(StatusCode::UNAUTHORIZED)
-
+  if processed_auth_token.is_none() {
+    return Err(StatusCode::UNAUTHORIZED);
   }
+
+  return Ok(next.run(request).await);
+
 }
-
-// The ideal thing would be if I could find out some kind of way to reuse the user id extraction
-// logic, so that I could plop down a third endpoint.
-
-// I suppose that could be a class or something ?
 
 // POST request
 async fn start_authentication(
   state: State<AppState>,
   Json(body): Json<User>
-) -> response::Result<impl IntoResponse> {
+) -> axum::http::Response<String> {
   let username = body.name;
-
-  // let users_guard = state.users.lock().await;
 
   let db = DbConnection::new().await;
   let registered_user_opt = db.get_registered_user(username.clone()).await;
@@ -356,96 +297,53 @@ async fn start_authentication(
       .status(StatusCode::UNAUTHORIZED)
       .body("".to_string())
       .unwrap();
-    return Ok(res); // counter-intuitive, but that's rust for you
+    return res; // counter-intuitive, but that's rust for you
   }
 
-  let RegisteredUser {
-    username,
-    uuid,
-    passkey
-  } = registered_user_opt.unwrap();
+  let register_user = registered_user_opt.unwrap();
 
-
-  // let old_user_unique_id = users_guard
-  //     .name_to_id
-  //     .get(&username)
-  //     .clone()
-  //     .ok_or(StatusCode::UNAUTHORIZED);
-
-  let response = match state.
-    authn
-    .start_passkey_authentication(&[passkey]) {
-    Ok((rcr, auth_state)) => {
-      let exp = (Utc::now() + Duration::minutes(1)).timestamp() as usize;
-      let claim = AuthConstructor {
-        user_id: uuid,
-        username,
-        auth_state,
-        exp,
-      };
-
-      let token = Keys::new().tokenize_auth(claim);
-
-      Response::response_builder(StatusCode::OK, token)
-        .body::<String>(serde_json::to_string(&rcr).unwrap().into())
-        .unwrap()
-    }
-    Err(_) => {
-      axum::http::Response::builder()
-        .status(StatusCode::UNAUTHORIZED)
-        .body("".to_string())
-        .unwrap()
-    }
-  };
-
-  Ok(response)
+  start_passkey_authentication_wrapper(&state.authn, &register_user)
 }
 
 async fn finish_authentication<'buf>(
   headers: HeaderMap,
   state: State<AppState>,
   Json(auth): Json<PublicKeyCredential>
-) -> Result<impl IntoResponse, &'buf str> {
+) -> axum::http::Response<String> {
 
-  let mut token = headers
-      .get(header::AUTHORIZATION)
-      .unwrap()
-      .to_str()
-      .unwrap();
+  let verified_auth_token
+    = process_auth_token(headers.get(header::AUTHORIZATION));
 
-  if let Some(i) = token.find(' ') {
-    token = &token[i + 1..]
+  let err_response = axum::http::Response::builder()
+    .status(StatusCode::UNAUTHORIZED)
+    .body("".to_string())
+    .unwrap();
+
+  if verified_auth_token.is_none() {
+    return err_response;
+
   }
-
-  let keys = Keys::new();
 
   let AuthConstructor {
     user_id,
     username,
     auth_state,
     exp: _,
-  } = keys.verify_auth(&token).unwrap();
+  } = verified_auth_token.unwrap();
 
-  let res: AxumResponse<Body> = match state
-      .authn
-      .finish_passkey_authentication(&auth, &auth_state) {
+  return match state
+    .authn
+    .finish_passkey_authentication(&auth, &auth_state) {
     // Ok(auth_result) => { for the TODO below
     Ok(_) => {
-
       let db = DbConnection::new().await;
-
       let registered_user_opt = db.get_registered_user(username.clone()).await;
 
       if registered_user_opt.is_none() {
-        let res = axum::http::Response::builder()
-          .status(StatusCode::UNAUTHORIZED)
-          .body("".to_string().into())
-          .unwrap();
-        return Ok(res);
+        return err_response;
       }
 
-
-
+      /*
       // TODO(Håvard): Update the key(s) and put it back. Maybe
       // let mut users_guard = state.users.lock().await;
       // users_guard.keys
@@ -459,57 +357,50 @@ async fn finish_authentication<'buf>(
 
       // Contrary to the JWT token standard, the user can be signed in for MAX
       // 15 minutes.
+       */
       let user = LoggedInUser {
         username,
         uuid: user_id,
         exp: (Utc::now() + Duration::minutes(15)).timestamp() as usize,
       };
 
-
-      // You are logged in, awesome, create a jwt with a token that contains
-      // user information, THIS is the token that gets sent back and forth
-      // This token will need to validated and NOT just unwrapped.
-      let user_token = keys.tokenize_user(user);
+      let user_token = Keys::new().tokenize_user(user);
 
       let now = Local::now();
       let fifteen_minutes = Duration::minutes(15);
       let expires = now + fifteen_minutes;
       let formatted_expires
-          = expires.format("%a, %d %b %Y %H:%M:%S GMT").to_string();
+        = expires.format("%a, %d %b %Y %H:%M:%S GMT").to_string();
       let cookie
-          = format!("token={}; HttpOnly; SameSite=Strict; Expires={}; Path=/; Secure", user_token,
-                    formatted_expires);
+        = format!("token={}; HttpOnly; SameSite=Strict; Expires={}; Path=/; Secure", user_token,
+                  formatted_expires);
 
-      AxumResponse::builder()
-          .status(StatusCode::OK)
-          .header(
-            header::SET_COOKIE,
-            HeaderValue::from_str(cookie.as_str()).unwrap())
-          .header(header::COOKIE, HeaderValue::from_str(cookie.as_str()).unwrap())
-          .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, header::COOKIE)
-          .body("".to_string().into())
-          .unwrap()
+      axum::http::Response::builder()
+        .status(StatusCode::OK)
+        .header(
+          header::SET_COOKIE,
+          HeaderValue::from_str(cookie.as_str()).unwrap())
+        .header(header::COOKIE, HeaderValue::from_str(cookie.as_str()).unwrap())
+        .body("".to_string())
+        .unwrap()
     },
     Err(e) => {
       println!("Not okay challenge {}", e);
-      AxumResponse::builder().status(StatusCode::BAD_REQUEST).body("".to_string().into()).unwrap()
+      axum::http::Response::builder()
+        .status(StatusCode::BAD_REQUEST)
+        .body("".to_string())
+        .unwrap()
     }
   };
-  Ok(res)
 }
 
 
 async fn start_password_creation(
   headers: HeaderMap,
   state: State<AppState>,
-  Json(body): Json<User>
-) -> impl IntoResponse {
-  // Instead of sending the username in a body, we should use the cookie header...
-  // let username = body.name;
-
-  dbg!(headers.get(header::COOKIE));
-
-  let process_cookie = process_cookie(headers.get(header::COOKIE));
+) -> axum::http::Response<String> {
+  let process_cookie
+    = process_cookie(headers.get(header::COOKIE));
 
   let response_err = axum::http::Response::builder()
     .status(StatusCode::UNAUTHORIZED)
@@ -517,7 +408,6 @@ async fn start_password_creation(
     .unwrap();
 
   if process_cookie.is_none() {
-    dbg!("This is stupied");
     return response_err;
   }
 
@@ -526,14 +416,6 @@ async fn start_password_creation(
     uuid: _,
     exp: _,
   } = process_cookie.unwrap();
-
-  // let users_guard = state.users.lock().await;
-  //
-  // let user_unique_id = users_guard
-  //     .name_to_id
-  //     .get(&username)
-  //     .clone()
-  //     .ok_or(());
 
   let db = DbConnection::new().await;
 
@@ -545,110 +427,44 @@ async fn start_password_creation(
 
   let user_from_db = user_opt.unwrap();
 
-  let credentials = user_from_db.passkey;
-
-  // if user_unique_id.is_err() {
-  //   return AxumResponse::builder().status(StatusCode::UNAUTHORIZED).body("".to_string()).unwrap();
-  // }
-
-  // let unique_id = user_unique_id.unwrap();
-  //
-  // let credentials =
-  //   users_guard.keys
-  //     .get(&unique_id)
-  //     .ok_or(StatusCode::IM_A_TEAPOT).unwrap();
-
-  let res = match state
-    .authn
-    .start_passkey_authentication(&[credentials]) {
-    Ok((rcr, auth_state)) => {
-
-      let exp = (Utc::now() + Duration::minutes(1)).timestamp();
-
-      let claim = AuthConstructor {
-        user_id: user_from_db.uuid.clone(),
-        username: user_from_db.username,
-        auth_state,
-        exp: exp as usize,
-      };
-
-      let token = Keys::new().tokenize_auth(claim);
-
-      Response::response_builder(StatusCode::OK, token)
-          .body::<String>(serde_json::to_string(&rcr).unwrap().into())
-          .unwrap()
-    }
-    _ => {
-      axum::http::Response::builder()
-          .status(StatusCode::UNAUTHORIZED)
-          .body("".to_string())
-          .unwrap()
-    }
-  };
-  res
+  start_passkey_authentication_wrapper(&state.authn, &user_from_db)
 }
 
+// An idea is to expand upon this end point so you can reuse it to
+// Adding an extra property to ValidationOfPassword called "process"
+// The call functions based on that once things are authenticated.
 async fn end_password_creation<'buf>(
   headers: HeaderMap,
   state: State<AppState>,
   Json(auth): Json<ValidationOfPassword>,
-) -> Result<impl IntoResponse, &'buf str> { // signature should be impl IntoResponse
+) -> StatusCode { // signature should be impl IntoResponse
 
-  let mut token = headers.get(header::COOKIE).unwrap().to_str().unwrap();
+  let verified = process_cookie(headers.get(header::COOKIE));
 
-  if let Some(i) = token.find('=') {
-    token = &token[i + 1..];
+  if verified.is_none() {
+    return StatusCode::UNAUTHORIZED;
   }
 
-  let verified = Keys::new().verify_user(&token);
+  let verified_auth_state
+    = process_auth_token(headers.get(header::AUTHORIZATION));
 
-  // TEMP until middleware is in place
-  if verified.is_err() {
-    // Change signature, add return here
-    axum::http::Response::builder()
-      .status(StatusCode::UNAUTHORIZED)
-      .body("".to_string())
-      .unwrap();
-  }
-
-  let mut token = headers
-      .get(header::AUTHORIZATION)
-      .unwrap()
-      .to_str()
-      .unwrap();
-
-  if let Some(i) = token.find(' ') {
-    token = &token[i + 1..]
-  }
-
-  let keys = Keys::new();
-
-  let verified_auth_state = keys.verify_auth(&token);
-
-  if verified_auth_state.is_err() {
-    // Change signature, add return here.
-    axum::http::Response::builder()
-        .status(StatusCode::UNAUTHORIZED)
-        .body("".to_string())
-        .unwrap();
+  if verified_auth_state.is_none() {
+    return StatusCode::UNAUTHORIZED;
   }
 
   let unwrapped = verified_auth_state.unwrap();
   let auth_state = unwrapped.auth_state;
-  let user_id = unwrapped.user_id;
 
   let credentials = auth.credentials;
-  let user_data = auth.user_data;
+  let UserData {
+    website,
+    username: _,
+    password
+  } = auth.user_data;
 
-  // let id_as_vec: Vec<u8> = credentials.id.chars().map(|x| x as u8).collect();
-  let password = &user_data.password;
-
+  // If we are introducing a "process", this needs to go INTO the function call.
   if password.len() == 0 {
-    // Change signature, add return here
-    axum::http::Response::builder()
-        .status(StatusCode::BAD_REQUEST)
-        .body("".to_string())
-        .unwrap();
+    return StatusCode::BAD_REQUEST
   }
 
   let LoggedInUser {
@@ -657,12 +473,15 @@ async fn end_password_creation<'buf>(
     exp: _,
   } = verified.unwrap();
 
-  let res: AxumResponse<Body> = match state.
-      authn
-      .finish_passkey_authentication(&credentials, &auth_state) {
+  return match state.
+    authn
+    .finish_passkey_authentication(&credentials, &auth_state) {
     Ok(auth_result) => {
-      // let mut users_guard = state.users.lock().await;
 
+      // if process gets introduced, this is a function that takes the
+      // - cred_id
+      // - LoggedInUser
+      // and then calls the encryption part.
       let id_as_vec = auth_result.cred_id().0.to_vec();
       let encrypted_password
         = EncryptionProcess::start(&id_as_vec, password.as_str());
@@ -670,7 +489,7 @@ async fn end_password_creation<'buf>(
       let vault_entry = VaultEntry {
         username,
         password: encrypted_password.base64,
-        website: user_data.website,
+        website,
         nonce: encrypted_password.nonce,
         random_padding: encrypted_password.salt
       };
@@ -678,29 +497,12 @@ async fn end_password_creation<'buf>(
       let db = DbConnection::new().await;
       db.insert_one_to_vault(vault_entry).await;
 
-      // AT SOME POINT, THIS WILL BE GOTTEN FORM THE DATABASE INSTEAD OF IN-
-      // MEMORY
-      // users_guard.keys
-      //     .get_mut(&user_id)
-      //     .map(|keys|
-      //         keys.iter_mut().for_each(|sk| {
-      //           sk.update_credential(&auth_result);
-      //         })
-      //     ).ok_or("We goofed").unwrap();
-
-      AxumResponse::builder()
-          .status(StatusCode::OK)
-          .body("".to_string().into())
-          .unwrap()
+      // this should still stay in the function, theoretically.
+      StatusCode::CREATED
     },
     Err(_) => {
-      AxumResponse::builder()
-          .status(StatusCode::UNAUTHORIZED)
-          .body("".to_string().into())
-          .unwrap()
+      StatusCode::UNAUTHORIZED
     },
   };
-
-  Ok(res)
 }
 

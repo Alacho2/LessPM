@@ -72,27 +72,6 @@ const Login = (props) => {
       }
     };
 
-    // const httpReq = new XMLHttpRequest();
-    // httpReq.open("POST", FINISH_AUTH_URL, true);
-    // httpReq.setRequestHeader("Authorization", authToken);
-    // httpReq.setRequestHeader("Accept", "application/json");
-    // httpReq.setRequestHeader("Content-Type", "application/json");
-    // httpReq.withCredentials = true;
-    //
-    // httpReq.onreadystatechange = () => {
-    //   const headers = httpReq.getAllResponseHeaders();
-    //   const arr = headers.trim().split(/[\r\n]+/);
-    //   arr.forEach((value) => {
-    //     console.log(value);
-    //   });
-    // };
-    //
-    // httpReq.onload = () => {
-    //   console.log(httpReq.responseText);
-    // };
-    //
-    // httpReq.send(JSON.stringify(body));
-
     const authenticated = await fetch(FINISH_AUTH_URL, {
       method: "POST",
       headers: {
@@ -108,22 +87,6 @@ const Login = (props) => {
       console.log("Not authenticated");
       return;
     }
-
-    const incomingCookie = authenticated.headers.get('cookie');
-
-    const cookies = incomingCookie.split(";");
-    const token = cookies[0];
-    const [name, value] = token.split("=");
-
-    document.cookie = name.trim()+"="+value.trim();
-
-    // for(const i in cookies){
-    //   const vals = cookies[i].split('=');
-    //   console.log(vals[0], vals[1]);
-    //   const name = vals.shift(0, 1).trim();
-    //   console.log(name, vals.join());
-    //   document.cookie = name+'='+vals.join('=');
-    // }
 
     console.log("Time for a dance");
 

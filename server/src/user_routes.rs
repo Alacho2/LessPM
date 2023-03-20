@@ -1,21 +1,14 @@
-use std::sync::Arc;
-use axum::response::{IntoResponse, Response as AxumResponse};
-use axum::{async_trait, body, Json, middleware, Router};
-use axum::body::{BoxBody, Bytes, Full};
-use axum::extract::{FromRequest, Path};
-use axum::http::{header, Request, StatusCode, HeaderMap, HeaderValue};
-use axum::middleware::Next;
+use axum::response::IntoResponse;
+use axum::{Router};
+use axum::http::{header, StatusCode, HeaderMap, HeaderValue};
 use axum::routing::{get};
-use jsonwebtoken::jwk::KeyOperations::Verify;
 use crate::encryption::{AuthConstructor, ClaimConstructor, Keys, LoggedInUser};
-use mongodb::bson::oid::ObjectId;
-use regex::Regex;
 use crate::db_connection::DbConnection;
-use crate::noncesequencehelper::{decrypt_and_decode, decrypt_and_retrieve, decrypt_with_key, encrypt_and_encode, encrypt_and_store, OneNonceSequence};
 
 pub fn user_routes() -> Router {
   Router::new()
     .route("/passwords", get(get_user_passwords))
+    .route("/authenticated", get(is_authenticated))
 }
 
 // The process_cookie should return the logged in user OR ... Nothing?
@@ -106,5 +99,15 @@ async fn get_user_passwords(
       .status(StatusCode::OK)
       .body(serde_json::to_string(&result).unwrap().into())
       .unwrap()
+}
+
+async fn is_authenticated(
+  headers: HeaderMap
+) -> StatusCode {
+  let cookie_header = headers.get(header::COOKIE);
+  match process_cookie(cookie_header) {
+    Some(_) => StatusCode::OK,
+    None => StatusCode::UNAUTHORIZED,
+  }
 }
 

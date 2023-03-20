@@ -5,7 +5,7 @@ use rand::Rng;
 use serde::{Deserialize, Serialize};
 use sha2::{Sha512};
 use webauthn_rs::prelude::{PasskeyAuthentication, PasskeyRegistration, Uuid};
-use crate::noncesequencehelper::{decrypt_with_key, encrypt_with_key, generate_aes_key, KeyHelper};
+use crate::noncesequencehelper::{decrypt_with_key, encrypt_with_key};
 
 pub struct Keys {
   header: Header,

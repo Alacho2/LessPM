@@ -9,6 +9,8 @@ const AUTH_HEADER = 'authorization';
 // username: string
 const Authenticate = (props) => {
   const authenticate = async (username) => {
+    try {
+
 
     const registrationStart = await fetch(START_REG_URL, {
       headers: {
@@ -75,6 +77,7 @@ const Authenticate = (props) => {
     }
 
     console.log("The user got registered. Move on with your life");
+    } catch { /* Don't do anything */ }
   };
 
   return (

@@ -1,7 +1,7 @@
 use std::env;
 use std::net::{SocketAddr};
 use std::path::PathBuf;
-use axum::{extract::Path, Router, Json};
+use axum::Router;
 use axum::http::{header, HeaderValue, Method, StatusCode};
 use axum_server::tls_rustls::RustlsConfig;
 use serde::{Deserialize, Serialize};
@@ -52,11 +52,9 @@ async fn main() {
 
   let app = Router::new()
     .nest("/user", user_routes::user_routes())
-    // .route("/auth-me", get(auth_me))
     .nest("/fido", fido_routes::api_routes(app_state)) // a nest that lives under API
     .layer(CorsLayer::new()
       .allow_origin([
-        // "chrome-extension://jnpfkofnigkaocfcdcdppaokjkmhjcio".parse::<HeaderValue>().unwrap(),
         "https://localhost:3000".parse::<HeaderValue>().unwrap(),
         "https://localhost:1234".parse::<HeaderValue>().unwrap()
       ])
@@ -67,11 +65,7 @@ async fn main() {
         header::AUTHORIZATION,
         header::COOKIE,
     ])
-    )
-    // .route("/", get(handler).post(post_handler)) // just a cute little getter
-    // .route("/todo/:id", get(id)) // dynamic paths
-    .fallback(|| async move { StatusCode::NOT_FOUND }) // all other paths
-    ;
+    ).fallback(|| async move { StatusCode::NOT_FOUND });
 
 
   println!("Server is listening on: http://{}:{}", stringed_ip, PORT);
@@ -79,7 +73,6 @@ async fn main() {
   let addr = SocketAddr::from((IP, ports.https));
 
   axum_server::bind_rustls(addr, config)
-  // axum::Server::bind(&addr)
     .serve(app.into_make_service())
     .await
     .unwrap();
@@ -88,27 +81,4 @@ async fn main() {
 #[derive(Debug, Serialize, Deserialize)]
 struct Kake {
   kake: String,
-}
-
-// async fn auth_me() -> Html<&'static str> {
-//   Html("<script>alert(2)</script>")
-// }
-
-async fn post_handler(Json(body): Json<Kake>) {
-  dbg!(body);
-}
-
-// async fn handler() -> impl IntoResponse {
-//   let resp: AxumResponse<Body> = axum::http::Response::builder()
-//     .status(StatusCode::OK)
-//     .header(header::CONTENT_TYPE, "application/json")
-//     .header(header::AUTHORIZATION, &format!("Bearer {}", token))
-    // .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, "Authorization")
-    // .body("".to_string().into())
-    // .unwrap();
-  // resp
-// }
-
-async fn id(Path(id): Path<String>) {
-  dbg!(id);
 }

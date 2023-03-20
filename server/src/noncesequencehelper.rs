@@ -1,11 +1,16 @@
-use std::fmt::Error;
 use base64::Engine;
-use mongodb::bson::oid::ObjectId;
-use ring::aead::{NonceSequence, Nonce, NONCE_LEN, Algorithm, Aad, SealingKey, BoundKey, UnboundKey, OpeningKey, AES_256_GCM};
+use ring::aead::{
+  NonceSequence,
+  Nonce,
+  Algorithm,
+  Aad,
+  SealingKey,
+  BoundKey,
+  UnboundKey,
+  OpeningKey,
+  AES_256_GCM
+};
 use ring::error::Unspecified;
-use rand::Rng;
-use regex::Regex;
-use crate::db_connection::{DbConnection, VaultEntry};
 
 pub struct OneNonceSequence(Option<Nonce>);
 
@@ -19,12 +24,6 @@ impl NonceSequence for OneNonceSequence {
   fn advance(&mut self) -> Result<Nonce, Unspecified> {
     self.0.take().ok_or(Unspecified)
   }
-}
-
-pub struct KeyHelper {
-  pub nonce: [u8; 12],
-  pub random_padding: Vec<u8>,
-  pub key: [u8; 32],
 }
 
 pub fn encrypt_with_key(
@@ -61,87 +60,8 @@ pub fn decrypt_with_key(
   Ok(decrypted.unwrap())
 }
 
-pub async fn encrypt_and_store(
-  username: String,
-  input: &str,
-  website: String,
-  validator_vec: Vec<u8>
-) -> anyhow::Result<()> {
-  let KeyHelper {
-    key,
-    nonce,
-    random_padding
-  } = generate_aes_key(&validator_vec);
-
-
-  // let base64_encoding= encrypt_and_encode(
-  //   input.to_string(),
-  //   &key,
-  //   &nonce.to_vec()
-  // )?;
-  //
-  // let db = DbConnection::new().await;
-  //
-  // let help = VaultEntry {
-  //   username,
-  //   password: base64_encoding.to_string(),
-  //   website,
-  //   nonce,
-  //   random_padding
-  // };
-  // db.insert_one_to_vault( help).await;
-
-  Ok(())
-
-
-  // println!("{}", base64_encoding);
-  //
-  // let decrypted = decrypt_and_decode(
-  //   algorithm,
-  //   base64_encoding,
-  //   &key,
-  //   &nonce.to_vec()
-  // ).unwrap();
-  //
-  // println!("{}", decrypted);
-
-  // Now that things are encrypted, we can store that in the db
-
-}
-
-pub async fn decrypt_and_retrieve(
-  username: String,
-  id: ObjectId
-) -> Option<String> {
-  let db = DbConnection::new().await;
-  let optional_vault_entry = db.get_one_from_vault(id).await;
-
-  if optional_vault_entry.is_none() {
-    return None;
-  }
-
-  // let VaultEntry{
-  //   username: ve_username,
-  //   password,
-  //   website,
-  //   nonce,
-  //   random_padding
-  // } = optional_vault_entry.unwrap();
-  //
-  // This value comes from the HttpOnly cookie
-  // if ve_username != username {
-  //   return None;
-  // }
-
-  // let algorithm = &AES_256_GCM;
-
-  // decrypt_and_decode(algorithm,)
-
-  Some("".to_string())
-}
-
 // Takes the validator vec
-pub fn generate_aes_key(validator_vec: &Vec<u8>) -> KeyHelper {
+/*pub fn generate_aes_key(validator_vec: &Vec<u8>) -> KeyHelper {
   let mut aes_key = [0u8; 32];
   let mut random_padding: Vec<u8> = Vec::new();
   let nonce: [u8; 12] = rand::thread_rng().gen();
@@ -169,7 +89,7 @@ pub fn generate_aes_key(validator_vec: &Vec<u8>) -> KeyHelper {
     nonce,
     key: aes_key,
   }
-}
+}*/
 
 pub fn encrypt_and_encode(
   input: String,

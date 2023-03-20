@@ -1,21 +1,6 @@
-
-// This component should create the VaultItem.
-// It should contain the username
-// It should contain the password
-// It should not generate an ID because that's Mongo's job.
-// It should OFFER to allow the user to write their own password
-// Or generate a strong password of sorts.
-// Finally, to store the password, it should prompt for the auth
-// And then ship the info to the server on success
-// Server should AGAIN validate the token that the user is authenticated.
-
-// All the information is sent with the auth finish request.
-// That should deal with everything that needs to be in terms of the
-// server accepting info.
-import { Base64 } from "js-base64";
 import { useState } from "react";
 import GeneratePassword from "./GeneratePassword.jsx";
-import authenticate from "./Authenticate.jsx";
+import getCredentialsBody from "./getCredentialsBody";
 const BASE_URL = "https://localhost:3000/";
 const START_PASSWORD_CREATION_URL = `${BASE_URL}fido/start_password_creation`;
 const END_PASSWORD_CREATION_URL = `${BASE_URL}fido/end_password_creation`;
@@ -34,108 +19,60 @@ const CreateItem = (props) => {
   // There is absolutely no guarantee that the server accepts what I am about
   // to do. But I am SURE as hell going to give it a try.
   const tryToCreateAnEntry = async (event) => {
-    event.stopPropagation();
-    event.preventDefault();
+    try {
 
-    const user_name = "bjoggii";
+      event.stopPropagation();
+      event.preventDefault();
 
-    const startPasswordCreation = await fetch(START_PASSWORD_CREATION_URL, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({name: user_name})
-    });
+      const user_name = "bjoggii";
 
-    if (startPasswordCreation.status !== 200) {
-      console.log("We booped out");
-      return; // exit early
-    }
+      const startPasswordCreation = await fetch(START_PASSWORD_CREATION_URL, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({name: user_name})
+      });
 
-    const credentials = await startPasswordCreation.json();
-    const authToken = startPasswordCreation.headers.get(AUTH_HEADER);
+      if (startPasswordCreation.status !== 200) {
+        console.log("We booped out");
+        return; // exit early
+      }
 
-    const{ challenge, allowCredentials } = credentials.publicKey;
+      const credentials = await startPasswordCreation.json();
+      const authToken = startPasswordCreation.headers.get(AUTH_HEADER);
 
-    credentials.publicKey.challenge = Base64.toUint8Array(challenge);
-    credentials.publicKey.allowCredentials = allowCredentials.map(listItem => ({
-      ...listItem,
-      id: Base64.toUint8Array(listItem.id),
-    }));
+      const credentialsToSend = await getCredentialsBody(credentials);
 
-    const credentialsKeys
-      = await navigator.credentials.get({publicKey: credentials.publicKey});
+      if (!credentialsToSend) {
+        return;
+      }
 
-    if (!credentialsKeys) {
-      return;
-    }
+      const userDataToSend = {
+        website,
+        password,
+        username,
+      };
 
-    const {
-      authenticatorData,
-      clientDataJSON,
-      signature,
-    } = credentialsKeys.response;
+      const body = {
+        credentials: credentialsToSend,
+        userData: userDataToSend,
+        process: "creation",
+      };
 
-    const uint8AuthData
-      = Base64.fromUint8Array(new Uint8Array(authenticatorData));
-    const uint8ClientDataJSON
-      = Base64.fromUint8Array(new Uint8Array(clientDataJSON));
-    const uint8Signature = Base64.fromUint8Array(new Uint8Array(signature));
+      const authorized = await performPostRequest(END_PASSWORD_CREATION_URL, authToken, body);
 
-    const credentialsToSend = {
-      id: credentialsKeys.id,
-      rawId: Base64.fromUint8Array(new Uint8Array(credentialsKeys.rawId), true),
-      type: credentialsKeys.type,
-      response: {
-        authenticatorData: uint8AuthData,
-        clientDataJSON: uint8ClientDataJSON,
-        signature: uint8Signature,
-      },
-    };
-
-    const userDataToSend = {
-      website,
-      password,
-      username,
-    };
-
-    const body = {
-      credentials: credentialsToSend,
-      userData: userDataToSend,
-      process: "creation",
-    };
-
-    const authorized = await fetch(END_PASSWORD_CREATION_URL, {
-      method: "POST",
-      headers: {
-        'Authorization': authToken,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(body),
-    });
-
-    if (authorized.status !== 200) {
-      console.log("That didn't work");
-      return;
-    }
-
-    console.log("Check the server");
+      if (authorized !== 201) {
+        return;
+      }
 
 
-    // Now if this goes through, I want eventually CALL the setSections
-    // props.setSection(props.sections.home)
+
+      props.setSection(props.sections.vault)
+    } catch { /* Don't do anything */ }
   };
-
-  // I want the input and password to either be a grid or a flexbox
-
-  // Also, this should have a check about token which makes it just stop
-  // rendering if there is no token. Fuckers. Or maybe everything is there
-  // It just doesn't do anything.
-  // Whichever.
 
   return (
     <div className="mt-4 bg-light border rounded create-item">

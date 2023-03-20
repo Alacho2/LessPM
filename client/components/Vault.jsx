@@ -8,6 +8,8 @@
 
 import {useEffect, useState} from "react";
 import {Base64} from "js-base64";
+import checkIsAuthenticated from "./checkIsAuthenticated";
+import getCredentialsBody from "./getCredentialsBody";
 
 const dummy_passwords = [
   {
@@ -73,20 +75,22 @@ const Vault = (props) => {
     getPasswords();
   }, []);
 
-
   const getPasswords = async () => {
-    const fetched_passwords = await fetch(GET_PASSWORDS_URL, {
-      method: "GET",
-      credentials: "include"
-    })
+    try {
 
-    // User isn't authenticated
-    if (fetched_passwords.status !== 200) {
-      return;
-    }
+      const fetchedPasswords = await fetch(GET_PASSWORDS_URL, {
+        method: "GET",
+        credentials: "include"
+      });
 
-    const json = await fetched_passwords.json();
-    setPasswords(json);
+      // User isn't authenticated
+      if (fetchedPasswords.status !== 200) {
+        return;
+      }
+
+      const json = await fetchedPasswords.json();
+      setPasswords(json);
+    } catch { /* Don't do anything */ }
   };
   const handleImageError = (target) => {
     target.currentTarget.onerror = null;
@@ -106,137 +110,89 @@ const Vault = (props) => {
 
   // StrippedVaultItem
   const getOnePassword = async (item) => {
-    const bson = item["_id"]["$oid"];
+    try {
 
-    const user_name = "bjoggii";
+      const bson = item["_id"]["$oid"];
 
-    const startPasswordRetrieval = await fetch(START_PASSWORD_RETRIEVAL_URL, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({name: user_name})
-    });
+      const user_name = "bjoggii";
 
-    if (startPasswordRetrieval.status !== 200) {
-      console.log("BOOOOO");
-      return; // exit early
-    }
+      const startPasswordRetrieval = await fetch(START_PASSWORD_RETRIEVAL_URL, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({name: user_name})
+      });
 
-    const credentials = await startPasswordRetrieval.json();
-    const authToken = startPasswordRetrieval.headers.get(AUTH_HEADER);
+      if (startPasswordRetrieval.status !== 200) {
+        console.log("BOOOOO");
+        return; // exit early
+      }
 
-    const{ challenge, allowCredentials } = credentials.publicKey;
+      const credentials = await startPasswordRetrieval.json();
+      const authToken = startPasswordRetrieval.headers.get(AUTH_HEADER);
 
-    credentials.publicKey.challenge = Base64.toUint8Array(challenge);
-    credentials.publicKey.allowCredentials = allowCredentials.map(listItem => ({
-      ...listItem,
-      id: Base64.toUint8Array(listItem.id),
-    }));
+      const credentialsToSend = await getCredentialsBody(credentials);
 
-    const credentialsKeys
-        = await navigator.credentials.get({publicKey: credentials.publicKey});
+      if (!credentialsToSend) {
+        return;
+      }
 
-    if (!credentialsKeys) {
-      return;
-    }
+      const body = {
+        credentials: credentialsToSend,
+        objectId: bson,
+        process: "retrieval",
+      };
 
-    const {
-      authenticatorData,
-      clientDataJSON,
-      signature,
-    } = credentialsKeys.response;
+      const authorized = await performPostRequest(END_PASSWORD_RETRIEVAL_URL, authToken, body);
 
-    const uint8AuthData
-        = Base64.fromUint8Array(new Uint8Array(authenticatorData));
-    const uint8ClientDataJSON
-        = Base64.fromUint8Array(new Uint8Array(clientDataJSON));
-    const uint8Signature = Base64.fromUint8Array(new Uint8Array(signature));
-
-    const credentialsToSend = {
-      id: credentialsKeys.id,
-      rawId: Base64.fromUint8Array(new Uint8Array(credentialsKeys.rawId), true),
-      type: credentialsKeys.type,
-      response: {
-        authenticatorData: uint8AuthData,
-        clientDataJSON: uint8ClientDataJSON,
-        signature: uint8Signature,
-      },
-    };
-
-    const body = {
-      credentials: credentialsToSend,
-      objectId: bson,
-      process: "retrieval",
-    };
-
-    const authorized = await fetch(END_PASSWORD_RETRIEVAL_URL, {
-      method: "POST",
-      headers: {
-        'Authorization': authToken,
-        'Accept': "application/json",
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(body),
-    })
-
-    if (authorized !== 200) {
-      console.log("Booped out");
-      return;
-    }
-
-    console.log("Get the password");
-
-    // const password = await fetch(`${GET_PASSWORDS_URL}/${bson}`, {
-    //   method: "GET",
-    //   credentials: "include",
-    // });
-    //
-    // if (password.status !== 200) {
-    //   return;
-    // }
-
-    // do a fetch request to another part of the API
+      if (authorized !== 200) {
+        console.log("Booped out");
+        return;
+      }
+    } catch { /* Don't do anything */ }
   };
 
+  const isAuthenticated = checkIsAuthenticated();
 
   // TODO(Håvard): Create an entry point to check
   // You have to figure out a way to display the creation button
   return (
-      <div className="mt-4 bg-light position-relative border rounded vault">
-        {true ? <div
-            className="create-button position-absolute top-0 end-0"
-            onClick={() => props.setSection(props.sections.create)}>
-          Create
-        </div> : null }
-        <div className="mx-3 my-5">
-          {passwords.length ? passwords.map((item, i) => {
+    <div className="mt-4 bg-light position-relative border rounded vault">
+      {isAuthenticated ? <div
+        className="create-button position-absolute top-0 end-0"
+        onClick={() => props.setSection(props.sections.create)}>
+        Create
+      </div> : null }
+      <div className="mx-3 my-5">
+        {isAuthenticated && passwords.length
+          ? passwords.map((item, i) => {
             const { website, username } = item;
 
             const url = tryUrlConstruction(website);
-            console.log(url);
             return (
-                <div
-                  key={i}
-                  className="item d-flex flex-row border"
-                  onClick={() => getOnePassword(item)}>
-                  <img
-                    className="favicon"
-                    src={`${url.origin}/favicon.ico`}
-                    onError={handleImageError}/>
-                  <div>
-                    <p className="website">{website}</p>
-                    <p className="username">{username}</p>
-                  </div>
+              <div
+                key={i}
+                className="item d-flex flex-row border"
+                onClick={() => getOnePassword(item)}>
+                <img
+                  className="favicon"
+                  src={`${url.origin}/favicon.ico`}
+                  onError={handleImageError}/>
+                <div>
+                  <p className="website">{website}</p>
+                  <p className="username">{username}</p>
                 </div>
+              </div>
             );
 
-          }) : <p>Doesn't seem like you are authenticated, matey</p>}
-        </div>
+          }) : isAuthenticated
+            ? <p>Doesn't seem like you are authenticated, matey</p>
+            : <p>Not signed in.</p>}
       </div>
+    </div>
   )
 };
 

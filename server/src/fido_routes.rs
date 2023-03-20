@@ -524,6 +524,7 @@ async fn retrieve_one_password(validator_vec: &Vec<u8>, id: &Option<String>) -> 
   };
   let process = EncryptionProcess::end(&validator_vec, whatever);
   dbg!(process);
+  // This should be sent to the client.
   StatusCode::OK
 }
 
@@ -546,7 +547,7 @@ async fn password_creation(
 
   let EncryptionProcess { salt, nonce, key_padding, base64 }
     = EncryptionProcess::start(&validator_vec, password.as_str());
-  
+
   let uuid_as_str = uuid.to_string();
 
   let vault_entry = VaultEntry {

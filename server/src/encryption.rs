@@ -168,10 +168,6 @@ impl EncryptionProcess {
     arr
   }
 
-  // So what's the thing here?
-  // The thing is that it gets a generated value
-  // Which is wrong
-
   pub fn end(
     validator_vec: &Vec<u8>,
     whatever: EncryptionProcess
@@ -224,9 +220,12 @@ impl EncryptionProcess {
     }
 
     // Last but not least, add the pepper to the key
+    // add 15 bytes from the pepper.
+    // Too much and we risk creating too large of the key to be known.
     for i in 0..=15 {
       arr[i + length_of_key] = pepper_as_bytes[i];
     }
+
 
     // I need the random padding of the key
 

@@ -108,6 +108,7 @@ const A_TEMP_PEPPER: &str
 pub struct EncryptionProcess {
   pub salt: [u8; 8],
   pub nonce: [u8; 12],
+  pub key_padding: Vec<u8>,
   pub base64: String,
 }
 
@@ -119,7 +120,7 @@ impl EncryptionProcess {
     let pretended_salt = EncryptionProcess::generate_a_salt();
 
     let mut key_for_aes = [0u8; 32];
-    pbkdf2::pbkdf2_hmac::<Sha512>(&cred_id_as_arr, &pretended_salt, 4096, &mut key_for_aes);
+    pbkdf2::pbkdf2_hmac::<Sha512>(&cred_id_as_arr.0, &pretended_salt, 4096, &mut key_for_aes);
 
     let nonce: [u8; 12] = rand::thread_rng().gen();
 
@@ -131,17 +132,52 @@ impl EncryptionProcess {
 
     EncryptionProcess {
       salt: pretended_salt,
+      key_padding: cred_id_as_arr.1,
       nonce,
       base64,
     }
   }
+
+  fn recreate_key(
+    validator_vec: &Vec<u8>,
+    whatever: &EncryptionProcess
+  ) -> [u8; 40] {
+    let pepper = std::env::var("PEPPER").unwrap();
+    let pepper_as_bytes = pepper.as_bytes();
+
+    let mut arr = [0u8; 40];
+
+    // validator part of the key
+    for i in 0..validator_vec.len() {
+      arr[i] = validator_vec[i];
+    }
+
+    // padding of the key
+    for i in 0..whatever.key_padding.len() {
+      arr[i + validator_vec.len()] = whatever.key_padding[i];
+    }
+
+    let where_to_put_the_pepper
+      = validator_vec.len() + whatever.key_padding.len();
+
+    // pepper part of the key
+    for i in 0..=15 {
+      arr[i + where_to_put_the_pepper] = pepper_as_bytes[i]
+    }
+
+    arr
+  }
+
+  // So what's the thing here?
+  // The thing is that it gets a generated value
+  // Which is wrong
 
   pub fn end(
     validator_vec: &Vec<u8>,
     whatever: EncryptionProcess
   ) -> String {
     let cred_id_as_arr
-      = EncryptionProcess::generate_320bit_arr_of_vec(&validator_vec);
+      = EncryptionProcess::recreate_key(&validator_vec, &whatever);
 
     let pretended_salt = whatever.salt;
 
@@ -159,8 +195,9 @@ impl EncryptionProcess {
     salt
   }
 
-  fn generate_320bit_arr_of_vec(validator_vec: &Vec<u8>) -> [u8; 40] {
-    let pepper_as_bytes = A_TEMP_PEPPER.as_bytes();
+  fn generate_320bit_arr_of_vec(validator_vec: &Vec<u8>) -> ([u8; 40], Vec<u8>) {
+    let pepper = std::env::var("PEPPER").unwrap();
+    let pepper_as_bytes = pepper.as_bytes();
 
     // Check the length of the validator
     let vec_len = validator_vec.len();
@@ -178,10 +215,12 @@ impl EncryptionProcess {
       arr[i] = validator_vec[i];
     }
 
+    let mut random_vec: Vec<u8> = Vec::new();
     // we probably need to return this as well somehow.
     for i in 0..remaining_bytes_helper {
       let num: u8 = rand::thread_rng().gen();
-      arr[i] = num;
+      random_vec.push(num);
+      arr[i + vec_len] = num;
     }
 
     // Last but not least, add the pepper to the key
@@ -189,6 +228,8 @@ impl EncryptionProcess {
       arr[i + length_of_key] = pepper_as_bytes[i];
     }
 
-    arr
+    // I need the random padding of the key
+
+    (arr, random_vec)
   }
 }

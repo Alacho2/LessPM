@@ -1,4 +1,5 @@
 use std::fmt::{Debug};
+use std::str::FromStr;
 use std::sync::Arc;
 use axum::{Router, routing, extract::State, Json, middleware};
 use axum::body::{Body};
@@ -11,9 +12,10 @@ use axum::http::{
 };
 use axum::middleware::{Next};
 use axum::response::{IntoResponse, Response as AxumResponse};
-use axum::routing::get;
 use serde::{Deserialize, Serialize};
 use chrono::{Duration, Local, Utc};
+use mongodb::bson::oid::ObjectId;
+use regex::Regex;
 use webauthn_rs;
 use webauthn_rs::prelude::{PublicKeyCredential, RegisterPublicKeyCredential, Uuid};
 use webauthn_rs::Webauthn;
@@ -24,11 +26,12 @@ use crate::response::Response;
 use crate::user_routes::{process_cookie, process_auth_token, process_claim_token};
 
 async fn test_route(
-  headers: HeaderMap,
+  // headers: HeaderMap,
   state: State<AppState>,
-  // Json(body): Json<User>
-) -> Result<StatusCode, StatusCode> {
-  let cookie_header = headers.get(header::COOKIE);
+  // Json(body): Json<Whatever>
+) -> StatusCode {
+  // dbg!(body);
+  /*let cookie_header = headers.get(header::COOKIE);
 
   let mut logged_in_user = process_cookie(cookie_header);
 
@@ -36,7 +39,9 @@ async fn test_route(
     return Err(StatusCode::UNAUTHORIZED);
   }
 
-  return Ok(StatusCode::OK);
+
+   */
+  StatusCode::OK
 
   /*
   // for (name, value) in headers.iter() {
@@ -65,7 +70,18 @@ async fn test_route(
 struct ValidationOfPassword {
   credentials: PublicKeyCredential,
   #[serde(rename = "userData")]
-  user_data: UserData,
+  user_data: Option<UserData>,
+  #[serde(rename = "objectId")]
+  object_id: Option<String>,
+  process: Process,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+enum Process {
+  #[serde(rename = "creation")]
+  Creation,
+  #[serde(rename = "retrieval")]
+  Retrieval,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -77,7 +93,7 @@ struct UserData {
 
 pub fn api_routes(state: AppState) -> Router {
   Router::new()
-    .route("/test", get(test_route))
+    // .route("/test", routing::post(test_route))
     .route("/finish_registration",
            routing::post(finish_registration)
                .layer(middleware::from_fn(register_middleware))
@@ -436,69 +452,36 @@ async fn start_password_creation(
 async fn end_password_creation<'buf>(
   headers: HeaderMap,
   state: State<AppState>,
-  Json(auth): Json<ValidationOfPassword>,
-) -> StatusCode { // signature should be impl IntoResponse
+  Json(auth): Json<ValidationOfPassword>
+) -> StatusCode { // I don't want this to return a StatusCode anymore, but an impl IntoResponse
 
-  let verified = process_cookie(headers.get(header::COOKIE));
-
-  if verified.is_none() {
-    return StatusCode::UNAUTHORIZED;
-  }
-
+  let verified
+    = process_cookie(headers.get(header::COOKIE));
   let verified_auth_state
     = process_auth_token(headers.get(header::AUTHORIZATION));
 
-  if verified_auth_state.is_none() {
+  if verified.is_none() || verified_auth_state.is_none() {
     return StatusCode::UNAUTHORIZED;
   }
 
-  let unwrapped = verified_auth_state.unwrap();
-  let auth_state = unwrapped.auth_state;
-
+  let auth_state = verified_auth_state.unwrap().auth_state;
   let credentials = auth.credentials;
-  let UserData {
-    website,
-    username: _,
-    password
-  } = auth.user_data;
-
-  // If we are introducing a "process", this needs to go INTO the function call.
-  if password.len() == 0 {
-    return StatusCode::BAD_REQUEST
-  }
-
-  let LoggedInUser {
-    username,
-    uuid: _,
-    exp: _,
-  } = verified.unwrap();
 
   return match state.
     authn
     .finish_passkey_authentication(&credentials, &auth_state) {
     Ok(auth_result) => {
 
-      // if process gets introduced, this is a function that takes the
-      // - cred_id
-      // - LoggedInUser
-      // and then calls the encryption part.
+      let process = auth.process;
       let id_as_vec = auth_result.cred_id().0.to_vec();
-      let encrypted_password
-        = EncryptionProcess::start(&id_as_vec, password.as_str());
 
-      let vault_entry = VaultEntry {
-        username,
-        password: encrypted_password.base64,
-        website,
-        nonce: encrypted_password.nonce,
-        random_padding: encrypted_password.salt
-      };
-
-      let db = DbConnection::new().await;
-      db.insert_one_to_vault(vault_entry).await;
-
-      // this should still stay in the function, theoretically.
-      StatusCode::CREATED
+      return match process {
+        Process::Creation => password_creation(
+          &id_as_vec,
+          verified.unwrap(),
+          auth.user_data).await,
+        Process::Retrieval => retrieve_one_password(&id_as_vec, &auth.object_id).await,
+      }
     },
     Err(_) => {
       StatusCode::UNAUTHORIZED
@@ -506,3 +489,76 @@ async fn end_password_creation<'buf>(
   };
 }
 
+fn is_valid_object_id(id: &str) -> bool {
+  let re = Regex::new(r"^[0-9a-fA-F]{24}$").unwrap();
+  re.is_match(id)
+}
+
+async fn retrieve_one_password(validator_vec: &Vec<u8>, id: &Option<String>) -> StatusCode {
+  if id.is_none() {
+    return StatusCode::BAD_REQUEST
+  }
+
+  let string_slice = id.as_ref().unwrap().as_str();
+
+  let valid_key = is_valid_object_id(string_slice);
+  let object_id = ObjectId::from_str(string_slice);
+
+  if !valid_key || object_id.is_err() {
+    return StatusCode::BAD_REQUEST;
+  }
+
+  let db = DbConnection::new().await;
+  let value = db.get_one_from_vault(object_id.unwrap()).await;
+
+  if value.is_none() {
+    return StatusCode::BAD_REQUEST;
+  }
+
+  let value = value.unwrap();
+  let whatever = EncryptionProcess {
+    salt: value.random_padding,
+    nonce: value.nonce,
+    key_padding: value.key_padding,
+    base64: value.password,
+  };
+  let process = EncryptionProcess::end(&validator_vec, whatever);
+  dbg!(process);
+  StatusCode::OK
+}
+
+async fn password_creation(
+  validator_vec: &Vec<u8>,
+  logged_in_user: LoggedInUser,
+  user_data: Option<UserData>,
+) -> StatusCode {
+  if user_data.is_none() {
+    return StatusCode::UNAUTHORIZED
+  }
+
+  let LoggedInUser { username: _, uuid, exp: _ } = logged_in_user;
+
+  let UserData { website, username: username_to_store, password } = user_data.unwrap();
+
+  if password.len() == 0 || website.len() == 0 {
+    return StatusCode::UNAUTHORIZED;
+  }
+
+  let EncryptionProcess { salt, nonce, key_padding, base64 }
+    = EncryptionProcess::start(&validator_vec, password.as_str());
+  
+  let uuid_as_str = uuid.to_string();
+
+  let vault_entry = VaultEntry {
+    username: username_to_store,
+    password: base64,
+    website,
+    uuid: uuid_as_str,
+    nonce,
+    key_padding,
+    random_padding: salt,
+  };
+
+  let db = DbConnection::new().await;
+  db.insert_one_to_vault(vault_entry).await.unwrap()
+}

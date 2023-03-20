@@ -1,4 +1,5 @@
 use anyhow::anyhow;
+use axum::http::StatusCode;
 use mongodb::{Client, Collection, Database};
 use mongodb::bson::{doc};
 use mongodb::bson::oid::ObjectId;
@@ -20,6 +21,8 @@ pub struct VaultEntry {
   pub password: String,
   pub website: String,
   pub nonce: [u8; 12],
+  pub uuid: String,
+  pub key_padding: Vec<u8>,
   pub random_padding: [u8; 8],
 }
 
@@ -55,20 +58,19 @@ impl DbConnection {
   }
 
   // Takes a processed document and inserts it into the db
-  pub async fn insert_one_to_vault(&self, vault_entry: VaultEntry) {
-    let collection = &self.db.collection("vault");
+  pub async fn insert_one_to_vault(
+    &self,
+    vault_entry: VaultEntry
+  ) -> Result<StatusCode, StatusCode> {
+    let collection: &Collection<VaultEntry> = &self.db.collection("vault");
 
     match collection.insert_one(vault_entry, None).await {
-      Ok(doc) => {
-        println!("Record got inserted with ID: {}", doc.inserted_id);
-        let something: Option<VaultEntry> = collection.find_one(Some(doc! {
-          "_id": doc.inserted_id.clone()
-        }), None).await.expect("Document not found");
-        dbg!("Returned values: {}", something.unwrap());
-        println!("Record got inserted with ID: {}", doc.inserted_id)
+      Ok(_) => {
+        Ok(StatusCode::CREATED)
       },
       Err(e) => {
         println!("Didn't manage to insert it: {}", e);
+        Err(StatusCode::BAD_REQUEST)
       }
     }
   }
@@ -91,7 +93,7 @@ impl DbConnection {
   pub async fn get_passwords(
     &self,
     collection_name: &str,
-    username: &str
+    uuid: &String
   ) -> anyhow::Result<Vec<VaultEntryStripped>> {
     let collection: &Collection<VaultEntryStripped> = &self.db.collection(collection_name);
 
@@ -100,7 +102,7 @@ impl DbConnection {
         .build();
 
     let cursor = collection.find(Some(doc! {
-      "username": username
+      "uuid": uuid,
     }), find_options).await?;
 
     let v: Vec<MongoDbResult<VaultEntryStripped>> = cursor.collect().await;

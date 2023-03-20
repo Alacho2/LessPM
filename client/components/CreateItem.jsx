@@ -84,7 +84,7 @@ const CreateItem = (props) => {
       = Base64.fromUint8Array(new Uint8Array(clientDataJSON));
     const uint8Signature = Base64.fromUint8Array(new Uint8Array(signature));
 
-    const credentials_to_send = {
+    const credentialsToSend = {
       id: credentialsKeys.id,
       rawId: Base64.fromUint8Array(new Uint8Array(credentialsKeys.rawId), true),
       type: credentialsKeys.type,
@@ -95,15 +95,16 @@ const CreateItem = (props) => {
       },
     };
 
-    const user_data_to_send = {
+    const userDataToSend = {
       website,
       password,
       username,
     };
 
     const body = {
-      credentials: credentials_to_send,
-      userData: user_data_to_send,
+      credentials: credentialsToSend,
+      userData: userDataToSend,
+      process: "creation",
     };
 
     const authorized = await fetch(END_PASSWORD_CREATION_URL, {

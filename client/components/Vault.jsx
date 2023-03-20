@@ -7,6 +7,7 @@
 // it up to 32 bit
 
 import {useEffect, useState} from "react";
+import {Base64} from "js-base64";
 
 const dummy_passwords = [
   {
@@ -60,7 +61,10 @@ const dummy_passwords = [
 
 const BASE_URL = "https://localhost:3000/";
 const GET_PASSWORDS_URL = `${BASE_URL}user/passwords`;
+const START_PASSWORD_RETRIEVAL_URL = `${BASE_URL}fido/start_password_creation`;
+const END_PASSWORD_RETRIEVAL_URL = `${BASE_URL}fido/end_password_creation`;
 const FALLBACK_URL = "https://ru.is";
+const AUTH_HEADER = "authorization";
 
 const Vault = (props) => {
   const [passwords, setPasswords] = useState([]);
@@ -104,14 +108,96 @@ const Vault = (props) => {
   const getOnePassword = async (item) => {
     const bson = item["_id"]["$oid"];
 
-    const password = await fetch(`${GET_PASSWORDS_URL}/${bson}`, {
-      method: "GET",
+    const user_name = "bjoggii";
+
+    const startPasswordRetrieval = await fetch(START_PASSWORD_RETRIEVAL_URL, {
+      method: "POST",
       credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name: user_name})
     });
 
-    if (password.status !== 200) {
+    if (startPasswordRetrieval.status !== 200) {
+      console.log("BOOOOO");
+      return; // exit early
+    }
+
+    const credentials = await startPasswordRetrieval.json();
+    const authToken = startPasswordRetrieval.headers.get(AUTH_HEADER);
+
+    const{ challenge, allowCredentials } = credentials.publicKey;
+
+    credentials.publicKey.challenge = Base64.toUint8Array(challenge);
+    credentials.publicKey.allowCredentials = allowCredentials.map(listItem => ({
+      ...listItem,
+      id: Base64.toUint8Array(listItem.id),
+    }));
+
+    const credentialsKeys
+        = await navigator.credentials.get({publicKey: credentials.publicKey});
+
+    if (!credentialsKeys) {
       return;
     }
+
+    const {
+      authenticatorData,
+      clientDataJSON,
+      signature,
+    } = credentialsKeys.response;
+
+    const uint8AuthData
+        = Base64.fromUint8Array(new Uint8Array(authenticatorData));
+    const uint8ClientDataJSON
+        = Base64.fromUint8Array(new Uint8Array(clientDataJSON));
+    const uint8Signature = Base64.fromUint8Array(new Uint8Array(signature));
+
+    const credentialsToSend = {
+      id: credentialsKeys.id,
+      rawId: Base64.fromUint8Array(new Uint8Array(credentialsKeys.rawId), true),
+      type: credentialsKeys.type,
+      response: {
+        authenticatorData: uint8AuthData,
+        clientDataJSON: uint8ClientDataJSON,
+        signature: uint8Signature,
+      },
+    };
+
+    const body = {
+      credentials: credentialsToSend,
+      objectId: bson,
+      process: "retrieval",
+    };
+
+    const authorized = await fetch(END_PASSWORD_RETRIEVAL_URL, {
+      method: "POST",
+      headers: {
+        'Authorization': authToken,
+        'Accept': "application/json",
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(body),
+    })
+
+    if (authorized !== 200) {
+      console.log("Booped out");
+      return;
+    }
+
+    console.log("Get the password");
+
+    // const password = await fetch(`${GET_PASSWORDS_URL}/${bson}`, {
+    //   method: "GET",
+    //   credentials: "include",
+    // });
+    //
+    // if (password.status !== 200) {
+    //   return;
+    // }
 
     // do a fetch request to another part of the API
   };

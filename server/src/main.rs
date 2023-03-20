@@ -1,16 +1,13 @@
 use std::env;
-use std::net::{IpAddr, Ipv4Addr, SocketAddr};
+use std::net::{SocketAddr};
 use std::path::PathBuf;
-use axum::response::{Html, IntoResponse, Response as AxumResponse};
-use axum::{extract::Path, routing::{get, post}, Router, Json};
-use axum::body::Body;
+use axum::{extract::Path, Router, Json};
 use axum::http::{header, HeaderValue, Method, StatusCode};
 use axum_server::tls_rustls::RustlsConfig;
-use u2f::protocol::U2f;
 use serde::{Deserialize, Serialize};
-use tower_http::cors::{Any, CorsLayer};
+use tower_http::cors::{CorsLayer};
 use crate::app_state::AppState;
-use crate::response::Response;
+use dotenv::dotenv;
 
 mod response;
 mod routes;
@@ -25,8 +22,6 @@ mod db_connection;
 const IP: [u8; 4] = [127, 0, 0, 1];
 const PORT: u16 = 8080;
 
-const APP_STRING: &'static str = "LessPM-WhereDidWeGo";
-
 #[derive(Clone, Copy)]
 struct Ports {
   http: u16,
@@ -35,8 +30,7 @@ struct Ports {
 
 #[tokio::main]
 async fn main() {
-  // Set variables
-  // env::set_var("RUST_BACKTRACE", "1");
+  dotenv().ok();
 
   let ports = Ports {
     http: 8080,

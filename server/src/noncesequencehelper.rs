@@ -120,20 +120,20 @@ pub async fn decrypt_and_retrieve(
     return None;
   }
 
-  let VaultEntry{
-    username: ve_username,
-    password,
-    website,
-    nonce,
-    random_padding
-  } = optional_vault_entry.unwrap();
-
+  // let VaultEntry{
+  //   username: ve_username,
+  //   password,
+  //   website,
+  //   nonce,
+  //   random_padding
+  // } = optional_vault_entry.unwrap();
+  //
   // This value comes from the HttpOnly cookie
-  if ve_username != username {
-    return None;
-  }
+  // if ve_username != username {
+  //   return None;
+  // }
 
-  let algorithm = &AES_256_GCM;
+  // let algorithm = &AES_256_GCM;
 
   // decrypt_and_decode(algorithm,)
 

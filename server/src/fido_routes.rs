@@ -480,12 +480,22 @@ async fn retrieve_one_password(
     return StatusCode::BAD_REQUEST.into_response();
   }
 
-  let value = value.unwrap();
+  let VaultEntry {
+    username: _,
+    password,
+    website: _,
+    nonce,
+    uuid: _,
+    key_padding,
+    random_padding,
+    salt
+  } = value.unwrap();
   let whatever = EncryptionProcess {
-    salt: value.random_padding,
-    nonce: value.nonce,
-    key_padding: value.key_padding,
-    base64: value.password,
+    salt,
+    random_padding,
+    nonce,
+    key_padding,
+    base64: password,
   };
   let process = EncryptionProcess::end(&validator_vec, whatever);
 
@@ -516,8 +526,13 @@ async fn password_creation(
     return StatusCode::UNAUTHORIZED.into_response();
   }
 
-  let EncryptionProcess { salt, nonce, key_padding, base64 }
-    = EncryptionProcess::start(&validator_vec, password.as_str());
+  let EncryptionProcess {
+    salt,
+    random_padding,
+    nonce,
+    key_padding,
+    base64
+  } = EncryptionProcess::start(&validator_vec, password.as_str());
 
   let uuid_as_str = uuid.to_string();
 
@@ -525,10 +540,11 @@ async fn password_creation(
     username: username_to_store,
     password: base64,
     website,
+    random_padding,
     uuid: uuid_as_str,
     nonce,
     key_padding,
-    random_padding: salt,
+    salt,
   };
 
   let db = DbConnection::new().await;

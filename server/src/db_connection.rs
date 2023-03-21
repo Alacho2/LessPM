@@ -23,7 +23,8 @@ pub struct VaultEntry {
   pub nonce: [u8; 12],
   pub uuid: String,
   pub key_padding: Vec<u8>,
-  pub random_padding: [u8; 8],
+  pub random_padding: [u8; 12],
+  pub salt: [u8; 8],
 }
 
 #[derive(Serialize, Deserialize)]

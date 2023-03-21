@@ -108,18 +108,19 @@ pub struct EncryptionProcess {
   pub salt: [u8; 8],
   pub nonce: [u8; 12],
   pub key_padding: Vec<u8>,
+  pub random_padding: [u8; 12],
   pub base64: String,
 }
 
 impl EncryptionProcess {
   // this function should ONLY return the values needed to store. NOT store.
   pub fn start(validator_vec: &Vec<u8>, input: &str) -> EncryptionProcess {
-    let cred_id_as_arr
+    let (cred_id_as_arr, bits, random_padding)
       = EncryptionProcess::generate_416bit_arr_of_vec(validator_vec);
     let pretended_salt = EncryptionProcess::generate_a_salt();
 
     let mut key_for_aes = [0u8; 32];
-    pbkdf2::pbkdf2_hmac::<Sha512>(&cred_id_as_arr.0, &pretended_salt, 4096, &mut key_for_aes);
+    pbkdf2::pbkdf2_hmac::<Sha512>(&cred_id_as_arr, &pretended_salt, 4096, &mut key_for_aes);
 
     let nonce: [u8; 12] = rand::thread_rng().gen();
 
@@ -131,7 +132,8 @@ impl EncryptionProcess {
 
     EncryptionProcess {
       salt: pretended_salt,
-      key_padding: cred_id_as_arr.1,
+      key_padding: bits,
+      random_padding,
       nonce,
       base64,
     }
@@ -164,7 +166,7 @@ impl EncryptionProcess {
   // MAX 24 bytes of the validator
   // At LEAST 12 bytes of padding
   // 16 bytes of pepper.
-  fn generate_416bit_arr_of_vec(validator_vec: &Vec<u8>) -> ([u8; 52], Vec<u8>) {
+  fn generate_416bit_arr_of_vec(validator_vec: &Vec<u8>) -> ([u8; 52], Vec<u8>, [u8; 12]) {
     let pepper = std::env::var("PEPPER").unwrap();
     let pepper_as_bytes = pepper.as_bytes();
 
@@ -177,12 +179,6 @@ impl EncryptionProcess {
     let initial_bytes
       = if vec_len >= length_of_key { length_of_key } else { vec_len };
 
-    // Give us the remaining part needed to reach 36.
-    let remaining_bytes
-      = if initial_bytes >= length_of_key { 12 } else { length_of_key - vec_len };
-
-    dbg!(initial_bytes, remaining_bytes, PEPPER_EXTRACTOR_LENGTH);
-
     let mut arr = [0u8; 52];
 
     // Take the necessary parts off of the validator
@@ -190,23 +186,36 @@ impl EncryptionProcess {
       arr[i] = validator_vec[i];
     }
 
-    let mut random_vec: Vec<u8> = Vec::new();
-    // Collect the remaining bytes needed to reach 36.
-    for i in 0..remaining_bytes {
+    let remaining_bytes_to_reach_desired_key =
+      if initial_bytes >= length_of_key { 0 } else { 24 - vec_len };
+
+    let mut bits: Vec<u8> = Vec::new();
+    // Collect the remaining bytes needed to reach a key length of 24.
+    for i in 0..remaining_bytes_to_reach_desired_key {
       let num: u8 = rand::thread_rng().gen();
-      random_vec.push(num);
+      bits.push(num);
       arr[i + initial_bytes] = num;
     }
 
-    let where_should_pepper_go = initial_bytes + remaining_bytes;
+    // add 12 bytes of random padding.
+    let where_does_padding_go = initial_bytes + remaining_bytes_to_reach_desired_key;
+    let random_padding: [u8; 12] = rand::thread_rng().gen();
+    for i in 0..random_padding.len() {
+      arr[i + where_does_padding_go] = random_padding[i];
+    }
 
-    // add 15 bytes from the pepper.
+    let where_should_pepper_go
+      = initial_bytes + random_padding.len() + remaining_bytes_to_reach_desired_key;
+
+    // add 16 bytes from the pepper.
     // Too much and we risk creating too large of the key to be known.
     for i in 0..PEPPER_EXTRACTOR_LENGTH {
       arr[i + where_should_pepper_go] = pepper_as_bytes[i];
     }
 
-    (arr, random_vec)
+    dbg!(arr);
+
+    (arr, bits, random_padding)
   }
 
   fn recreate_key(
@@ -223,23 +232,35 @@ impl EncryptionProcess {
 
     let initial_bytes = if vec_len >= length_of_key { length_of_key } else { vec_len };
 
+    let bits = &process.key_padding;
+
     // validator part of the key
     for i in 0..initial_bytes {
       arr[i] = validator_vec[i];
     }
 
+    for i in 0..bits.len() {
+      arr[i + initial_bytes] = bits[i];
+    }
+
+
+    let where_does_padding_go = initial_bytes + bits.len();
+    let random_padding_len = process.random_padding.len();
+
     // padding of the key
-    for i in 0..process.key_padding.len() {
-      arr[i + initial_bytes] = process.key_padding[i];
+    for i in 0..random_padding_len {
+      arr[i + where_does_padding_go] = process.random_padding[i];
     }
 
     let where_to_put_the_pepper
-      = initial_bytes + process.key_padding.len();
+      = where_does_padding_go + random_padding_len;
 
     // pepper part of the key
     for i in 0..PEPPER_EXTRACTOR_LENGTH {
-      arr[i + where_to_put_the_pepper] = pepper_as_bytes[i]
+      arr[i + where_to_put_the_pepper] = pepper_as_bytes[i];
     }
+
+    dbg!(arr);
 
     arr
   }

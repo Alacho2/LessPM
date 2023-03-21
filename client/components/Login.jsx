@@ -76,6 +76,7 @@ const Login = (props) => {
               <input
                 onKeyDown={keyDownHandler}
                 type="text"
+                autoFocus
                 onChange={({target}) => setLocalUsername(target.value)}
                 className="form-control"
                 aria-describedby="emailHelp"

@@ -23,6 +23,7 @@ const AUTH_HEADER = "authorization";
 
 const Vault = (props) => {
   const [passwords, setPasswords] = useState([]);
+  const [passwordMap, setPasswordMap] = useState(new Map());
 
   useEffect(() => {
     getPasswords();
@@ -62,12 +63,14 @@ const Vault = (props) => {
   };
 
   // StrippedVaultItem
+  const getBson = (item) => {
+    return item["_id"]["$oid"];
+  };
+
+  // StrippedVaultItem
   const getOnePassword = async (item) => {
     try {
-
-      const bson = item["_id"]["$oid"];
-
-      const user_name = "bjoggii";
+      const bson = getBson(item);
 
       const startPasswordRetrieval = await fetch(START_PASSWORD_RETRIEVAL_URL, {
         method: "POST",
@@ -76,7 +79,6 @@ const Vault = (props) => {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({name: user_name})
       });
 
       if (startPasswordRetrieval.status !== 200) {
@@ -99,12 +101,25 @@ const Vault = (props) => {
         process: "retrieval",
       };
 
-      const authorized = await performPostRequest(END_PASSWORD_RETRIEVAL_URL, authToken, body);
+      const {status, rtnBody} = await performPostRequest(END_PASSWORD_RETRIEVAL_URL, authToken, body);
 
-      if (authorized !== 200) {
+      if (status !== 200) {
         console.log("Booped out");
         return;
       }
+
+      // get the password and schedule a timer to remove it in 15 seconds.
+      setPasswordMap(prevState => {
+        setTimeout(() => {
+          setPasswordMap(innerPrevState => {
+            const cloned = new Map(innerPrevState);
+            cloned.delete(bson);
+            return cloned;
+          });
+        }, 15000);
+        return new Map(prevState).set(bson, rtnBody.msg);
+      })
+
     } catch { /* Don't do anything */ }
   };
 
@@ -112,37 +127,66 @@ const Vault = (props) => {
 
   return (
     <div className="mt-4 bg-light position-relative border rounded vault">
-      {isAuthenticated ? <div
-        className="create-button position-absolute top-0 end-0"
-        onClick={() => props.setSection(props.sections.create)}>
-        Create
-      </div> : null }
+      {isAuthenticated &&
+        <div
+          className="create-button position-absolute top-0 end-0"
+          onClick={() => props.setSection(props.sections.create)}>
+          Create
+        </div>
+      }
       <div className="mx-3 my-5">
-        {isAuthenticated && passwords.length > 0
-          && passwords.map((item, i) => {
-            const { website, username } = item;
+        <div className="container">
+          {isAuthenticated && passwords.length > 0
+            && passwords.map((item, i) => {
+              const { website, username } = item;
+              const bson = getBson(item);
+              const doesBsonExist = passwordMap.get(bson);
 
-            const url = tryUrlConstruction(website);
-            return (
-              <div
-                key={i}
-                className="item d-flex flex-row border"
-                onClick={() => getOnePassword(item)}>
-                <img
-                  className="favicon"
-                  src={`${url.origin}/favicon.ico`}
-                  onError={handleImageError}/>
-                <div>
-                  <p className="website">{website}</p>
-                  <p className="username">{username}</p>
+
+              const url = tryUrlConstruction(website);
+              return (
+                <div
+                  className="row border"
+                  key={i}>
+                  <div
+                    className="col-6 item d-flex flex-row"
+                    onClick={() => getOnePassword(item)}>
+                    <img
+                      className="favicon"
+                      src={`${url.origin}/favicon.ico`}
+                      onError={handleImageError}/>
+                    <div>
+                      <p className="website">{website}</p>
+                      <p className="username">{username}</p>
+                    </div>
+                  </div>
+                  <div className="col-6 item d-flex flex-row">{
+                    doesBsonExist && <div className="input-group">
+                      <input
+                        type="text" // This depends on the checkbox
+                        className="form-control"
+                        value={doesBsonExist}
+                        onChange={({target}) => setPassword(target.value) }
+                        disabled
+                        aria-label="Text input with checkbox" />
+                      <div
+                        onClick={() => navigator.clipboard.writeText(doesBsonExist)}
+                        className="input-group-append clipboard">
+                        <span className="input-group-text">
+                          <i className="fas fa-clipboard"></i>
+                        </span>
+                      </div>
+                    </div>
+                  }</div>
                 </div>
-              </div>
-            );
+              );
 
-          })
-        }
-        {isAuthenticated && !passwords.length && <p>Doesn't seem like you have any passwords, matey</p>}
-        {!isAuthenticated && <p>Not sure how you ended up here but yeah...</p>}
+            })
+          }
+        </div>
+
+      {isAuthenticated && !passwords.length && <p>Doesn't seem like you have any passwords, matey</p>}
+      {!isAuthenticated && <p>Not sure how you ended up here but yeah...</p>}
       </div>
     </div>
   )

@@ -16,6 +16,10 @@ const Login = (props) => {
   const [localUsername, setLocalUsername] = useState("");
 
   const login = async (username) => {
+    if (!username.length) {
+      return;
+    }
+
     try {
       const startAuth = await fetch(START_AUTH_URL, {
         method: "POST",
@@ -41,14 +45,14 @@ const Login = (props) => {
         return;
       }
 
-      const authorized = await performPostRequest(FINISH_AUTH_URL, authToken, body);
+      const {status} = await performPostRequest(FINISH_AUTH_URL, authToken, body);
 
-      if (authorized !== 200) {
+      if (status !== 200) {
         return;
       }
 
       props.setUsername(username);
-      props.setSections(props.sections.vault);
+      props.setSection(props.sections.vault);
     } catch { /* Don't do anything */ }
   };
 
@@ -85,7 +89,6 @@ const Login = (props) => {
               className="btn btn-primary">Login</button>
           </div>
         </div>
-        {/*<div onClick={() => login(props.username)}>Login</div>*/}
       </div>
     </div>
   )

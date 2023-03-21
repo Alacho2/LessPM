@@ -141,13 +141,12 @@ impl DbConnection {
     }
 
     match collection.insert_one(user, None).await {
-      Ok(doc) => { },
+      Ok(_) => {
+        println!("Record inserted")
+      },
       Err(e) => {
         println!("Didn't manage to insert it: {}", e)
       }
     }
-
-    // Generate a UUID for the user
-
   }
 }

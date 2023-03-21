@@ -199,11 +199,8 @@ impl EncryptionProcess {
     // add 15 bytes from the pepper.
     // Too much and we risk creating too large of the key to be known.
     for i in 0..PEPPER_EXTRACTOR_LENGTH {
-      println!("{}", i);
       arr[i + length_of_key] = pepper_as_bytes[i];
     }
-
-    dbg!(arr);
 
     (arr, random_vec)
   }

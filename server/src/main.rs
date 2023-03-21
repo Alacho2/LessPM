@@ -4,7 +4,6 @@ use std::path::PathBuf;
 use axum::Router;
 use axum::http::{header, HeaderValue, Method, StatusCode};
 use axum_server::tls_rustls::RustlsConfig;
-use serde::{Deserialize, Serialize};
 use tower_http::cors::{CorsLayer};
 use crate::app_state::AppState;
 use dotenv::dotenv;
@@ -20,11 +19,9 @@ mod password;
 mod db_connection;
 
 const IP: [u8; 4] = [127, 0, 0, 1];
-const PORT: u16 = 8080;
 
 #[derive(Clone, Copy)]
 struct Ports {
-  http: u16,
   https: u16,
 }
 
@@ -33,7 +30,6 @@ async fn main() {
   dotenv().ok();
 
   let ports = Ports {
-    http: 8080,
     https: 3000,
   };
 
@@ -76,9 +72,4 @@ async fn main() {
     .serve(app.into_make_service())
     .await
     .unwrap();
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct Kake {
-  kake: String,
 }

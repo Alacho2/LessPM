@@ -1,4 +1,5 @@
 import { Base64 } from "js-base64";
+import {useState} from "react";
 
 const BASE_URL = "https://localhost:3000/";
 const START_REG_URL = `${BASE_URL}fido/start_registration`;
@@ -7,11 +8,13 @@ const AUTH_HEADER = 'authorization';
 
 // PROPS:
 // username: string
+// setUsername: (string) => void
+// setSection: (SECTION) => void,
+// sections: SECTIONS
 const Authenticate = (props) => {
+  const [localUsername, setLocalUsername] = useState("");
   const authenticate = async (username) => {
     try {
-
-
     const registrationStart = await fetch(START_REG_URL, {
       headers: {
         'Accept': 'application/json',
@@ -45,7 +48,7 @@ const Authenticate = (props) => {
       return;
     }
 
-    // If everything checks out at this point, we can sniffing around at
+    // If everything checks out at this point, we can sniff around at
     // attestation and finishing the reg process
     const { clientDataJSON, attestationObject } = created.response;
 
@@ -77,11 +80,45 @@ const Authenticate = (props) => {
     }
 
     console.log("The user got registered. Move on with your life");
+
+    props.setUsername(username);
+    props.setSection(props.sections.login);
     } catch { /* Don't do anything */ }
   };
 
+  const keyDownHandler = (event) => {
+    if (event.key === "Enter") {
+      authenticate(localUsername)
+    }
+  };
+
   return (
-    <div onClick={() => authenticate(props.username)}>Auth</div>
+    <div className="mt-4 bg-light position-relative border rounded">
+      <div className="mx-5 my-5">
+        <div className="row">
+          <div className="col-10">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="basic-addon1">@</span>
+              </div>
+              <input
+                onKeyDown={keyDownHandler}
+                type="text"
+                onChange={({target}) => setLocalUsername(target.value)}
+                className="form-control"
+                aria-describedby="emailHelp"
+                placeholder="Enter Username" />
+            </div>
+          </div>
+          <div className="col-2">
+            <button
+              type="button"
+              onClick={() => authenticate(localUsername)}
+              className="btn btn-primary">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 };
 

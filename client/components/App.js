@@ -27,25 +27,27 @@ export function App() {
   };
 
   const renderVault = () => {
-    return (
-      <Vault
-        isAuthenticated={isAuthenticated}
-        setSection={setSection}
-        sections={SECTIONS}/>
-    )
+    return <Vault
+      isAuthenticated={isAuthenticated}
+      setSection={setSection}
+      sections={SECTIONS}/>
+
   };
 
   const renderCreateVaultItem = () => {
-    return (
-      <CreateItem
-        isAuthenticated={isAuthenticated}
-        sections={SECTIONS}
-        setSection={setSection} />);
+    return <CreateItem
+      username={username}
+      isAuthenticated={isAuthenticated}
+      sections={SECTIONS}
+      setSection={setSection} />;
   };
 
-  // Authenticate should probably not SET the username
   const renderRegister = () => {
-    return <Authenticate username={username} setUsername={setUsername} />
+    return <Authenticate
+      username={username}
+      setUsername={setUsername}
+      sections={SECTIONS}
+      setSection={setSection} />;
   };
 
   const renderLogin = () => {
@@ -53,7 +55,7 @@ export function App() {
       username={username}
       setUsername={setUsername}
       sections={SECTIONS}
-      setSections={setSection} />
+      setSection={setSection} />;
   };
 
   return (

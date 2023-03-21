@@ -1,8 +1,6 @@
-use std::collections::HashMap;
 use std::sync::{Arc};
-use tokio::sync::Mutex;
 
-use webauthn_rs::prelude::{Passkey, Url, Uuid, Webauthn, WebauthnBuilder};
+use webauthn_rs::prelude::{Url, Webauthn, WebauthnBuilder};
 
 #[derive(Clone)]
 pub struct AppState {

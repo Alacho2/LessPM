@@ -20,51 +20,10 @@ use webauthn_rs;
 use webauthn_rs::prelude::{PublicKeyCredential, RegisterPublicKeyCredential, Uuid};
 use webauthn_rs::Webauthn;
 use crate::app_state::AppState;
-use crate::db_connection::{DbConnection, RegisteredUser, VaultEntry};
+use crate::db_connection::{DbConnection, is_valid_username, RegisteredUser, VaultEntry};
 use crate::encryption::{AuthConstructor, ClaimConstructor, EncryptionProcess, Keys, LoggedInUser};
 use crate::response::Response;
 use crate::user_routes::{process_cookie, process_auth_token, process_claim_token};
-
-async fn test_route(
-  // headers: HeaderMap,
-  state: State<AppState>,
-  // Json(body): Json<Whatever>
-) -> StatusCode {
-  // dbg!(body);
-  /*let cookie_header = headers.get(header::COOKIE);
-
-  let mut logged_in_user = process_cookie(cookie_header);
-
-  if logged_in_user.is_none() {
-    return Err(StatusCode::UNAUTHORIZED);
-  }
-
-
-   */
-  StatusCode::OK
-
-  /*
-  // for (name, value) in headers.iter() {
-  //   print!("{}", name.to_string());
-  //   println!("{}", value.to_str().unwrap());
-  // }
-
-  // let cookie
-  //   = format!("{}={}; HttpOnly; SameSite=Strict; Path=/", "token", "henlo");
-
-  // let resp: AxumResponse<Body> = axum::http::Response::builder()
-  //   .status(StatusCode::OK)
-  //   .header(header::CONTENT_TYPE, "application/json")
-  //   .header(header::COOKIE, HeaderValue::from_str(cookie.as_str()).unwrap())
-  //   .header(header::ACCESS_CONTROL_EXPOSE_HEADERS, header::COOKIE)
-  //   .body("".to_string().into())
-  //   .unwrap();
-  // resp
-  // dbg!(body);
-  // StatusCode::OK
-
-   */
-}
 
 #[derive(Deserialize, Serialize)]
 struct ValidationOfPassword {
@@ -149,7 +108,7 @@ pub struct User {
 }
 
 #[derive(Deserialize, Serialize)]
-struct LessPmAuthError<'buf> {
+struct LessPMAuthMsg<'buf> {
   msg: &'buf str,
 }
 
@@ -168,7 +127,7 @@ async fn start_registration(
   // For now, we just avoid a username hijacking.
   // if registered.is_some() && process_cookie(headers.get(header::COOKIE)) { }
   if registered.is_some() {
-    let less_pm_auth_error = LessPmAuthError {
+    let less_pm_auth_error = LessPMAuthMsg {
       msg: "Unavailable Username"
     };
 
@@ -254,6 +213,9 @@ async fn finish_registration(
     reg_state,
     exp: _
   } = auth_claim_token.unwrap();
+  if !is_valid_username(&username) {
+    return StatusCode::FORBIDDEN;
+  }
 
   let res = match state
     .authn
@@ -453,7 +415,7 @@ async fn end_password_creation<'buf>(
   headers: HeaderMap,
   state: State<AppState>,
   Json(auth): Json<ValidationOfPassword>
-) -> StatusCode { // I don't want this to return a StatusCode anymore, but an impl IntoResponse
+) -> axum::response::Response { // I don't want this to return a StatusCode anymore, but an impl IntoResponse
 
   let verified
     = process_cookie(headers.get(header::COOKIE));
@@ -461,13 +423,13 @@ async fn end_password_creation<'buf>(
     = process_auth_token(headers.get(header::AUTHORIZATION));
 
   if verified.is_none() || verified_auth_state.is_none() {
-    return StatusCode::UNAUTHORIZED;
+    return StatusCode::UNAUTHORIZED.into_response();
   }
 
   let auth_state = verified_auth_state.unwrap().auth_state;
   let credentials = auth.credentials;
 
-  return match state.
+  match state.
     authn
     .finish_passkey_authentication(&credentials, &auth_state) {
     Ok(auth_result) => {
@@ -481,12 +443,12 @@ async fn end_password_creation<'buf>(
           verified.unwrap(),
           auth.user_data).await,
         Process::Retrieval => retrieve_one_password(&id_as_vec, &auth.object_id).await,
-      }
+      };
     },
     Err(_) => {
-      StatusCode::UNAUTHORIZED
+      StatusCode::UNAUTHORIZED.into_response()
     },
-  };
+  }
 }
 
 fn is_valid_object_id(id: &str) -> bool {
@@ -494,9 +456,12 @@ fn is_valid_object_id(id: &str) -> bool {
   re.is_match(id)
 }
 
-async fn retrieve_one_password(validator_vec: &Vec<u8>, id: &Option<String>) -> StatusCode {
+async fn retrieve_one_password(
+  validator_vec: &Vec<u8>,
+  id: &Option<String>
+) -> axum::response::Response {
   if id.is_none() {
-    return StatusCode::BAD_REQUEST
+    return StatusCode::BAD_REQUEST.into_response()
   }
 
   let string_slice = id.as_ref().unwrap().as_str();
@@ -505,14 +470,14 @@ async fn retrieve_one_password(validator_vec: &Vec<u8>, id: &Option<String>) -> 
   let object_id = ObjectId::from_str(string_slice);
 
   if !valid_key || object_id.is_err() {
-    return StatusCode::BAD_REQUEST;
+    return StatusCode::BAD_REQUEST.into_response();
   }
 
   let db = DbConnection::new().await;
   let value = db.get_one_from_vault(object_id.unwrap()).await;
 
   if value.is_none() {
-    return StatusCode::BAD_REQUEST;
+    return StatusCode::BAD_REQUEST.into_response();
   }
 
   let value = value.unwrap();
@@ -523,18 +488,24 @@ async fn retrieve_one_password(validator_vec: &Vec<u8>, id: &Option<String>) -> 
     base64: value.password,
   };
   let process = EncryptionProcess::end(&validator_vec, whatever);
-  dbg!(process);
-  // This should be sent to the client.
-  StatusCode::OK
+
+  let answer = LessPMAuthMsg {
+    msg: process.as_str(),
+  };
+  axum::response::Response::builder()
+    .status(StatusCode::OK)
+    .body(serde_json::to_string(&answer).unwrap())
+    .unwrap()
+    .into_response()
 }
 
 async fn password_creation(
   validator_vec: &Vec<u8>,
   logged_in_user: LoggedInUser,
   user_data: Option<UserData>,
-) -> StatusCode {
+) -> axum::response::Response {
   if user_data.is_none() {
-    return StatusCode::UNAUTHORIZED
+    return StatusCode::UNAUTHORIZED.into_response()
   }
 
   let LoggedInUser { username: _, uuid, exp: _ } = logged_in_user;
@@ -542,7 +513,7 @@ async fn password_creation(
   let UserData { website, username: username_to_store, password } = user_data.unwrap();
 
   if password.len() == 0 || website.len() == 0 {
-    return StatusCode::UNAUTHORIZED;
+    return StatusCode::UNAUTHORIZED.into_response();
   }
 
   let EncryptionProcess { salt, nonce, key_padding, base64 }
@@ -561,5 +532,5 @@ async fn password_creation(
   };
 
   let db = DbConnection::new().await;
-  db.insert_one_to_vault(vault_entry).await.unwrap()
+  db.insert_one_to_vault(vault_entry).await.unwrap().into_response()
 }

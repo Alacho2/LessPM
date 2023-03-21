@@ -157,7 +157,7 @@ pub fn decrypt_and_decode(
   let res = match String::from_utf8(res.to_vec()) {
     Ok(value) => value,
     Err(e) => {
-      println!("Bailed on string conversation");
+      println!("Bailed on string conversation: {}", e);
       Err("Bailed on utf8".to_string()).unwrap()
     }
   };

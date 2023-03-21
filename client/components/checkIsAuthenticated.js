@@ -3,12 +3,13 @@ import {useEffect, useState} from "react";
 const BASE_URL = "https://localhost:3000/";
 const AUTHENTICATED_URL = `${BASE_URL}user/authenticated`;
 
-const checkIsAuthenticated = () => {
+const checkIsAuthenticated = (section) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     request();
-  }, []);
+    // we only do a rerender when the section state changes in main.
+  }, [section]);
 
   const request = async () => {
     try {
@@ -17,7 +18,7 @@ const checkIsAuthenticated = () => {
         credentials: "include",
       });
       setIsAuthenticated(authenticated.status === 200);
-    } catch (e) { /* Don't do anything */ }
+    } catch { /* Don't do anything */ }
   };
 
   return isAuthenticated

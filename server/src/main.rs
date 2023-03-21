@@ -68,7 +68,7 @@ async fn main() {
     ).fallback(|| async move { StatusCode::NOT_FOUND });
 
 
-  println!("Server is listening on: http://{}:{}", stringed_ip, PORT);
+  println!("Server is listening on: https://{}:{}", stringed_ip, ports.https);
 
   let addr = SocketAddr::from((IP, ports.https));
 

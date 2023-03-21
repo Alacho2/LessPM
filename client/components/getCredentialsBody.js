@@ -40,4 +40,4 @@ const getCredentialsBody = async (credentials) => {
   };
 };
 
-export default getCredentialsBody()
+export default getCredentialsBody;

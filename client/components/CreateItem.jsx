@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GeneratePassword from "./GeneratePassword.jsx";
 import getCredentialsBody from "./getCredentialsBody";
+import performPostRequest from "./performPostRequest";
 const BASE_URL = "https://localhost:3000/";
 const START_PASSWORD_CREATION_URL = `${BASE_URL}fido/start_password_creation`;
 const END_PASSWORD_CREATION_URL = `${BASE_URL}fido/end_password_creation`;
@@ -9,6 +10,7 @@ const AUTH_HEADER = 'authorization';
 // PROPS:
 // setSection = (SECTION) => void,
 // sections: SECTIONS,
+// isAuthenticated: boolean
 
 const CreateItem = (props) => {
   const [username, setUsername] = useState("");
@@ -74,8 +76,11 @@ const CreateItem = (props) => {
     } catch { /* Don't do anything */ }
   };
 
+  const isAuthenticated = props.isAuthenticated;
+
   return (
     <div className="mt-4 bg-light border rounded create-item">
+    {isAuthenticated ?
       <div className="mx-3 my-3">
         <div className="controller mb-3">
           <div className="havard-class">
@@ -143,6 +148,7 @@ const CreateItem = (props) => {
         </div>
 
       </div>
+      : <p>I am not sure how you got here, but you shouldn't be here</p>}
     </div>
   )
 };

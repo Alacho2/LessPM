@@ -12,3 +12,5 @@ const performPostRequest = async (url, authToken, body) => {
 
   return authorized.status;
 };
+
+export default performPostRequest;

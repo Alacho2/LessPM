@@ -7,55 +7,8 @@
 // it up to 32 bit
 
 import {useEffect, useState} from "react";
-import {Base64} from "js-base64";
-import checkIsAuthenticated from "./checkIsAuthenticated";
 import getCredentialsBody from "./getCredentialsBody";
-
-const dummy_passwords = [
-  {
-    id: Math.random().toString(36).substring(2),
-    website: "https://google.com",
-    username: "havard@alacho.no",
-    favicon: "https://google.com/favicon.ico" // when this comes in, you need to strip the path off of the domain
-    // favicon needs an onerror which handles domains that doesn't exist and sets
-    // the source to the default bullshit image
-  }, {
-    id: Math.random().toString(36).substring(2),
-    website: "https://stackoverflow.com",
-    username: "havard@alacho.no",
-    favicon: "https://stackoverflow.com/favicon.ico" // when this comes in, you need to strip the path off of the domain
-    // favicon needs an onerror which handles domains that doesn't exist and sets
-    // the source to the default bullshit image
-  }, {
-    id: Math.random().toString(36).substring(2),
-    website: "https://facebook.com",
-    username: "havard@alacho.no",
-    favicon: "https://facebook.com/favicon.ico" // when this comes in, you need to strip the path off of the domain
-    // favicon needs an onerror which handles domains that doesn't exist and sets
-    // the source to the default bullshit image
-  }, {
-    id: Math.random().toString(36).substring(2),
-    website: "https://twitter.com",
-    username: "alacho_",
-    favicon: "https://twitter.com/favicon.ico" // when this comes in, you need to strip the path off of the domain
-    // favicon needs an onerror which handles domains that doesn't exist and sets
-    // the source to the default bullshit image
-  }, {
-    id: Math.random().toString(36).substring(2),
-    website: "https://discord.com",
-    username: "Alacho",
-    favicon: "https://discordapp.com/favicon.ico" // when this comes in, you need to strip the path off of the domain
-    // favicon needs an onerror which handles domains that doesn't exist and sets
-    // the source to the default bullshit image
-  }, {
-    id: Math.random().toString(36).substring(2),
-    website: "https://vg.no",
-    username: "havard@alacho.no",
-    favicon: "https://vg.no/favicon.ico" // when this comes in, you need to strip the path off of the domain
-    // favicon needs an onerror which handles domains that doesn't exist and sets
-    // the source to the default bullshit image
-  },
-];
+import performPostRequest from "./performPostRequest";
 
 // PROPS:
 // setSection: (SECTION) => {}
@@ -155,10 +108,8 @@ const Vault = (props) => {
     } catch { /* Don't do anything */ }
   };
 
-  const isAuthenticated = checkIsAuthenticated();
+  const isAuthenticated = props.isAuthenticated;
 
-  // TODO(Håvard): Create an entry point to check
-  // You have to figure out a way to display the creation button
   return (
     <div className="mt-4 bg-light position-relative border rounded vault">
       {isAuthenticated ? <div
@@ -167,8 +118,8 @@ const Vault = (props) => {
         Create
       </div> : null }
       <div className="mx-3 my-5">
-        {isAuthenticated && passwords.length
-          ? passwords.map((item, i) => {
+        {isAuthenticated && passwords.length > 0
+          && passwords.map((item, i) => {
             const { website, username } = item;
 
             const url = tryUrlConstruction(website);
@@ -188,9 +139,10 @@ const Vault = (props) => {
               </div>
             );
 
-          }) : isAuthenticated
-            ? <p>Doesn't seem like you are authenticated, matey</p>
-            : <p>Not signed in.</p>}
+          })
+        }
+        {isAuthenticated && !passwords.length && <p>Doesn't seem like you have any passwords, matey</p>}
+        {!isAuthenticated && <p>Not sure how you ended up here but yeah...</p>}
       </div>
     </div>
   )

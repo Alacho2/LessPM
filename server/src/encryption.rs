@@ -1,9 +1,9 @@
 use std::fmt::{Display, Formatter};
+use argon2::{Argon2, ParamsBuilder, Version, Algorithm as ArgonAlgorithm};
 use jsonwebtoken::{Algorithm, decode, DecodingKey, encode, EncodingKey, Header, TokenData, Validation};
 use jsonwebtoken::errors::Error;
 use rand::Rng;
 use serde::{Deserialize, Serialize};
-use sha2::{Sha512};
 use webauthn_rs::prelude::{PasskeyAuthentication, PasskeyRegistration, Uuid};
 use crate::noncesequencehelper::{decrypt_with_key, encrypt_with_key};
 
@@ -118,9 +118,8 @@ impl EncryptionProcess {
     let (cred_id_as_arr, bits, random_padding)
       = EncryptionProcess::generate_416bit_arr_of_vec(validator_vec);
     let pretended_salt = EncryptionProcess::generate_a_salt();
-
-    let mut key_for_aes = [0u8; 32];
-    pbkdf2::pbkdf2_hmac::<Sha512>(&cred_id_as_arr, &pretended_salt, 4096, &mut key_for_aes);
+    let key_for_aes
+      = EncryptionProcess::hash_construct_helper(cred_id_as_arr, pretended_salt);
 
     let nonce: [u8; 12] = rand::thread_rng().gen();
 
@@ -141,25 +140,39 @@ impl EncryptionProcess {
 
   pub fn end(
     validator_vec: &Vec<u8>,
-    whatever: EncryptionProcess
+    process: EncryptionProcess
   ) -> String {
     let cred_id_as_arr
-      = EncryptionProcess::recreate_key(&validator_vec, &whatever);
+      = EncryptionProcess::recreate_key(&validator_vec, &process);
 
-    let pretended_salt = whatever.salt;
+    let pretended_salt = process.salt;
+    let key_for_aes = EncryptionProcess::hash_construct_helper(cred_id_as_arr, pretended_salt);
 
-    let mut key_for_aes = [0u8; 32];
-    pbkdf2::pbkdf2_hmac::<Sha512>(&cred_id_as_arr, &pretended_salt, 4096, &mut key_for_aes);
+    let nonce = process.nonce;
 
-    let nonce = whatever.nonce;
-
-    let res = decrypt_with_key(whatever.base64, &key_for_aes, &nonce).unwrap();
+    let res = decrypt_with_key(process.base64, &key_for_aes, &nonce).unwrap();
     res
   }
 
   fn generate_a_salt() -> [u8; 8] {
     let salt: [u8; 8] = rand::thread_rng().gen();
     salt
+  }
+
+  fn hash_construct_helper(arr: [u8; 52], pretended_salt: [u8; 8]) -> [u8; 32] {
+    let params = ParamsBuilder::new()
+      .m_cost(1024 * 256) // 256MB of RAM. Extensive and expensive.
+      .t_cost(3)
+      .p_cost(4) // Half the cores on my computer
+      .build()
+      .unwrap();
+
+    let algo = ArgonAlgorithm::default();
+    let version = Version::default();
+    let argon2 = Argon2::new(algo, version, params);
+    let mut key_for_aes = [0u8; 32];
+    argon2.hash_password_into(&arr, &pretended_salt, &mut key_for_aes).unwrap();
+    key_for_aes
   }
 
 
@@ -186,34 +199,32 @@ impl EncryptionProcess {
       arr[i] = validator_vec[i];
     }
 
-    let remaining_bytes_to_reach_desired_key =
+    let remaining_bytes_to_reach_desired_length =
       if initial_bytes >= length_of_key { 0 } else { 24 - vec_len };
 
     let mut bits: Vec<u8> = Vec::new();
     // Collect the remaining bytes needed to reach a key length of 24.
-    for i in 0..remaining_bytes_to_reach_desired_key {
+    for i in 0..remaining_bytes_to_reach_desired_length {
       let num: u8 = rand::thread_rng().gen();
       bits.push(num);
       arr[i + initial_bytes] = num;
     }
 
     // add 12 bytes of random padding.
-    let where_does_padding_go = initial_bytes + remaining_bytes_to_reach_desired_key;
+    let padding_pos = initial_bytes + remaining_bytes_to_reach_desired_length;
     let random_padding: [u8; 12] = rand::thread_rng().gen();
     for i in 0..random_padding.len() {
-      arr[i + where_does_padding_go] = random_padding[i];
+      arr[i + padding_pos] = random_padding[i];
     }
 
-    let where_should_pepper_go
-      = initial_bytes + random_padding.len() + remaining_bytes_to_reach_desired_key;
+    let pepper_pos
+      = initial_bytes + random_padding.len() + remaining_bytes_to_reach_desired_length;
 
     // add 16 bytes from the pepper.
     // Too much and we risk creating too large of the key to be known.
     for i in 0..PEPPER_EXTRACTOR_LENGTH {
-      arr[i + where_should_pepper_go] = pepper_as_bytes[i];
+      arr[i + pepper_pos] = pepper_as_bytes[i];
     }
-
-    dbg!(arr);
 
     (arr, bits, random_padding)
   }
@@ -243,24 +254,21 @@ impl EncryptionProcess {
       arr[i + initial_bytes] = bits[i];
     }
 
-
-    let where_does_padding_go = initial_bytes + bits.len();
+    let padding_pos = initial_bytes + bits.len();
     let random_padding_len = process.random_padding.len();
 
     // padding of the key
     for i in 0..random_padding_len {
-      arr[i + where_does_padding_go] = process.random_padding[i];
+      arr[i + padding_pos] = process.random_padding[i];
     }
 
-    let where_to_put_the_pepper
-      = where_does_padding_go + random_padding_len;
+    let pepper_pos
+      = padding_pos + random_padding_len;
 
     // pepper part of the key
     for i in 0..PEPPER_EXTRACTOR_LENGTH {
-      arr[i + where_to_put_the_pepper] = pepper_as_bytes[i];
+      arr[i + pepper_pos] = pepper_as_bytes[i];
     }
-
-    dbg!(arr);
 
     arr
   }

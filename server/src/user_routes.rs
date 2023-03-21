@@ -7,6 +7,7 @@ use crate::db_connection::DbConnection;
 
 pub fn user_routes() -> Router {
   Router::new()
+    // .route("/test", get(something))
     .route("/passwords", get(get_user_passwords))
     .route("/authenticated", get(is_authenticated))
 }

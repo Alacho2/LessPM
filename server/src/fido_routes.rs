@@ -490,14 +490,14 @@ async fn retrieve_one_password(
     random_padding,
     salt
   } = value.unwrap();
-  let whatever = EncryptionProcess {
+  let process = EncryptionProcess {
     salt,
     random_padding,
     nonce,
     key_padding,
     base64: password,
   };
-  let process = EncryptionProcess::end(&validator_vec, whatever);
+  let process = EncryptionProcess::end(&validator_vec, process);
 
   let answer = LessPMAuthMsg {
     msg: process.as_str(),

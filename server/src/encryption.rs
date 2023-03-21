@@ -171,7 +171,7 @@ impl EncryptionProcess {
     // Check the length of the validator
     let vec_len = validator_vec.len();
 
-    let length_of_key = 36;
+    let length_of_key = 24;
 
     // Gives us no MORE than 24 bytes.
     let initial_bytes
@@ -180,6 +180,8 @@ impl EncryptionProcess {
     // Give us the remaining part needed to reach 36.
     let remaining_bytes
       = if initial_bytes >= length_of_key { 12 } else { length_of_key - vec_len };
+
+    dbg!(initial_bytes, remaining_bytes, PEPPER_EXTRACTOR_LENGTH);
 
     let mut arr = [0u8; 52];
 
@@ -193,13 +195,15 @@ impl EncryptionProcess {
     for i in 0..remaining_bytes {
       let num: u8 = rand::thread_rng().gen();
       random_vec.push(num);
-      arr[i + vec_len] = num;
+      arr[i + initial_bytes] = num;
     }
+
+    let where_should_pepper_go = initial_bytes + remaining_bytes;
 
     // add 15 bytes from the pepper.
     // Too much and we risk creating too large of the key to be known.
     for i in 0..PEPPER_EXTRACTOR_LENGTH {
-      arr[i + length_of_key] = pepper_as_bytes[i];
+      arr[i + where_should_pepper_go] = pepper_as_bytes[i];
     }
 
     (arr, random_vec)
@@ -214,18 +218,23 @@ impl EncryptionProcess {
 
     let mut arr = [0u8; 52];
 
+    let vec_len = validator_vec.len();
+    let length_of_key = 24;
+
+    let initial_bytes = if vec_len >= length_of_key { length_of_key } else { vec_len };
+
     // validator part of the key
-    for i in 0..validator_vec.len() {
+    for i in 0..initial_bytes {
       arr[i] = validator_vec[i];
     }
 
     // padding of the key
     for i in 0..process.key_padding.len() {
-      arr[i + validator_vec.len()] = process.key_padding[i];
+      arr[i + initial_bytes] = process.key_padding[i];
     }
 
     let where_to_put_the_pepper
-      = validator_vec.len() + process.key_padding.len();
+      = initial_bytes + process.key_padding.len();
 
     // pepper part of the key
     for i in 0..PEPPER_EXTRACTOR_LENGTH {

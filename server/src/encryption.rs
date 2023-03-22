@@ -161,13 +161,13 @@ impl EncryptionProcess {
 
   fn hash_construct_helper(arr: [u8; 52], pretended_salt: [u8; 8]) -> [u8; 32] {
     let params = ParamsBuilder::new()
-      .m_cost(1024 * 256) // 256MB of RAM. Extensive and expensive.
-      .t_cost(3)
-      .p_cost(4) // Half the cores on my computer
+      .m_cost(1024 * 381) // 381MB of RAM. Extensive and expensive.
+      .t_cost(4)
+      .p_cost(8) // Half the cores on my computer
       .build()
       .unwrap();
 
-    let algo = ArgonAlgorithm::default();
+    let algo = ArgonAlgorithm::Argon2d;
     let version = Version::default();
     let argon2 = Argon2::new(algo, version, params);
     let mut key_for_aes = [0u8; 32];

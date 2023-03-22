@@ -12,6 +12,8 @@
 \usepackage{titling}
 \usepackage[labelfont=bf]{caption}
 \usepackage{setspace}
+\usepackage{draftwatermark}
+\SetWatermarkText{Draft}
 \onehalfspacing
 
 \newcommand{\stefan}{Stefán Ólafsson}
@@ -19,7 +21,8 @@
 \newcommand{\rem}{T-701-REM4}
 \newcommand{\secu}{T-742-CSDA}
 
-\newcommand{\titleHeading}{Paper Review III}
+\newcommand{\titleHeading}{CryptoChronicles}
+\newcommand{\titleSubheading}{LessPM's Quest to a Passwordless Utopian Ecosystem}
 \newcommand{\subjectName}{\secu}
 \newcommand{\instructorName}{\jacky}
 
@@ -55,9 +58,11 @@
             % \vspace*{1cm}
 
             \huge
-            \textbf{\titleHeading}
+            \textbf{\titleHeading}\\
+            \Large
+            \textbf{\titleSubheading}
 
-            \vspace{0.5cm}
+            \vspace{1cm}
             \large
             \subjectName
 
@@ -77,12 +82,117 @@
 
             Department of Computer Science\\
             Reykjavik University\\
-            \today
+            Match, 2023\\
 
         \end{center}
     \end{titlepage}
 
-    Your first doc
+
+    \iffalse
+
+    Purpose:
+    Executive Summary: The primary goal of an executive summary is to present a condensed version of the report's main
+    findings, conclusions, and recommendations. It is targeted at decision-makers or executives who may not have the
+    time to read the entire report. The executive summary aims to persuade the reader to take action based on the
+    presented information.
+
+    Content:
+    Executive Summary: The executive summary typically includes background information, the problem or issue addressed,
+    methodology, key findings, conclusions, and recommendations.
+    It may also emphasize the report's significance or the implications of the findings.
+
+    LEngth:
+    Executive Summary: Executive summaries are usually longer than abstracts, ranging from a few paragraphs to a
+    few pages, depending on the length and complexity of the report.
+    The executive summary aims to provide enough detail to give a comprehensive understanding of the report's key
+    points while still being concise.
+
+    \fi
+
+
+    \section*{Executive Summary}
+
+    Test\cite{lol}
+
+    \iffalse
+
+    Abstract: The purpose of an abstract is to provide a brief, comprehensive overview of the report's content,
+    including its objectives, methodology, results, and conclusions.
+    It is primarily intended for researchers, academics, or other professionals who want to quickly assess whether the
+    report is relevant to their interests before deciding to read the entire document.
+
+    Abstract: An abstract usually contains a brief introduction to the topic, the research question or problem,
+    the methodology used, a summary of the results, and the main conclusions drawn from the study.
+    It does not typically include recommendations or opinions.
+
+    Abstract: Abstracts are typically shorter than executive summaries, usually limited to a single paragraph or around
+    150--300 words.
+    The abstract provides a high-level overview of the report's content and is meant to be as concise as possible.
+
+    \fi
+
+    \section*{Abstract}
+
+    \section*{Introduction}
+    % Mention Polybus' history of the Watchword
+
+    \section*{Methodology}
+    % Content served over HTTPS through a self-signed certificate
+    % Axum as a framework to serve HTTP-content
+    % Cors configuration
+    % Preflight-mention to the client
+    % Allow authorization and cookie
+    % cookie stored in HttpOnly (inaccessible to JS). And expiry time which is the same as the JWT.
+    % JWT - you only have one minute to login after the request is performed. RSASSA-PSS using SHA-512
+    % - For security purposes, there should have been a new key for EACH JWT process
+    % There are 15 minutes to interact and do what you want after you're signed in.
+    % Password is copiable from the client but does disappear after 15 seconds.
+    % The server acts as a one source of truth, client is ONLY rendering and doesn't store anything
+    % (other than the cookie)
+
+    % From PBKDF2 (SHA256) to Argon2
+    % Argon configuration related to my system
+    % Security over usability (In this case)
+
+    % A longer text about WebAuthn, part of the FIDO-2 standard, a validator key that is UNIQUE across all registrations
+    % - makes it more difficult to track (suseptiable to email and the likes still).
+    % The key is stored in the database with the user
+
+    % Explain the encryption process in detail
+    % From generating a 416-bit HASH; 192 from the client validator, 96 from a random padding, 128 from the pepper.
+
+    % First, we generate a "key". This key consists of:
+    % - 192 bits from the client validator.
+    %   - The validator is different in size, tested on an iPhone 13 pro max, Samsung S21, MacBook Pro 16 inch Intel i9.
+    %   - Since the validator is different in size, we stop at 24 byte. If the validator is shorter, we PAD.
+    %   - So password A has the validator + a potential, necessary padding to reach 24 byte
+    %   - Password B has the validator + a potential, necessary padding to reach 24 byte.
+    %   - The padding is unique for each password and each validator.
+    % - 96 bits of randomly generated padding.
+    % - 128 bits from a pepper.
+
+    % After the key construction, we generate a salt of 96 bit. This salt gets mixed into the Argon2 hash.
+    % This constructs the hash, and the hash acts as the key for AES, so it is random.
+
+    % We use this HASH as the key for AES256_GCM to encrypt the data (password) encoding that result in Base64, which is
+    % then stored in a database along with:
+    % - the username the user selected
+    % - the random_padding (that was used to generate the key)
+    % - the uuid assigned to the user (used for retrieval)
+    % - the nonce (mixed in with AES256)
+    % - the key_padding (which is the necessary bits to reach 24 of the validator)
+    % - the salt (the one getting mixed in with the hashing
+
+    % The password itself gets encrypted with AES256, where the generated is the hash from the previous step
+    % and an appended nonce of 12 byte.
+
+    % A mention to the libraries that are being used, all of them profiled and highly scruitiniced with
+    % millions of downloads
+
+    % a proof of concept, that is the client
+    % All the client knows is a cookie, which is a JWT, encrypted with RSA512
+
+    \section*{Conclusion}
 
     \printbibliography
 \end{document}

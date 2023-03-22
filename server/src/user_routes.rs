@@ -5,14 +5,18 @@ use axum::routing::{get};
 use crate::encryption::{AuthConstructor, ClaimConstructor, Keys, LoggedInUser};
 use crate::db_connection::DbConnection;
 
+// A test route because that's how it is when using a new language and framework
+// async fn test(){
+//
+// }
+
 pub fn user_routes() -> Router {
   Router::new()
-    // .route("/test", get(something))
+    // .route("/test", get(test))
     .route("/passwords", get(get_user_passwords))
     .route("/authenticated", get(is_authenticated))
 }
 
-// The process_cookie should return the logged in user OR ... Nothing?
 pub fn process_cookie(
   header: Option<&HeaderValue>,
 ) -> Option<LoggedInUser> {

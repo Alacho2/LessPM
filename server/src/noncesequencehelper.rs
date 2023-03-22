@@ -50,7 +50,6 @@ pub fn decrypt_with_key(
   nonce: &[u8; 12]
 ) -> anyhow::Result<String> {
 
-
   let decrypted = decrypt_and_decode(input, key, nonce);
 
   if decrypted.is_err() {
@@ -59,37 +58,6 @@ pub fn decrypt_with_key(
 
   Ok(decrypted.unwrap())
 }
-
-// Takes the validator vec
-/*pub fn generate_aes_key(validator_vec: &Vec<u8>) -> KeyHelper {
-  let mut aes_key = [0u8; 32];
-  let mut random_padding: Vec<u8> = Vec::new();
-  let nonce: [u8; 12] = rand::thread_rng().gen();
-
-  let vec_len = validator_vec.len();
-
-  let remaining_bytes_helper
-    = if vec_len >= 24 { 8 } else { 32 - vec_len };
-  let initial_bytes_helper
-    = if vec_len >= 24 { 24 } else { vec_len };
-
-  for i in 0..initial_bytes_helper {
-    aes_key[i] = validator_vec[i];
-  }
-
-  // The random part of the key
-  for i in 0..remaining_bytes_helper {
-    let num: u8 = rand::thread_rng().gen();
-    aes_key[i + initial_bytes_helper] = num;
-    random_padding.push(num);
-  }
-
-  KeyHelper {
-    random_padding,
-    nonce,
-    key: aes_key,
-  }
-}*/
 
 pub fn encrypt_and_encode(
   input: String,

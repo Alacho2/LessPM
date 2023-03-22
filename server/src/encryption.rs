@@ -1,16 +1,23 @@
 use std::fmt::{Display, Formatter};
 use argon2::{Argon2, ParamsBuilder, Version, Algorithm as ArgonAlgorithm};
+use base64::Engine;
 use jsonwebtoken::{Algorithm, decode, DecodingKey, encode, EncodingKey, Header, TokenData, Validation};
 use jsonwebtoken::errors::Error;
 use rand::Rng;
+use ring::aead::{Aad, LessSafeKey, Nonce, UnboundKey};
 use serde::{Deserialize, Serialize};
 use webauthn_rs::prelude::{PasskeyAuthentication, PasskeyRegistration, Uuid};
 use crate::noncesequencehelper::{decrypt_with_key, encrypt_with_key};
 
 const PEPPER_EXTRACTOR_LENGTH: usize = 16;
+const NON_UNIQUE_NONCE: [u8; 12]
+  = [197, 107, 7, 215, 179, 237, 89, 104, 200, 204, 34, 243];
+const NON_UNIQUE_AES_KEY: [u8; 32]
+  = [127, 119, 136, 168, 251, 211, 76, 164, 56, 22, 195, 233, 140, 6, 150, 236, 232, 160, 8, 226, 96, 222, 9, 116, 137, 212, 146, 35, 28, 45, 245, 195];
 
 pub struct Keys {
   header: Header,
+  validator: Validation,
   encoding_key: EncodingKey,
   decoding_key: DecodingKey,
 }
@@ -44,6 +51,9 @@ impl Display for LoggedInUser {
   }
 }
 
+
+// ☣️ JWT NEEDS TO BE ENCRYPTED. OTHERWISE THE CLIENT CAN FUCK WITH
+// THE STORAGE. We encrypt with RSA512. Suck on that, Alexander.
 impl Keys {
   pub fn new() -> Self {
     let encoding_key
@@ -52,60 +62,65 @@ impl Keys {
     let decoding_key
       = DecodingKey::from_rsa_pem(include_bytes!("../keys/public.pem"))
       .expect("Something went wrong with the decoding key");
+    let algorithm = Algorithm::PS512;
     Self {
-      header: Header::new(Algorithm::PS512),
+      validator: Validation::new(algorithm),
+      header: Header::new(algorithm),
       encoding_key,
       decoding_key,
     }
   }
-
-  // ☣️ THIS NEEDS TO BE ENCRYPTED. OTHERWISE THE CLIENT CAN FUCK WITH
-  // THE STORAGE. We encrypt with RSA256. Suck on that, Alexander.
   pub fn tokenize_claim(&self, claim: ClaimConstructor) -> String {
-    encode(&self.header, &claim, &self.encoding_key)
-      .expect("Something bad happened with the encoding")
+    match encode(&self.header, &claim, &self.encoding_key) {
+      Ok(base64) => JwtEncryption::encrypt(base64),
+      Err(e) => {
+        eprintln!("Claim: Base64 encoding failed: {}", e);
+        String::from("")
+      }
+    }
   }
 
   pub fn verify_claim(&self, token: &str) -> Result<ClaimConstructor, Error> {
-      decode(
-        &token,
-        &self.decoding_key,
-        &Validation::new(Algorithm::PS512)
-      ).map(|data: TokenData<ClaimConstructor>| data.claims)
+    let base64_decrypted = JwtEncryption::decrypt(token);
+    decode::<ClaimConstructor>(&base64_decrypted, &self.decoding_key, &self.validator)
+      .map(|data: TokenData<ClaimConstructor>| data.claims)
   }
 
   pub fn tokenize_auth(&self, claim: AuthConstructor) -> String {
-    encode(&self.header, &claim, &self.encoding_key)
-      .expect("Something bad happened during encoding")
+    match encode(&self.header, &claim, &self.encoding_key) {
+      Ok(base64) => JwtEncryption::encrypt(base64),
+      Err(e) => {
+        eprintln!("Auth: Base64 encoding failed: {}", e);
+        String::from("")
+      }
+    }
   }
 
   pub fn verify_auth(&self, token: &str) -> Result<AuthConstructor, Error> {
-    decode(
-      &token,
-      &self.decoding_key,
-      &Validation::new(Algorithm::PS512)
-    ).map(|data: TokenData<AuthConstructor>| data.claims)
+    let base64_decrypted = JwtEncryption::decrypt(token);
+    decode(&base64_decrypted, &self.decoding_key, &self.validator)
+      .map(|data: TokenData<AuthConstructor>| data.claims)
   }
 
-  // TODO(Håvard): You need to document that you'd rather use a private key for
-  // each thing.
-
   pub fn tokenize_user(&self, claim: LoggedInUser) -> String {
-    encode(&self.header, &claim, &self.encoding_key)
-      .expect("Can't tokenize the user")
+    match encode(&self.header, &claim, &self.encoding_key) {
+      Ok(base64) => JwtEncryption::encrypt(base64),
+      Err(e) => {
+        eprintln!("User: Base64 encoding failed: {}", e);
+        String::from("")
+      }
+    }
   }
 
   pub fn verify_user(&self, token: &str) -> Result<LoggedInUser, Error> {
-    decode(
-      &token,
-      &self.decoding_key,
-      &Validation::new(Algorithm::PS512)
-    ).map(|data: TokenData<LoggedInUser>| data.claims)
+    let base64_decrypted = JwtEncryption::decrypt(token);
+    decode(&base64_decrypted, &self.decoding_key, &self.validator)
+      .map(|data: TokenData<LoggedInUser>| data.claims)
   }
 }
 
 pub struct EncryptionProcess {
-  pub salt: [u8; 8],
+  pub salt: [u8; 12],
   pub nonce: [u8; 12],
   pub key_padding: Vec<u8>,
   pub random_padding: [u8; 12],
@@ -154,20 +169,29 @@ impl EncryptionProcess {
     res
   }
 
-  fn generate_a_salt() -> [u8; 8] {
-    let salt: [u8; 8] = rand::thread_rng().gen();
+  fn generate_a_salt() -> [u8; 12] {
+    let salt: [u8; 12] = rand::thread_rng().gen();
     salt
   }
 
-  fn hash_construct_helper(arr: [u8; 52], pretended_salt: [u8; 8]) -> [u8; 32] {
+  fn hash_construct_helper(arr: [u8; 52], pretended_salt: [u8; 12]) -> [u8; 32] {
+    // You gone goofed up if you didn't configure these in an .env file
+    let memory: u32 = std::env::var("MEMORY").unwrap().parse().unwrap();
+    let iterations: u32 = std::env::var("ITERATIONS").unwrap().parse().unwrap();
+    let parallels_config: u32 = std::env::var("PARALLELS").unwrap().parse().unwrap();
+
+    // Save the user of this function from their own disaster.
+    let parallels = if parallels_config > 255 { 255 } else { parallels_config };
+
+    // Decrease the memory usage in the config file if you want to decrease the time needed to hash
     let params = ParamsBuilder::new()
-      .m_cost(1024 * 381) // 381MB of RAM. Extensive and expensive.
-      .t_cost(4)
-      .p_cost(8) // Half the cores on my computer
+      .m_cost(1024 * memory)
+      .t_cost(iterations)
+      .p_cost(parallels)
       .build()
       .unwrap();
 
-    let algo = ArgonAlgorithm::Argon2d;
+    let algo = ArgonAlgorithm::default();
     let version = Version::default();
     let argon2 = Argon2::new(algo, version, params);
     let mut key_for_aes = [0u8; 32];
@@ -271,5 +295,40 @@ impl EncryptionProcess {
     }
 
     arr
+  }
+}
+
+pub struct JwtEncryption {
+  nonce: Nonce,
+  less_safe_key: LessSafeKey,
+  aad: Aad<[u8; 8]>
+}
+
+impl JwtEncryption {
+
+  fn new() -> Self {
+    let algorithm = &ring::aead::AES_256_GCM;
+    let unbound_key
+      = UnboundKey::new(algorithm, &NON_UNIQUE_AES_KEY).unwrap();
+    Self {
+      nonce: Nonce::assume_unique_for_key(NON_UNIQUE_NONCE),
+      less_safe_key: LessSafeKey::new(unbound_key),
+      aad: Aad::from([65, 18, 243, 102, 187, 59, 94, 105])
+    }
+  }
+
+  pub fn encrypt(base64: String) -> String {
+    let JwtEncryption { nonce, less_safe_key, aad } = JwtEncryption::new();
+    let mut in_out = base64.as_bytes().to_owned();
+    less_safe_key.seal_in_place_append_tag(nonce, aad, &mut in_out).unwrap();
+    base64::engine::general_purpose::STANDARD.encode(in_out)
+  }
+
+  pub fn decrypt(base64: &str) -> String {
+    let mut decoded
+      = base64::engine::general_purpose::STANDARD.decode(base64).unwrap();
+    let JwtEncryption { nonce, less_safe_key, aad } = JwtEncryption::new();
+    let decrypted= less_safe_key.open_within(nonce, aad, &mut decoded, std::ops::RangeFrom{start: 0}).unwrap();
+    String::from_utf8(decrypted.to_vec()).unwrap()
   }
 }

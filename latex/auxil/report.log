@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  21 MAR 2023 20:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  22 MAR 2023 12:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -607,33 +607,51 @@ Package caption Info: listings package is loaded.
 pace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 )
+(/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/draf
+twatermark/draftwatermark.sty
+Package: draftwatermark 2020/12/08 3.0 Put a gray textual watermark on document
+ pages
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/color.st
+y
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/colo
+r.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/mathcolo
+r.ltx)))
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
 \@quotelevel=\count416
 \@quotereset=\count417
-No file report.aux.
+(/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -668,7 +686,9 @@ LaTeX Font Info:    ... okay on input line 31.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 31.
+Package hyperref Info: Link coloring OFF on input line 53.
+(/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.out)
+(/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
 
@@ -712,73 +732,65 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `report.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'report.bbl' not found.
-
-No file report.bbl.
-Package biblatex Info: Reference section=0 on input line 31.
-Package biblatex Info: Reference segment=0 on input line 31.
+Package biblatex Info: ... file 'report.bbl' found.
+ (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl)
+Package biblatex Info: Reference section=0 on input line 53.
+Package biblatex Info: Reference segment=0 on input line 53.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 <images/HR_logo_hringur_transparent.png, id=3, 593.21625pt x 593.21625pt>
 File: images/HR_logo_hringur_transparent.png Graphic file (type png)
 <use images/HR_logo_hringur_transparent.png>
 Package pdftex.def Info: images/HR_logo_hringur_transparent.png  used on input 
-line 35.
+line 57.
 (pdftex.def)             Requested size: 237.28229pt x 237.28229pt.
-[1
 
-{/Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/
-pdftex.map} <./images/HR_logo_hringur_transparent.png>]
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <153.57375> not available
+(Font)              size <35.83> substituted on input line 88.
 
-LaTeX Warning: Empty bibliography on input line 68.
+[1{/Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdfte
+x/pdftex.map}
 
-
+ <./images/HR_logo_hringur_transparent.png>]
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 \end{document}
-                    [1]
+l.118 \end{document}
+                     [1]
 (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
-LaTeX Warning: There were undefined references.
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 117.74374pt have occurred.
 
-
-Package rerunfilecheck Warning: File `report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                report
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19962 strings out of 476344
- 355789 string characters out of 5785310
- 1853346 words of memory out of 5000000
- 40201 multiletter control sequences out of 15000+600000
- 516818 words of font info for 38 fonts, out of 8000000 for 9000
+ 20367 strings out of 476344
+ 365238 string characters out of 5785310
+ 1854346 words of memory out of 5000000
+ 40578 multiletter control sequences out of 15000+600000
+ 518362 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,76p,681b,1761s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,76p,681b,1761s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfou
 r/jknappen/ec/dpi600/ecrm1000.pk> </Users/havard/Library/Application Support/Mi
 KTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti1000.pk> </Users/havard
 /Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi
 600/ecrm1440.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/
 fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1200.pk> </Users/havard/Library/Applicat
-ion Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx2074.pk>
+ion Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1440.pk> 
+</Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/j
+knappen/ec/dpi600/ecbx2074.pk> </Users/havard/Library/Application Support/MiKTe
+X/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm3583.pk>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (2 pages, 57410 bytes).
+t.pdf (2 pages, 84086 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 2 named destinations out of 1000 (max. 500000)
+ 199 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

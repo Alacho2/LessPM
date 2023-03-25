@@ -1,0 +1,57 @@
+
+% Content served over HTTPS through a self-signed certificate
+    % Axum as a framework to serve HTTP-content
+    % Cors configuration
+    % Preflight-mention to the client
+    % Allow authorization and cookie
+    % cookie stored in HttpOnly (inaccessible to JS). And expiry time which is the same as the JWT.
+    % JWT - you only have one minute to login after the request is performed. RSASSA-PSS using SHA-512
+    % Find some information about the JWT and use as a reference to talk about the transiton to JWE
+    % From JWT -> JWE
+    % - For security purposes, there should have been a new key for EACH JWT process
+    % There are 15 minutes to interact and do what you want after you're signed in.
+    % Password is copiable from the client but does disappear after 15 seconds.
+    % The server acts as a one source of truth, client is ONLY rendering and doesn't store anything
+    % (other than the cookie)
+
+    % From PBKDF2 (SHA256) to Argon2
+    % Argon configuration related to my system
+    % Security over usability (In this case)
+
+    % A longer text about WebAuthn, part of the FIDO-2 standard, a validator key that is UNIQUE across all registrations
+    % - makes it more difficult to track (suseptiable to email and the likes still).
+    % The key is stored in the database with the user
+
+    % Explain the encryption process in detail
+    % From generating a 416-bit HASH; 192 from the client validator, 96 from a random padding, 128 from the pepper.
+
+    % First, we generate a "key". This key consists of:
+    % - 192 bits from the client validator.
+    %   - The validator is different in size, tested on an iPhone 13 pro max, Samsung S21, MacBook Pro 16 inch Intel i9.
+    %   - Since the validator is different in size, we stop at 24 byte. If the validator is shorter, we PAD.
+    %   - So password A has the validator + a potential, necessary padding to reach 24 byte
+    %   - Password B has the validator + a potential, necessary padding to reach 24 byte.
+    %   - The padding is unique for each password and each validator.
+    % - 96 bits of randomly generated padding.
+    % - 128 bits from a pepper.
+
+    % After the key construction, we generate a salt of 96 bit. This salt gets mixed into the Argon2 hash.
+    % This constructs the hash, and the hash acts as the key for AES, so it is random.
+
+    % We use this HASH as the key for AES256_GCM to encrypt the data (password) encoding that result in Base64, which is
+    % then stored in a database along with:
+    % - the username the user selected
+    % - the random_padding (that was used to generate the key)
+    % - the uuid assigned to the user (used for retrieval)
+    % - the nonce (mixed in with AES256)
+    % - the key_padding (which is the necessary bits to reach 24 of the validator)
+    % - the salt (the one getting mixed in with the hashing
+
+    % The password itself gets encrypted with AES256, where the generated is the hash from the previous step
+    % and an appended nonce of 12 byte.
+
+    % A mention to the libraries that are being used, all of them profiled and highly scruitiniced with
+    % millions of downloads
+
+    % a proof of concept, that is the client
+    % All the client knows is a cookie, which is a JWT, encrypted with RSA512

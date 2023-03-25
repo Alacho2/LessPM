@@ -57,6 +57,28 @@
       \field{pages}{5}
       \range{pages}{1}
     \endentry
+    \entry{fido_uaf_overview}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=f4f6558285ca7c944d2429d3c4a57754}{%
+           family={{FIDO Alliance}},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{f4f6558285ca7c944d2429d3c4a57754}
+      \strng{fullhash}{f4f6558285ca7c944d2429d3c4a57754}
+      \strng{bibnamehash}{f4f6558285ca7c944d2429d3c4a57754}
+      \strng{authorbibnamehash}{f4f6558285ca7c944d2429d3c4a57754}
+      \strng{authornamehash}{f4f6558285ca7c944d2429d3c4a57754}
+      \strng{authorfullhash}{f4f6558285ca7c944d2429d3c4a57754}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://fidoalliance.org/specs/fido-uaf-v1.1-id-20170202/fido-uaf-overview-v1.1-id-20170202.html}}
+      \field{month}{2}
+      \field{note}{Accessed: 2023-03-25}
+      \field{title}{FIDO UAF Overview}
+      \field{year}{2017}
+    \endentry
     \entry{levy1984hackers}{book}{}
       \name{author}{1}{}{%
         {{hash=7e521cf3616b7c888d511a80e9b82ad5}{%
@@ -115,6 +137,28 @@
       \verb{url}
       \verb http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D6%3Achapter%3D34
       \endverb
+    \endentry
+    \entry{webauthn_level_2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bdea812935506778c291249971f80655}{%
+           family={{World Wide Web Consortium}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{bdea812935506778c291249971f80655}
+      \strng{fullhash}{bdea812935506778c291249971f80655}
+      \strng{bibnamehash}{bdea812935506778c291249971f80655}
+      \strng{authorbibnamehash}{bdea812935506778c291249971f80655}
+      \strng{authornamehash}{bdea812935506778c291249971f80655}
+      \strng{authorfullhash}{bdea812935506778c291249971f80655}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/}}
+      \field{month}{4}
+      \field{note}{Accessed: 2023-03-25}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
+      \field{year}{2021}
     \endentry
     \entry{yan2000password}{report}{}
       \name{author}{4}{}{%

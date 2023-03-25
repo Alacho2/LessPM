@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  25 MAR 2023 12:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  25 MAR 2023 15:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1144,37 +1144,68 @@ line 60.
 
 
 LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <153.57375> not available
-(Font)              size <35.83> substituted on input line 91.
+(Font)              size <35.83> substituted on input line 94.
 
 [1{/Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdfte
 x/pdftex.map}
 
  <./images/HR_logo_hringur_transparent.png>]
 
-LaTeX Warning: Citation 'lol' on page 1 undefined on input line 118.
+LaTeX Warning: Citation 'lol' on page 1 undefined on input line 121.
 
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-48.
+(introduction.tex
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 9
+.
+
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.173 
-       [1]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 252
-.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 252
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
+)
+introduction.tex:39: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   m
+l.39 ...ing}. \textit{Last Accessed: 2023-03-25}.}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+introduction.tex:39: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   m
+l.39 ...ing}. \textit{Last Accessed: 2023-03-25}.}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+introduction.tex:39: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   m
+l.39 ...ing}. \textit{Last Accessed: 2023-03-25}.}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.41 
+      [1]) (methodology.tex) [2] [3]
+(/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 117.74374pt have occurred.
@@ -1186,33 +1217,48 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32278 strings out of 476344
- 619859 string characters out of 5785310
- 1859346 words of memory out of 5000000
- 52220 multiletter control sequences out of 15000+600000
- 521823 words of font info for 51 fonts, out of 8000000 for 9000
+ 32333 strings out of 476344
+ 620856 string characters out of 5785310
+ 1860346 words of memory out of 5000000
+ 52249 multiletter control sequences out of 15000+600000
+ 528683 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,94p,681b,1767s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfou
-r/jknappen/ec/dpi600/eccc1000.pk> </Users/havard/Library/Application Support/Mi
-KTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk> </Users/havard
-/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi
-600/ecbx1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/
-fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1000.pk> </Users/havard/Library/Applicat
-ion Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti1000.pk> 
-</Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/j
-knappen/ec/dpi600/ecrm1440.pk> </Users/havard/Library/Application Support/MiKTe
-X/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1200.pk> </Users/havard/Li
-brary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600
-/ecbx1440.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fon
-ts/pk/ljfour/jknappen/ec/dpi600/ecbx2074.pk> </Users/havard/Library/Application
- Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm3583.pk></Li
-brary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/sym
-bols/msam10.pfb>
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
+
+ </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/
+jknappen/ec/dpi600/eccc1000.pk> </Users/havard/Library/Application Support/MiKT
+eX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti0800.pk> </Users/havard/L
+ibrary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi60
+0/ecbx0800.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
+nts/pk/ljfour/jknappen/ec/dpi600/ecrm0800.pk> </Users/havard/Library/Applicatio
+n Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0600.pk> </
+Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jkn
+appen/ec/dpi600/ecrm0700.pk> </Users/havard/Library/Application Support/MiKTeX/
+texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk> </Users/havard/Libr
+ary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/e
+cbx1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts
+/pk/ljfour/jknappen/ec/dpi600/ecrm1000.pk> </Users/havard/Library/Application S
+upport/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti1000.pk> </Use
+rs/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknapp
+en/ec/dpi600/ecrm1440.pk> </Users/havard/Library/Application Support/MiKTeX/tex
+mfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1200.pk> </Users/havard/Library
+/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx
+1440.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk
+/ljfour/jknappen/ec/dpi600/ecbx2074.pk> </Users/havard/Library/Application Supp
+ort/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm3583.pk></Library
+/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/
+msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (3 pages, 138162 bytes).
+t.pdf (4 pages, 176393 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 16 named destinations out of 1000 (max. 500000)
+ 493 PDF objects out of 1000 (max. 8388607)
+ 24 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

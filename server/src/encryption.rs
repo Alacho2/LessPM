@@ -53,7 +53,7 @@ impl Display for LoggedInUser {
 
 
 // ☣️ JWT NEEDS TO BE ENCRYPTED. OTHERWISE THE CLIENT CAN FUCK WITH
-// THE STORAGE. We encrypt with RSA512. Suck on that, Alexander.
+// THE STORAGE. We encrypt with RSA512 and encrypt with AES256. Suck on that, Alexander.
 impl Keys {
   pub fn new() -> Self {
     let encoding_key
@@ -198,8 +198,7 @@ impl EncryptionProcess {
     argon2.hash_password_into(&arr, &pretended_salt, &mut key_for_aes).unwrap();
     key_for_aes
   }
-
-
+  
   // MAX 24 bytes of the validator
   // At LEAST 12 bytes of padding
   // 16 bytes of pepper.

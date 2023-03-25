@@ -19,29 +19,153 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{lol}{article}{}
-      \name{author}{1}{}{%
-        {{hash=8c36aae8ca03a828ad0a830bc4206cee}{%
-           family={Mathisen},
-           familyi={M\bibinitperiod},
-           given={Håvard\bibnamedelima Nordlie},
-           giveni={H\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+    \entry{ctss_programmers_guide}{book}{}
+      \list{publisher}{1}{%
+        {MIT Press}%
       }
-      \strng{namehash}{8c36aae8ca03a828ad0a830bc4206cee}
-      \strng{fullhash}{8c36aae8ca03a828ad0a830bc4206cee}
-      \strng{bibnamehash}{8c36aae8ca03a828ad0a830bc4206cee}
-      \strng{authorbibnamehash}{8c36aae8ca03a828ad0a830bc4206cee}
-      \strng{authornamehash}{8c36aae8ca03a828ad0a830bc4206cee}
-      \strng{authorfullhash}{8c36aae8ca03a828ad0a830bc4206cee}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{title}{CTSS Programmers Guide}
+      \field{year}{1965}
+    \endentry
+    \entry{history_cryptography_cryptanalysis}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0382b393c0c2dac1f2c6bc65a1265c67}{%
+           family={Dooly},
+           familyi={D\bibinitperiod},
+           given={John\bibnamedelima F.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{fullhash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{bibnamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{authorbibnamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{authornamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{authorfullhash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Some journaly where it was publised}
-      \field{title}{A title that I like}
+      \field{isbn}{978-3-319-90442-9}
+      \field{title}{History of Cryptography and Cryptanalysis: Codes, Ciphers, and Their Algorithms}
+      \field{year}{2018}
+      \field{pages}{5}
+      \range{pages}{1}
+    \endentry
+    \entry{levy1984hackers}{book}{}
+      \name{author}{1}{}{%
+        {{hash=7e521cf3616b7c888d511a80e9b82ad5}{%
+           family={Levy},
+           familyi={L\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Sebastopol, CA}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media}%
+      }
+      \strng{namehash}{7e521cf3616b7c888d511a80e9b82ad5}
+      \strng{fullhash}{7e521cf3616b7c888d511a80e9b82ad5}
+      \strng{bibnamehash}{7e521cf3616b7c888d511a80e9b82ad5}
+      \strng{authorbibnamehash}{7e521cf3616b7c888d511a80e9b82ad5}
+      \strng{authornamehash}{7e521cf3616b7c888d511a80e9b82ad5}
+      \strng{authorfullhash}{7e521cf3616b7c888d511a80e9b82ad5}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-1449388393}
+      \field{title}{Hackers: Heroes of the Computer Revolution}
+      \field{year}{1984}
+      \field{pages}{85\bibrangedash 102}
+      \range{pages}{18}
+    \endentry
+    \entry{perseus_tufts}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}{%
+           family={Polybius},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Perseus Digital Library, Tufts University}%
+      }
+      \strng{namehash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
+      \strng{fullhash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
+      \strng{bibnamehash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
+      \strng{authorbibnamehash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
+      \strng{authornamehash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
+      \strng{authorfullhash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on: March 23, 2023}
+      \field{title}{The Histories}
       \field{year}{2023}
+      \verb{urlraw}
+      \verb http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D6%3Achapter%3D34
+      \endverb
+      \verb{url}
+      \verb http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D6%3Achapter%3D34
+      \endverb
+    \endentry
+    \entry{yan2000password}{report}{}
+      \name{author}{4}{}{%
+        {{hash=40b338ed18ad39fb8b2036c089c9e342}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Jianxin},
+           giveni={J\bibinitperiod}}}%
+        {{hash=534deb78d3e4c85c835632ca2b1c2f19}{%
+           family={Blackwell},
+           familyi={B\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=e027c8df89339344ddc4de634d17acf1}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1908750aed085dccfe0442f762e42e6f}{%
+           family={Grant},
+           familyi={G\bibinitperiod},
+           given={Alasdair},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Cambridge, Computer Laboratory}%
+      }
+      \strng{namehash}{7e396d3670a316147740ea6fbc889c92}
+      \strng{fullhash}{717a2731f9f9f4a6fd8387ff5cbe3e7e}
+      \strng{bibnamehash}{7e396d3670a316147740ea6fbc889c92}
+      \strng{authorbibnamehash}{7e396d3670a316147740ea6fbc889c92}
+      \strng{authornamehash}{7e396d3670a316147740ea6fbc889c92}
+      \strng{authorfullhash}{717a2731f9f9f4a6fd8387ff5cbe3e7e}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{number}{UCAM-CL-TR-500}
+      \field{title}{The Memorability and Security of Passwords: Some Empirical Results}
+      \field{type}{techreport}
+      \field{year}{2000}
+      \verb{urlraw}
+      \verb https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-500.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-500.pdf
+      \endverb
     \endentry
   \enddatalist
+  \missing{lol}
 \endrefsection
 \endinput
 

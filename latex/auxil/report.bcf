@@ -2359,6 +2359,9 @@
     <bcf:citekey order="8" intorder="1">yan2000password</bcf:citekey>
     <bcf:citekey order="9" intorder="1">fido_uaf_overview</bcf:citekey>
     <bcf:citekey order="10" intorder="1">webauthn_level_2</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">webauthn_level_2</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">webauthn_credential_id</bcf:citekey>
+    <bcf:citekey order="12" intorder="2">webauthn_public_key_credential</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

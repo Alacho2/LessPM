@@ -138,6 +138,30 @@
       \verb http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D6%3Achapter%3D34
       \endverb
     \endentry
+    \entry{webauthn_credential_id}{misc}{}
+      \list{organization}{1}{%
+        {World Wide Web Consortium}%
+      }
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#credential-id}}
+      \field{note}{Accessed: 2023-03-25}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2 - Credential ID}
+      \field{year}{2021}
+    \endentry
+    \entry{webauthn_public_key_credential}{misc}{}
+      \list{organization}{1}{%
+        {World Wide Web Consortium}%
+      }
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#dom-publickeycredential-identifier-slot}}
+      \field{note}{Accessed: 2023-03-25}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2 - PublicKeyCredential identifier slot}
+      \field{year}{2021}
+    \endentry
     \entry{webauthn_level_2}{misc}{}
       \name{author}{1}{}{%
         {{hash=bdea812935506778c291249971f80655}{%

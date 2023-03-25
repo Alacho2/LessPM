@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  25 MAR 2023 15:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  25 MAR 2023 18:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1123,6 +1123,46 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
  (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:148: Illeg
+al parameter number in definition of \NewValue.
+<to be read again> 
+                   c
+l.148 ...www.w3.org/TR/webauthn-2/#credential-id}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:152: Illeg
+al parameter number in definition of \abx@field@howpublished.
+<to be read again> 
+                   c
+l.152     \endentry
+                   
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:160: Illeg
+al parameter number in definition of \NewValue.
+<to be read again> 
+                   d
+l.160 ...dom-publickeycredential-identifier-slot}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:164: Illeg
+al parameter number in definition of \abx@field@howpublished.
+<to be read again> 
+                   d
+l.164     \endentry
+                   
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
@@ -1160,40 +1200,48 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 9
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+introduction.tex:37: Illegal parameter number in definition of \jsonwebLibrary.
+<to be read again> 
+                   m
+l.37 ...ng}. \textit{Last Accessed: 2023-03-25}.}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
 
+LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-introduction.tex:39: Illegal parameter number in definition of \Hy@tempa.
+introduction.tex:42: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    m
-l.39 ...ing}. \textit{Last Accessed: 2023-03-25}.}
-                                                  
+l.42 \assymetricCrypto\jsonwebLibrary
+                                      and biometric or hardware-based authen...
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-introduction.tex:39: Illegal parameter number in definition of \Hy@tempa.
+introduction.tex:42: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    m
-l.39 ...ing}. \textit{Last Accessed: 2023-03-25}.}
-                                                  
+l.42 \assymetricCrypto\jsonwebLibrary
+                                      and biometric or hardware-based authen...
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-introduction.tex:39: Illegal parameter number in definition of \Hy@tempa.
+introduction.tex:42: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    m
-l.39 ...ing}. \textit{Last Accessed: 2023-03-25}.}
-                                                  
+l.42 \assymetricCrypto\jsonwebLibrary
+                                      and biometric or hardware-based authen...
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
@@ -1203,9 +1251,96 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 
-      [1]) (methodology.tex) [2] [3]
-(/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
+l.43 
+      [1]) (methodology.tex
+methodology.tex:21: Illegal parameter number in definition of \abx@field@howpub
+lished.
+<to be read again> 
+                   c
+l.21 ...dential_id,webauthn_public_key_credential}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+methodology.tex:21: Illegal parameter number in definition of \abx@field@howpub
+lished.
+<to be read again> 
+                   c
+l.21 ...dential_id,webauthn_public_key_credential}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+methodology.tex:21: Illegal parameter number in definition of \abx@field@howpub
+lished.
+<to be read again> 
+                   d
+l.21 ...dential_id,webauthn_public_key_credential}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+[2]) (futurework.tex) [3]
+report.tex:154: Illegal parameter number in definition of \abx@field@howpublish
+ed.
+<to be read again> 
+                   c
+l.154 \end
+          {document}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:154: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   c
+l.154 \end
+          {document}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:154: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   c
+l.154 \end
+          {document}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:154: Illegal parameter number in definition of \abx@field@howpublish
+ed.
+<to be read again> 
+                   d
+l.154 \end
+          {document}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:154: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   d
+l.154 \end
+          {document}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:154: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   d
+l.154 \end
+          {document}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+[4] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 117.74374pt have occurred.
@@ -1217,13 +1352,21 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32333 strings out of 476344
- 620856 string characters out of 5785310
- 1860346 words of memory out of 5000000
- 52249 multiletter control sequences out of 15000+600000
- 528683 words of font info for 68 fonts, out of 8000000 for 9000
+ 32360 strings out of 476344
+ 621577 string characters out of 5785310
+ 1861346 words of memory out of 5000000
+ 52264 multiletter control sequences out of 15000+600000
+ 529459 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,94p,681b,1767s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,94p,681b,1765s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist
+, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
 , replaced by a fixed one
@@ -1240,25 +1383,26 @@ ibrary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi60
 nts/pk/ljfour/jknappen/ec/dpi600/ecrm0800.pk> </Users/havard/Library/Applicatio
 n Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0600.pk> </
 Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jkn
-appen/ec/dpi600/ecrm0700.pk> </Users/havard/Library/Application Support/MiKTeX/
-texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk> </Users/havard/Libr
+appen/ec/dpi600/ecbx1200.pk> </Users/havard/Library/Application Support/MiKTeX/
+texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0700.pk> </Users/havard/Libr
 ary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/e
-cbx1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts
-/pk/ljfour/jknappen/ec/dpi600/ecrm1000.pk> </Users/havard/Library/Application S
-upport/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti1000.pk> </Use
+ctt1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts
+/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk> </Users/havard/Library/Application S
+upport/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1000.pk> </Use
 rs/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknapp
-en/ec/dpi600/ecrm1440.pk> </Users/havard/Library/Application Support/MiKTeX/tex
-mfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1200.pk> </Users/havard/Library
-/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx
-1440.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk
-/ljfour/jknappen/ec/dpi600/ecbx2074.pk> </Users/havard/Library/Application Supp
-ort/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm3583.pk></Library
-/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/
-msam10.pfb>
+en/ec/dpi600/ecti1000.pk> </Users/havard/Library/Application Support/MiKTeX/tex
+mfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1440.pk> </Users/havard/Library
+/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm
+1200.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk
+/ljfour/jknappen/ec/dpi600/ecbx1440.pk> </Users/havard/Library/Application Supp
+ort/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx2074.pk> </Users/
+havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/
+ec/dpi600/ecrm3583.pk></Library/Application Support/MiKTeX/texmfs/install/fonts
+/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (4 pages, 176393 bytes).
+t.pdf (5 pages, 195195 bytes).
 PDF statistics:
- 493 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
+ 557 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

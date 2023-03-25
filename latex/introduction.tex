@@ -27,21 +27,23 @@ apparent, leading to the development of more sophisticated methods like Universa
 (UAF)~\cite{fido_uaf_overview} and WebAuthn\cite{webauthn_level_2} through the Fast IDentity Online Alliance
 \href{https://fidoalliance.org}{(FIDO)} and The \href{https://www.w3.org}{World Wide Web Consortium} (W3C).
 
-WebAuthn, short for Web Authentication, is an open standard for web-based authentication that enables users to
-securely access online web services without relying on a traditional password.
-Through a collaborative effort between FIDO and W3C, WebAuthn is developed to leverage asymmetric cryptography\footnote{
-    Asymmetric cryptography uses a key pair consisting of a public key and a private key. The public key encrypts
-    data, while the private key decrypts it. The keys are mathematically related, but deriving one from the other 
-    is infeasible, ensuring secure communication and data exchange.}\footnote{
+\newcommand{\assymetricCrypto}{\footnote{Asymmetric cryptography uses a key pair consisting of public and private keys. The public key encrypts
+data, while the private key decrypts it. The keys are mathematically related, but deriving one from the other
+is infeasible, ensuring secure communication and data exchange.}}
+\newcommand{\jsonwebLibrary}{\footnote{
     \textbf{Note:} According to the library used to implement
     \href{https://docs.rs/jsonwebtoken/latest/jsonwebtoken/index.html}{jsonwebtokens in Rust}
     it is the private key that encrypts and the public key is responsible for \href{https://docs.rs/jsonwebtoken/latest/jsonwebtoken/struct.DecodingKey.html#method.from_rsa_pem}
-    {decrypting}. \textit{Last Accessed: 2023-03-25}.}
-and biometric or hardware-based authenticators to provide a more secure and robust authentication experience.
+    {decrypting}. \textit{Last Accessed: 2023-03-25}.}}
 
-This report delves into the implementation of LessPM, a passwordless password manager that leverages WebAuthn to provide a secure
-authentication experience, free from the constraints of traditional passwords, while placing a strong emphasis on
-security.
+WebAuthn, short for Web Authentication, is an open standard for web-based authentication that enables users to
+securely access online web services without relying on a traditional password.
+Through a collaborative effort between FIDO and W3C, WebAuthn is developed to leverage asymmetric cryptography
+\assymetricCrypto\jsonwebLibrary and biometric or hardware-based authenticators to provide a more secure and robust authentication experience.
+
+This report delves into the implementation of LessPM, a passwordless password manager that leverages WebAuthn to provide
+a secure authentication experience, free from the constraints of traditional passwords, while placing a strong emphasis
+on security.
 By examining recent advancements in authentication mechanisms and the related innovative potential of WebAuthn, we
 hope to illuminate the prospects of a passwordless future in digital security.
 

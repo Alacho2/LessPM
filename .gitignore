@@ -5,3 +5,10 @@
 /client/node_modules
 /client/.parcel-cache
 /server/keys
+.pnp.*
+client/.yarn/*
+!client/.yarn/patches
+!client/.yarn/plugins
+!client/.yarn/releases
+!client/.yarn/sdks
+!client/.yarn/versions

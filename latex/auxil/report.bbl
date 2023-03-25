@@ -138,6 +138,57 @@
       \verb http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D6%3Achapter%3D34
       \endverb
     \endentry
+    \entry{wang2018next}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=b1eac6ed691ecfe6953dee96e5a93e40}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Chun},
+           giveni={C\bibinitperiod}}}%
+        {{hash=834b6ef3d657bb5ac2b2bc15efb85217}{%
+           family={Jan},
+           familyi={J\bibinitperiod},
+           given={Steve\bibnamedelima TK},
+           giveni={S\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=47e44afc52489194b29302db4ff05bb2}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Hang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=dab5c036b75437f233e3b6dd03d5cb31}{%
+           family={Bossart},
+           familyi={B\bibinitperiod},
+           given={Douglas},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3d33b99ab2b9fa2c7987e1d7f5873222}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Gang},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{9850c425aa90bb2fe74b2e469c0f1772}
+      \strng{fullhash}{85ba020b6b4a8bcdb55d972b40bafd27}
+      \strng{bibnamehash}{9850c425aa90bb2fe74b2e469c0f1772}
+      \strng{authorbibnamehash}{9850c425aa90bb2fe74b2e469c0f1772}
+      \strng{authornamehash}{9850c425aa90bb2fe74b2e469c0f1772}
+      \strng{authorfullhash}{85ba020b6b4a8bcdb55d972b40bafd27}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{The Next Domino to Fall: Empirical Analysis of User Passwords across Online Services}
+      \field{year}{2018}
+      \verb{doi}
+      \verb https://doi.org/10.1145/3176258.3176332
+      \endverb
+      \verb{urlraw}
+      \verb https://people.cs.vt.edu/gangwang/pass.pdf
+      \endverb
+      \verb{url}
+      \verb https://people.cs.vt.edu/gangwang/pass.pdf
+      \endverb
+    \endentry
     \entry{webauthn_credential_id}{misc}{}
       \list{organization}{1}{%
         {World Wide Web Consortium}%

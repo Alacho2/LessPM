@@ -1,2 +1,37 @@
-Blablabblaaa
-% This section might be split up into two parts
+
+JSON Web Token (JWT) was introduced as part of RFC 7519 in 2015~\cite{RFC7519}.
+It is a compact URL-safe string intended to transfer data between two entities.
+They can be used as part of an authentication and authorization scheme in a web
+service, application, or API\@.
+The data in the string is intended as a payload and is referenced as a
+\texttt{claim}~\cite{RFC7519}.
+
+A JWT typically consist of three parts: header, payload, and signature.
+The header and payload are serialized into JavaScript Object Notation (JSON)
+and then encoded using a Base64Url encoding to ensure a URL-safe
+format~\cite{RFC7519}.
+
+The token contains an expiry timestamp, which, when decoded, is validated if
+the timestamp is not passed at the time of decoding.
+JWTs can be cryptographically signed using various algorithms like Hash-Based
+Message Authentication (HMAC), Rivest-Shamir-Adleman (RSA), or
+Elliptic-Curve Digital Signature Algorithm (ECDSA) ensuring the integrity and
+authenticity of the token~\cite{RFC7519}.
+This prevents unknown authorities from constructing or hijacking existing
+tokens.\footnote{
+  Hijacking a token could happen by a man-in-the-middle attack.
+  This is done by a third-party individual listening and intercepting traffic
+  in order to either read data or input their own in a client's request.
+  This would allow an attacker to gain access to privileged information.
+}
+The URL-safe format of a JWT is often performed through a Base64 string, which
+permits larger bits of data to be sent in a compressed, safe\footnote{
+  Safe in this context should not be interchanged with secure.
+  We reference safe as a way to transfer the data over the selected protocol,
+  in most cases HTTP(S).
+} format~\cite{RFC7519}.
+JWTs are widely used for scenarios like single sign-on (SSO), user
+authentication, and securing API endpoints by providing an efficient, stateless
+mechanism for transmitting information about the user's identity, permissions,
+and other relevant data~\cite{karande2018securingnode}.
+% This section might be split up into two parts, dividing JWT and JWE

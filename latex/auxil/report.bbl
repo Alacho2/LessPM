@@ -141,6 +141,68 @@
       \field{title}{FIDO UAF Overview}
       \field{year}{2017}
     \endentry
+    \entry{RFC7519}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=bfa19f15a98d15831cd377b8813e6672}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Michael\bibnamedelima B.},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=81e40ae87af997090fa9a9696e364c65}{%
+           family={Bradley},
+           familyi={B\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=34e6848475fd66697bfcb80787f2aef0}{%
+           family={Sakimura},
+           familyi={S\bibinitperiod},
+           given={Nat},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Internet Engineering Task Force (IETF)}%
+      }
+      \strng{namehash}{8456e57585316c5ad570515143f00129}
+      \strng{fullhash}{8456e57585316c5ad570515143f00129}
+      \strng{bibnamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authorbibnamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authornamehash}{8456e57585316c5ad570515143f00129}
+      \strng{authorfullhash}{8456e57585316c5ad570515143f00129}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.rfc-editor.org/rfc/rfc7519}}
+      \field{month}{5}
+      \field{note}{Accessed: 2023-03-26}
+      \field{title}{RFC 7519 - JSON Web Token (JWT)}
+      \field{year}{2015}
+    \endentry
+    \entry{karande2018securingnode}{book}{}
+      \name{author}{1}{}{%
+        {{hash=fae3731e617fef3360299f943c27d171}{%
+           family={Karande},
+           familyi={K\bibinitperiod},
+           given={Chetan},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media, Inc.}%
+      }
+      \strng{namehash}{fae3731e617fef3360299f943c27d171}
+      \strng{fullhash}{fae3731e617fef3360299f943c27d171}
+      \strng{bibnamehash}{fae3731e617fef3360299f943c27d171}
+      \strng{authorbibnamehash}{fae3731e617fef3360299f943c27d171}
+      \strng{authornamehash}{fae3731e617fef3360299f943c27d171}
+      \strng{authorfullhash}{fae3731e617fef3360299f943c27d171}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781491999644}
+      \field{title}{Securing Node Applications: Protecting Against Malicious Attacks}
+      \field{year}{2018}
+    \endentry
     \entry{levy1984hackers}{book}{}
       \name{author}{1}{}{%
         {{hash=7e521cf3616b7c888d511a80e9b82ad5}{%

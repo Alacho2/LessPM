@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  26 MAR 2023 20:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  26 MAR 2023 21:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1123,41 +1123,41 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
  (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:583: Illeg
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:605: Illeg
 al parameter number in definition of \NewValue.
 <to be read again> 
                    c
-l.583 ...www.w3.org/TR/webauthn-2/#credential-id}}
+l.605 ...www.w3.org/TR/webauthn-2/#credential-id}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:587: Illeg
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:609: Illeg
 al parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    c
-l.587     \endentry
+l.609     \endentry
                    
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:595: Illeg
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:617: Illeg
 al parameter number in definition of \NewValue.
 <to be read again> 
                    d
-l.595 ...dom-publickeycredential-identifier-slot}}
+l.617 ...dom-publickeycredential-identifier-slot}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:599: Illeg
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:621: Illeg
 al parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    d
-l.599     \endentry
+l.621     \endentry
                    
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
@@ -1175,7 +1175,7 @@ Package biblatex Info: Reference section=0 on input line 57.
 Package biblatex Info: Reference segment=0 on input line 57.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<images/HR_logo_hringur_transparent.png, id=66, 593.21625pt x 593.21625pt>
+<images/HR_logo_hringur_transparent.png, id=74, 593.21625pt x 593.21625pt>
 File: images/HR_logo_hringur_transparent.png Graphic file (type png)
 <use images/HR_logo_hringur_transparent.png>
 Package pdftex.def Info: images/HR_logo_hringur_transparent.png  used on input 
@@ -1284,26 +1284,26 @@ Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 [2]
-<images/Registration.png, id=136, 1728.4575pt x 1299.85625pt>
+<images/Registration.png, id=144, 1728.4575pt x 1299.85625pt>
 File: images/Registration.png Graphic file (type png)
 <use images/Registration.png>
 Package pdftex.def Info: images/Registration.png  used on input line 46.
 (pdftex.def)             Requested size: 298.11374pt x 224.18578pt.
  [3 <./images/Registration.png>]
-<images/Authentication.png, id=149, 1710.39pt x 1288.815pt>
+<images/Authentication.png, id=157, 1710.39pt x 1288.815pt>
 File: images/Authentication.png Graphic file (type png)
 <use images/Authentication.png>
 Package pdftex.def Info: images/Authentication.png  used on input line 82.
 (pdftex.def)             Requested size: 317.98921pt x 239.60698pt.
 ) (methodology/aes.tex [4 <./images/Authentication.png>]) (methodology/argon2.t
-ex [5]) (methodology/JWT.tex [6]))
-(methodology/methodology.tex) (futurework.tex [7]) [8]
+ex [5]) [6] (methodology/JWT.tex [7]))
+(methodology/methodology.tex) (futurework.tex [8]) [9]
 Overfull \hbox (1.25128pt too wide) in paragraph at lines 159--159
 []\T1/cmr/m/n/10 NIST. \T1/cmr/m/it/10 Com-merce De-part-ment An-nounces Win-ne
 r of Global In-for-ma-tion Se-cu-rity Com-
  []
 
-[9]
+[10]
 Overfull \hbox (16.45734pt too wide) in paragraph at lines 159--159
 []\T1/cmr/m/n/10 The Pass-word Hash-ing Com-pe-ti-tion. \T1/cmr/m/it/10 Pass-wo
 rd Hash-ing Com-pe-ti-tion\T1/cmr/m/n/10 . []$\T1/cmtt/m/n/10 https : / / passw
@@ -1366,25 +1366,30 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[10] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
+[11] [12] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux
+)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 117.74374pt have occurred.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 23E5E078E1D8A42E87C884AC78BC69B4;1967.
+(rerunfilecheck)             Checksum: 6CF11365A7ABCAD7FF3C8A70115AAED4;2280.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32544 strings out of 476344
- 626542 string characters out of 5785310
- 1864346 words of memory out of 5000000
- 52387 multiletter control sequences out of 15000+600000
+ 32555 strings out of 476344
+ 626780 string characters out of 5785310
+ 1865346 words of memory out of 5000000
+ 52392 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,94p,681b,1767s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.16} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not exis
 t, replaced by a fixed one
@@ -1477,9 +1482,9 @@ tall/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Application Support/MiKT
 eX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Library/Applicatio
 n Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (11 pages, 438422 bytes).
+t.pdf (13 pages, 445297 bytes).
 PDF statistics:
- 870 PDF objects out of 1000 (max. 8388607)
- 72 named destinations out of 1000 (max. 500000)
- 148 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 902 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 164 words of extra memory for PDF output out of 10000 (max. 10000000)
 

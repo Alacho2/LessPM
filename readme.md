@@ -25,6 +25,7 @@ Mongo was installed through tapping brew. Install instruction can be found here:
 https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
 
 After you have rust and mongodb up and running, you should be able to build the project through 
+Before running this command, you need to be in the server folder.
 ```
 cargo build && cargo run
 ```
@@ -65,6 +66,7 @@ The client is, I hope, a little bit simpler. Well, depends how much
 javascript you have been using recently. 
 You need yarn, as that was the building system that I chose.
 After these are installed, you can run
+Before running these commands, you need to be in the client folder.
 ```
 yarn install;
 yarn website:https

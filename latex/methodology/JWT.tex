@@ -1,4 +1,9 @@
+Although JSON Web Tokens (JWTs)~\cite{RFC7519} are not inherently encrypted,
+they still serve an essential purpose for some forms of secure data transfer.
+By combining JWTs with JSON Web Encryption (JWE)~\cite{rfc7516}, secure data
+transfer between a client and a server can be achieved.
 
+\subsubsection{JSON Web Token}
 JSON Web Token (JWT) was introduced as part of RFC 7519 in 2015~\cite{RFC7519}.
 It is a compact URL-safe string intended to transfer data between two entities.
 They can be used as part of an authentication and authorization scheme in a web
@@ -24,7 +29,8 @@ tokens.\footnote{
   in order to either read data or input their own in a client's request.
   This would allow an attacker to gain access to privileged information.
 }
-The URL-safe format of a JWT is often performed through a Base64 string, which
+
+The URL-safe format of a JWT is often performed through a Base64 encoding, which
 permits larger bits of data to be sent in a compressed, safe\footnote{
   Safe in this context should not be interchanged with secure.
   We reference safe as a way to transfer the data over the selected protocol,
@@ -34,4 +40,30 @@ JWTs are widely used for scenarios like single sign-on (SSO), user
 authentication, and securing API endpoints by providing an efficient, stateless
 mechanism for transmitting information about the user's identity, permissions,
 and other relevant data~\cite{karande2018securingnode}.
+
+The process functions as follows:
+\begin{itemize}
+  \item The client completed an authentication request.
+  \item A token is constructed and created through a claim on the server.
+  \item The claim can be any data the server wishes to use to authenticate the
+  legitimacy of a future request.
+  \item The claim gets signed with a desired algorithm.
+  This can also be a secret, stored on the server.
+  \item As part of the response to a request, the server appends the token.\footnote{
+    A common place to embed these tokens is in the Authroization part of the
+    HTTP header~\cite{RFC7519}.
+  }
+  \item The client receives the token and carries it upon the next performed
+  request.
+  \item When the server receives the token again, it validates the \texttt{exp}
+  property of the JSON object and takes action accordingly.
+\end{itemize}
+
+\subsubsection{JSON Web Encryption}
+Complimenting the JWT standard are JWEs.
+There are many parallels between the two but the major distinction between them
+are that JWEs are encrypted~\cite{rfc7516}.
+This encryption can happen through AES (see Section~\ref{subsec:aes}) and
+provides integrity and authenticity for the token.
+This prevents eavesdropping or tampering with the token during transit
 % This section might be split up into two parts, dividing JWT and JWE

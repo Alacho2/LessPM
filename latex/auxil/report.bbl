@@ -141,6 +141,28 @@
       \field{title}{FIDO UAF Overview}
       \field{year}{2017}
     \endentry
+    \entry{rfc7516}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=8156eae38e17275f0d4e90ae1051c2ab}{%
+           family={{IETF}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{8156eae38e17275f0d4e90ae1051c2ab}
+      \strng{fullhash}{8156eae38e17275f0d4e90ae1051c2ab}
+      \strng{bibnamehash}{8156eae38e17275f0d4e90ae1051c2ab}
+      \strng{authorbibnamehash}{8156eae38e17275f0d4e90ae1051c2ab}
+      \strng{authornamehash}{8156eae38e17275f0d4e90ae1051c2ab}
+      \strng{authorfullhash}{8156eae38e17275f0d4e90ae1051c2ab}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.rfc-editor.org/rfc/rfc7516.txt}}
+      \field{month}{5}
+      \field{note}{Accessed: 2023-03-26}
+      \field{title}{{RFC} 7516: JSON Web Encryption (JWE)}
+      \field{year}{2015}
+    \endentry
     \entry{RFC7519}{misc}{}
       \name{author}{3}{}{%
         {{hash=bfa19f15a98d15831cd377b8813e6672}{%
@@ -175,7 +197,7 @@
       \field{howpublished}{\url{https://www.rfc-editor.org/rfc/rfc7519}}
       \field{month}{5}
       \field{note}{Accessed: 2023-03-26}
-      \field{title}{RFC 7519 - JSON Web Token (JWT)}
+      \field{title}{{RFC} 7519 - JSON Web Token (JWT)}
       \field{year}{2015}
     \endentry
     \entry{karande2018securingnode}{book}{}

@@ -2382,11 +2382,15 @@
     <bcf:citekey order="29" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="30" intorder="1">passwordhashing</bcf:citekey>
     <bcf:citekey order="31" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">RFC7519</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">rfc7516</bcf:citekey>
     <bcf:citekey order="33" intorder="1">RFC7519</bcf:citekey>
     <bcf:citekey order="34" intorder="1">RFC7519</bcf:citekey>
     <bcf:citekey order="35" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">karande2018securingnode</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">RFC7519</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">RFC7519</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">karande2018securingnode</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">RFC7519</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">rfc7516</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

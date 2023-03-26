@@ -1,18 +1,18 @@
 The Advanced Encryption Standard (AES) is a symmetric\footnote{
-  Symmetric in this context refers to the key being the same to encrypt and
+  Symmetric in this context refers to the same key to encrypt and
   decrypt.
 } key encryption algorithm.
-Since its inception in 1998, it has become the gold standard to encrypt various
+Since its inception in 1998, it has become the gold standard for encrypting various
 information across applications~\cite{schneier2015applied,rijndael_book}, being adopted as the
-successor of Data Encryption Standard (DES) by The National Institute of 
+the successor of the Data Encryption Standard (DES) by The National Institute of
 Standards and Technology (NIST) in 2001~\cite{nist_aes_winner}.
-AES operates on a fixed-sizes units of data referred to as \texttt{blocks}~\cite{nistfips197blocks},
+AES operates on fixed-sizes units of data referred to as \texttt{blocks}~\cite{nistfips197blocks},
 supporting keys of sizes 128-, 192-, and 256-bit~\cite{nistfips197intro}.
-The design is based on a Substitution-Permutation Network (SPN) structure, which
-combines substitution and permutation to provide a high level of security
-through multiple rounds of processing~\cite{nistfips197specification}.
-AES with 256-bit key-length (henceforth referred to as AES-256 in the rest
-of the document), employs a 256-bit key and consists of 14 rounds of encryption,
+A Substitution-Permutation Network (SPN) structure forms the basis of the design,
+which achieves a high level of security through multiple rounds of processing by
+combining substitution and permutation~\cite{nistfips197specification}.
+AES with 256-bit key length (hereafter referred to as AES-256 in the rest
+of the report), employs a 256-bit key and consists of 14 rounds of encryption,
 offering an advanced level of security compared to its counterparts with shorter
 key lengths and fewer rounds~\cite{nistfips197256}.
 In each round of encryption, AES-256 undergoes four primary transformations:
@@ -21,7 +21,7 @@ In each round of encryption, AES-256 undergoes four primary transformations:
     \item \textbf{SubBytes} is a non-linear substitution step where each byte is replaced with
     another according to a predefined lookup table.
     \item \textbf{ShiftRows} is a transposition step where each row of the state
-    is shifted cyclically a certain number of steps.
+    is shifted cyclically over a certain number of steps.
     \item \textbf{MixColumns} is a mixing operation that operates on the columns of the state,
     combining the four bytes in each column.
     \item \textbf{AddRoundedKey} combines the subkey with the state\protect\footnotemark
@@ -33,14 +33,13 @@ In each round of encryption, AES-256 undergoes four primary transformations:
 \footnotetext{The term \texttt{state} refers to an intermediate result that changes as
 the algorithm progress through its phases.}
 \newline
-The larger key-size in AES-256 provides an exponential increase in number of
+The larger key-size in AES-256 provides an exponential increase in the number of
 possible keys, making it significantly more resilient to brute-force attacks
 and further solidifying its position as a robust encryption standard for
-safe-guarding sensitive information.\footnote{
+safeguarding sensitive information.\footnote{
   The practical number of potential keys for an AES-256 implementation is
   $2^{256}$ possibilities. This gives us an approximation of $1.1579209 \times 10^{77}$
   options.
-  The number is theoretical, as this is a worst-case scenario of options that an
-  attacker has to go through in order to find the right key.
+  The number is theoretical, as this is a worst-case scenario of options an attacker must go through to find the right key.
 }
 

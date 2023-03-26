@@ -19,6 +19,38 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{argon2specs}{report}{}
+      \name{author}{1}{}{%
+        {{hash=f4d0c7d0e6c30d376b425fb90c898349}{%
+           family={al.},
+           familyi={a\bibinitperiod},
+           given={Alex\bibnamedelimb Biryukov\bibnamedelima Et},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Luxembourg}%
+      }
+      \strng{namehash}{f4d0c7d0e6c30d376b425fb90c898349}
+      \strng{fullhash}{f4d0c7d0e6c30d376b425fb90c898349}
+      \strng{bibnamehash}{f4d0c7d0e6c30d376b425fb90c898349}
+      \strng{authorbibnamehash}{f4d0c7d0e6c30d376b425fb90c898349}
+      \strng{authornamehash}{f4d0c7d0e6c30d376b425fb90c898349}
+      \strng{authorfullhash}{f4d0c7d0e6c30d376b425fb90c898349}
+      \field{sortinit}{a}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on: March 25, 2023}
+      \field{title}{Argon2: The memory-hard function for password hashing and other applications}
+      \field{type}{techreport}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://github.com/P-H-C/phc-winner-argon2/blob/master/argon2-specs.pdf
+      \endverb
+      \verb{url}
+      \verb https://github.com/P-H-C/phc-winner-argon2/blob/master/argon2-specs.pdf
+      \endverb
+    \endentry
     \entry{ctss_programmers_guide}{book}{}
       \list{publisher}{1}{%
         {MIT Press}%
@@ -380,6 +412,26 @@
       \verb{url}
       \verb https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
       \endverb
+    \endentry
+    \entry{passwordhashing}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=884b39d09122738ddaf3675684f08eb9}{%
+           family={{The Password Hashing Competition}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{884b39d09122738ddaf3675684f08eb9}
+      \strng{fullhash}{884b39d09122738ddaf3675684f08eb9}
+      \strng{bibnamehash}{884b39d09122738ddaf3675684f08eb9}
+      \strng{authorbibnamehash}{884b39d09122738ddaf3675684f08eb9}
+      \strng{authornamehash}{884b39d09122738ddaf3675684f08eb9}
+      \strng{authorfullhash}{884b39d09122738ddaf3675684f08eb9}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://password-hashing.net}}
+      \field{note}{Accessed on: March 25, 2023}
+      \field{title}{Password Hashing Competition}
     \endentry
     \entry{webauthn_authenticator_data}{online}{}
       \name{author}{1}{}{%

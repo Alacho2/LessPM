@@ -1,20 +1,20 @@
 [0] Config.pm:306> INFO - This is Biber 2.18
 [0] Config.pm:309> INFO - Logfile is 'report.blg'
-[76] biber-darwin:340> INFO - === Sun Mar 26, 2023, 16:30:49
-[94] Biber.pm:418> INFO - Reading 'report.bcf'
-[181] Biber.pm:978> INFO - Found 19 citekeys in bib section 0
-[195] Biber.pm:4401> INFO - Processing section 0
-[206] Biber.pm:4592> INFO - Looking for bibtex file 'main.bib' for section 0
-[207] bibtex.pm:1713> INFO - LaTeX decoding ...
-[227] bibtex.pm:1518> INFO - Found BibTeX data source '/Users/havard/Programmering/skole/dada/lesspm/latex/main.bib'
-[352] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[352] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[352] Biber.pm:4221> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[352] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
-[371] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[378] bbl.pm:757> INFO - Output to report.bbl
-[378] Biber.pm:130> WARN - legacy month field 'September' in entry 'yan2000password' is not an integer - this will probably not sort properly.
-[378] Biber.pm:130> WARN - legacy month field 'March' in entry 'wang2018next' is not an integer - this will probably not sort properly.
-[378] Biber.pm:130> WARN - legacy month field 'oct' in entry 'nist_aes_winner' is not an integer - this will probably not sort properly.
-[378] Biber.pm:130> WARN - I didn't find a database entry for 'lol' (section 0)
-[378] Biber.pm:132> INFO - WARNINGS: 4
+[69] biber-darwin:340> INFO - === Sun Mar 26, 2023, 19:13:11
+[92] Biber.pm:418> INFO - Reading 'report.bcf'
+[161] Biber.pm:978> INFO - Found 21 citekeys in bib section 0
+[173] Biber.pm:4401> INFO - Processing section 0
+[183] Biber.pm:4592> INFO - Looking for bibtex file 'main.bib' for section 0
+[186] bibtex.pm:1713> INFO - LaTeX decoding ...
+[204] bibtex.pm:1518> INFO - Found BibTeX data source '/Users/havard/Programmering/skole/dada/lesspm/latex/main.bib'
+[326] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[326] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[326] Biber.pm:4221> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[327] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
+[349] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[356] bbl.pm:757> INFO - Output to report.bbl
+[356] Biber.pm:130> WARN - legacy month field 'September' in entry 'yan2000password' is not an integer - this will probably not sort properly.
+[356] Biber.pm:130> WARN - legacy month field 'March' in entry 'wang2018next' is not an integer - this will probably not sort properly.
+[356] Biber.pm:130> WARN - legacy month field 'oct' in entry 'nist_aes_winner' is not an integer - this will probably not sort properly.
+[356] Biber.pm:130> WARN - I didn't find a database entry for 'lol' (section 0)
+[356] Biber.pm:132> INFO - WARNINGS: 4

@@ -24,6 +24,7 @@ const AUTH_HEADER = "authorization";
 const Vault = (props) => {
   const [passwords, setPasswords] = useState([]);
   const [passwordMap, setPasswordMap] = useState(new Map());
+  const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     getPasswords();
@@ -94,6 +95,7 @@ const Vault = (props) => {
       if (!credentialsToSend) {
         return;
       }
+      setProcessing(true);
 
       const body = {
         credentials: credentialsToSend,
@@ -117,6 +119,7 @@ const Vault = (props) => {
             return cloned;
           });
         }, 15000);
+        setProcessing(false);
         return new Map(prevState).set(bson, rtnBody.msg);
       })
 
@@ -180,13 +183,18 @@ const Vault = (props) => {
                   }</div>
                 </div>
               );
-
             })
           }
         </div>
 
-      {isAuthenticated && !passwords.length && <p>Doesn't seem like you have any passwords, matey</p>}
-      {!isAuthenticated && <p>Not sure how you ended up here but yeah...</p>}
+        {isAuthenticated && !passwords.length && <p>Doesn't seem like you have any passwords, matey</p>}
+        {!isAuthenticated && <p>Not sure how you ended up here but yeah...</p>}
+        {processing && <h3
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "6px",
+        }}>Processing...</h3>}
       </div>
     </div>
   )

@@ -120,7 +120,7 @@ impl Keys {
 }
 
 pub struct EncryptionProcess {
-  pub salt: [u8; 12],
+  pub salt: [u8; 16],
   pub nonce: [u8; 12],
   pub key_padding: Vec<u8>,
   pub random_padding: [u8; 12],
@@ -169,12 +169,12 @@ impl EncryptionProcess {
     res
   }
 
-  fn generate_a_salt() -> [u8; 12] {
-    let salt: [u8; 12] = rand::thread_rng().gen();
+  fn generate_a_salt() -> [u8; 16] {
+    let salt: [u8; 16] = rand::thread_rng().gen();
     salt
   }
 
-  fn hash_construct_helper(arr: [u8; 52], pretended_salt: [u8; 12]) -> [u8; 32] {
+  fn hash_construct_helper(arr: [u8; 52], pretended_salt: [u8; 16]) -> [u8; 32] {
     // You gone goofed up if you didn't configure these in an .env file
     let memory: u32 = std::env::var("MEMORY").unwrap().parse().unwrap();
     let iterations: u32 = std::env::var("ITERATIONS").unwrap().parse().unwrap();

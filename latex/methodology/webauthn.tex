@@ -48,12 +48,14 @@ with the UID that the user used to sign up included in the request body.
 If the server can find an associated user with the UID in the persisted storage,
 the server responds by initiating and issuing an Authentication Ceremony (AC)
 containing a challenge.
+
 The client calls the browser-integrated WebAuthn API, prompting the use of the
 Authenticator to validate and sign the challenge.
 Unlike the registration process, the Authenticator now yields a signature, which is forwarded to the RP along with
 Authenticator-specific data~\cite{webauthn_authenticator_data}.
 Upon receiving the data, the Relying Party (RP) validates the signed challenge using the stored credentials.
 If the validation succeeds, the server authenticates the user.
+
 The RP can then determine the next steps, such as deciding the authentication
 duration and establishing methods for persisting and validating the
 authentication.\footnote{
@@ -65,7 +67,7 @@ authentication.\footnote{
 the ceremony is aborted and considered invalid.
 
 
-This process can be seen in~\ref{fig:authentication}.
+This process can be seen in figure~\ref{fig:authentication}.
 
 \begin{figure}[htbp]
   \centering

@@ -2364,12 +2364,15 @@
     <bcf:citekey order="12" intorder="2">webauthn_public_key_credential</bcf:citekey>
     <bcf:citekey order="13" intorder="1">wang2018next</bcf:citekey>
     <bcf:citekey order="14" intorder="1">webauthn_authenticator_data</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">rijndael_book</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">schneier2015applied</bcf:citekey>
+    <bcf:citekey order="15" intorder="2">rijndael_book</bcf:citekey>
     <bcf:citekey order="16" intorder="1">nist_aes_winner</bcf:citekey>
     <bcf:citekey order="17" intorder="1">nistfips197blocks</bcf:citekey>
     <bcf:citekey order="18" intorder="1">nistfips197intro</bcf:citekey>
     <bcf:citekey order="19" intorder="1">nistfips197specification</bcf:citekey>
     <bcf:citekey order="20" intorder="1">nistfips197256</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">nistfips197specification</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">nistfips197specification</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

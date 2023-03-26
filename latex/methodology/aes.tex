@@ -1,0 +1,20 @@
+The Advanced Encryption Standard (AES) is a symmetric\footnote{
+  Symmetric in this context refers to the key being the same to encrypt and
+  decrypt.
+} key encryption algorithm.
+Since its inception in 1998, it has become the gold standard to encrypt various
+information across applications~\cite{rijndael_book}, being adopted as the
+successor of Data Encryption Standard (DES) by The National Institute of 
+Standards and Technology (NIST) in 2001~\cite{nist_aes_winner}.
+AES operates on a fixed-sizes units of data referred to as \texttt{blocks}~\cite{nistfips197blocks},
+supporting keys of sizes 128-, 192-, and 256-bit~\cite{nistfips197intro}.
+The design is based on a Substitution-Permutation Network (SPN) structure, which
+combines substitution and permutation to provide a high level of security
+through multiple rounds of processing~\cite{nistfips197specification}.
+AES with 256-bit key-length (henceforth referred to as AES-256 in the rest
+of the document), employs a 256-bit key and consists of 14 rounds of encryption,
+offering an advanced level of security compared to its counterparts with shorter
+key lengths and fewer rounds~\cite{nistfips197256}.\footnote{
+  The theoretical number of keys possible for an AES-256 implementation is
+  $2^{256}$ options of keys. This gives us an approximation of $1.1579209 \times 10^{77}$.
+}

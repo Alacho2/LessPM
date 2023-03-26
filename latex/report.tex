@@ -8,7 +8,6 @@
 \usepackage{listings}
 \usepackage{biblatex}
 \usepackage{enumitem}
-\addbibresource{main.bib}
 \usepackage{appendix}
 \usepackage{titling}
 \usepackage[labelfont=bf]{caption}
@@ -16,6 +15,7 @@
 \usepackage{draftwatermark}
 \usepackage{todonotes}
 \usepackage{amssymb}
+\addbibresource{main.bib}
 \SetWatermarkText{Draft}
 \onehalfspacing
 
@@ -116,7 +116,7 @@
     \fi
 
 
-    \section*{Executive Summary}
+    \section{Executive Summary}\label{sec:executive-summary}
 
     Test\cite{lol}
 
@@ -137,17 +137,21 @@
 
     \fi
 
-    \section*{Abstract}
+    \section{Abstract}\label{sec:abstract}
 
-    \section*{Introduction}
+    \section{Introduction}\label{sec:introduction}
     \input{introduction}
 
-    \section*{Methodology}
-    \input{methodology}
+    \section{Background}\label{sec:background}
+    \input{background}
 
-    \section*{Conclusion}
+    \section{Methodology}\label{sec:methodology}
+    \input{methodology/methodology}
 
-    \section*{Future work}\label{sec:futurework}
+    \section{Conclusion}\label{sec:conclusion}
+
+
+    \section{Future work}\label{sec:futurework}
     \input{futurework}
     \newpage
     \printbibliography

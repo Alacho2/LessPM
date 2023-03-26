@@ -15,10 +15,16 @@ This is where the client will run
 
 ### Server
 The server is developed on an instance of Rust which is v1.67. 
-I recommend this version, and you can find install instruction 
+* Rust: v1.67.0
+* MongoDB: v6.0.4
+
+I recommend these versions, and you can find install instruction 
 for the latest version here: https://www.rust-lang.org/tools/install
 
-After you have rust up and running, you should be able to build the project through 
+Mongo was installed through tapping brew. Install instruction can be found here:
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
+
+After you have rust and mongodb up and running, you should be able to build the project through 
 ```
 cargo build && cargo run
 ```
@@ -56,7 +62,7 @@ Requirements (these were the versions I used):
 * Yarn: v3.5.0
 
 The client is, I hope, a little bit simpler. Well, depends how much 
-javascript you have been using recently 
+javascript you have been using recently. 
 You need yarn, as that was the building system that I chose.
 After these are installed, you can run
 ```
@@ -69,6 +75,9 @@ Again, if you can't use 1234, you'll have to reconfigure CORS on the server
 to the port you want to use. Fun. :-)
 
 If everything goes to plan, checkout https://localhost:1234. 
+I tested the system using an iPhone 13 Pro Max, a Samsung S21,
+and a Samsung A52.
 
+As you would say,
 
 Have fun!

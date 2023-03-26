@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  25 MAR 2023 21:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  26 MAR 2023 15:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1123,41 +1123,41 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
  (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:199: Illeg
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:443: Illeg
 al parameter number in definition of \NewValue.
 <to be read again> 
                    c
-l.199 ...www.w3.org/TR/webauthn-2/#credential-id}}
+l.443 ...www.w3.org/TR/webauthn-2/#credential-id}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:203: Illeg
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:447: Illeg
 al parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    c
-l.203     \endentry
+l.447     \endentry
                    
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:211: Illeg
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:455: Illeg
 al parameter number in definition of \NewValue.
 <to be read again> 
                    d
-l.211 ...dom-publickeycredential-identifier-slot}}
+l.455 ...dom-publickeycredential-identifier-slot}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:215: Illeg
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:459: Illeg
 al parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    d
-l.215     \endentry
+l.459     \endentry
                    
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
@@ -1175,7 +1175,7 @@ Package biblatex Info: Reference section=0 on input line 56.
 Package biblatex Info: Reference segment=0 on input line 56.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<images/HR_logo_hringur_transparent.png, id=6, 593.21625pt x 593.21625pt>
+<images/HR_logo_hringur_transparent.png, id=58, 593.21625pt x 593.21625pt>
 File: images/HR_logo_hringur_transparent.png Graphic file (type png)
 <use images/HR_logo_hringur_transparent.png>
 Package pdftex.def Info: images/HR_logo_hringur_transparent.png  used on input 
@@ -1252,119 +1252,145 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.43 
-      [1]) (methodology.tex
-methodology.tex:22: Illegal parameter number in definition of \abx@field@howpub
-lished.
+      [1]) (background.tex (methodology/webauthn.tex
+methodology/webauthn.tex:8: Illegal parameter number in definition of \abx@fiel
+d@howpublished.
 <to be read again> 
                    c
-l.22 ...dential_id,webauthn_public_key_credential}
+l.8 ...edential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology.tex:22: Illegal parameter number in definition of \abx@field@howpub
-lished.
+methodology/webauthn.tex:8: Illegal parameter number in definition of \abx@fiel
+d@howpublished.
 <to be read again> 
                    c
-l.22 ...dential_id,webauthn_public_key_credential}
+l.8 ...edential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology.tex:22: Illegal parameter number in definition of \abx@field@howpub
-lished.
+methodology/webauthn.tex:8: Illegal parameter number in definition of \abx@fiel
+d@howpublished.
 <to be read again> 
                    d
-l.22 ...dential_id,webauthn_public_key_credential}
+l.8 ...edential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 [2]
-<images/Registration.png, id=75, 1728.4575pt x 1299.85625pt>
+<images/Registration.png, id=128, 1728.4575pt x 1299.85625pt>
 File: images/Registration.png Graphic file (type png)
 <use images/Registration.png>
-Package pdftex.def Info: images/Registration.png  used on input line 48.
-(pdftex.def)             Requested size: 337.86467pt x 254.0759pt.
- [3 <./images/Registration.png>]) (futurework.tex) [4]
-report.tex:154: Illegal parameter number in definition of \abx@field@howpublish
+Package pdftex.def Info: images/Registration.png  used on input line 38.
+(pdftex.def)             Requested size: 298.11374pt x 224.18578pt.
+ [3 <./images/Registration.png>]
+<images/Authentication.png, id=141, 1710.39pt x 1288.815pt>
+File: images/Authentication.png Graphic file (type png)
+<use images/Authentication.png>
+Package pdftex.def Info: images/Authentication.png  used on input line 72.
+(pdftex.def)             Requested size: 317.98921pt x 239.60698pt.
+) (methodology/JWT.tex) [4 <./images/Authentication.png>] (methodology/argon2.t
+ex) (methodology/aes.tex))
+(methodology/methodology.tex) (futurework.tex [5]) [6]
+Overfull \hbox (1.25128pt too wide) in paragraph at lines 158--158
+[]\T1/cmr/m/n/10 NIST. \T1/cmr/m/it/10 Com-merce De-part-ment An-nounces Win-ne
+r of Global In-for-ma-tion Se-cu-rity Com-
+ []
+
+[7]
+report.tex:158: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    c
-l.154 \end
+l.158 \end
           {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:154: Illegal parameter number in definition of \Hy@tempa.
+report.tex:158: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.154 \end
+l.158 \end
           {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:154: Illegal parameter number in definition of \Hy@tempa.
+report.tex:158: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.154 \end
+l.158 \end
           {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:154: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:158: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    d
-l.154 \end
+l.158 \end
           {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:154: Illegal parameter number in definition of \Hy@tempa.
+report.tex:158: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.154 \end
+l.158 \end
           {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:154: Illegal parameter number in definition of \Hy@tempa.
+report.tex:158: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.154 \end
+l.158 \end
           {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[5] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
+[8] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 117.74374pt have occurred.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: 055176E08F6BA9595AD48D10CC8C1661;1777.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32385 strings out of 476344
- 622200 string characters out of 5785310
- 1862346 words of memory out of 5000000
- 52285 multiletter control sequences out of 15000+600000
+ 32498 strings out of 476344
+ 625391 string characters out of 5785310
+ 1864346 words of memory out of 5000000
+ 52362 multiletter control sequences out of 15000+600000
  529459 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,94p,681b,1767s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist
+, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
 , replaced by a fixed one
@@ -1404,11 +1430,16 @@ mfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1440.pk> </Users/havard/Library
 ort/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx2074.pk> </Users/
 havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/
 ec/dpi600/ecrm3583.pk></Library/Application Support/MiKTeX/texmfs/install/fonts
-/type1/public/amsfonts/symbols/msam10.pfb>
+/type1/public/amsfonts/cm/cmmi8.pfb></Library/Application Support/MiKTeX/texmfs
+/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Library/Application Support/
+MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Applica
+tion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></L
+ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/sy
+mbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (6 pages, 266258 bytes).
+t.pdf (9 pages, 408342 bytes).
 PDF statistics:
- 562 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 758 PDF objects out of 1000 (max. 8388607)
+ 53 named destinations out of 1000 (max. 500000)
+ 132 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -322,19 +322,19 @@ async fn finish_authentication<'buf>(
       }
 
       /*
-      // TODO(Håvard): Update the key(s) and put it back. Maybe
-      // let mut users_guard = state.users.lock().await;
-      // users_guard.keys
-      //     .get_mut(&old_user_id)
-      //     .map(|keys|
-      //         keys.iter_mut().for_each(|sk| {
-      //           let size = std::mem::size_of_val(sk.cred_id());
-                // sk.update_credential(&auth_result);
-              // })
-          // ).ok_or("We goofed").unwrap();
+      TODO(Håvard): Update the key(s) and put it back. Maybe
+      let mut users_guard = state.users.lock().await;
+      users_guard.keys
+          .get_mut(&old_user_id)
+          .map(|keys|
+              keys.iter_mut().for_each(|sk| {
+                let size = std::mem::size_of_val(sk.cred_id());
+                sk.update_credential(&auth_result);
+              })
+          ).ok_or("We goofed").unwrap();
 
-      // Contrary to the JWT token standard, the user can be signed in for MAX
-      // 15 minutes.
+      Contrary to the JWT token standard, the user can be signed in for MAX
+      15 minutes.
        */
       let user = LoggedInUser {
         username,

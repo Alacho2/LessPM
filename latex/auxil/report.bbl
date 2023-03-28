@@ -51,6 +51,34 @@
       \verb https://github.com/P-H-C/phc-winner-argon2/blob/master/argon2-specs.pdf
       \endverb
     \endentry
+    \entry{appleSecureEnclave}{online}{}
+      \name{author}{1}{}{%
+        {{hash=3325b015fbae57ba74629a53f1ead961}{%
+           family={Apple},
+           familyi={A\bibinitperiod},
+           given={Inc},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{fullhash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{bibnamehash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{authorbibnamehash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{authornamehash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{authorfullhash}{3325b015fbae57ba74629a53f1ead961}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Secure Enclave}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
+      \endverb
+      \verb{url}
+      \verb https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
+      \endverb
+    \endentry
     \entry{bonneau2012science}{inproceedings}{}
       \name{author}{1}{}{%
         {{hash=e6eb78ec5f92eaff4e9d4b944aff4c9c}{%
@@ -166,6 +194,33 @@
       \field{note}{Accessed: 2023-03-25}
       \field{title}{FIDO UAF Overview}
       \field{year}{2017}
+    \endentry
+    \entry{huseynov2022passwordless}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=64073d77ebf7d1a3ff45348a825717ad}{%
+           family={Huseynov},
+           familyi={H\bibinitperiod},
+           given={Emin},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{64073d77ebf7d1a3ff45348a825717ad}
+      \strng{fullhash}{64073d77ebf7d1a3ff45348a825717ad}
+      \strng{bibnamehash}{64073d77ebf7d1a3ff45348a825717ad}
+      \strng{authorbibnamehash}{64073d77ebf7d1a3ff45348a825717ad}
+      \strng{authornamehash}{64073d77ebf7d1a3ff45348a825717ad}
+      \strng{authorfullhash}{64073d77ebf7d1a3ff45348a825717ad}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2022 4th International Conference on Data Intelligence and Security (ICDIS)}
+      \field{title}{Passwordless VPN Using FIDO2 Security Keys: Modern Authentication Security for Legacy VPN Systems}
+      \field{year}{2022}
+      \field{pages}{453\bibrangedash 455}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.1109/ICDIS55630.2022.00075
+      \endverb
     \endentry
     \entry{rfc7516}{misc}{}
       \name{author}{1}{}{%
@@ -470,6 +525,41 @@
       \field{year}{2022}
       \verb{doi}
       \verb 10.1109/ICSCDS53736.2022.9760934
+      \endverb
+    \endentry
+    \entry{NISTSP800-63-3}{report}{}
+      \name{author}{1}{}{%
+        {{hash=a3d9025f8c3737a8d5f17ce0d95b0c10}{%
+           family={Paul\bibnamedelimb A.\bibnamedelimi Grassi},
+           familyi={P\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={James\bibnamedelimb L.\bibnamedelimi Fenton},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim F\bibinitperiod},
+           suffix={Michael\bibnamedelimb E.\bibnamedelimi Garcia},
+           suffixi={M\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {National Institute of Standards}%
+        {Technology}%
+      }
+      \strng{namehash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
+      \strng{fullhash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
+      \strng{bibnamehash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
+      \strng{authorbibnamehash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
+      \strng{authornamehash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
+      \strng{authorfullhash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{SP 800-63-3}
+      \field{title}{{Digital Identity Guidelines: Authentication and Lifecycle Management}}
+      \field{type}{techreport}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf
+      \endverb
+      \verb{url}
+      \verb https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf
       \endverb
     \endentry
     \entry{perseus_tufts}{misc}{}

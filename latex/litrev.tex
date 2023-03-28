@@ -15,8 +15,8 @@ Passwords and sensitive information can also be a victim of successful
 brute-force attacks~\cite{bonneau2012science} through data leakages by hacking
 or purchasing information on the dark Web.
 
-In accordance to NIST~\cite{NIST:SP:800-171r2}, authentication should consist of
-covering one of three the three following principles:
+In accordance to NIST~\cite{NIST:SP:800-171r2, NISTSP800-63-3}, authentication
+should consist of covering one the three following principles:
 
 \begin{figure}[htbp]
   \begin{itemize}
@@ -50,15 +50,27 @@ from one another~\cite{parmar2022}.
 The same study brings up the caution surrounding the loss of authentication
 device, and how fingerprints can be compromised~\cite{parmar2022}.\footnote{
   The security implication of using the core concept of FIDO2's WebAuthn is
-  subject to storage in the
-  \href{https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web}{Secure Enclave}
-  system on Apple specific devices. On an Android device, the implementation
-  is up to the manufactorer of the device, where Samsung has implemented a
-  Physically Unclonable Function~\cite{lee2021samsung}
+  subject to storage in the system on Apple specific devices~\cite{appleSecureEnclave}.
+  On an Android device, the implementation is up to the manufactorer of the
+  device, where Samsung has implemented a Physically Unclonable
+  Function~\cite{lee2021samsung}.
 }
 
 One promising approach is the use of the FIDO Alliance's collaborative work with
-W3C to create WebAuthn, permitting users to authenticate through biometric
-information stored on a device in the user's possession (i.e.\ phone, computer)
-or a physical security
-key (i.e.\ YubiKey, Nitrokey, etc.).
+W3C to create WebAuthn.
+WebAuthn is permitting users to authenticate through biometric information
+stored on a device in the user's possession (i.e.\ phone, computer) or a
+physical security key (i.e.\ YubiKey, Nitrokey, etc.)~\cite{webauthn_level_2}.
+
+\textit{Passwordless VPN using FIDO2 Security Keys: Modern authentication
+security for legacy VPN systems}~\cite{huseynov2022passwordless} utilized
+WebAuthn to create a Web interface to create credentials and authenticate to use
+a VPN~\cite{huseynov2022passwordless}.
+The client required a user to authenticate through the procedure of WebAuthn
+(see Section~\ref{subsec:webauthn}).
+On a successful request, the Remote Authentication Dial-In User Service (RADIUS)
+would create a temporary username and password, which would then be transfered
+as a response to the end-user, permitting them to copy and paste it into the
+necessary client, or construct a batch file which would establish the correct
+connection~\cite{huseynov2022passwordless}.
+

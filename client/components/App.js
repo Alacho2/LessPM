@@ -21,7 +21,19 @@ export function App() {
   const renderHome = () => {
     return (
       <>
-        <p>Hello</p>
+        <center>
+
+        <h1>LessPM: The Passwordless Password Manager</h1>
+        <p>Tired of remembering dozens of passwords for all your online accounts? LessPM is the solution you've been
+          looking for. Our passwordless password manager offers a seamless and secure way to manage your login
+          credentials without the need for a master password or complex encryption keys.</p>
+
+        <p>With LessPM, your login credentials are stored locally on your authenticator device using an asymmetric
+          encryption scheme. You can quickly access your saved login information with just a few clicks.</p>
+
+          <p>Say goodbye to the hassle of managing passwords and hello to the simplicity and security of LessPM. Try it
+            out today and experience the passwordless password manager that's changing the game.</p>
+        </center>
       </>
     )
   };

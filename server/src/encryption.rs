@@ -200,7 +200,7 @@ impl EncryptionProcess {
   }
   
   // MAX 24 bytes of the validator
-  // At LEAST 12 bytes of padding
+  // At LEAST 12 bytes of padding/salt
   // 16 bytes of pepper.
   fn generate_416bit_arr_of_vec(validator_vec: &Vec<u8>) -> ([u8; 52], Vec<u8>, [u8; 12]) {
     let pepper = std::env::var("PEPPER").unwrap();
@@ -233,7 +233,7 @@ impl EncryptionProcess {
       arr[i + initial_bytes] = num;
     }
 
-    // add 12 bytes of random padding.
+    // add 12 bytes of random padding. You can all this SALT, if you want.
     let padding_pos = initial_bytes + remaining_bytes_to_reach_desired_length;
     let random_padding: [u8; 12] = rand::thread_rng().gen();
     for i in 0..random_padding.len() {

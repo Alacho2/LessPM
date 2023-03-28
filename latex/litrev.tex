@@ -31,21 +31,19 @@ should consist of covering one the three following principles:
   \end{itemize}
   \caption{The Three Principles of Password Security~\cite{schneier2000secrets, NIST:SP:800-171r2}.}
   \label{fig:secprinciples}
-
 \end{figure}
 
 There are many approaches to handle passwordless authentication, or a second
 step to authenticate with a common password.\footnote{
   Often referenced as Two-Factor Authentication or Multi-Factor Authenticaiton.
 }
-In 2022, Parmar, Et al.\ published
-\textit{A Comprehensive Study on Passwordless Authentication}~\cite{parmar2022},
-containing the most common ways that PA can be performed, referencing several
-interesting solutions, their advantages and drawbacks~\cite{parmar2022}.
+In 2022, Parmar, Et al\cite{parmar2022}, described the most common
+ways that PA can be performed, referencing several interesting solutions,
+their advantages and drawbacks.
 The study discovered that PA commonly gets accepted as the most frictionless
 system of authentication for User Interfaces (UI)~\cite{parmar2022}.
 Biometrics was mentioned as one of the methods of authentication, concluding
-that biometrics capture universal, human traits, encouraging differentiation
+that it captures universal, human traits, encouraging differentiation
 from one another~\cite{parmar2022}.
 The same study brings up the caution surrounding the loss of authentication
 device, and how fingerprints can be compromised~\cite{parmar2022}.\footnote{
@@ -62,15 +60,67 @@ WebAuthn is permitting users to authenticate through biometric information
 stored on a device in the user's possession (i.e.\ phone, computer) or a
 physical security key (i.e.\ YubiKey, Nitrokey, etc.)~\cite{webauthn_level_2}.
 
-\textit{Passwordless VPN using FIDO2 Security Keys: Modern authentication
-security for legacy VPN systems}~\cite{huseynov2022passwordless} utilized
-WebAuthn to create a Web interface to create credentials and authenticate to use
-a VPN~\cite{huseynov2022passwordless}.
+In ~\cite{huseynov2022passwordless} Web interface with WebAuthn was utilized to
+create credentials that a user could use for a VPN\.
 The client required a user to authenticate through the procedure of WebAuthn
 (see Section~\ref{subsec:webauthn}).
 On a successful request, the Remote Authentication Dial-In User Service (RADIUS)
-would create a temporary username and password, which would then be transfered
+creates a temporary username and password, which would then be transferred
 as a response to the end-user, permitting them to copy and paste it into the
 necessary client, or construct a batch file which would establish the correct
 connection~\cite{huseynov2022passwordless}.
+It was suggested create a solution for a VPN client which embedded some browser
+components~\cite{huseynov2022passwordless}.
 
+The process of using PA reduces the number of attack towards a server the
+considerably, because the server no longer has any user authentication
+secrets~\cite{gordin2021moving}.
+Gordin, Et al.\ describes using WebAuthn to implement PA into an OpenStack
+environment, providing increased security and bypassing the risk of leaked
+passwords to be used on other services~\cite{gordin2021moving}.\footnote{
+  See Section~\ref{subsec:webauthn} for further explanation as to how this
+  works.\todo[inline]{Decide on this footnote.}
+}
+They, however, utilized a fingerprint as the primary biometrics, citing cost as
+a primary factor to discourage the use of FIDO2~\cite{gordin2021moving}.\footnote{
+  Authentication was provided through the Keystone environment on the OpenStack
+  platform.
+}
+
+Statistia reported in 2020 that between 77--86\% of smartphones now have a
+form of biometric scanner built into their device
+\cite{statista-biometric-transactions}.
+Gorin, Et al.\ continues by mentioning that some individuals have trouble
+using their biometric scanner or getting it to work properly on their
+device~\cite{gordin2021moving}, which can be a potential drawback for user
+adaptability.
+Thoroughly investigating the usability aspect of FIDO2,~\cite{
+  ghrobany2020fido2} found that a significant amount of users asked
+
+According to a study conducted by Lyastani et al.\ in 2020\cite{ghrobany2020fido2},
+a significant portion of users found the usage of WebAuthn and Fido2 standard
+to be easy and secure, but with some concerns about losing access to their
+accounts or fear of their accounts being accessed by others.
+The study utilized a fingerprint Yubikey for the authentication process.
+Despite some reservations, the study found that overall, WebAuthn and Fido2
+have good usability for passwordless authentication.
+The authors suggested that more research is needed to explore ways to
+further increase user trust and confidence in the technology, as well as to
+address concerns about the potential loss of access to accounts.\footnote{
+  We believe that these concerns mostly are raised due to the usage of a YubiKey,
+  and that using a phone-based authenticator would reveal other results.
+}
+
+
+\iffalse
+
+Our results show that users consider FIDO2 passwordless
+authentication as more usable and more acceptable than the
+traditional password-based authentication, but also that concerns remain that impede many users’ willingness to abandon
+passwords. Most notably, the fear of losing the authenticator
+is not only connected with account recovery but also with
+an imminent illegal access to the account and the need for
+revocation—-a subjective threat model by users that differs
+from the objective risk assessment of FIDO2.
+
+\fi

@@ -18,7 +18,47 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{webauthn_credential_id}{misc}{}
+      \list{organization}{1}{%
+        {World Wide Web Consortium}%
+      }
+      \field{labelalpha}{21}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extraalpha}{1}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#credential-id}}
+      \field{note}{Accessed: 2023-03-25}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2 - Credential ID}
+      \field{year}{2021}
+    \endentry
+    \entry{webauthn_public_key_credential}{misc}{}
+      \list{organization}{1}{%
+        {World Wide Web Consortium}%
+      }
+      \field{labelalpha}{21}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extraalpha}{2}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#dom-publickeycredential-identifier-slot}}
+      \field{note}{Accessed: 2023-03-25}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2 - PublicKeyCredential identifier slot}
+      \field{year}{2021}
+    \endentry
+    \entry{ctss_programmers_guide}{book}{}
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \field{labelalpha}{65}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{title}{CTSS Programmers Guide}
+      \field{year}{1965}
+    \endentry
     \entry{argon2specs}{report}{}
       \name{author}{1}{}{%
         {{hash=f4d0c7d0e6c30d376b425fb90c898349}{%
@@ -36,6 +76,7 @@
       \strng{authorbibnamehash}{f4d0c7d0e6c30d376b425fb90c898349}
       \strng{authornamehash}{f4d0c7d0e6c30d376b425fb90c898349}
       \strng{authorfullhash}{f4d0c7d0e6c30d376b425fb90c898349}
+      \field{labelalpha}{al17}
       \field{sortinit}{a}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
@@ -65,6 +106,7 @@
       \strng{authorbibnamehash}{3325b015fbae57ba74629a53f1ead961}
       \strng{authornamehash}{3325b015fbae57ba74629a53f1ead961}
       \strng{authorfullhash}{3325b015fbae57ba74629a53f1ead961}
+      \field{labelalpha}{App23}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
@@ -93,6 +135,7 @@
       \strng{authorbibnamehash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
       \strng{authornamehash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
       \strng{authorfullhash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
+      \field{labelalpha}{Bon12}
       \field{sortinit}{B}
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{labelnamesource}{author}
@@ -105,16 +148,33 @@
       \verb 10.1109/SP.2012.49
       \endverb
     \endentry
-    \entry{ctss_programmers_guide}{book}{}
-      \list{publisher}{1}{%
-        {MIT Press}%
+    \entry{history_cryptography_cryptanalysis}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0382b393c0c2dac1f2c6bc65a1265c67}{%
+           family={Dooly},
+           familyi={D\bibinitperiod},
+           given={John\bibnamedelima F.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
       }
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{fullhash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{bibnamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{authorbibnamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{authornamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \strng{authorfullhash}{0382b393c0c2dac1f2c6bc65a1265c67}
+      \field{labelalpha}{Doo18}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{edition}{2}
-      \field{title}{CTSS Programmers Guide}
-      \field{year}{1965}
+      \field{isbn}{978-3-319-90442-9}
+      \field{title}{History of Cryptography and Cryptanalysis: Codes, Ciphers, and Their Algorithms}
+      \field{year}{2018}
+      \field{pages}{5}
+      \range{pages}{1}
     \endentry
     \entry{rijndael_book}{book}{}
       \name{author}{2}{}{%
@@ -138,6 +198,7 @@
       \strng{authorbibnamehash}{3967038944da1152e0568c52ebc551ab}
       \strng{authornamehash}{3967038944da1152e0568c52ebc551ab}
       \strng{authorfullhash}{3967038944da1152e0568c52ebc551ab}
+      \field{labelalpha}{DR02}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
@@ -145,33 +206,6 @@
       \field{isbn}{978-3-540-42580-9}
       \field{title}{The Design of Rijndael: AES - The Advanced Encryption Standard}
       \field{year}{2002}
-    \endentry
-    \entry{history_cryptography_cryptanalysis}{book}{}
-      \name{author}{1}{}{%
-        {{hash=0382b393c0c2dac1f2c6bc65a1265c67}{%
-           family={Dooly},
-           familyi={D\bibinitperiod},
-           given={John\bibnamedelima F.},
-           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{0382b393c0c2dac1f2c6bc65a1265c67}
-      \strng{fullhash}{0382b393c0c2dac1f2c6bc65a1265c67}
-      \strng{bibnamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
-      \strng{authorbibnamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
-      \strng{authornamehash}{0382b393c0c2dac1f2c6bc65a1265c67}
-      \strng{authorfullhash}{0382b393c0c2dac1f2c6bc65a1265c67}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{isbn}{978-3-319-90442-9}
-      \field{title}{History of Cryptography and Cryptanalysis: Codes, Ciphers, and Their Algorithms}
-      \field{year}{2018}
-      \field{pages}{5}
-      \range{pages}{1}
     \endentry
     \entry{fido_uaf_overview}{misc}{}
       \name{author}{1}{}{%
@@ -185,6 +219,7 @@
       \strng{authorbibnamehash}{f4f6558285ca7c944d2429d3c4a57754}
       \strng{authornamehash}{f4f6558285ca7c944d2429d3c4a57754}
       \strng{authorfullhash}{f4f6558285ca7c944d2429d3c4a57754}
+      \field{labelalpha}{FID17}
       \field{sortinit}{F}
       \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
       \field{labelnamesource}{author}
@@ -194,6 +229,83 @@
       \field{note}{Accessed: 2023-03-25}
       \field{title}{FIDO UAF Overview}
       \field{year}{2017}
+    \endentry
+    \entry{ghrobany2020fido2}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=c86250d081f3a0cedce6a867368cdd0c}{%
+           family={{Ghrobany Lyastani}},
+           familyi={G\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=95fa3cc15a88341ff5ba51d778f599d0}{%
+           family={{Chilling}},
+           familyi={C\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=20579d01d73a335621e113c91f4d0553}{%
+           family={{Neumayer}},
+           familyi={N\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0268aac05389825a14c6ff3037cd3b23}{%
+           family={{Backes}},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=799aeaf4ddbe1be56c80620ca941bc74}{%
+           family={{Bugiel}},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{11d19ca654a490ae671bc33b09b898a6}
+      \strng{fullhash}{3aa8c40529856230983c533051b3d92f}
+      \strng{bibnamehash}{11d19ca654a490ae671bc33b09b898a6}
+      \strng{authorbibnamehash}{11d19ca654a490ae671bc33b09b898a6}
+      \strng{authornamehash}{11d19ca654a490ae671bc33b09b898a6}
+      \strng{authorfullhash}{3aa8c40529856230983c533051b3d92f}
+      \field{labelalpha}{Ghr+20}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2020 51st IEEE/IFIP International Conference on Dependable Systems and Networks Workshops (DSN-W)}
+      \field{title}{Is Fido2 the kingslayer of User authentication? A comparative usability study of FIDO2 Passwordless Authentication}
+      \field{year}{2020}
+      \field{pages}{102\bibrangedash 108}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/SP40000.2020.00047
+      \endverb
+    \endentry
+    \entry{gordin2021moving}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=121cd240c1b8dbb3633594d429a8d83f}{%
+           family={Gordin},
+           familyi={G\bibinitperiod},
+           given={Ionel\bibnamedelimb et\bibnamedelima al.},
+           giveni={I\bibinitperiod\bibinitdelim e\bibinitperiod\bibinitdelim a\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{121cd240c1b8dbb3633594d429a8d83f}
+      \strng{fullhash}{121cd240c1b8dbb3633594d429a8d83f}
+      \strng{bibnamehash}{121cd240c1b8dbb3633594d429a8d83f}
+      \strng{authorbibnamehash}{121cd240c1b8dbb3633594d429a8d83f}
+      \strng{authornamehash}{121cd240c1b8dbb3633594d429a8d83f}
+      \strng{authorfullhash}{121cd240c1b8dbb3633594d429a8d83f}
+      \field{labelalpha}{Gor21}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2021 20th RoEduNet Conference: Networking in Education and Research (RoEduNet)}
+      \field{title}{Moving forward passwordless authentication: challenges and implementations for the private cloud}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.1109/RoEduNet54112.2021.9638271
+      \endverb
     \endentry
     \entry{huseynov2022passwordless}{inproceedings}{}
       \name{author}{1}{}{%
@@ -209,6 +321,7 @@
       \strng{authorbibnamehash}{64073d77ebf7d1a3ff45348a825717ad}
       \strng{authornamehash}{64073d77ebf7d1a3ff45348a825717ad}
       \strng{authorfullhash}{64073d77ebf7d1a3ff45348a825717ad}
+      \field{labelalpha}{Hus22}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
@@ -234,6 +347,7 @@
       \strng{authorbibnamehash}{8156eae38e17275f0d4e90ae1051c2ab}
       \strng{authornamehash}{8156eae38e17275f0d4e90ae1051c2ab}
       \strng{authorfullhash}{8156eae38e17275f0d4e90ae1051c2ab}
+      \field{labelalpha}{IET15}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{labelnamesource}{author}
@@ -271,6 +385,7 @@
       \strng{authorbibnamehash}{8456e57585316c5ad570515143f00129}
       \strng{authornamehash}{8456e57585316c5ad570515143f00129}
       \strng{authorfullhash}{8456e57585316c5ad570515143f00129}
+      \field{labelalpha}{JBS15}
       \field{sortinit}{J}
       \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
       \field{labelnamesource}{author}
@@ -298,6 +413,7 @@
       \strng{authorbibnamehash}{fae3731e617fef3360299f943c27d171}
       \strng{authornamehash}{fae3731e617fef3360299f943c27d171}
       \strng{authorfullhash}{fae3731e617fef3360299f943c27d171}
+      \field{labelalpha}{Kar18}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
@@ -343,6 +459,7 @@
       \strng{authorbibnamehash}{833a76115e4713d2e8b044830a864e62}
       \strng{authornamehash}{833a76115e4713d2e8b044830a864e62}
       \strng{authorfullhash}{ff7a0fcfcccf2318c06588ccde741045}
+      \field{labelalpha}{Lee+21}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{labelnamesource}{author}
@@ -374,6 +491,7 @@
       \strng{authorbibnamehash}{7e521cf3616b7c888d511a80e9b82ad5}
       \strng{authornamehash}{7e521cf3616b7c888d511a80e9b82ad5}
       \strng{authorfullhash}{7e521cf3616b7c888d511a80e9b82ad5}
+      \field{labelalpha}{Lev84}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{labelnamesource}{author}
@@ -401,6 +519,7 @@
       \strng{authorbibnamehash}{c5bf765a8df91d940efac6032087d653}
       \strng{authornamehash}{c5bf765a8df91d940efac6032087d653}
       \strng{authorfullhash}{c5bf765a8df91d940efac6032087d653}
+      \field{labelalpha}{Mulnd}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{labelnamesource}{author}
@@ -422,6 +541,7 @@
       \strng{authorbibnamehash}{ef9cb61878e61d434507444346b29d1a}
       \strng{authornamehash}{ef9cb61878e61d434507444346b29d1a}
       \strng{authorfullhash}{ef9cb61878e61d434507444346b29d1a}
+      \field{labelalpha}{Nat20}
       \field{sortinit}{N}
       \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
       \field{labelnamesource}{author}
@@ -448,6 +568,7 @@
       \strng{authorbibnamehash}{a44b6b00e5eebd7494e1fd00658685e2}
       \strng{authornamehash}{a44b6b00e5eebd7494e1fd00658685e2}
       \strng{authorfullhash}{a44b6b00e5eebd7494e1fd00658685e2}
+      \field{labelalpha}{NIS00}
       \field{sortinit}{N}
       \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
       \field{labelnamesource}{author}
@@ -478,6 +599,7 @@
       \strng{authorbibnamehash}{24b95a7fdad5a850196cd87546dcc70b}
       \strng{authornamehash}{24b95a7fdad5a850196cd87546dcc70b}
       \strng{authorfullhash}{24b95a7fdad5a850196cd87546dcc70b}
+      \field{labelalpha}{OWAnd}
       \field{sortinit}{O}
       \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
       \field{labelnamesource}{author}
@@ -516,6 +638,7 @@
       \strng{authorbibnamehash}{2185629f651ef0259bd0085758ea9b92}
       \strng{authornamehash}{2185629f651ef0259bd0085758ea9b92}
       \strng{authorfullhash}{b2bb65a84e9edb0a5ff074218d5fbf70}
+      \field{labelalpha}{Par+22}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
@@ -547,6 +670,7 @@
       \strng{authorbibnamehash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
       \strng{authornamehash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
       \strng{authorfullhash}{a3d9025f8c3737a8d5f17ce0d95b0c10}
+      \field{labelalpha}{Pau17}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
@@ -577,6 +701,7 @@
       \strng{authorbibnamehash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
       \strng{authornamehash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
       \strng{authorfullhash}{a5dfb0fbfd3aad1003f0bcdbf8a7aa5c}
+      \field{labelalpha}{Pol23}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
@@ -591,32 +716,35 @@
       \verb http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D6%3Achapter%3D34
       \endverb
     \endentry
-    \entry{schneier2015applied}{book}{}
+    \entry{statista-biometric-transactions}{misc}{}
       \name{author}{1}{}{%
-        {{hash=d8df23ab843a37bf97ea40354db74d15}{%
-           family={Schneier},
+        {{hash=6927e0fd1bbc6166b57a711885590344}{%
+           family={Sava},
            familyi={S\bibinitperiod},
-           given={Bruce},
-           giveni={B\bibinitperiod}}}%
+           given={Justina\bibnamedelima Alexandra},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Wiley}%
-      }
-      \strng{namehash}{d8df23ab843a37bf97ea40354db74d15}
-      \strng{fullhash}{d8df23ab843a37bf97ea40354db74d15}
-      \strng{bibnamehash}{d8df23ab843a37bf97ea40354db74d15}
-      \strng{authorbibnamehash}{d8df23ab843a37bf97ea40354db74d15}
-      \strng{authornamehash}{d8df23ab843a37bf97ea40354db74d15}
-      \strng{authorfullhash}{d8df23ab843a37bf97ea40354db74d15}
-      \field{extraname}{1}
+      \strng{namehash}{6927e0fd1bbc6166b57a711885590344}
+      \strng{fullhash}{6927e0fd1bbc6166b57a711885590344}
+      \strng{bibnamehash}{6927e0fd1bbc6166b57a711885590344}
+      \strng{authorbibnamehash}{6927e0fd1bbc6166b57a711885590344}
+      \strng{authornamehash}{6927e0fd1bbc6166b57a711885590344}
+      \strng{authorfullhash}{6927e0fd1bbc6166b57a711885590344}
+      \field{labelalpha}{Sav22}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{edition}{20th Anniversary Edition}
-      \field{isbn}{978-1119096726}
-      \field{title}{Applied Cryptography: Protocols, Algorithms, and Source Code in C}
-      \field{year}{2015}
+      \field{howpublished}{Statista}
+      \field{month}{6}
+      \field{title}{Biometrics-enabled consumer device adoption in 2020}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://www.statista.com/statistics/1226096/biometrics-enabled-devices-by-region/?locale=en
+      \endverb
+      \verb{url}
+      \verb https://www.statista.com/statistics/1226096/biometrics-enabled-devices-by-region/?locale=en
+      \endverb
     \endentry
     \entry{schneier2000secrets}{book}{}
       \name{author}{1}{}{%
@@ -635,13 +763,42 @@
       \strng{authorbibnamehash}{d8df23ab843a37bf97ea40354db74d15}
       \strng{authornamehash}{d8df23ab843a37bf97ea40354db74d15}
       \strng{authorfullhash}{d8df23ab843a37bf97ea40354db74d15}
-      \field{extraname}{2}
+      \field{extraname}{1}
+      \field{labelalpha}{Sch00}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Secrets and Lies: Digital Security in a Networked World}
       \field{year}{2000}
+    \endentry
+    \entry{schneier2015applied}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d8df23ab843a37bf97ea40354db74d15}{%
+           family={Schneier},
+           familyi={S\bibinitperiod},
+           given={Bruce},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{fullhash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{bibnamehash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{authorbibnamehash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{authornamehash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{authorfullhash}{d8df23ab843a37bf97ea40354db74d15}
+      \field{extraname}{2}
+      \field{labelalpha}{Sch15}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{20th Anniversary Edition}
+      \field{isbn}{978-1119096726}
+      \field{title}{Applied Cryptography: Protocols, Algorithms, and Source Code in C}
+      \field{year}{2015}
     \endentry
     \entry{nistfips197blocks}{report}{}
       \name{author}{2}{}{%
@@ -666,8 +823,10 @@
       \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
       \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
       \field{extraname}{1}
+      \field{labelalpha}{ST01}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extraalpha}{1}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{11}
@@ -706,8 +865,10 @@
       \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
       \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
       \field{extraname}{2}
+      \field{labelalpha}{ST01}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extraalpha}{2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{11}
@@ -746,8 +907,10 @@
       \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
       \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
       \field{extraname}{3}
+      \field{labelalpha}{ST01}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extraalpha}{3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{11}
@@ -786,8 +949,10 @@
       \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
       \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
       \field{extraname}{4}
+      \field{labelalpha}{ST01}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extraalpha}{4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{11}
@@ -815,6 +980,7 @@
       \strng{authorbibnamehash}{884b39d09122738ddaf3675684f08eb9}
       \strng{authornamehash}{884b39d09122738ddaf3675684f08eb9}
       \strng{authorfullhash}{884b39d09122738ddaf3675684f08eb9}
+      \field{labelalpha}{The}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
       \field{labelnamesource}{author}
@@ -836,8 +1002,10 @@
       \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
       \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
       \field{extraname}{1}
+      \field{labelalpha}{W3C21}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extraalpha}{1}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Accessed: 2023-03-26}
@@ -864,8 +1032,10 @@
       \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
       \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
       \field{extraname}{2}
+      \field{labelalpha}{W3C21}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extraalpha}{2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#webauthn-relying-party}}
@@ -886,8 +1056,10 @@
       \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
       \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
       \field{extraname}{3}
+      \field{labelalpha}{W3C21}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extraalpha}{3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#registration-ceremony}}
@@ -908,8 +1080,10 @@
       \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
       \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
       \field{extraname}{4}
+      \field{labelalpha}{W3C21}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extraalpha}{4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#sctn-registering-a-new-credential}}
@@ -951,6 +1125,7 @@
       \strng{authorbibnamehash}{9850c425aa90bb2fe74b2e469c0f1772}
       \strng{authornamehash}{9850c425aa90bb2fe74b2e469c0f1772}
       \strng{authorfullhash}{85ba020b6b4a8bcdb55d972b40bafd27}
+      \field{labelalpha}{Wan+18}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
       \field{labelnamesource}{author}
@@ -968,30 +1143,6 @@
       \verb https://people.cs.vt.edu/gangwang/pass.pdf
       \endverb
     \endentry
-    \entry{webauthn_credential_id}{misc}{}
-      \list{organization}{1}{%
-        {World Wide Web Consortium}%
-      }
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#credential-id}}
-      \field{note}{Accessed: 2023-03-25}
-      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2 - Credential ID}
-      \field{year}{2021}
-    \endentry
-    \entry{webauthn_public_key_credential}{misc}{}
-      \list{organization}{1}{%
-        {World Wide Web Consortium}%
-      }
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#dom-publickeycredential-identifier-slot}}
-      \field{note}{Accessed: 2023-03-25}
-      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2 - PublicKeyCredential identifier slot}
-      \field{year}{2021}
-    \endentry
     \entry{webauthn_level_2}{misc}{}
       \name{author}{1}{}{%
         {{hash=bdea812935506778c291249971f80655}{%
@@ -1004,6 +1155,7 @@
       \strng{authorbibnamehash}{bdea812935506778c291249971f80655}
       \strng{authornamehash}{bdea812935506778c291249971f80655}
       \strng{authorfullhash}{bdea812935506778c291249971f80655}
+      \field{labelalpha}{Wor21}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
       \field{labelnamesource}{author}
@@ -1013,54 +1165,6 @@
       \field{note}{Accessed: 2023-03-25}
       \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
       \field{year}{2021}
-    \endentry
-    \entry{yan2000password}{report}{}
-      \name{author}{4}{}{%
-        {{hash=40b338ed18ad39fb8b2036c089c9e342}{%
-           family={Yan},
-           familyi={Y\bibinitperiod},
-           given={Jianxin},
-           giveni={J\bibinitperiod}}}%
-        {{hash=534deb78d3e4c85c835632ca2b1c2f19}{%
-           family={Blackwell},
-           familyi={B\bibinitperiod},
-           given={Alan},
-           giveni={A\bibinitperiod}}}%
-        {{hash=e027c8df89339344ddc4de634d17acf1}{%
-           family={Anderson},
-           familyi={A\bibinitperiod},
-           given={Ross},
-           giveni={R\bibinitperiod}}}%
-        {{hash=1908750aed085dccfe0442f762e42e6f}{%
-           family={Grant},
-           familyi={G\bibinitperiod},
-           given={Alasdair},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {University of Cambridge, Computer Laboratory}%
-      }
-      \strng{namehash}{7e396d3670a316147740ea6fbc889c92}
-      \strng{fullhash}{717a2731f9f9f4a6fd8387ff5cbe3e7e}
-      \strng{bibnamehash}{7e396d3670a316147740ea6fbc889c92}
-      \strng{authorbibnamehash}{7e396d3670a316147740ea6fbc889c92}
-      \strng{authornamehash}{7e396d3670a316147740ea6fbc889c92}
-      \strng{authorfullhash}{717a2731f9f9f4a6fd8387ff5cbe3e7e}
-      \field{sortinit}{Y}
-      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{9}
-      \field{number}{UCAM-CL-TR-500}
-      \field{title}{The Memorability and Security of Passwords: Some Empirical Results}
-      \field{type}{techreport}
-      \field{year}{2000}
-      \verb{urlraw}
-      \verb https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-500.pdf
-      \endverb
-      \verb{url}
-      \verb https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-500.pdf
-      \endverb
     \endentry
   \enddatalist
   \missing{lol}

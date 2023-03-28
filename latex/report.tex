@@ -1,12 +1,16 @@
 \documentclass{article}
-\usepackage[margin=1.5in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{multicol}
 \usepackage{listings}
-\usepackage{biblatex}
+\usepackage[
+    backend=biber,
+    style=alphabetic,
+]{biblatex}
 \usepackage{enumitem}
 \usepackage{appendix}
 \usepackage{titling}
@@ -54,8 +58,9 @@
 
 \fi
 
+\setlength{\columnsep}{20pt}
+\setlength{\skip\footins}{20pt}
 \begin{document}
-
     \begin{titlepage}
         \begin{center}
             \includegraphics[scale=0.4]{images/HR_logo_hringur_transparent}
@@ -130,8 +135,9 @@
 
     \iffalse
 
-    Abstract: The purpose of an abstract is to provide a brief, comprehensive overview of the report's content,
-    including its objectives, methodology, results, and conclusions.
+    Abstract: The purpose of an abstract is to provide a brief, comprehensive
+    overview of the report's content, including its objectives, methodology,
+    results, and conclusions.
     It is primarily intended for researchers, academics, or other professionals who want to quickly assess whether the
     report is relevant to their interests before deciding to read the entire document.
 
@@ -145,7 +151,8 @@
 
     \fi
 
-    \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+    \begin{multicols}{2}
+    \addtocontents{TOC}{\protect\setcounter{tocdepth}{1}}
     \section{Introduction}\label{sec:introduction}
     \input{introduction}
 
@@ -160,9 +167,8 @@
 
     \section{Conclusion}\label{sec:conclusion}
 
-
     \section{Future work}\label{sec:futurework}
     \input{futurework}
-    \newpage
     \printbibliography
+    \end{multicols}
 \end{document}

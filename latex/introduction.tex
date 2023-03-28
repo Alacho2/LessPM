@@ -1,31 +1,39 @@
-Polybius' \textit{The Histories}~\cite{perseus_tufts} contains the first documented use of passwords, describing how
-the Romans employed ``\textit{watchwords}'' to verify identities within the military.
-This provided a transparent, simple way to allow or deny entry to restricted areas of authorized personnel only.
-The story of secret writing (in this context referenced as cryptography) goes back the past 3000 years~\cite{history_cryptography_cryptanalysis},
-where the need to protect and preserve privacy between two or more individuals blossomed.
-
-Fernando J. Corbató is widely credited as the all-father of the first computer password when he was responsible for
-the Compatible Time-Sharing System (CTSS) in 1961 at MIT~\cite{levy1984hackers}.
-The system had a \texttt{"LOGIN"} command, which, when the user followed it by typing \texttt{"PASSWORD"},
-had its printing mechanism turned off to offer the applicant privacy while typing the password~\cite{ctss_programmers_guide}.
-Given the long history of passwords and their importance, one could argue that it was a natural and judicious
-step in the evolution of computer systems.
-
 In today's digital landscape, utilizing various identifiers (such as usernames, email addresses, or phone numbers)
 combined with passwords has become a prevalent method for verifying an individual's identity and ensuring
 their authorization to access restricted materials.
 
-In 2004, a study titled \textit{"The Memorability and Security of Passwords"}~\cite{yan2000password} was conducted into
-advising users on the entropy of passwords and ways someone can use to remember a or multiple passwords.
-A typical standard for larger organizations with a form of password creation system is to emphasize the diversity of
-smaller characters, capitalized characters, length, and not be commonly referred to in a dictionary~\cite{yan2000password}.
-The study analyzed the effectiveness of different password-creation strategies, suggesting that acronym-based
-passwords offer a delicate balance between memorability and security~\cite{yan2000password}.
+This is not a novel approach.
+Polybius' \textit{The Histories}~\cite{perseus_tufts} contains the first documented use
+of passwords, describing
+how
+the Romans employed ``\textit{watchwords}'' to verify identities within the military.
+This provided a transparent, simple way to allow or deny entry to restricted areas of authorized personnel only.
+The story of secret writing (in this context referenced as cryptography) goes
+back the past 3000 years~\cite{history_cryptography_cryptanalysis}, where the
+need to protect and preserve privacy between two or more individuals blossomed.
 
-However, as technology has advanced, the limitations of password-based authentication have become increasingly
-apparent, leading to the development of more sophisticated methods like Universal Authentication Framework
-(UAF)~\cite{fido_uaf_overview} and WebAuthn~\cite{webauthn_level_2} through the Fast IDentity Online Alliance
-\href{https://fidoalliance.org}{(FIDO)} and The \href{https://www.w3.org}{World Wide Web Consortium} (W3C).
+Fernando J. Corbató is widely credited as the all-father of the first
+computer password when he was responsible for the Compatible Time-Sharing
+System (CTSS) in 1961 at MIT~\cite{levy1984hackers}.
+The system had a \texttt{"LOGIN"} command, which, when the user followed it by
+typing \texttt{"PASSWORD"}, had its printing mechanism turned off to offer
+the applicant privacy while typing the password~\cite{ctss_programmers_guide}.
+Given the long history of passwords and their importance, one could argue that
+it was a natural and judicious step in the evolution of computer systems.
+
+The study \textif{"The Memorability and Security of Passwords"}, conducted in
+2004, provides insights into password creation strategies, including tips on
+improving password entropy and methods for easy recall of passwords.
+With an emphasis on diversity in character selection, password length, and
+avoiding dictionary words, the study suggests that acronym-based passwords offer
+a delicate balance between memorability and security.
+
+However, as technology has advanced, the limitations of password-based
+authentication have become increasingly apparent, leading to the development of
+more sophisticated methods like Universal Authentication Framework
+(UAF)~\cite{fido_uaf_overview} and WebAuthn~\cite{webauthn_level_2} through the
+Fast IDentity Online Alliance \href{https://fidoalliance.org}{(FIDO)} and
+The \href{https://www.w3.org}{World Wide Web Consortium} (W3C).
 
 \newcommand{\assymetricCrypto}{\footnote{Asymmetric cryptography uses a key pair consisting of public and private keys. The public key encrypts
 data, while the private key decrypts it. The keys are mathematically related, but deriving one from the other
@@ -36,16 +44,21 @@ is infeasible, ensuring secure communication and data exchange.}}
     it is the private key that encrypts and the public key is responsible for \href{https://docs.rs/jsonwebtoken/latest/jsonwebtoken/struct.DecodingKey.html#method.from_rsa_pem}
     {decrypting}. \textit{Last Accessed: 2023-03-25}.}}
 
-WebAuthn, short for Web Authentication, is an open standard for web-based authentication that enables users to
-securely access online web services without relying on a traditional password.
-Through a collaborative effort between FIDO and W3C, WebAuthn is developed to leverage asymmetric cryptography
-\assymetricCrypto\jsonwebLibrary and biometric or hardware-based authenticators to provide a more secure and robust authentication experience.
+WebAuthn, short for Web Authentication, is an open standard for web-based
+authentication that enables users to securely access online web services without
+relying on a traditional password.
+Through a collaborative effort between FIDO and W3C, WebAuthn is developed to
+leverage asymmetric cryptography\assymetricCrypto\jsonwebLibrary~and biometric
+or hardware-based authenticators to provide a more secure and robust
+authentication experience.
 
-This report delves into the implementation of LessPM, a passwordless password manager that leverages WebAuthn to provide
-a secure authentication experience, free from the constraints of traditional passwords, while placing a strong emphasis
-on security.
-By examining recent advancements in authentication mechanisms and the related innovative potential of WebAuthn, we
-hope to illuminate the prospects of a passwordless future in digital security.
+This report explores the implementation of LessPM, a passwordless password
+manager that leverages WebAuthn to provide a secure authentication experience,
+free from the constraints of traditional passwords, while placing a strong
+emphasis on security.
+By examining recent advancements in authentication mechanisms and the related
+innovative potential of WebAuthn, we hope to illuminate the prospects of a
+passwordless future in digital security.
 
 
 % \hyperref[sec:futurework]{security}

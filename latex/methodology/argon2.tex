@@ -1,9 +1,10 @@
 Argon2 is a key-derivation function developed by Alex Biryukov, Daniel Dinu,
 and Dmitry Khovratovich~\cite{argon2specs}.
 Argon2 aims to provide a highly customizable function
-tailored to the needs of separate implementations~\cite{argon2specs}.
+tailored to the needs of distinct contexts~\cite{argon2specs}.
 Additionally, the design offers resistance to both time-memory trade-off and
 side-channel attacks as a memory-hard function~\cite{argon2specs}.
+
 The function fills large memory blocks with pseudorandom data derived from the
 input parameters, such as the password and salt.\footnote{
   A salt is a randomly generated sequence of characters, unique to each instance
@@ -57,12 +58,12 @@ using such attacks.
 The algorithm's customizability allows users to adjust its behaviour based on
 memory, parallelism, and iterations, catering to specific security requirements
 and performance needs.
-As these configurations are crucial for computing the original hash,Argon2
+As these configurations are crucial for computing the original hash, Argon2
 provides robust resilience against brute-force and side-channel attacks.
 The resulting enhanced security makes Argon2 suitable for password storage and
 key-derivation in various applications and systems.
 
-In 2015, Argon2 won the Password Hashing Competition.\cite{passwordhashing}.\footnote{
+In 2015, Argon2 won the Password Hashing Competition~\cite{passwordhashing}.\footnote{
   NIST's competition to find an encryption algorithm inspired the Password
   Hashing Competition, but it took place without NIST's endorsement.
 }

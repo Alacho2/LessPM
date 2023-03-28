@@ -1,0 +1,64 @@
+Passwordless Authentication (PA) is a growing field of study within Computer
+Science, as traditional authentication methods like passwords are increasingly
+recognized as vulnerable to attacks such as phishing\footnote{
+  Phishing is a form of attack where a hacker tries to leverage Social
+  Engineering to act as a trusted entity to dupe a victim to give away
+  credentials by opening an email, instant message, or text message, then
+  signing into a spoofed website, seeming legitimate~\cite{ripa2021emergence}.
+} and credential stuffing.\footnote{
+  Credential stuffing refers to the practice of using automated tools to
+  inject compromised or stolen username and password combinations into web login
+  forms with the aim of gaining unauthorized access to user
+  accounts~\cite{owasp-credential-stuffing}.
+}
+Passwords and sensitive information can also be a victim of successful
+brute-force attacks~\cite{bonneau2012science} through data leakages by hacking
+or purchasing information on the dark Web.
+
+In accordance to NIST~\cite{NIST:SP:800-171r2}, authentication should consist of
+covering one of three the three following principles:
+
+\begin{figure}[htbp]
+  \begin{itemize}
+    \item \textbf{Something you know}:
+      This can be a password, an answer to a personal question, or a Personal
+      Identification Number (PIN).
+    \item \textbf{Something you have}:
+      A device that contains some kind of token or cryptographically signed keys.
+    \item \textbf{Something you are}:
+      Biometrics of any sort or kind.
+    Facial recognition, retina scan, fingerprint and similar.
+  \end{itemize}
+  \caption{The Three Principles of Password Security~\cite{schneier2000secrets, NIST:SP:800-171r2}.}
+  \label{fig:secprinciples}
+
+\end{figure}
+
+There are many approaches to handle passwordless authentication, or a second
+step to authenticate with a common password.\footnote{
+  Often referenced as Two-Factor Authentication or Multi-Factor Authenticaiton.
+}
+In 2022, Parmar, Et al.\ published
+\textit{A Comprehensive Study on Passwordless Authentication}~\cite{parmar2022},
+containing the most common ways that PA can be performed, referencing several
+interesting solutions, their advantages and drawbacks~\cite{parmar2022}.
+The study discovered that PA commonly gets accepted as the most frictionless
+system of authentication for User Interfaces (UI)~\cite{parmar2022}.
+Biometrics was mentioned as one of the methods of authentication, concluding
+that biometrics capture universal, human traits, encouraging differentiation
+from one another~\cite{parmar2022}.
+The same study brings up the caution surrounding the loss of authentication
+device, and how fingerprints can be compromised~\cite{parmar2022}.\footnote{
+  The security implication of using the core concept of FIDO2's WebAuthn is
+  subject to storage in the
+  \href{https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web}{Secure Enclave}
+  system on Apple specific devices. On an Android device, the implementation
+  is up to the manufactorer of the device, where Samsung has implemented a
+  Physically Unclonable Function~\cite{lee2021samsung}
+}
+
+One promising approach is the use of the FIDO Alliance's collaborative work with
+W3C to create WebAuthn, permitting users to authenticate through biometric
+information stored on a device in the user's possession (i.e.\ phone, computer)
+or a physical security
+key (i.e.\ YubiKey, Nitrokey, etc.).

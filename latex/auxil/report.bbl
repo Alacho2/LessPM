@@ -51,6 +51,32 @@
       \verb https://github.com/P-H-C/phc-winner-argon2/blob/master/argon2-specs.pdf
       \endverb
     \endentry
+    \entry{bonneau2012science}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=e6eb78ec5f92eaff4e9d4b944aff4c9c}{%
+           family={Bonneau},
+           familyi={B\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
+      \strng{fullhash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
+      \strng{bibnamehash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
+      \strng{authorbibnamehash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
+      \strng{authornamehash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
+      \strng{authorfullhash}{e6eb78ec5f92eaff4e9d4b944aff4c9c}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2012 IEEE Symposium on Security and Privacy}
+      \field{note}{Last Accessed: 2023-03-28}
+      \field{title}{The Science of Guessing: Analyzing an Anonymized Corpus of 70 Million Passwords}
+      \field{year}{2012}
+      \verb{doi}
+      \verb 10.1109/SP.2012.49
+      \endverb
+    \endentry
     \entry{ctss_programmers_guide}{book}{}
       \list{publisher}{1}{%
         {MIT Press}%
@@ -225,6 +251,54 @@
       \field{title}{Securing Node Applications: Protecting Against Malicious Attacks}
       \field{year}{2018}
     \endentry
+    \entry{lee2021samsung}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=c1e4ebd8db05e30bcef1916fe40c8a99}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Yongki},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=643aa00fc94ead6da7d057aa6ee46868}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Taejoon},
+           giveni={T\bibinitperiod}}}%
+        {{hash=62f605deca301885953275d18ed4a335}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Sungsoo},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ba651e7bb800e60d1abff65437a39932}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Myeongjoon},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d1142f1794c814180e857f0f07d9ad0b}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Eunkyu},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{833a76115e4713d2e8b044830a864e62}
+      \strng{fullhash}{ff7a0fcfcccf2318c06588ccde741045}
+      \strng{bibnamehash}{833a76115e4713d2e8b044830a864e62}
+      \strng{authorbibnamehash}{833a76115e4713d2e8b044830a864e62}
+      \strng{authornamehash}{833a76115e4713d2e8b044830a864e62}
+      \strng{authorfullhash}{ff7a0fcfcccf2318c06588ccde741045}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2021 IEEE Custom Integrated Circuits Conference (CICC)}
+      \field{note}{Last Accessed: 2023-03-28. Access through \href{https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9431482}{IEEE Explore}}
+      \field{title}{Samsung Physically Unclonable Function (SAMPUF{\texttrademark}) and its integration with Samsung Security System}
+      \field{year}{2021}
+      \field{pages}{1\bibrangedash 4}
+      \range{pages}{4}
+    \endentry
     \entry{levy1984hackers}{book}{}
       \name{author}{1}{}{%
         {{hash=7e521cf3616b7c888d511a80e9b82ad5}{%
@@ -255,6 +329,58 @@
       \field{pages}{85\bibrangedash 102}
       \range{pages}{18}
     \endentry
+    \entry{owasp-credential-stuffing}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c5bf765a8df91d940efac6032087d653}{%
+           family={Muller},
+           familyi={M\bibinitperiod},
+           given={Neal},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {OWASP}%
+      }
+      \strng{namehash}{c5bf765a8df91d940efac6032087d653}
+      \strng{fullhash}{c5bf765a8df91d940efac6032087d653}
+      \strng{bibnamehash}{c5bf765a8df91d940efac6032087d653}
+      \strng{authorbibnamehash}{c5bf765a8df91d940efac6032087d653}
+      \strng{authornamehash}{c5bf765a8df91d940efac6032087d653}
+      \strng{authorfullhash}{c5bf765a8df91d940efac6032087d653}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://owasp.org/www-community/attacks/Credential_stuffing}}
+      \field{note}{Last Accessed: 2023-03-28}
+      \field{title}{Credential Stuffing}
+      \field{year}{n.d.}
+    \endentry
+    \entry{NIST:SP:800-171r2}{online}{}
+      \name{author}{1}{}{%
+        {{hash=ef9cb61878e61d434507444346b29d1a}{%
+           family={{National Institute of Standards and Technology}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{fullhash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{bibnamehash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{authorbibnamehash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{authornamehash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{authorfullhash}{ef9cb61878e61d434507444346b29d1a}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Page 24, Chapter 3}
+      \field{title}{Special Publication 800-171 Revision 2: Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r2.pdf
+      \endverb
+      \verb{url}
+      \verb https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171r2.pdf
+      \endverb
+    \endentry
     \entry{nist_aes_winner}{misc}{}
       \name{author}{1}{}{%
         {{hash=a44b6b00e5eebd7494e1fd00658685e2}{%
@@ -280,6 +406,70 @@
       \endverb
       \verb{url}
       \verb https://www.nist.gov/news-events/news/2000/10/commerce-department-announces-winner-global-information-security
+      \endverb
+    \endentry
+    \entry{ripa2021emergence}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=24b95a7fdad5a850196cd87546dcc70b}{%
+           family={OWASP},
+           familyi={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {OWASP}%
+      }
+      \strng{namehash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{fullhash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{bibnamehash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{authorbibnamehash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{authornamehash}{24b95a7fdad5a850196cd87546dcc70b}
+      \strng{authorfullhash}{24b95a7fdad5a850196cd87546dcc70b}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://owasp.org/www-chapter-ghana/assets/slides/OWASP_Presentation_FINAL.pdf}}
+      \field{note}{Last Accessed: 2023-03-28}
+      \field{title}{PHISHING IN DEPTH}
+      \field{year}{n.d.}
+    \endentry
+    \entry{parmar2022}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=b0fe8088ff45e6302a220a546a6cbeab}{%
+           family={Parmar},
+           familyi={P\bibinitperiod},
+           given={Viral},
+           giveni={V\bibinitperiod}}}%
+        {{hash=5919346a764c9838b00fdbe58d1fba8e}{%
+           family={Sanghvi},
+           familyi={S\bibinitperiod},
+           given={Harshal\bibnamedelima A.},
+           giveni={H\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=99cbbb16d5f34dd9f5d942ca4bc08a14}{%
+           family={Patel},
+           familyi={P\bibinitperiod},
+           given={Riki\bibnamedelima H.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=0fe43bdbca8e002144cfbbb4c7af9d82}{%
+           family={Pandya},
+           familyi={P\bibinitperiod},
+           given={Abhijit\bibnamedelima S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{2185629f651ef0259bd0085758ea9b92}
+      \strng{fullhash}{b2bb65a84e9edb0a5ff074218d5fbf70}
+      \strng{bibnamehash}{2185629f651ef0259bd0085758ea9b92}
+      \strng{authorbibnamehash}{2185629f651ef0259bd0085758ea9b92}
+      \strng{authornamehash}{2185629f651ef0259bd0085758ea9b92}
+      \strng{authorfullhash}{b2bb65a84e9edb0a5ff074218d5fbf70}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2022 International Conference on Smart Computing and Data Science (ICSCDS)}
+      \field{title}{A Comprehensive Study on Passwordless Authentication}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.1109/ICSCDS53736.2022.9760934
       \endverb
     \endentry
     \entry{perseus_tufts}{misc}{}
@@ -328,6 +518,7 @@
       \strng{authorbibnamehash}{d8df23ab843a37bf97ea40354db74d15}
       \strng{authornamehash}{d8df23ab843a37bf97ea40354db74d15}
       \strng{authorfullhash}{d8df23ab843a37bf97ea40354db74d15}
+      \field{extraname}{1}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{labelnamesource}{author}
@@ -336,6 +527,31 @@
       \field{isbn}{978-1119096726}
       \field{title}{Applied Cryptography: Protocols, Algorithms, and Source Code in C}
       \field{year}{2015}
+    \endentry
+    \entry{schneier2000secrets}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d8df23ab843a37bf97ea40354db74d15}{%
+           family={Schneier},
+           familyi={S\bibinitperiod},
+           given={Bruce},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{fullhash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{bibnamehash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{authorbibnamehash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{authornamehash}{d8df23ab843a37bf97ea40354db74d15}
+      \strng{authorfullhash}{d8df23ab843a37bf97ea40354db74d15}
+      \field{extraname}{2}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Secrets and Lies: Digital Security in a Networked World}
+      \field{year}{2000}
     \endentry
     \entry{nistfips197blocks}{report}{}
       \name{author}{2}{}{%
@@ -529,6 +745,7 @@
       \strng{authorbibnamehash}{446a1ae6601a5c59360c7d591c3992da}
       \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
       \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \field{extraname}{1}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
       \field{labelnamesource}{author}
@@ -543,6 +760,72 @@
       \verb{url}
       \verb https://www.w3.org/TR/webauthn-2/#authenticator-data
       \endverb
+    \endentry
+    \entry{webauthn-2-rp}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=446a1ae6601a5c59360c7d591c3992da}{%
+           family={{W3C}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{fullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{bibnamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authorbibnamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#webauthn-relying-party}}
+      \field{note}{Accessed on: March 25, 2023}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
+      \field{year}{2021}
+    \endentry
+    \entry{webauthn-2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=446a1ae6601a5c59360c7d591c3992da}{%
+           family={{W3C}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{fullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{bibnamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authorbibnamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \field{extraname}{3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#registration-ceremony}}
+      \field{note}{Accessed on: March 25, 2023}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
+      \field{year}{2021}
+    \endentry
+    \entry{webauthn-2-registering}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=446a1ae6601a5c59360c7d591c3992da}{%
+           family={{W3C}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{fullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{bibnamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authorbibnamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \field{extraname}{4}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#sctn-registering-a-new-credential}}
+      \field{note}{Accessed on: March 25, 2023}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
+      \field{year}{2021}
     \endentry
     \entry{wang2018next}{inproceedings}{}
       \name{author}{5}{}{%

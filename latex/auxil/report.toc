@@ -1,0 +1,18 @@
+\babel@toc {english}{}\relax 
+\setcounter {tocdepth}{1}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Background}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}WebAuthn}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Registration}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Authentication}{5}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Advanced Encryption Standard with 256-bit}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Hashing through Argon2}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}JSON Web Token \& JSON Web Encryption}{9}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}JSON Web Token (RFC 7519)}{9}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}JSON Web Encryption}{10}{subsubsection.2.4.2}%
+\contentsline {section}{\numberline {3}Literature Review}{10}{section.3}%
+\contentsline {section}{\numberline {4}Methodology}{11}{section.4}%
+\contentsline {section}{\numberline {5}Key}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Hashing AES-key}{11}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Conclusion}{11}{section.6}%
+\contentsline {section}{\numberline {7}Future work}{11}{section.7}%

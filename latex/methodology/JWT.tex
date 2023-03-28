@@ -1,14 +1,14 @@
 Although JSON Web Tokens (JWTs)~\cite{RFC7519} are not inherently encrypted,
 they still serve an essential purpose for some forms of secure data transfer.
-By combining JWTs with JSON Web Encryption (JWE)~\cite{rfc7516}, secure data
-transfer between a client and a server can be achieved.
+By combining JWTs with JSON Web Encryption (JWE)~\cite{rfc7516}, secure
+intercommunication between two or more parties can be achieved.
 
-\subsubsection{JSON Web Token}
-JSON Web Token (JWT) was introduced as part of RFC 7519 in 2015~\cite{RFC7519}.
-It is a compact URL-safe string intended to transfer data between two entities.
+\subsubsection{JSON Web Token (RFC 7519)}
+JWTs were introduced as part of RFC 7519 in 2015~\cite{RFC7519}.
+It is a compact, URL-safe string intended to transfer data between two entities.
 They can be used as part of an authentication and authorization scheme in a web
 service, application, or API\@.
-The data in the string is intended as a payload and is referenced as a
+The data in the string is intended as a payload and is referred to as a
 \texttt{claim}~\cite{RFC7519}.
 
 A JWT typically consist of three parts: header, payload, and signature.
@@ -36,10 +36,10 @@ permits larger bits of data to be sent in a compressed, safe\footnote{
   We reference safe as a way to transfer the data over the selected protocol,
   in most cases HTTP(S).
 } format~\cite{RFC7519}.
-JWTs are widely used for scenarios like single sign-on (SSO), user
-authentication, and securing API endpoints by providing an efficient, stateless
-mechanism for transmitting information about the user's identity, permissions,
-and other relevant data~\cite{karande2018securingnode}.
+JWTs are widely used for scenarios such as single sign-on (SSO), user
+authentication, and securing API endpoints by providing an efficient and
+stateless mechanism for transmitting information about the user's identity,
+permissions, and other relevant data~\cite{karande2018securingnode}.
 
 The process functions as follows:
 \begin{itemize}
@@ -47,7 +47,7 @@ The process functions as follows:
   \item A token is constructed and created through a claim on the server.
   \item The claim can be any data the server wishes to use to authenticate the
   legitimacy of a future request.
-  \item The claim gets signed with a desired algorithm.
+  \item The claim gets signed with the desired algorithm.
   This can also be a secret, stored on the server.
   \item As part of the response to a request, the server appends the token.\footnote{
     A common place to embed these tokens is in the Authroization part of the
@@ -60,10 +60,14 @@ The process functions as follows:
 \end{itemize}
 
 \subsubsection{JSON Web Encryption}
-Complimenting the JWT standard are JWEs.
-There are many parallels between the two but the major distinction between them
-are that JWEs are encrypted~\cite{rfc7516}.
+Complimenting the JWT standard are JWEs (RFC 7516).
+Introduced around the same time as JWTs, in May 2015, there are many parallels
+between the two, but the significant distinction between them is that JWEs are
+encrypted~\cite{rfc7516}.
 This encryption can happen through AES (see Section~\ref{subsec:aes}) and
 provides integrity and authenticity for the token.
-This prevents eavesdropping or tampering with the token during transit
+This prevents eavesdropping or tampering with the token during transit.
+Combined with JWT, JWE enhance the overall security of JWT-based implementations,
+making them more suitable for transferring sensitive data between
+intercommunicating entities on the Web.
 % This section might be split up into two parts, dividing JWT and JWE

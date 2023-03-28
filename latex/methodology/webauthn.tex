@@ -22,15 +22,23 @@ a traditional password could potentially compromise multiple services where pass
 
 \subsubsection{Registration}\label{subsubsec:registration}
 In order to register in a WebAuthn authentication system, the user (i.e., client, browser, phone, etc.) issues a registration request to a
-WebAuthn implemented server, called a Relying Party (RP), asking to be registered.
-The request contains a body with the relevant user identifier (UID. i.e., username, phone number, email, etc.).
-The server responds by initiating a Registration Ceremony (RC) and generates a challenge, which is sent to the client.
+WebAuthn implemented server, called a Relying Party (RP), asking to be
+registered~\cite{webauthn-2-rp}.
+The request contains a body with the relevant user identifier (UID. i.e.,
+username, phone number, email, etc.).
+The server responds by initiating a Registration Ceremony (RC) and generates a
+challenge, which is sent to the client~\cite{webauthn-2}.
 
-The client then calls the browser-integrated WebAuthn API, requesting the Authenticator (i.e., phone, hardware authenticator device, or similar)
-to create a new public key credential.\footnote{
+The client then calls the browser-integrated WebAuthn API, requesting the
+Authenticator (i.e., phone, hardware authenticator device, or similar)
+to create a new public key credential through the Client to Authenticator 2
+Protocol (CTAP2).\footnote{
   The user is prompted to use their Authenticator to prove their presence, which can involve scanning a QR code,
   providing a fingerprint, or any other modality supported by the device.}
-During this process, the Authenticator generates a new key-pair (public and private keys). The Authenticator then signs the challenge received from the server with the private key.
+During this process, the Authenticator generates a new key-pair (public and
+private keys).
+The Authenticator then signs the challenge received from the server with the
+private key~\cite{webauthn-2-registering}.
 
 The newly created public key, signed challenge, and additional metadata are combined into a public key credential object,
 which the client sends back to the server.
@@ -38,9 +46,10 @@ which the client sends back to the server.
 The server verifies the authenticity of the signed challenge and the public key credential object.
 If successful, the server stores the user's public key and other relevant information (e.g., user identifier, credential ID)
 for future authentication.
+
 Thus completing the RC\@.
 
-The process can be seen in~\ref{fig:registration}.
+The process can be seen in Figure~\ref{fig:registration}.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.75\linewidth]{images/Registration}

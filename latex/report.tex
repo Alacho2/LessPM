@@ -116,10 +116,17 @@
 
     \fi
 
-
-    \section{Executive Summary}\label{sec:executive-summary}
+    \section*{Abstract}\label{sec:abstract}
 
     Test\cite{lol}
+
+    \newpage
+
+    \tableofcontents
+
+    \newpage
+
+    \newpage
 
     \iffalse
 
@@ -138,13 +145,15 @@
 
     \fi
 
-    \section{Abstract}\label{sec:abstract}
-
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
     \section{Introduction}\label{sec:introduction}
     \input{introduction}
 
     \section{Background}\label{sec:background}
     \input{background}
+
+    \section{Literature Review}\label{sec:literature-review}
+    \input{litrev}
 
     \section{Methodology}\label{sec:methodology}
     \input{methodology/methodology}

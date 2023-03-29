@@ -12,7 +12,8 @@ The concept relies on the use of a third-party device, called an Authenticator, 
 These devices employ biometric or hardware-based mechanisms to provide a secure and reliable means of authenticating a
 user.
 
-Upon registration, the Authenticator device generates a key pair called a Passkey.
+Upon registration, the Authenticator Device (AD) generates a key pair called a
+Passkey.
 This Passkey contains a credential ID uniquely generated for each registered key-pair~\cite{webauthn_credential_id,webauthn_public_key_credential}
 on the Authenticator.
 The unique generation of each key pair offers the advantage of making it much more difficult for trackers to follow a user
@@ -50,12 +51,12 @@ for future authentication.
 Thus completing the RC\@.
 
 The process can be seen in Figure~\ref{fig:registration}.
-\begin{figure}[htbp]
+\begin{figure*}[htbp]
   \centering
   \includegraphics[width=0.75\linewidth]{images/Registration}
   \caption{\footnotesize A diagram dipicting the registration process through WebAuthn and Authenticator Device.}
   \label{fig:registration}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Authentication}\label{subsubsec:authentication}
 When a user wishes to perform authentication (commonly referred to as \texttt{logging in}), much of the same procedure
@@ -86,12 +87,12 @@ the ceremony is aborted and considered invalid.
 
 This process can be seen in Figure~\ref{fig:authentication}.
 
-\begin{figure}[htbp]
+\begin{figure*}[htbp]
   \centering
-  \includegraphics[width=0.8\linewidth]{images/Authentication}
+  \includegraphics[width=0.75\linewidth]{images/Authentication}
   \caption{\footnotesize A diagram dipicting the authentication process through WebAuthn and Authenticator Device.}
   \label{fig:authentication}
-\end{figure}
+\end{figure*}
 
 \todo[inline]{Consider adding some sort of information about the footnote in
 litreview that details pasword reuse.}

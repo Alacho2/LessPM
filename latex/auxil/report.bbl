@@ -230,6 +230,46 @@
       \field{title}{FIDO UAF Overview}
       \field{year}{2017}
     \endentry
+    \entry{fischer1985impossibility}{article}{}
+      \name{author}{3}{}{%
+        {{hash=9785b717133b2f558f2cbf756c97d2c4}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Michael\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4cb9c762bb867e8f092a2faa97489360}{%
+           family={Lynch},
+           familyi={L\bibinitperiod},
+           given={Nancy\bibnamedelima A.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=6d1b78a579a1a59b7cc3e789bec1916f}{%
+           family={Paterson},
+           familyi={P\bibinitperiod},
+           given={Michael\bibnamedelima S.},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{6765b0ed610b69a7c2758f0f08c9a00e}
+      \strng{fullhash}{6765b0ed610b69a7c2758f0f08c9a00e}
+      \strng{bibnamehash}{6765b0ed610b69a7c2758f0f08c9a00e}
+      \strng{authorbibnamehash}{6765b0ed610b69a7c2758f0f08c9a00e}
+      \strng{authornamehash}{6765b0ed610b69a7c2758f0f08c9a00e}
+      \strng{authorfullhash}{6765b0ed610b69a7c2758f0f08c9a00e}
+      \field{labelalpha}{FLP85}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the ACM (JACM)}
+      \field{number}{2}
+      \field{title}{Impossibility of Distributed Consensus with One Faulty Process}
+      \field{volume}{32}
+      \field{year}{1985}
+      \field{pages}{374\bibrangedash 382}
+      \range{pages}{9}
+    \endentry
     \entry{ghrobany2020fido2}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=c86250d081f3a0cedce6a867368cdd0c}{%
@@ -301,6 +341,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{2021 20th RoEduNet Conference: Networking in Education and Research (RoEduNet)}
+      \field{note}{Last Accessed: 2023-03-28}
       \field{title}{Moving forward passwordless authentication: challenges and implementations for the private cloud}
       \field{year}{2021}
       \verb{doi}
@@ -422,6 +463,27 @@
       \field{title}{Securing Node Applications: Protecting Against Malicious Attacks}
       \field{year}{2018}
     \endentry
+    \entry{librs-stats}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=ab36f3d2e6e5e0827f69ac931ebbdbba}{%
+           family={Kornelski},
+           familyi={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{ab36f3d2e6e5e0827f69ac931ebbdbba}
+      \strng{fullhash}{ab36f3d2e6e5e0827f69ac931ebbdbba}
+      \strng{bibnamehash}{ab36f3d2e6e5e0827f69ac931ebbdbba}
+      \strng{authorbibnamehash}{ab36f3d2e6e5e0827f69ac931ebbdbba}
+      \strng{authornamehash}{ab36f3d2e6e5e0827f69ac931ebbdbba}
+      \strng{authorfullhash}{ab36f3d2e6e5e0827f69ac931ebbdbba}
+      \field{labelalpha}{Kor}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://lib.rs/stats}}
+      \field{note}{[Accessed: Mar 29, 2023]}
+      \field{title}{Lib.rs Stats}
+    \endentry
     \entry{lee2021samsung}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=c1e4ebd8db05e30bcef1916fe40c8a99}{%
@@ -502,6 +564,108 @@
       \field{pages}{85\bibrangedash 102}
       \range{pages}{18}
     \endentry
+    \entry{lieberherr1990assuring}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c9d240cbaa277845dc0673b52b00f6b1}{%
+           family={Lieberherr},
+           familyi={L\bibinitperiod},
+           given={Karl\bibnamedelima J.},
+           giveni={K\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=1d4fceb96ddabb65603412636768995a}{%
+           family={Holland},
+           familyi={H\bibinitperiod},
+           given={Ian\bibnamedelima M.},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{ce02346a2842626ecc478b5a82f81532}
+      \strng{fullhash}{ce02346a2842626ecc478b5a82f81532}
+      \strng{bibnamehash}{ce02346a2842626ecc478b5a82f81532}
+      \strng{authorbibnamehash}{ce02346a2842626ecc478b5a82f81532}
+      \strng{authornamehash}{ce02346a2842626ecc478b5a82f81532}
+      \strng{authorfullhash}{ce02346a2842626ecc478b5a82f81532}
+      \field{labelalpha}{LH90}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Software}
+      \field{number}{5}
+      \field{title}{Assuring Good Style for Object-Oriented Programs}
+      \field{volume}{7}
+      \field{year}{1990}
+      \field{pages}{38\bibrangedash 48}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1109/52.35588
+      \endverb
+    \endentry
+    \entry{morii2017research}{inproceedings}{}
+      \name{author}{7}{}{%
+        {{hash=69e15945c3f78991bae5e56968348a43}{%
+           family={Morii},
+           familyi={M\bibinitperiod},
+           given={Michitomo},
+           giveni={M\bibinitperiod}}}%
+        {{hash=392839e6b38ebed099a030506a50d358}{%
+           family={Seki},
+           familyi={S\bibinitperiod},
+           given={Yosuke},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=75a760b7b1e48916ccc685d45e27a4e9}{%
+           family={Tanioka},
+           familyi={T\bibinitperiod},
+           given={Hiroki},
+           giveni={H\bibinitperiod}}}%
+        {{hash=49d4c6ad79bfe2cc83527a88096db556}{%
+           family={Ohira},
+           familyi={O\bibinitperiod},
+           given={Kenji},
+           giveni={K\bibinitperiod}}}%
+        {{hash=1964f31ab4c7856cd6a5827a25b1bfe7}{%
+           family={Sano},
+           familyi={S\bibinitperiod},
+           given={Masahiko},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d610c0bda8c9b3a4b40f0385041fb9e1}{%
+           family={Matsuura},
+           familyi={M\bibinitperiod},
+           given={Keiji},
+           giveni={K\bibinitperiod}}}%
+        {{hash=c6c339eff0dc26e0b2624ae7b7bf9ecb}{%
+           family={Ueta},
+           familyi={U\bibinitperiod},
+           given={Tetsushi},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Tokushima University}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{40df4a492a46664d64dca62bc830f881}
+      \strng{fullhash}{16dfa9755cddc067f5aaf67b399744cc}
+      \strng{bibnamehash}{40df4a492a46664d64dca62bc830f881}
+      \strng{authorbibnamehash}{40df4a492a46664d64dca62bc830f881}
+      \strng{authornamehash}{40df4a492a46664d64dca62bc830f881}
+      \strng{authorfullhash}{16dfa9755cddc067f5aaf67b399744cc}
+      \field{labelalpha}{Mor+17}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2017 IEEE 41st Annual Computer Software and Applications Conference (COMPSAC)}
+      \field{title}{Research on Integrated Authentication Using Passwordless Authentication Method}
+      \field{year}{2017}
+      \field{pages}{895\bibrangedash 900}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/COMPSAC.2017.198
+      \endverb
+    \endentry
     \entry{owasp-credential-stuffing}{misc}{}
       \name{author}{1}{}{%
         {{hash=c5bf765a8df91d940efac6032087d653}{%
@@ -575,6 +739,7 @@
       \field{labeltitlesource}{title}
       \field{howpublished}{Web page}
       \field{month}{10}
+      \field{note}{Last Accessed: 2023-03-27}
       \field{title}{Commerce Department Announces Winner of Global Information Security Competition}
       \field{year}{2000}
       \verb{urlraw}
@@ -716,6 +881,38 @@
       \verb http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D6%3Achapter%3D34
       \endverb
     \endentry
+    \entry{rivera2019preserving}{report}{}
+      \name{author}{1}{}{%
+        {{hash=7079e2adef7c268214bd82db00ddb027}{%
+           family={Rivera},
+           familyi={R\bibinitperiod},
+           given={Elijah\bibnamedelima E.},
+           giveni={E\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Defense Technical Information Center}%
+      }
+      \strng{namehash}{7079e2adef7c268214bd82db00ddb027}
+      \strng{fullhash}{7079e2adef7c268214bd82db00ddb027}
+      \strng{bibnamehash}{7079e2adef7c268214bd82db00ddb027}
+      \strng{authorbibnamehash}{7079e2adef7c268214bd82db00ddb027}
+      \strng{authornamehash}{7079e2adef7c268214bd82db00ddb027}
+      \strng{authorfullhash}{7079e2adef7c268214bd82db00ddb027}
+      \field{labelalpha}{Riv19}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Preserving Memory Safety in Safe Rust during Interactions with Unsafe Languages}
+      \field{type}{techreport}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://apps.dtic.mil/sti/trecms/pdf/AD1188941.pdf
+      \endverb
+      \verb{url}
+      \verb https://apps.dtic.mil/sti/trecms/pdf/AD1188941.pdf
+      \endverb
+    \endentry
     \entry{statista-biometric-transactions}{misc}{}
       \name{author}{1}{}{%
         {{hash=6927e0fd1bbc6166b57a711885590344}{%
@@ -737,6 +934,7 @@
       \field{labeltitlesource}{title}
       \field{howpublished}{Statista}
       \field{month}{6}
+      \field{note}{Last Accessed: 2023-03-28}
       \field{title}{Biometrics-enabled consumer device adoption in 2020}
       \field{year}{2022}
       \verb{urlraw}
@@ -799,6 +997,33 @@
       \field{isbn}{978-1119096726}
       \field{title}{Applied Cryptography: Protocols, Algorithms, and Source Code in C}
       \field{year}{2015}
+    \endentry
+    \entry{shibboleth}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e7128861457d28486d8c415b74b4feaf}{%
+           family={{Shibboleth Consortium}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e7128861457d28486d8c415b74b4feaf}
+      \strng{fullhash}{e7128861457d28486d8c415b74b4feaf}
+      \strng{bibnamehash}{e7128861457d28486d8c415b74b4feaf}
+      \strng{authorbibnamehash}{e7128861457d28486d8c415b74b4feaf}
+      \strng{authornamehash}{e7128861457d28486d8c415b74b4feaf}
+      \strng{authorfullhash}{e7128861457d28486d8c415b74b4feaf}
+      \field{labelalpha}{Shi22}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2023-03-28}
+      \field{title}{{Shibboleth - Federated Identity Solutions}}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://www.shibboleth.net/
+      \endverb
+      \verb{url}
+      \verb https://www.shibboleth.net/
+      \endverb
     \endentry
     \entry{nistfips197blocks}{report}{}
       \name{author}{2}{}{%
@@ -1166,8 +1391,58 @@
       \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
       \field{year}{2021}
     \endentry
+    \entry{yan2000password}{report}{}
+      \name{author}{4}{}{%
+        {{hash=40b338ed18ad39fb8b2036c089c9e342}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Jianxin},
+           giveni={J\bibinitperiod}}}%
+        {{hash=534deb78d3e4c85c835632ca2b1c2f19}{%
+           family={Blackwell},
+           familyi={B\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=e027c8df89339344ddc4de634d17acf1}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1908750aed085dccfe0442f762e42e6f}{%
+           family={Grant},
+           familyi={G\bibinitperiod},
+           given={Alasdair},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Cambridge, Computer Laboratory}%
+      }
+      \strng{namehash}{7e396d3670a316147740ea6fbc889c92}
+      \strng{fullhash}{717a2731f9f9f4a6fd8387ff5cbe3e7e}
+      \strng{bibnamehash}{7e396d3670a316147740ea6fbc889c92}
+      \strng{authorbibnamehash}{7e396d3670a316147740ea6fbc889c92}
+      \strng{authornamehash}{7e396d3670a316147740ea6fbc889c92}
+      \strng{authorfullhash}{717a2731f9f9f4a6fd8387ff5cbe3e7e}
+      \field{labelalpha}{Yan+00}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{number}{UCAM-CL-TR-500}
+      \field{title}{The Memorability and Security of Passwords: Some Empirical Results}
+      \field{type}{techreport}
+      \field{year}{2000}
+      \verb{urlraw}
+      \verb https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-500.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-500.pdf
+      \endverb
+    \endentry
   \enddatalist
   \missing{lol}
+  \missing{subsec:json-web-tokens}
 \endrefsection
 \endinput
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  28 MAR 2023 18:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  29 MAR 2023 13:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -91,7 +91,30 @@ Package babel Info: Importing font and identification data for english
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/url/url.sty
+)
+(/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/stto
+ols/cuted.sty
+Package: cuted 2021/10/04 v2.0 Mixing onecolumn and twocolumn modes
+\At@ViperColsBreak=\toks18
+\preCutedStrip=\toks19
+\postCutedStrip=\toks20
+\cuted@@tempbox@a=\box51
+\cuted@@tempbox@c=\box52
+\cuted@@tempbox@var=\box53
+\hold@viper=\box54
+\@viper=\box55
+\cuted@@varbox@a=\box56
+\cuted@@varbox@c=\box57
+\cuted@@tempdim@spread=\dimen150
+\cuted@@tempdim@a=\dimen151
+\cuted@@tempdim@b=\dimen152
+\ht@hold@viper=\dimen153
+\ht@viper=\dimen154
+\var@@pagediscards@ht=\dimen155
+\stripsep=\skip50
+\viper@penalty=\count198
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -156,11 +179,11 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 tions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count198
+\c@section@level=\count199
 )
-\@linkdim=\dimen150
-\Hy@linkcounter=\count199
-\Hy@pagecounter=\count266
+\@linkdim=\dimen156
+\Hy@linkcounter=\count266
+\Hy@pagecounter=\count267
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/pd1enc.d
 ef
@@ -176,7 +199,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 excmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count267
+\Hy@SavedSpaceFactor=\count268
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/puenc.de
 f
@@ -191,9 +214,9 @@ Package hyperref Info: Plain pages OFF on input line 4192.
 Package hyperref Info: Backreferencing OFF on input line 4197.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4425.
-\c@Hy@tempcnt=\count268
+\c@Hy@tempcnt=\count269
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen151
+\XeTeXLinkMargin=\dimen157
 
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/generic/bi
 tset/bitset.sty
@@ -204,9 +227,9 @@ gintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count269
-\Field@Width=\dimen152
-\Fld@charsize=\dimen153
+\Fld@menulength=\count270
+\Field@Width=\dimen158
+\Fld@charsize=\dimen159
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -220,9 +243,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count270
-\c@Item=\count271
-\c@Hfootnote=\count272
+\Hy@abspage=\count271
+\c@Item=\count272
+\c@Hfootnote=\count273
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -236,8 +259,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count273
-\c@bookmark@seq@number=\count274
+\Fld@listcount=\count274
+\c@bookmark@seq@number=\count275
 
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/reru
 nfilecheck/rerunfilecheck.sty
@@ -250,7 +273,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip50
+\Hy@SectionHShift=\skip51
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphicx
 .sty
@@ -273,40 +296,41 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 ex.def
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen154
-\Gin@req@width=\dimen155
+\Gin@req@height=\dimen160
+\Gin@req@width=\dimen161
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/multicol.st
 y
 Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
-\c@tracingmulticols=\count275
-\mult@box=\box51
-\multicol@leftmargin=\dimen156
-\c@unbalance=\count276
-\c@collectmore=\count277
-\doublecol@number=\count278
-\multicoltolerance=\count279
-\multicolpretolerance=\count280
-\full@width=\dimen157
-\page@free=\dimen158
-\premulticols=\dimen159
-\postmulticols=\dimen160
-\multicolsep=\skip51
-\multicolbaselineskip=\skip52
-\partial@page=\box52
-\last@line=\box53
-\maxbalancingoverflow=\dimen161
-\mult@rightbox=\box54
-\mult@grightbox=\box55
-\mult@firstbox=\box56
-\mult@gfirstbox=\box57
-\@tempa=\box58
-\@tempa=\box59
-\@tempa=\box60
-\@tempa=\box61
-\@tempa=\box62
-\@tempa=\box63
-\@tempa=\box64
+\c@tracingmulticols=\count276
+
+
+Package multicol Warning: May not work with the twocolumn option on input line 
+143.
+
+\mult@box=\box58
+\multicol@leftmargin=\dimen162
+\c@unbalance=\count277
+\c@collectmore=\count278
+\doublecol@number=\count279
+\multicoltolerance=\count280
+\multicolpretolerance=\count281
+\full@width=\dimen163
+\page@free=\dimen164
+\premulticols=\dimen165
+\postmulticols=\dimen166
+\multicolsep=\skip52
+\multicolbaselineskip=\skip53
+\partial@page=\box59
+\last@line=\box60
+\maxbalancingoverflow=\dimen167
+\mult@rightbox=\box61
+\mult@grightbox=\box62
+\mult@firstbox=\box63
+\mult@gfirstbox=\box64
 \@tempa=\box65
 \@tempa=\box66
 \@tempa=\box67
@@ -336,37 +360,44 @@ Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
 \@tempa=\box91
 \@tempa=\box92
 \@tempa=\box93
-\c@minrows=\count281
-\c@columnbadness=\count282
-\c@finalcolumnbadness=\count283
-\last@try=\dimen162
-\multicolovershoot=\dimen163
-\multicolundershoot=\dimen164
-\mult@nat@firstbox=\box94
-\colbreak@box=\box95
-\mc@col@check@num=\count284
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\c@minrows=\count282
+\c@columnbadness=\count283
+\c@finalcolumnbadness=\count284
+\last@try=\dimen168
+\multicolovershoot=\dimen169
+\multicolundershoot=\dimen170
+\mult@nat@firstbox=\box101
+\colbreak@box=\box102
+\mc@col@check@num=\count285
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/listings/listings
 .sty
-\lst@mode=\count285
-\lst@gtempboxa=\box96
-\lst@token=\toks18
-\lst@length=\count286
-\lst@currlwidth=\dimen165
-\lst@column=\count287
-\lst@pos=\count288
-\lst@lostspace=\dimen166
-\lst@width=\dimen167
-\lst@newlines=\count289
-\lst@lineno=\count290
-\lst@maxwidth=\dimen168
+\lst@mode=\count286
+\lst@gtempboxa=\box103
+\lst@token=\toks21
+\lst@length=\count287
+\lst@currlwidth=\dimen171
+\lst@column=\count288
+\lst@pos=\count289
+\lst@lostspace=\dimen172
+\lst@width=\dimen173
+\lst@newlines=\count290
+\lst@lineno=\count291
+\lst@maxwidth=\dimen174
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/listings/lstmisc.
 sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count291
-\lst@skipnumbers=\count292
-\lst@framebox=\box97
+\c@lstnumber=\count292
+\lst@skipnumbers=\count293
+\lst@framebox=\box104
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/listings/listings
 .cfg
@@ -381,77 +412,74 @@ Package: biblatex 2022/07/12 v3.18b programmable bibliographies (PK/MW)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/etoolbox/etoolbox
 .sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count293
+\etb@tempcnta=\count294
 )
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/logr
 eq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count294
+\lrq@indent=\count295
 
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/logr
 eq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-)
-\c@tabx@nest=\count295
-\c@listtotal=\count296
-\c@listcount=\count297
-\c@liststart=\count298
-\c@liststop=\count299
-\c@citecount=\count300
-\c@citetotal=\count301
-\c@multicitecount=\count302
-\c@multicitetotal=\count303
-\c@instcount=\count304
-\c@maxnames=\count305
-\c@minnames=\count306
-\c@maxitems=\count307
-\c@minitems=\count308
-\c@citecounter=\count309
-\c@maxcitecounter=\count310
-\c@savedcitecounter=\count311
-\c@uniquelist=\count312
-\c@uniquename=\count313
-\c@refsection=\count314
-\c@refsegment=\count315
-\c@maxextratitle=\count316
-\c@maxextratitleyear=\count317
-\c@maxextraname=\count318
-\c@maxextradate=\count319
-\c@maxextraalpha=\count320
-\c@abbrvpenalty=\count321
-\c@highnamepenalty=\count322
-\c@lownamepenalty=\count323
-\c@maxparens=\count324
-\c@parenlevel=\count325
-\blx@tempcnta=\count326
-\blx@tempcntb=\count327
-\blx@tempcntc=\count328
-\c@blx@maxsection=\count329
-\blx@maxsegment@0=\count330
-\blx@notetype=\count331
-\blx@parenlevel@text=\count332
-\blx@parenlevel@foot=\count333
-\blx@sectionciteorder@0=\count334
-\blx@sectionciteorderinternal@0=\count335
-\blx@entrysetcounter=\count336
-\blx@biblioinstance=\count337
-\labelnumberwidth=\skip53
-\labelalphawidth=\skip54
-\biblabelsep=\skip55
-\bibitemsep=\skip56
-\bibnamesep=\skip57
-\bibinitsep=\skip58
-\bibparsep=\skip59
-\bibhang=\skip60
+\c@tabx@nest=\count296
+\c@listtotal=\count297
+\c@listcount=\count298
+\c@liststart=\count299
+\c@liststop=\count300
+\c@citecount=\count301
+\c@citetotal=\count302
+\c@multicitecount=\count303
+\c@multicitetotal=\count304
+\c@instcount=\count305
+\c@maxnames=\count306
+\c@minnames=\count307
+\c@maxitems=\count308
+\c@minitems=\count309
+\c@citecounter=\count310
+\c@maxcitecounter=\count311
+\c@savedcitecounter=\count312
+\c@uniquelist=\count313
+\c@uniquename=\count314
+\c@refsection=\count315
+\c@refsegment=\count316
+\c@maxextratitle=\count317
+\c@maxextratitleyear=\count318
+\c@maxextraname=\count319
+\c@maxextradate=\count320
+\c@maxextraalpha=\count321
+\c@abbrvpenalty=\count322
+\c@highnamepenalty=\count323
+\c@lownamepenalty=\count324
+\c@maxparens=\count325
+\c@parenlevel=\count326
+\blx@tempcnta=\count327
+\blx@tempcntb=\count328
+\blx@tempcntc=\count329
+\c@blx@maxsection=\count330
+\blx@maxsegment@0=\count331
+\blx@notetype=\count332
+\blx@parenlevel@text=\count333
+\blx@parenlevel@foot=\count334
+\blx@sectionciteorder@0=\count335
+\blx@sectionciteorderinternal@0=\count336
+\blx@entrysetcounter=\count337
+\blx@biblioinstance=\count338
+\labelnumberwidth=\skip54
+\labelalphawidth=\skip55
+\biblabelsep=\skip56
+\bibitemsep=\skip57
+\bibnamesep=\skip58
+\bibinitsep=\skip59
+\bibparsep=\skip60
+\bibhang=\skip61
 \blx@bcfin=\read3
 \blx@bcfout=\write3
 \blx@langwohyphens=\language80
-\c@mincomprange=\count338
-\c@maxcomprange=\count339
-\c@mincompwidth=\count340
+\c@mincomprange=\count339
+\c@maxcomprange=\count340
+\c@mincompwidth=\count341
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -463,88 +491,88 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'alphabetic.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count341
-\c@savedafterword=\count342
-\c@annotator=\count343
-\c@savedannotator=\count344
-\c@author=\count345
-\c@savedauthor=\count346
-\c@bookauthor=\count347
-\c@savedbookauthor=\count348
-\c@commentator=\count349
-\c@savedcommentator=\count350
-\c@editor=\count351
-\c@savededitor=\count352
-\c@editora=\count353
-\c@savededitora=\count354
-\c@editorb=\count355
-\c@savededitorb=\count356
-\c@editorc=\count357
-\c@savededitorc=\count358
-\c@foreword=\count359
-\c@savedforeword=\count360
-\c@holder=\count361
-\c@savedholder=\count362
-\c@introduction=\count363
-\c@savedintroduction=\count364
-\c@namea=\count365
-\c@savednamea=\count366
-\c@nameb=\count367
-\c@savednameb=\count368
-\c@namec=\count369
-\c@savednamec=\count370
-\c@translator=\count371
-\c@savedtranslator=\count372
-\c@shortauthor=\count373
-\c@savedshortauthor=\count374
-\c@shorteditor=\count375
-\c@savedshorteditor=\count376
-\c@labelname=\count377
-\c@savedlabelname=\count378
-\c@institution=\count379
-\c@savedinstitution=\count380
-\c@lista=\count381
-\c@savedlista=\count382
-\c@listb=\count383
-\c@savedlistb=\count384
-\c@listc=\count385
-\c@savedlistc=\count386
-\c@listd=\count387
-\c@savedlistd=\count388
-\c@liste=\count389
-\c@savedliste=\count390
-\c@listf=\count391
-\c@savedlistf=\count392
-\c@location=\count393
-\c@savedlocation=\count394
-\c@organization=\count395
-\c@savedorganization=\count396
-\c@origlocation=\count397
-\c@savedoriglocation=\count398
-\c@origpublisher=\count399
-\c@savedorigpublisher=\count400
-\c@publisher=\count401
-\c@savedpublisher=\count402
-\c@language=\count403
-\c@savedlanguage=\count404
-\c@origlanguage=\count405
-\c@savedoriglanguage=\count406
-\c@pageref=\count407
-\c@savedpageref=\count408
-\shorthandwidth=\skip61
-\shortjournalwidth=\skip62
-\shortserieswidth=\skip63
-\shorttitlewidth=\skip64
-\shortauthorwidth=\skip65
-\shorteditorwidth=\skip66
-\locallabelnumberwidth=\skip67
-\locallabelalphawidth=\skip68
-\localshorthandwidth=\skip69
-\localshortjournalwidth=\skip70
-\localshortserieswidth=\skip71
-\localshorttitlewidth=\skip72
-\localshortauthorwidth=\skip73
-\localshorteditorwidth=\skip74
+\c@afterword=\count342
+\c@savedafterword=\count343
+\c@annotator=\count344
+\c@savedannotator=\count345
+\c@author=\count346
+\c@savedauthor=\count347
+\c@bookauthor=\count348
+\c@savedbookauthor=\count349
+\c@commentator=\count350
+\c@savedcommentator=\count351
+\c@editor=\count352
+\c@savededitor=\count353
+\c@editora=\count354
+\c@savededitora=\count355
+\c@editorb=\count356
+\c@savededitorb=\count357
+\c@editorc=\count358
+\c@savededitorc=\count359
+\c@foreword=\count360
+\c@savedforeword=\count361
+\c@holder=\count362
+\c@savedholder=\count363
+\c@introduction=\count364
+\c@savedintroduction=\count365
+\c@namea=\count366
+\c@savednamea=\count367
+\c@nameb=\count368
+\c@savednameb=\count369
+\c@namec=\count370
+\c@savednamec=\count371
+\c@translator=\count372
+\c@savedtranslator=\count373
+\c@shortauthor=\count374
+\c@savedshortauthor=\count375
+\c@shorteditor=\count376
+\c@savedshorteditor=\count377
+\c@labelname=\count378
+\c@savedlabelname=\count379
+\c@institution=\count380
+\c@savedinstitution=\count381
+\c@lista=\count382
+\c@savedlista=\count383
+\c@listb=\count384
+\c@savedlistb=\count385
+\c@listc=\count386
+\c@savedlistc=\count387
+\c@listd=\count388
+\c@savedlistd=\count389
+\c@liste=\count390
+\c@savedliste=\count391
+\c@listf=\count392
+\c@savedlistf=\count393
+\c@location=\count394
+\c@savedlocation=\count395
+\c@organization=\count396
+\c@savedorganization=\count397
+\c@origlocation=\count398
+\c@savedoriglocation=\count399
+\c@origpublisher=\count400
+\c@savedorigpublisher=\count401
+\c@publisher=\count402
+\c@savedpublisher=\count403
+\c@language=\count404
+\c@savedlanguage=\count405
+\c@origlanguage=\count406
+\c@savedoriglanguage=\count407
+\c@pageref=\count408
+\c@savedpageref=\count409
+\shorthandwidth=\skip62
+\shortjournalwidth=\skip63
+\shortserieswidth=\skip64
+\shorttitlewidth=\skip65
+\shortauthorwidth=\skip66
+\shorteditorwidth=\skip67
+\locallabelnumberwidth=\skip68
+\locallabelalphawidth=\skip69
+\localshorthandwidth=\skip70
+\localshortjournalwidth=\skip71
+\localshortserieswidth=\skip72
+\localshorttitlewidth=\skip73
+\localshortauthorwidth=\skip74
+\localshorteditorwidth=\skip75
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -558,19 +586,19 @@ Package biblatex Info: ... file 'biblatex.def' found.
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/biblatex/biblatex
 .def
 File: biblatex.def 2022/07/12 v3.18b biblatex compatibility (PK/MW)
-\c@textcitecount=\count409
-\c@textcitetotal=\count410
-\c@textcitemaxnames=\count411
-\c@biburlbigbreakpenalty=\count412
-\c@biburlbreakpenalty=\count413
-\c@biburlnumpenalty=\count414
-\c@biburlucpenalty=\count415
-\c@biburllcpenalty=\count416
+\c@textcitecount=\count410
+\c@textcitetotal=\count411
+\c@textcitemaxnames=\count412
+\c@biburlbigbreakpenalty=\count413
+\c@biburlbreakpenalty=\count414
+\c@biburlnumpenalty=\count415
+\c@biburlucpenalty=\count416
+\c@biburllcpenalty=\count417
 \biburlbigskip=\muskip17
 \biburlnumskip=\muskip18
 \biburlucskip=\muskip19
 \biburllcskip=\muskip20
-\c@smartand=\count417
+\c@smartand=\count418
 )
 Package biblatex Info: Trying to load bibliography style 'alphabetic'...
 Package biblatex Info: ... file 'alphabetic.bbx' found.
@@ -584,8 +612,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/biblatex/bbx/stan
 dard.bbx
 File: standard.bbx 2022/07/12 v3.18b biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count418
-\c@bbx:relatedtotal=\count419
+\c@bbx:relatedcount=\count419
+\c@bbx:relatedtotal=\count420
 ))
 Package biblatex Info: Trying to load citation style 'alphabetic'...
 Package biblatex Info: ... file 'alphabetic.cbx' found.
@@ -621,8 +649,8 @@ Package: expl3 2023-02-07 L3 programming layer (loader)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/l3backend/l3backe
 nd-pdftex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count420
-\l__pdf_internal_box=\box98
+\l__color_backend_stack_int=\count421
+\l__pdf_internal_box=\box105
 ))
 Package biblatex Info: ... and expl3
 (biblatex)             2023-02-07 L3 programming layer (loader) 
@@ -641,26 +669,26 @@ Package: blx-case-expl3 2022/07/12 v3.18b expl3 case changing code for biblatex
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/enum
 item/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip75
-\enit@outerparindent=\dimen169
-\enit@toks=\toks19
-\enit@inbox=\box99
-\enit@count@id=\count421
-\enitdp@description=\count422
+\labelindent=\skip76
+\enit@outerparindent=\dimen175
+\enit@toks=\toks22
+\enit@inbox=\box106
+\enit@count@id=\count422
+\enitdp@description=\count423
 )
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/appe
 ndix/appendix.sty
 Package: appendix 2020/02/08 v1.2c extra appendix facilities
-\c@@pps=\count423
-\c@@ppsavesec=\count424
-\c@@ppsaveapp=\count425
+\c@@pps=\count424
+\c@@ppsavesec=\count425
+\c@@ppsaveapp=\count426
 )
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/titl
 ing/titling.sty
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip76
-\thanksmargin=\skip77
-\droptitle=\skip78
+\thanksmarkwidth=\skip77
+\thanksmargin=\skip78
+\droptitle=\skip79
 )
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/capt
 ion/caption.sty
@@ -669,18 +697,18 @@ Package: caption 2022/03/01 v3.6b Customizing captions (AR)
 (/Users/havard/Library/Application Support/MiKTeX/texmfs/install/tex/latex/capt
 ion/caption3.sty
 Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
-\caption@tempdima=\dimen170
-\captionmargin=\dimen171
-\caption@leftmargin=\dimen172
-\caption@rightmargin=\dimen173
-\caption@width=\dimen174
-\caption@indent=\dimen175
-\caption@parindent=\dimen176
-\caption@hangindent=\dimen177
+\caption@tempdima=\dimen176
+\captionmargin=\dimen177
+\caption@leftmargin=\dimen178
+\caption@rightmargin=\dimen179
+\caption@width=\dimen180
+\caption@indent=\dimen181
+\caption@parindent=\dimen182
+\caption@hangindent=\dimen183
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count426
-\c@continuedfloat=\count427
+\c@caption@flags=\count427
+\c@continuedfloat=\count428
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
@@ -718,10 +746,10 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 .tex
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/xkeyval/xkvutil
 s.tex
-\XKV@toks=\toks20
-\XKV@tempa@toks=\toks21
+\XKV@toks=\toks23
+\XKV@tempa@toks=\toks24
 )
-\XKV@depth=\count428
+\XKV@depth=\count429
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty
@@ -754,13 +782,13 @@ f.sty
 rcs.sty
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/p
 gfutil-common.tex
-\pgfutil@everybye=\toks22
-\pgfutil@tempdima=\dimen178
-\pgfutil@tempdimb=\dimen179
+\pgfutil@everybye=\toks25
+\pgfutil@tempdima=\dimen184
+\pgfutil@tempdimb=\dimen185
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/p
 gfutil-latex.def
-\pgfutil@abb=\box100
+\pgfutil@abb=\box107
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/p
 gfrcs.code.tex
@@ -780,33 +808,33 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/p
 gfkeys.code.tex
-\pgfkeys@pathtoks=\toks23
-\pgfkeys@temptoks=\toks24
+\pgfkeys@pathtoks=\toks26
+\pgfkeys@temptoks=\toks27
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/p
 gfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks25
+\pgfkeys@tmptoks=\toks28
 ))
-\pgf@x=\dimen180
-\pgf@y=\dimen181
-\pgf@xa=\dimen182
-\pgf@ya=\dimen183
-\pgf@xb=\dimen184
-\pgf@yb=\dimen185
-\pgf@xc=\dimen186
-\pgf@yc=\dimen187
-\pgf@xd=\dimen188
-\pgf@yd=\dimen189
+\pgf@x=\dimen186
+\pgf@y=\dimen187
+\pgf@xa=\dimen188
+\pgf@ya=\dimen189
+\pgf@xb=\dimen190
+\pgf@yb=\dimen191
+\pgf@xc=\dimen192
+\pgf@yc=\dimen193
+\pgf@xd=\dimen194
+\pgf@yd=\dimen195
 \w@pgf@writea=\write4
 \r@pgf@reada=\read4
-\c@pgf@counta=\count429
-\c@pgf@countb=\count430
-\c@pgf@countc=\count431
-\c@pgf@countd=\count432
-\t@pgf@toka=\toks26
-\t@pgf@tokb=\toks27
-\t@pgf@tokc=\toks28
-\pgf@sys@id@count=\count433
+\c@pgf@counta=\count430
+\c@pgf@countb=\count431
+\c@pgf@countc=\count432
+\c@pgf@countd=\count433
+\t@pgf@toka=\toks29
+\t@pgf@tokb=\toks30
+\t@pgf@tokc=\toks31
+\pgf@sys@id@count=\count434
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer
 /pgf.cfg
@@ -825,8 +853,8 @@ File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer
 /pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count434
-\pgfsyssoftpath@bigbuffer@items=\count435
+\pgfsyssoftpath@smallbuffer@items=\count435
+\pgfsyssoftpath@bigbuffer@items=\count436
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer
 /pgfsysprotocol.code.tex
@@ -842,12 +870,12 @@ h.code.tex
 hutil.code.tex)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmat
 hparser.code.tex
-\pgfmath@dimen=\dimen190
-\pgfmath@count=\count436
-\pgfmath@box=\box101
-\pgfmath@toks=\toks29
-\pgfmath@stack@operand=\toks30
-\pgfmath@stack@operation=\toks31
+\pgfmath@dimen=\dimen196
+\pgfmath@count=\count437
+\pgfmath@box=\box108
+\pgfmath@toks=\toks32
+\pgfmath@stack@operand=\toks33
+\pgfmath@stack@operation=\toks34
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmat
 hfunctions.code.tex)
@@ -871,59 +899,59 @@ hfunctions.integerarithmetics.code.tex)
 hcalc.code.tex)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmat
 hfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count437
+\c@pgfmathroundto@lastzeros=\count438
 ))
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfint
 .code.tex)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen191
-\pgf@picmaxx=\dimen192
-\pgf@picminy=\dimen193
-\pgf@picmaxy=\dimen194
-\pgf@pathminx=\dimen195
-\pgf@pathmaxx=\dimen196
-\pgf@pathminy=\dimen197
-\pgf@pathmaxy=\dimen198
-\pgf@xx=\dimen199
-\pgf@xy=\dimen256
-\pgf@yx=\dimen257
-\pgf@yy=\dimen258
-\pgf@zx=\dimen259
-\pgf@zy=\dimen260
+\pgf@picminx=\dimen197
+\pgf@picmaxx=\dimen198
+\pgf@picminy=\dimen199
+\pgf@picmaxy=\dimen256
+\pgf@pathminx=\dimen257
+\pgf@pathmaxx=\dimen258
+\pgf@pathminy=\dimen259
+\pgf@pathmaxy=\dimen260
+\pgf@xx=\dimen261
+\pgf@xy=\dimen262
+\pgf@yx=\dimen263
+\pgf@yy=\dimen264
+\pgf@zx=\dimen265
+\pgf@zy=\dimen266
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen261
-\pgf@path@lasty=\dimen262
+\pgf@path@lastx=\dimen267
+\pgf@path@lasty=\dimen268
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen263
-\pgf@shorten@start@additional=\dimen264
+\pgf@shorten@end@additional=\dimen269
+\pgf@shorten@start@additional=\dimen270
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box102
-\pgf@hbox=\box103
-\pgf@layerbox@main=\box104
-\pgf@picture@serial@count=\count438
+\pgfpic=\box109
+\pgf@hbox=\box110
+\pgf@layerbox@main=\box111
+\pgf@picture@serial@count=\count439
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen265
+\pgflinewidth=\dimen271
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen266
-\pgf@pt@y=\dimen267
-\pgf@pt@temp=\dimen268
+\pgf@pt@x=\dimen272
+\pgf@pt@y=\dimen273
+\pgf@pt@temp=\dimen274
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcorequick.code.tex
@@ -940,14 +968,14 @@ File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen269
+\pgfarrowsep=\dimen275
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen270
-\pgf@sys@shading@range@num=\count439
-\pgf@shadingcount=\count440
+\pgf@max=\dimen276
+\pgf@sys@shading@range@num=\count440
+\pgf@shadingcount=\count441
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcoreimage.code.tex
@@ -956,7 +984,7 @@ File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box105
+\pgfexternal@startupbox=\box112
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/
 pgfcorelayers.code.tex
@@ -977,7 +1005,7 @@ File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgf
 moduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box106
+\pgfnodeparttextbox=\box113
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgf
 moduleplot.code.tex
@@ -986,8 +1014,8 @@ File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/compatibility
 /pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen271
-\pgf@nodesepend=\dimen272
+\pgf@nodesepstart=\dimen277
+\pgf@nodesepend=\dimen278
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/compatibility
 /pgfcomp-version-1-18.sty
@@ -1006,10 +1034,10 @@ h.code.tex))
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/p
 gffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen273
-\pgffor@skip=\dimen274
-\pgffor@stack=\toks32
-\pgffor@toks=\toks33
+\pgffor@iter=\dimen279
+\pgffor@skip=\dimen280
+\pgffor@stack=\toks35
+\pgffor@toks=\toks36
 ))
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlay
 er/tikz/tikz.code.tex
@@ -1018,34 +1046,34 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/p
 gflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count441
-\pgfplotmarksize=\dimen275
+\pgf@plot@mark@count=\count442
+\pgfplotmarksize=\dimen281
 )
-\tikz@lastx=\dimen276
-\tikz@lasty=\dimen277
-\tikz@lastxsaved=\dimen278
-\tikz@lastysaved=\dimen279
-\tikz@lastmovetox=\dimen280
-\tikz@lastmovetoy=\dimen281
-\tikzleveldistance=\dimen282
-\tikzsiblingdistance=\dimen283
-\tikz@figbox=\box107
-\tikz@figbox@bg=\box108
-\tikz@tempbox=\box109
-\tikz@tempbox@bg=\box110
-\tikztreelevel=\count442
-\tikznumberofchildren=\count443
-\tikznumberofcurrentchild=\count444
-\tikz@fig@count=\count445
+\tikz@lastx=\dimen282
+\tikz@lasty=\dimen283
+\tikz@lastxsaved=\dimen284
+\tikz@lastysaved=\dimen285
+\tikz@lastmovetox=\dimen286
+\tikz@lastmovetoy=\dimen287
+\tikzleveldistance=\dimen288
+\tikzsiblingdistance=\dimen289
+\tikz@figbox=\box114
+\tikz@figbox@bg=\box115
+\tikz@tempbox=\box116
+\tikz@tempbox@bg=\box117
+\tikztreelevel=\count443
+\tikznumberofchildren=\count444
+\tikznumberofcurrentchild=\count445
+\tikz@fig@count=\count446
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgf
 modulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count446
-\pgfmatrixcurrentcolumn=\count447
-\pgf@matrix@numberofcolumns=\count448
+\pgfmatrixcurrentrow=\count447
+\pgfmatrixcurrentcolumn=\count448
+\pgf@matrix@numberofcolumns=\count449
 )
-\tikz@expandcount=\count449
+\tikz@expandcount=\count450
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlay
 er/tikz/libraries/tikzlibrarytopaths.code.tex
@@ -1057,18 +1085,18 @@ File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count450
-\calc@Bcount=\count451
-\calc@Adimen=\dimen284
-\calc@Bdimen=\dimen285
-\calc@Askip=\skip79
-\calc@Bskip=\skip80
+\calc@Acount=\count451
+\calc@Bcount=\count452
+\calc@Adimen=\dimen290
+\calc@Bdimen=\dimen291
+\calc@Askip=\skip80
+\calc@Bskip=\skip81
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count452
-\calc@Cskip=\skip81
+\calc@Ccount=\count453
+\calc@Cskip=\skip82
 )
-\c@@todonotes@numberoftodonotes=\count453
+\c@@todonotes@numberoftodonotes=\count454
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amssymb.
 sty
@@ -1077,7 +1105,7 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amsfonts
 .sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks34
+\@emptytoks=\toks37
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
@@ -1088,29 +1116,29 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count454
-\@quotereset=\count455
+\@quotelevel=\count455
+\@quotereset=\count456
 (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1133,20 +1161,20 @@ LaTeX Font Info:    ... okay on input line 63.
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=65.0pt
-* \marginparsep=11.0pt
+* \marginparwidth=4.0pt
+* \marginparsep=10.0pt
 * \columnsep=20.0pt
 * \skip\footins=20.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
-* \@twocolumnfalse
+* \@twocolumntrue
 * \@twosidefalse
 * \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 63.
+Package hyperref Info: Link coloring OFF on input line 68.
 (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.out)
 (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.out)
 \@outlinefile=\write5
@@ -1156,17 +1184,17 @@ Package hyperref Info: Link coloring OFF on input line 63.
 (/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-
 pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count456
-\scratchdimen=\dimen286
-\scratchbox=\box111
-\nofMPsegments=\count457
-\nofMParguments=\count458
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count459
-\MPscratchDim=\dimen287
-\MPnumerator=\count460
-\makeMPintoPDFobject=\count461
-\everyMPtoPDFconversion=\toks36
+\scratchcounter=\count457
+\scratchdimen=\dimen292
+\scratchbox=\box118
+\nofMPsegments=\count458
+\nofMParguments=\count459
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count460
+\MPscratchDim=\dimen293
+\MPnumerator=\count461
+\makeMPintoPDFobject=\count462
+\everyMPtoPDFconversion=\toks39
 )
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/epstopdf-pkg/epst
 opdf-base.sty
@@ -1178,7 +1206,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 -sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count462
+\c@lstlisting=\count463
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1234,61 +1262,61 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1041: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1266: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
                    w
-l.1041 .../TR/webauthn-2/#webauthn-relying-party}}
+l.1266 .../TR/webauthn-2/#webauthn-relying-party}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1045: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1270: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    w
-l.1045     \endentry
+l.1270     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1065: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1290: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
                    r
-l.1065 ...g/TR/webauthn-2/#registration-ceremony}}
+l.1290 ...g/TR/webauthn-2/#registration-ceremony}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1069: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1294: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    r
-l.1069     \endentry
+l.1294     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1089: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1314: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
                    s
-l.1089 ...n-2/#sctn-registering-a-new-credential}}
+l.1314 ...n-2/#sctn-registering-a-new-credential}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1093: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1318: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    s
-l.1093     \endentry
+l.1318     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
@@ -1301,36 +1329,40 @@ Package biblatex Warning: The following entry could not be found
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                subsec:json-web-tokens
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
 )
-Package biblatex Info: Reference section=0 on input line 63.
-Package biblatex Info: Reference segment=0 on input line 63.
+Package biblatex Info: Reference section=0 on input line 68.
+Package biblatex Info: Reference segment=0 on input line 68.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<images/HR_logo_hringur_transparent.png, id=70, 593.21625pt x 593.21625pt>
+
+
+Package todonotes Warning: The length marginparwidth is less than 2cm and will 
+most likely cause issues with the appearance of inserted todonotes. The issue c
+an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
+loading the todonotes package. on input line 68.
+
+<images/HR_logo_hringur_transparent.png, id=82, 593.21625pt x 593.21625pt>
 File: images/HR_logo_hringur_transparent.png Graphic file (type png)
 <use images/HR_logo_hringur_transparent.png>
 Package pdftex.def Info: images/HR_logo_hringur_transparent.png  used on input 
-line 66.
+line 71.
 (pdftex.def)             Requested size: 237.28229pt x 237.28229pt.
 
-
 LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <153.57375> not available
-(Font)              size <35.83> substituted on input line 100.
+(Font)              size <35.83> substituted on input line 105.
 
 [1{/Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdfte
 x/pdftex.map}
 
+
  <./images/HR_logo_hringur_transparent.png>]
-
-LaTeX Warning: Citation 'lol' on page 1 undefined on input line 126.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.128     \newpage
-                   [1]
 (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
 
@@ -1344,13 +1376,40 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write6
 \openout6 = `report.toc'.
 
- [2] (introduction.tex
+CUTED [- LAST -]
+Extra skip:0.0pt
+Left:0.0pt/0.0pt
+Right:0.0pt/0.0pt
+Split: 0.0pt
+Output:0.0pt
+Pageshrink: 0.0pt
+Pagestretch: 0.0pt
+@colht:650.43001pt
+CUTED [output]: 0.0pt
+CUTED [leftcolumn badness]: 0
+CUTED [rightcolumn badness]: 0
+
+
+LaTeX Warning: Citation 'lol' on page 1 undefined on input line 157.
+
+(introduction.tex
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 8.
 
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.23 
+      [1
+
+]
 introduction.tex:24: Undefined control sequence.
 l.24 The study \textif
                       {"The Memorability and Security of Passwords"}, conduc...
@@ -1360,395 +1419,575 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-introduction.tex:45: Illegal parameter number in definition of \jsonwebLibrary.
+introduction.tex:46: Illegal parameter number in definition of \jsonwebLibrary.
 <to be read again> 
                    m
-l.45 ...ng}. \textit{Last Accessed: 2023-03-25}.}}
+l.46 ...ng}. \textit{Last Accessed: 2023-03-25}.}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-introduction.tex:51: Illegal parameter number in definition of \Hy@tempa.
+introduction.tex:52: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    m
-l.51 ...yptography\assymetricCrypto\jsonwebLibrary
+l.52 ...yptography\assymetricCrypto\jsonwebLibrary
                                                   ~and biometric
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-introduction.tex:51: Illegal parameter number in definition of \Hy@tempa.
+introduction.tex:52: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    m
-l.51 ...yptography\assymetricCrypto\jsonwebLibrary
+l.52 ...yptography\assymetricCrypto\jsonwebLibrary
                                                   ~and biometric
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-introduction.tex:51: Illegal parameter number in definition of \Hy@tempa.
+introduction.tex:52: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    m
-l.51 ...yptography\assymetricCrypto\jsonwebLibrary
+l.52 ...yptography\assymetricCrypto\jsonwebLibrary
                                                   ~and biometric
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-) (background.tex
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 65.
 
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 3 might be wrong on input line 15.
+Underfull \hbox (badness 3168) in paragraph at lines 56--65
+[]\T1/cmr/m/n/10 This re-port ex-plores the im-ple-men-ta-tion of
+ []
 
-[3] (methodology/webauthn.tex
-methodology/webauthn.tex:16: Illegal parameter number in definition of \abx@fie
+
+Underfull \vbox (badness 1960) has occurred while \output is active []
+
+)
+(background.tex (methodology/webauthn.tex
+methodology/webauthn.tex:17: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    c
-l.16 ...dential_id,webauthn_public_key_credential}
+l.17 ...dential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:16: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:17: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    c
-l.16 ...dential_id,webauthn_public_key_credential}
+l.17 ...dential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:16: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:17: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    d
-l.16 ...dential_id,webauthn_public_key_credential}
+l.17 ...dential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:26: Illegal parameter number in definition of \abx@fie
+
+Underfull \hbox (badness 2512) in paragraph at lines 15--23
+[]\T1/cmr/m/n/10 Upon reg-is-tra-tion, the Au-then-ti-ca-tor De-vice
+ []
+
+[2]
+methodology/webauthn.tex:27: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    w
-l.26 registered~\cite{webauthn-2-rp}.
+l.27 registered~\cite{webauthn-2-rp}.
                                      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:30: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:31: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    r
-l.30 ...h is sent to the client~\cite{webauthn-2}.
+l.31 ...h is sent to the client~\cite{webauthn-2}.
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:41: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:42: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    s
-l.41 private key~\cite{webauthn-2-registering}.
+l.42 private key~\cite{webauthn-2-registering}.
                                                
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-
-LaTeX Warning: Reference `fig:registration' on page 4 undefined on input line 5
-2.
-
-<images/Registration.png, id=156, 1728.4575pt x 1299.85625pt>
+<images/Registration.png, id=174, 1728.4575pt x 1299.85625pt>
 File: images/Registration.png Graphic file (type png)
 <use images/Registration.png>
-Package pdftex.def Info: images/Registration.png  used on input line 55.
-(pdftex.def)             Requested size: 168.65813pt x 126.81976pt.
-
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
-
-
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
-
-
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 4 might be wrong on input line 85.
-
-[4]
-
-LaTeX Warning: Reference `fig:authentication' on page 5 undefined on input line
- 87.
-
-<images/Authentication.png, id=175, 1710.39pt x 1288.815pt>
+Package pdftex.def Info: images/Registration.png  used on input line 56.
+(pdftex.def)             Requested size: 352.31625pt x 264.94502pt.
+<images/Authentication.png, id=180, 1710.39pt x 1288.815pt>
 File: images/Authentication.png Graphic file (type png)
 <use images/Authentication.png>
-Package pdftex.def Info: images/Authentication.png  used on input line 91.
-(pdftex.def)             Requested size: 179.90268pt x 135.55573pt.
-
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
-
-
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
-
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 97.
+Package pdftex.def Info: images/Authentication.png  used on input line 92.
+(pdftex.def)             Requested size: 352.31625pt x 265.46739pt.
 ) (methodology/aes.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
-
-
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
-
-) (methodology/argon2.tex
-
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
+ [3]
+[4 <./images/Registration.png> <./images/Authentication.png>])
+(methodology/argon2.tex
+Underfull \hbox (badness 1454) in paragraph at lines 28--33
+\T1/cmr/m/n/10 cess. This con-fig-u-ra-tion is more suit-able
+ []
 
 
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
+Underfull \hbox (badness 2781) in paragraph at lines 37--37
+[]\T1/cmr/bx/n/10 Figure 4: |\T1/cmr/m/n/10 The three con-fig-u-ra-tions of Ar-
+
+ []
+
+[5]) (methodology/JWT.tex [6])) (litrev.tex
+Underfull \hbox (badness 2119) in paragraph at lines 35--47
+\T1/cmr/m/n/10 a com-mon pass-word.[][][] In 2022, Par-mar et
+ []
+
+[7]
+
+LaTeX Warning: Citation 'subsec:json-web-tokens' on page 8 undefined on input l
+ine 111.
 
 
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 5 might be wrong on input line 65.
-
-[5]) (methodology/JWT.tex))
-
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 6 might be wrong on input line 161.
+Underfull \hbox (badness 4647) in paragraph at lines 106--113
+[]\T1/cmr/m/n/10 As the tech-nol-ogy evolved from FIDO to
+ []
 
 
-[6] (litrev.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
+ [8])
+(methodology/methodology.tex
+Underfull \vbox (badness 1874) has occurred while \output is active []
 
-
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' 
-environment!.
-
-
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 7 might be wrong on input line 89.
-
-[7]) (methodology/methodology.tex) (futurework.tex)
-report.tex:173: Illegal parameter number in definition of \abx@field@howpublish
+ [9])
+(futurework.tex)
+report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    c
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    d
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[8]
-Underfull \hbox (badness 6078) in paragraph at lines 173--173
+
+Underfull \hbox (badness 4013) in paragraph at lines 177--177
+\T1/cmtt/m/n/10 2 / #dom -[] publickeycredential -[]
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 177--177
+[]\T1/cmr/m/it/10 CTSS Pro-gram-mers Guide\T1/cmr/m/n/10 . 2nd ed.
+ []
+
+
+Underfull \hbox (badness 1990) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 Alex Biryukov Et al. \T1/cmr/m/it/10 Ar-gon2: The
+ []
+
+
+Underfull \hbox (badness 4353) in paragraph at lines 177--177
+\T1/cmr/m/it/10 memory-hard func-tion for pass-word
+ []
+
+
+Underfull \hbox (badness 2027) in paragraph at lines 177--177
+\T1/cmr/m/n/10 rep. Ac-cessed on: March 25, 2023.
+ []
+
+
+Underfull \hbox (badness 6078) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 Joseph Bon-neau. ``The Sci-ence of
  []
 
 
-Underfull \hbox (badness 6608) in paragraph at lines 173--173
+Underfull \hbox (badness 1019) in paragraph at lines 177--177
+\T1/cmr/m/n/10 Guess-ing: An-a-lyz-ing an Anonymized
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 177--177
+\T1/cmr/m/it/10 2012 IEEE Sym-po-sium on Se-cu-rity
+ []
+
+[10]
+Underfull \hbox (badness 4454) in paragraph at lines 177--177
+\T1/cmr/m/n/10 the kingslayer of User au-then-ti-ca-
+ []
+
+
+Underfull \hbox (badness 1019) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 Emin Huseynov. ``Pass-word-less VPN
+ []
+
+
+Underfull \hbox (badness 2495) in paragraph at lines 177--177
+\T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
+ []
+
+
+Underfull \hbox (badness 1205) in paragraph at lines 177--177
+\T1/cmr/m/it/10 At-tacks\T1/cmr/m/n/10 . O'Reilly Me-dia, Inc., 2018.
+ []
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 177--177
+\T1/cmr/m/n/10 its in-te-gra-tion with Sam-sung Se-cu-
+ []
+
+
+Underfull \hbox (badness 2689) in paragraph at lines 177--177
+\T1/cmr/m/n/10 rity Sys-tem''. In: \T1/cmr/m/it/10 2021 IEEE Cus-
+ []
+
+
+Underfull \hbox (badness 6608) in paragraph at lines 177--177
 \T1/cmr/m/it/10 tom In-te-grated Cir-cuits Con-fer-ence
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
+
+Underfull \hbox (badness 2426) in paragraph at lines 177--177
+\T1/cmr/m/n/10 cess through []IEEE Ex-plore[]. IEEE.
+ []
+
+
+Underfull \hbox (badness 3568) in paragraph at lines 177--177
+\T1/cmr/m/it/10 2017 IEEE 41st An-nual Com-puter
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 Neal Muller. \T1/cmr/m/it/10 Cre-den-tial Stuff-ing\T1/cmr/m/n
 /10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
+Underfull \hbox (badness 1087) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 National In-sti-tute of Stan-dards and
+ []
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 177--177
+\T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 Spe-cial Pub-li-ca-tion 800-
+ []
+
+
+Underfull \hbox (badness 1648) in paragraph at lines 177--177
+\T1/cmr/m/n/10 Chap-ter 3. 2020. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmt
+t/m/n/10 https : / /
+ []
+
+
+Underfull \hbox (badness 2653) in paragraph at lines 177--177
+\T1/cmtt/m/n/10 nvlpubs . nist . gov / nistpubs /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 NIST. \T1/cmr/m/it/10 Com-merce De-part-ment An-
  []
 
 
-Underfull \hbox (badness 6380) in paragraph at lines 173--173
-\T1/cmtt/m/n/10 winner -[] global -[] information -[]
+Underfull \hbox (badness 2050) in paragraph at lines 177--177
+\T1/cmtt/m/n/10 department -[] announces -[] winner -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
+Underfull \hbox (badness 10000) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 OWASP. \T1/cmr/m/it/10 PHISH-ING IN DEPTH\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 5288) in paragraph at lines 173--173
+Underfull \hbox (badness 2653) in paragraph at lines 177--177
+\T1/cmtt/m/n/10 ghana / assets / slides / OWASP _
+ []
+
+
+Underfull \hbox (badness 4927) in paragraph at lines 177--177
+\T1/cmtt/m/n/10 Presentation _ FINAL . pdf$[]\T1/cmr/m/n/10 . Last
+ []
+
+
+Underfull \hbox (badness 5288) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 James L. Fen-ton Paul A. Grassi
  []
 
 
-Underfull \hbox (badness 6220) in paragraph at lines 173--173
+Underfull \hbox (badness 2626) in paragraph at lines 177--177
+\T1/cmr/m/n/10 Michael E. Gar-cia. \T1/cmr/m/it/10 Dig-i-tal Iden-tity
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 177--177
+\T1/cmr/m/it/10 Safety in Safe Rust dur-ing In-ter-ac-
+ []
+
+
+Underfull \hbox (badness 2065) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 Shibboleth Con-sor-tium. \T1/cmr/m/it/10 Shib-bo-leth -
+ []
+
+
+Underfull \hbox (badness 1087) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 National In-sti-tute of Stan-dards and
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 177--177
+\T1/cmr/m/it/10 En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 . Fed-eral
+ []
+
+
+Underfull \hbox (badness 1087) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 National In-sti-tute of Stan-dards and
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 177--177
+\T1/cmr/m/it/10 En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 . Fed-eral
+ []
+
+[12]
+Underfull \hbox (badness 1087) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 National In-sti-tute of Stan-dards and
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 177--177
+\T1/cmr/m/it/10 En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 . Fed-eral
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 177--177
 \T1/cmr/m/n/10 p13-14. Last Ac-cessed: 2023-03-26.
  []
 
-[10]
-report.tex:173: Illegal parameter number in definition of \abx@field@howpublish
+
+Underfull \hbox (badness 1122) in paragraph at lines 177--177
+\T1/cmr/m/n/10 NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmtt
+/m/n/10 https : / /
+ []
+
+
+Underfull \hbox (badness 1087) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 National In-sti-tute of Stan-dards and
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 177--177
+\T1/cmr/m/it/10 En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 . Fed-eral
+ []
+
+report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    w
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    w
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    w
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    r
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+
+Underfull \hbox (badness 1102) in paragraph at lines 177--177
+\T1/cmr/m/it/10 2\T1/cmr/m/n/10 . []$\T1/cmtt/m/n/10 https : / / www . w3 . org
+ / TR /
+ []
+
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    r
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    r
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    s
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+
+Underfull \hbox (badness 1558) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 W3C. \T1/cmr/m/it/10 Web Au-then-ti-ca-tion: An API
+ []
+
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    s
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:173: Illegal parameter number in definition of \Hy@tempa.
+report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    s
-l.173     \end
-              {multicols}
+l.177 \end
+          {document}
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[11] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
+
+Underfull \hbox (badness 1102) in paragraph at lines 177--177
+\T1/cmr/m/it/10 2\T1/cmr/m/n/10 . []$\T1/cmtt/m/n/10 https : / / www . w3 . org
+ / TR /
+ []
+
+
+Underfull \hbox (badness 1412) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 Jianxin Yan et al. \T1/cmr/m/it/10 The Mem-o-ra-bil-
+ []
+
+[13] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 117.74374pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: AD66999AA8AFBA1860E29D8C4401DBB2;2263.
+(rerunfilecheck)             Checksum: 80C3460AAB5EDD9DF9D136E5D6D51D64;2572.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32837 strings out of 476344
- 633969 string characters out of 5785310
- 1877346 words of memory out of 5000000
- 52647 multiletter control sequences out of 15000+600000
+ 32988 strings out of 476344
+ 637495 string characters out of 5785310
+ 1872346 words of memory out of 5000000
+ 52768 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,94p,681b,1854s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,94p,681b,1917s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.27} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.26} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.25} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.24} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.23} has been referenced but does not exis
 t, replaced by a fixed one
@@ -1794,11 +2033,23 @@ pdfTeX warning (dest): name{Hfootnote.13} has been referenced but does not exis
 t, replaced by a fixed one
 
 
+pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not exis
+t, replaced by a fixed one
+
+
 pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not exis
 t, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
 , replaced by a fixed one
 
 
@@ -1856,14 +2107,17 @@ ec/dpi600/ecbx1440.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs
 plication Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm358
 3.pk></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/ams
 fonts/cm/cmmi8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/ty
-pe1/public/amsfonts/cm/cmr6.pfb></Library/Application Support/MiKTeX/texmfs/ins
-tall/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Application Support/MiKT
-eX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Library/Applicatio
-n Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+pe1/public/amsfonts/cm/cmr10.pfb></Library/Application Support/MiKTeX/texmfs/in
+stall/fonts/type1/public/amsfonts/cm/cmr6.pfb></Library/Application Support/MiK
+TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Applicatio
+n Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Lib
+rary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/c
+msy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public
+/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (12 pages, 350766 bytes).
+t.pdf (14 pages, 530539 bytes).
 PDF statistics:
- 1043 PDF objects out of 1200 (max. 8388607)
- 95 named destinations out of 1000 (max. 500000)
- 156 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1158 PDF objects out of 1200 (max. 8388607)
+ 121 named destinations out of 1000 (max. 500000)
+ 180 words of extra memory for PDF output out of 10000 (max. 10000000)
 

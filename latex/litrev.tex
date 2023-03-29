@@ -8,119 +8,154 @@ recognized as vulnerable to attacks such as phishing\footnote{
 } and credential stuffing.\footnote{
   Credential stuffing refers to the practice of using automated tools to
   inject compromised or stolen username and password combinations into web login
-  forms with the aim of gaining unauthorized access to user
-  accounts~\cite{owasp-credential-stuffing}.
+  forms to gain unauthorized access to user accounts~\cite{owasp-credential-stuffing}.
 }
 Passwords and sensitive information can also be a victim of successful
 brute-force attacks~\cite{bonneau2012science} through data leakages by hacking
 or purchasing information on the dark Web.
 
-In accordance to NIST~\cite{NIST:SP:800-171r2, NISTSP800-63-3}, authentication
-should consist of covering one the three following principles:
+Following NIST~\cite{NIST:SP:800-171r2, NISTSP800-63-3}, authentication should
+consist of covering one of the three following principles:
 
 \begin{figure}[htbp]
   \begin{itemize}
     \item \textbf{Something you know}:
-      This can be a password, an answer to a personal question, or a Personal
-      Identification Number (PIN).
+    Such as a password, an answer to a personal question, or a Personal
+    Identification Number (PIN).
     \item \textbf{Something you have}:
-      A device that contains some kind of token or cryptographically signed keys.
+    A device that contains some token or cryptographically signed keys.
     \item \textbf{Something you are}:
-      Biometrics of any sort or kind.
+    Biometrics of any sort or kind.
     Facial recognition, retina scan, fingerprint and similar.
   \end{itemize}
   \caption{The Three Principles of Password Security~\cite{schneier2000secrets, NIST:SP:800-171r2}.}
   \label{fig:secprinciples}
 \end{figure}
 
-There are many approaches to handle passwordless authentication, or a second
+There are many approaches to passwordless authentication or a second
 step to authenticate with a common password.\footnote{
-  Often referenced as Two-Factor Authentication or Multi-Factor Authenticaiton.
+  Often referenced as Two-Factor Authentication or Multi-Factor Authentication.
 }
-In 2022, Parmar, Et al\cite{parmar2022}, described the most common
-ways that PA can be performed, referencing several interesting solutions,
-their advantages and drawbacks.
-The study discovered that PA commonly gets accepted as the most frictionless
-system of authentication for User Interfaces (UI)~\cite{parmar2022}.
-Biometrics was mentioned as one of the methods of authentication, concluding
-that it captures universal, human traits, encouraging differentiation
-from one another~\cite{parmar2022}.
-The same study brings up the caution surrounding the loss of authentication
-device, and how fingerprints can be compromised~\cite{parmar2022}.\footnote{
-  The security implication of using the core concept of FIDO2's WebAuthn is
-  subject to storage in the system on Apple specific devices~\cite{appleSecureEnclave}.
-  On an Android device, the implementation is up to the manufactorer of the
-  device, where Samsung has implemented a Physically Unclonable
+In 2022, Parmar et al.\cite{parmar2022} described several attractive solutions, along with their advantages and drawbacks, for performing PA using the most common methods.
+The study discovered that PA commonly gets accepted as the most frictionless authentication system for User Interfaces (UI)~\cite{parmar2022}.
+Biometrics was mentioned as one of the authentication methods, concluding that it captures universal human traits, encouraging differentiation from one another~\cite{parmar2022}.
+The same study raises the caution surrounding the loss of authentication devices and how fingerprints can be compromised~\cite{parmar2022}.\footnote{
+  The security implication of using the core concept of FIDO2's WebAuthn is subject to storage in the system on Apple-specific devices~\cite{appleSecureEnclave}.
+  On an Android device, the implementation is up to the manufacturer of the device, where Samsung has implemented a Physically Unclonable
   Function~\cite{lee2021samsung}.
 }
 
-One promising approach is the use of the FIDO Alliance's collaborative work with
-W3C to create WebAuthn.
-WebAuthn is permitting users to authenticate through biometric information
+One promising approach is using the FIDO Alliance's collaborative work with W3C to create WebAuthn.
+WebAuthn permits users to authenticate through biometric information
 stored on a device in the user's possession (i.e.\ phone, computer) or a
 physical security key (i.e.\ YubiKey, Nitrokey, etc.)~\cite{webauthn_level_2}.
 
-In ~\cite{huseynov2022passwordless} Web interface with WebAuthn was utilized to
-create credentials that a user could use for a VPN\.
-The client required a user to authenticate through the procedure of WebAuthn
-(see Section~\ref{subsec:webauthn}).
-On a successful request, the Remote Authentication Dial-In User Service (RADIUS)
-creates a temporary username and password, which would then be transferred
-as a response to the end-user, permitting them to copy and paste it into the
-necessary client, or construct a batch file which would establish the correct
-connection~\cite{huseynov2022passwordless}.
-It was suggested create a solution for a VPN client which embedded some browser
-components~\cite{huseynov2022passwordless}.
+In ~\cite{huseynov2022passwordless}, Huseynov utilized a
+Web interface with WebAuthn to create credentials that users could use for a VPN\@.
+The client required a user to authenticate through the procedure of WebAuthn (see Section~\ref{subsec:webauthn}).
+On a successful request, the Remote Authentication Dial-In User Service (RADIUS) creates a temporary username and password, which would then be transferred
+as a response to the end-user, permitting them to copy and paste it into the necessary client, alternatively to construct a batch file which would establish the correct connection~\cite{huseynov2022passwordless}.
+The study suggested creating a solution for a VPN client which embedded some browser components~\cite{huseynov2022passwordless}.
 
-The process of using PA reduces the number of attack towards a server the
-considerably, because the server no longer has any user authentication
-secrets~\cite{gordin2021moving}.
-Gordin, Et al.\ describes using WebAuthn to implement PA into an OpenStack
-environment, providing increased security and bypassing the risk of leaked
-passwords to be used on other services~\cite{gordin2021moving}.\footnote{
+Gordin et al.~\cite{gordin2021moving} implemented PA into an OpenStack environment using WebAuthn, which increases security and bypasses the risk of malefactors employing leaked passwords on other services.\footnote{
   See Section~\ref{subsec:webauthn} for further explanation as to how this
   works.\todo[inline]{Decide on this footnote.}
 }
-They, however, utilized a fingerprint as the primary biometrics, citing cost as
-a primary factor to discourage the use of FIDO2~\cite{gordin2021moving}.\footnote{
-  Authentication was provided through the Keystone environment on the OpenStack
-  platform.
+The PA process considerably reduces the number of attacks towards a server because the server no longer has user authentication secrets~\cite{gordin2021moving}.
+They, however, utilized a fingerprint as the primary biometrics, citing cost as a primary factor to discourage the use of FIDO2~\cite{gordin2021moving}.\footnote{
+  Authentication is provided through the Keystone environment on the OpenStack platform.
 }
 
-Statistia reported in 2020 that between 77--86\% of smartphones now have a
-form of biometric scanner built into their device
-\cite{statista-biometric-transactions}.
-Gorin, Et al.\ continues by mentioning that some individuals have trouble
-using their biometric scanner or getting it to work properly on their
-device~\cite{gordin2021moving}, which can be a potential drawback for user
-adaptability.
-Thoroughly investigating the usability aspect of FIDO2,~\cite{
-  ghrobany2020fido2} found that a significant amount of users asked
+Statistia reported in 2020 that between 77--86\% of smartphones now have a form of biometric scanner built into their device~\cite{statista-biometric-transactions}.
+Gorin, Et al.\ continue by mentioning that some individuals have trouble
+using their biometric scanner or getting it to work correctly on their
+device~\cite{gordin2021moving}, which can be a potential drawback for user adaptability.
 
-According to a study conducted by Lyastani et al.\ in 2020\cite{ghrobany2020fido2},
-a significant portion of users found the usage of WebAuthn and Fido2 standard
-to be easy and secure, but with some concerns about losing access to their
-accounts or fear of their accounts being accessed by others.
+According to a study conducted by Lyastani et al.\ in 2020~\cite{
+  ghrobany2020fido2}, a significant portion of users found the usage of WebAuthn and Fido2 standard to be easy and secure, but with some concerns about losing access to their accounts or fear of others accessing their accounts~\cite{
+  ghrobany2020fido2}.
 The study utilized a fingerprint Yubikey for the authentication process.
 Despite some reservations, the study found that overall, WebAuthn and Fido2
 have good usability for passwordless authentication.
-The authors suggested that more research is needed to explore ways to
-further increase user trust and confidence in the technology, as well as to
-address concerns about the potential loss of access to accounts.\footnote{
-  We believe that these concerns mostly are raised due to the usage of a YubiKey,
+
+The authors reported that users automatically associated the loss of the AD with
+losing access to the account~\cite{ghrobany2020fido2} -- and vice versa --
+indicating that users are slightly unwilling to replace the initial principle of
+\textit{"Something you know"} with the second\textit{"Something you have"} and
+third \textit{"Something you are"} principle.
+Additional research is necessary to educate users, increase trust and confidence
+in the technology, and address concerns about the potential loss of account
+access.\footnote{
+  We believe that these concerns are mostly raised due to using a YubiKey
   and that using a phone-based authenticator would reveal other results.
 }
 
+Morii et al.~\cite{morii2017research} investigated the potential of FIDO as a
+viable PA solution in 2017 when the FIDO2 and WebAuthn standards were yet to be
+widely adopted.
+The authors noted that, at that time, only the Edge browser had implemented
+proper support for FIDO2 and WebAuthn~\cite{morii2017research}.
+Despite the limited browser support, the study demonstrated the feasibility
+of integrating PA into the well-established authentication system, Shibboleth
+~\cite{shibboleth, morii2017research}.\footnote{
+  Shibboleth is a widely-used, open-source federated identity solution that
+  enables secure single sign-on across multiple applications and organizations.
+}
+
+
+As the technology evolved from FIDO to FIDO2.0, some security concerns
+persisted, such as session hijacking\footnote{
+  Session hijacking refers to an attacker gaining unauthorized access to a
+  user's authenticated session, often exploiting weaknesses in the handling of
+  cookies,sessions, or JSON Web Tokens (JWT)~\cite{subsec:json-web-tokens}.
+}, which can compromise user accounts~\cite{morii2017research}, highlighting
+the need to protect these.
+
+Since the publication of Morii et al.~'s research, browser support for FIDO2 and
+WebAuthn has significantly improved, with major browsers like Google Chrome,
+Mozilla Firefox, Apple Safari, Microsoft Edge, and Vivaldi now offering
+support for these standards.
+This broader adoption has enabled the more widespread deployment of PA solutions,
+providing increased security and improved user experiences across various online
+services.
+However, the ongoing evolution of security threats and the increasing
+sophistication of attackers highlights the need for continuous research and
+development in the field of passwordless authentication, ensuring that new
+methods and standards are both secure and user-friendly.
+
+Having explored various studies and developments in the field of PA, it is
+evident that this area has been continuously evolving to provide secure,
+user-friendly solutions.
+However, the implementation of these solutions into stand-alone, real-world
+applications, such as password managers, independent of other login systems, is
+a critical aspect that requires thorough investigation.
+
+In the following section, we will examine the methodology employed in this
+study to integrate a passwordless system into a passwordless password manager,
+taking into account the challenges and concerns identified in the literature.
+By doing so, we aim to contribute to the growing body of knowledge on
+passwordless authentication and its practical applications.
+
 
 \iffalse
+% More lighthearted reading.
+Here are some additional studies and research papers related to passwordless authentication and related technologies. These studies can provide further insights and perspectives on the subject, expanding your knowledge and understanding of the field.
 
-Our results show that users consider FIDO2 passwordless
-authentication as more usable and more acceptable than the
-traditional password-based authentication, but also that concerns remain that impede many users’ willingness to abandon
-passwords. Most notably, the fear of losing the authenticator
-is not only connected with account recovery but also with
-an imminent illegal access to the account and the need for
-revocation—-a subjective threat model by users that differs
-from the objective risk assessment of FIDO2.
+Biddle, R., Chiasson, S., & van Oorschot, P. C. (2012). Graphical Passwords: Learning from the First Twelve Years. ACM Computing Surveys, 44(4), 1-41. [DOI: 10.1145/2333112.2333114]
+
+This survey paper provides a comprehensive review of graphical password schemes, an alternative authentication method that can be used in passwordless systems.
+Bonneau, J., Herley, C., van Oorschot, P. C., & Stajano, F. (2015). Passwords and the Evolution of Imperfect Authentication. Communications of the ACM, 58(7), 78-87. [DOI: 10.1145/2699412]
+
+This paper discusses the limitations of traditional password-based authentication and explores the potential of alternative authentication methods.
+Gunson, N., Marshall, D., Morton, H., & Jack, M. (2011). User perceptions of security and usability of single-factor and two-factor authentication in automated telephone banking. Computers & Security, 30(4), 208-220. [DOI: 10.1016/j.cose.2011.01.006]
+
+This study compares user perceptions of single-factor and two-factor authentication methods in the context of automated telephone banking systems, providing insights into the user experience of different authentication approaches.
+Jakobsson, M., & Myers, S. (Eds.). (2007). Phishing and Countermeasures: Understanding the Increasing Problem of Electronic Identity Theft. John Wiley & Sons.
+
+This book covers various aspects of phishing attacks and countermeasures, including passwordless authentication methods that can help mitigate the risks associated with phishing.
+Karole, A., Saxena, N., & Christin, N. (2011). A Comparative Evaluation of Two-Factor Authentication Schemes. In Proceedings of the 28th Annual Computer Security Applications Conference (pp. 173-182). ACM. [DOI: 10.1145/2076732.2076759]
+
+This paper presents a comparative evaluation of various two-factor authentication schemes, which can be useful for understanding the strengths and weaknesses of different passwordless authentication methods.
+These additional studies can provide a broader understanding of the passwordless authentication landscape, offering further insights into alternative authentication methods, user perceptions, and the potential challenges and opportunities associated with implementing passwordless solutions.
 
 \fi

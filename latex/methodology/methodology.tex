@@ -1,7 +1,59 @@
-Exploring the development and implementation of LessPM, a passwordless password manager, our focus will be on the key
-components, technologies, and steps that form the system's development process.
-This section will discuss the WebAuthn standard, its effective integration and role in LessPM, and the various security
-measures contributing to a robust and reliable solution.
+Exploring the development and implementation of LessPM, a passwordless password
+manager, our focus will be on the key components, technologies, and steps
+that form the system's development process.
+A crucial part of the development and system is its security and robustness.
+Our approach encompasses an explanation of the system architecture, the
+technologies and tools utilized and the development process to create the
+prototype.
+By providing a comprehensive account of the system development process, we
+aim to enable readers to understand the technical aspects of our work, as well
+as to assess the validity and relevance of our findings.
+
+\subsection{Environment}\label{subsec:environment}
+To implement the system, we went to approach the development from a type-safety
+environment.
+
+\subsubsection{Server}
+We chose Rust as the programming language for our backend which provided
+significant benefits in terms of the software development environment.
+
+Rust's emphasis on safety and performance allowed us to create a highly
+secure and efficient environment for our implementation, without the risks
+typically associated with memory-related
+vulnerabilities~\cite{rivera2019preserving}.
+The built-in memory management and focus on concurrency ensures that our
+software runs smoothly, which is crucial~\cite{fischer1985impossibility}
+when dealing with sensitive user data.
+
+Additionally, Rust's surrounding ecosystem is rapidly
+growing~\cite{librs-stats}, containing a vast library of high-quality
+crates\footnote{
+  \texttt{Crate} is the Rust-specific name for package or library.
+}, which enables rapid development and easy integration of various
+functionality.
+Utilizing Rust's distinctive features, the passwordless password manager provides
+enhanced security and reliability in the context of user authentication,
+showcasing the benefits of utilizing a modern programming language in the
+ever-evolving landscape of software development.
+
+\subsubsection{Client}
+An important part of the implementation is to create a viable client that can
+function as a visual entry-point to the server.
+We focused on following The Law of Demeter (LoD)~\cite{lieberherr1990assuring},
+and using a least-knowledge principle.
+This assures that the client only retains the necessary information needed to
+function, having no knowledge of the server nor its implementation between each
+performed request.
+As is customery when developing a system containing logging in, we are taking
+advantage of JWT/JWE~\ref{subsec:json-web-tokens} to pertain some information,
+in order to authorize the client between requested resources.
+The Base64-encoded data that is passed between the server and client is
+strongly encrypted through AES256~\ref{subsec:aes}.
+The client was using React, and is a single-page application, avoiding the
+possibility of utilizing any kind of URL tampering or manipulation\footnote{
+  URL Manipulation is a technique performed by malefactors where a URL can be
+  modified to request resources that should otherwise be inaccessbile to a user.
+} to attempt privilege escalation.
 
 \section{Key}\label{sec:key}
 \subsection{Hashing AES-key}\label{subsec:hashing-aes-key}

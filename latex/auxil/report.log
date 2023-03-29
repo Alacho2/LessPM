@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  29 MAR 2023 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  29 MAR 2023 20:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1527,13 +1527,13 @@ are all screwed up? I'm going to assume that you meant ##.
 <images/Registration.png, id=213, 1728.4575pt x 1299.85625pt>
 File: images/Registration.png Graphic file (type png)
 <use images/Registration.png>
-Package pdftex.def Info: images/Registration.png  used on input line 56.
+Package pdftex.def Info: images/Registration.png  used on input line 57.
 (pdftex.def)             Requested size: 352.31625pt x 264.94502pt.
 [3]
 <images/Authentication.png, id=234, 1710.39pt x 1288.815pt>
 File: images/Authentication.png Graphic file (type png)
 <use images/Authentication.png>
-Package pdftex.def Info: images/Authentication.png  used on input line 92.
+Package pdftex.def Info: images/Authentication.png  used on input line 93.
 (pdftex.def)             Requested size: 352.31625pt x 265.46739pt.
 ) (methodology/aes.tex
 Underfull \hbox (badness 1264) in paragraph at lines 1--49
@@ -1578,46 +1578,49 @@ Underfull \hbox (badness 3735) in paragraph at lines 106--114
  []
 
 ) (methodology/methodology.tex [9]
-Underfull \hbox (badness 1057) in paragraph at lines 105--116
+Underfull \hbox (badness 1057) in paragraph at lines 105--121
 \T1/cmr/m/n/10 fore get-ting en-crypted with AES256 (See Sec-
  []
 
 [10]
-Underfull \hbox (badness 1067) in paragraph at lines 148--156
+Underfull \hbox (badness 1067) in paragraph at lines 151--166
 []\T1/cmr/m/n/10 Further, the server at-tempts an Au-then-ti-ca-
  []
 
 
-Underfull \hbox (badness 1132) in paragraph at lines 163--165
+Underfull \hbox (badness 1132) in paragraph at lines 174--176
 \T1/cmr/m/n/10 With the server and client run-ning sep-a-rately
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--198
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 200--210
 \T1/cmr/m/n/10 JavaScript can ac-cess and ma-nip-u-late
  []
 
-[11]
-Underfull \hbox (badness 1173) in paragraph at lines 198--202
+
+Underfull \hbox (badness 1173) in paragraph at lines 210--214
 []\T1/cmr/bx/n/10 Strict Same-Site\T1/cmr/m/n/10 : This en-sures that the
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 202--205
+Underfull \hbox (badness 1701) in paragraph at lines 214--217
 \T1/cmr/m/n/10 cookie gets a sim-i-lar Time-to-Live (TTL)
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 210--214
+Underfull \hbox (badness 5316) in paragraph at lines 222--226
 []\T1/cmr/bx/n/10 HttpOnly\T1/cmr/m/n/10 : Set-ting HttpOnly tells the
  []
 
 
-Underfull \hbox (badness 3343) in paragraph at lines 210--214
+Underfull \hbox (badness 3343) in paragraph at lines 222--226
 \T1/cmr/m/n/10 browser to make this cookie in-ac-ces-si-ble
  []
 
-) (futurework.tex)
+) (futurework.tex
+Underfull \vbox (badness 1394) has occurred while \output is active []
+
+)
 report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
@@ -1689,7 +1692,7 @@ Underfull \hbox (badness 1067) in paragraph at lines 177--177
 []\T1/cmr/m/it/10 CTSS Pro-gram-mers Guide\T1/cmr/m/n/10 . 2nd ed.
  []
 
-
+[12]
 Underfull \hbox (badness 1394) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 Alex Biryukov Et al. \T1/cmr/m/it/10 Ar-gon2: The
  []
@@ -1704,7 +1707,7 @@ Underfull \hbox (badness 1436) in paragraph at lines 177--177
 \T1/cmr/m/n/10 rep. Ac-cessed on: March 25, 2023.
  []
 
-[12]
+
 Underfull \hbox (badness 4505) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 Joseph Bon-neau. ``The Sci-ence of
  []
@@ -1754,7 +1757,7 @@ Underfull \hbox (badness 1648) in paragraph at lines 177--177
 \T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
  []
 
-
+[13]
 Underfull \hbox (badness 1286) in paragraph at lines 177--177
 \T1/cmr/m/n/10 its in-te-gra-tion with Sam-sung Se-cu-
  []
@@ -1774,7 +1777,7 @@ Underfull \hbox (badness 1648) in paragraph at lines 177--177
 \T1/cmr/m/it/10 (CICC)\T1/cmr/m/n/10 . Last Ac-cessed: 2023-03-28.
  []
 
-[13]
+
 Underfull \hbox (badness 2237) in paragraph at lines 177--177
 \T1/cmtt/m/n/10 / / www . mongodb . com / nosql -[]
  []
@@ -1837,12 +1840,12 @@ Underfull \hbox (badness 1742) in paragraph at lines 177--177
 \T1/cmr/m/n/10 Michael E. Gar-cia. \T1/cmr/m/it/10 Dig-i-tal Iden-tity
  []
 
-
+[14]
 Underfull \hbox (badness 1596) in paragraph at lines 177--177
 \T1/cmr/m/n/10 fense Tech-ni-cal In-for-ma-tion Cen-ter,
  []
 
-[14]
+
 Underfull \hbox (badness 3019) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 Bruce Schneier. \T1/cmr/m/it/10 Ap-plied Cryp-tog-ra-
  []
@@ -2045,12 +2048,12 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-
+[15]
 Underfull \hbox (badness 1502) in paragraph at lines 177--177
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
 
-[15]
+
 Underfull \hbox (badness 5345) in paragraph at lines 177--177
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
@@ -2065,6 +2068,9 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 4CEF85A2A4B66F24F1CD3FC44705D12C;3639.
 Package logreq Info: Writing requests to 'report.run.xml'.
@@ -2072,13 +2078,17 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33038 strings out of 476344
- 638644 string characters out of 5785310
+ 33039 strings out of 476344
+ 638656 string characters out of 5785310
  1871346 words of memory out of 5000000
  52795 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,94p,681b,1917s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.35} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.34} has been referenced but does not exis
 t, replaced by a fixed one
@@ -2250,9 +2260,9 @@ rary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public
 /amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (17 pages, 555793 bytes).
+t.pdf (17 pages, 557389 bytes).
 PDF statistics:
- 1258 PDF objects out of 1440 (max. 8388607)
- 144 named destinations out of 1000 (max. 500000)
+ 1264 PDF objects out of 1440 (max. 8388607)
+ 145 named destinations out of 1000 (max. 500000)
  244 words of extra memory for PDF output out of 10000 (max. 10000000)
 

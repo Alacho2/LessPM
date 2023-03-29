@@ -109,7 +109,12 @@ This claim is then attached to the request's \texttt{Authorization} header,
 along with the Creation options from WebAuthn (See
 Section~\ref{subsec:webauthn}).
 The \texttt{expiration} time for this claim is set to one minute to allow the
-user some time to perform the authentication.
+user some time to perform the authentication.\footnote{
+  WebAuthn describes a timeout performed within the system. In our case, this
+  timeout is one minute.
+  However, we elected this extra approach to further secure the project, and
+  JWEs need a timeout. See Section~\ref{subsec:json-web-tokens}.
+}
 The claim expires after this minute and the user will then have to restart the
 process.
 This was a decision we made to further emphasize security within LessPM\@.
@@ -120,22 +125,20 @@ Section~\ref{subsec:webauthn}).
 At this point, it is entirely up to the user how they decide to perform the
 authentication.
 In our case, we used an Apple iPhone 13 Pro Max, a Samsung S21, and a Samsung
-AX \todo[inline]{Ask Eva what kind of phone it is} to test authentication.~\footnote{
+AX \todo[inline]{Ask Eva what kind of phone it is} to test authentication.\footnote{
   Other alternatives would include a YubiKey, NitroKey, etc.
 }
 We scanned the QR codes prompted through our phones, which initiates the
 key-pair generation on the device.
-The public key then gets transmitted to the browser and sent to the server
-through a new request.
-Before the request reaches the server, there is an authentication middleware,
-which checks for the JWE that got sent earlier and denies the request with an
-\texttt{Unauthorized} status code if the request is not valid.\footnote{
+The public key then gets transmitted to the browser and sent to the Relying
+Party through a new request.
+Before the request reaches the Relying Party, there is an authentication
+middleware, which checks for the JWE that got sent earlier and denies the
+request with an \texttt{Unauthorized} status code if the request is not valid.
+\footnote{
   Validity in this contex means not timed out, tampered with, or similar.
 }
-If WebAuthn can validate the key and metadata sent to the server, the
-registration takes place and the user gets stored in the database.
-
-The user gets stored in the database if WebAuthn can validate the key and
+The user is then stored in the database if WebAuthn can validate the key and
 metadata sent with teh request, and then the user gets stored in the database,
 along with the UUID generated.
 
@@ -152,7 +155,15 @@ Upon validation\footnote{
   is a valid key.
 } of the public key, the server creates a new JWE, which also receives an
 \texttt{expiry} of one minute for the user to authenticate (See
-Section~\ref{subsec:webauthn}).
+Section~\ref{subsec:webauthn}), before sending that and the challenge in the
+response.
+We then prompt the user to authenticate with their original authenticator
+that they used in the registration step, having the authenticator sign the
+challenge before performing a new request to the server with the signed
+challenge.
+The user is considered authenticated if the Relying Party accepts the signed
+challenge.
+
 
 
 \todo[inline]{Make sure to mention the 15 minutes when you write this.}
@@ -190,10 +201,11 @@ JavaScript can access and manipulate \texttt{Cookies}~\cite{he2019malicious}.
 We are utilizing the browser's local cookie storage to attempt secure
 authentication between requests.\footnote{
   The cookie storage in a browser is subject to any vulnerabilities that can
-  be performed on a SQLite database while having access to a computer.
+  be performed on a SQLite database while having access to the computer where
+  it is running.
 }
 Attempting a couple of strategies listed below, we aim to fortify the cookie
-that LessPM sets against a malefactor:
+that LessPM sets in the browser, against a malefactor:
 \begin{itemize}
   \item \textbf{Strict SameSite}:
   This ensures that the cookie is protected against Cross-Site Request

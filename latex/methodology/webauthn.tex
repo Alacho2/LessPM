@@ -41,8 +41,9 @@ private keys).
 The Authenticator then signs the challenge received from the server with the
 private key~\cite{webauthn-2-registering}.
 
-The newly created public key, signed challenge, and additional metadata are combined into a public key credential object,
-which the client sends back to the server.
+The newly created public key, signed challenge, and additional metadata are
+combined into a public key credential object, which the client sends back to
+the server.
 
 The server verifies the authenticity of the signed challenge and the public key credential object.
 If successful, the server stores the user's public key and other relevant information (e.g., user identifier, credential ID)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  29 MAR 2023 20:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  30 MAR 2023 18:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1262,61 +1262,61 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1334: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1391: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
                    w
-l.1334 .../TR/webauthn-2/#webauthn-relying-party}}
+l.1391 .../TR/webauthn-2/#webauthn-relying-party}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1338: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1395: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    w
-l.1338     \endentry
+l.1395     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1358: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1415: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
                    r
-l.1358 ...g/TR/webauthn-2/#registration-ceremony}}
+l.1415 ...g/TR/webauthn-2/#registration-ceremony}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1362: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1419: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    r
-l.1362     \endentry
+l.1419     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1382: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1439: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
                    s
-l.1382 ...n-2/#sctn-registering-a-new-credential}}
+l.1439 ...n-2/#sctn-registering-a-new-credential}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1386: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1443: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    s
-l.1386     \endentry
+l.1443     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
@@ -1543,10 +1543,8 @@ Underfull \hbox (badness 1264) in paragraph at lines 1--49
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4 <./images/Registration.png>]) (methodology/argon2.tex
-Underfull \vbox (badness 1286) has occurred while \output is active []
-
- [5 <./images/Authentication.png>]
+ [4 <./images/Registration.png>]) (methodology/argon2.tex [5 <./images/Authenti
+cation.png>]
 Underfull \hbox (badness 1102) in paragraph at lines 28--33
 \T1/cmr/m/n/10 cess. This con-fig-u-ra-tion is more suit-able
  []
@@ -1583,44 +1581,44 @@ Underfull \hbox (badness 1057) in paragraph at lines 105--121
  []
 
 [10]
-Underfull \hbox (badness 1067) in paragraph at lines 151--166
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 159--174
 []\T1/cmr/m/n/10 Further, the server at-tempts an Au-then-ti-ca-
  []
 
 
-Underfull \hbox (badness 1132) in paragraph at lines 174--176
+Underfull \hbox (badness 1132) in paragraph at lines 182--184
 \T1/cmr/m/n/10 With the server and client run-ning sep-a-rately
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 200--210
+Underfull \hbox (badness 10000) in paragraph at lines 208--218
 \T1/cmr/m/n/10 JavaScript can ac-cess and ma-nip-u-late
  []
 
 
-Underfull \hbox (badness 1173) in paragraph at lines 210--214
+Underfull \hbox (badness 1173) in paragraph at lines 218--222
 []\T1/cmr/bx/n/10 Strict Same-Site\T1/cmr/m/n/10 : This en-sures that the
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 214--217
+Underfull \hbox (badness 1701) in paragraph at lines 222--225
 \T1/cmr/m/n/10 cookie gets a sim-i-lar Time-to-Live (TTL)
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 222--226
+Underfull \hbox (badness 5316) in paragraph at lines 230--234
 []\T1/cmr/bx/n/10 HttpOnly\T1/cmr/m/n/10 : Set-ting HttpOnly tells the
  []
 
 
-Underfull \hbox (badness 3343) in paragraph at lines 222--226
+Underfull \hbox (badness 3343) in paragraph at lines 230--234
 \T1/cmr/m/n/10 browser to make this cookie in-ac-ces-si-ble
  []
 
-) (futurework.tex
-Underfull \vbox (badness 1394) has occurred while \output is active []
-
-)
+) (futurework.tex)
 report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
@@ -1659,6 +1657,7 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
+[12]
 report.tex:177: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
@@ -1692,7 +1691,7 @@ Underfull \hbox (badness 1067) in paragraph at lines 177--177
 []\T1/cmr/m/it/10 CTSS Pro-gram-mers Guide\T1/cmr/m/n/10 . 2nd ed.
  []
 
-[12]
+
 Underfull \hbox (badness 1394) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 Alex Biryukov Et al. \T1/cmr/m/it/10 Ar-gon2: The
  []
@@ -1830,7 +1829,7 @@ Underfull \hbox (badness 1077) in paragraph at lines 177--177
 /cmr/m/n/10 : []$\T1/cmtt/m/n/10 10 .
  []
 
-
+[14]
 Underfull \hbox (badness 4120) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 James L. Fen-ton Paul A. Grassi
  []
@@ -1840,7 +1839,7 @@ Underfull \hbox (badness 1742) in paragraph at lines 177--177
 \T1/cmr/m/n/10 Michael E. Gar-cia. \T1/cmr/m/it/10 Dig-i-tal Iden-tity
  []
 
-[14]
+
 Underfull \hbox (badness 1596) in paragraph at lines 177--177
 \T1/cmr/m/n/10 fense Tech-ni-cal In-for-ma-tion Cen-ter,
  []
@@ -1848,6 +1847,16 @@ Underfull \hbox (badness 1596) in paragraph at lines 177--177
 
 Underfull \hbox (badness 3019) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 Bruce Schneier. \T1/cmr/m/it/10 Ap-plied Cryp-tog-ra-
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 177--177
+[]\T1/cmr/m/n/10 Alok Sharma Seema Kharod Nidhi
+ []
+
+
+Underfull \hbox (badness 3815) in paragraph at lines 177--177
+\T1/cmr/m/n/10 ing and Dif-fer-en-tial Mask-ing''. In:
  []
 
 
@@ -1954,7 +1963,7 @@ Underfull \hbox (badness 6825) in paragraph at lines 177--177
 /m/n/10 https :
  []
 
-
+[15]
 Underfull \hbox (badness 10000) in paragraph at lines 177--177
 []\T1/cmr/m/n/10 The Pass-word Hash-ing Com-pe-ti-
  []
@@ -2048,7 +2057,7 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[15]
+
 Underfull \hbox (badness 1502) in paragraph at lines 177--177
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
@@ -2058,9 +2067,7 @@ Underfull \hbox (badness 5345) in paragraph at lines 177--177
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[16
-
-] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
+[16] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 117.74374pt have occurred.
@@ -2068,23 +2075,28 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 4CEF85A2A4B66F24F1CD3FC44705D12C;3639.
+(rerunfilecheck)             Checksum: 2A5E8FB79AF2FD3ED7ADC3229D61483F;3639.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33039 strings out of 476344
- 638656 string characters out of 5785310
+ 33049 strings out of 476344
+ 638982 string characters out of 5785310
  1871346 words of memory out of 5000000
- 52795 multiletter control sequences out of 15000+600000
+ 52801 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,94p,681b,1917s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.37} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.36} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.35} has been referenced but does not exis
 t, replaced by a fixed one
@@ -2260,9 +2272,9 @@ rary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public
 /amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (17 pages, 557389 bytes).
+t.pdf (17 pages, 560399 bytes).
 PDF statistics:
- 1264 PDF objects out of 1440 (max. 8388607)
- 145 named destinations out of 1000 (max. 500000)
+ 1275 PDF objects out of 1440 (max. 8388607)
+ 149 named destinations out of 1000 (max. 500000)
  244 words of extra memory for PDF output out of 10000 (max. 10000000)
 

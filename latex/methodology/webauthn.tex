@@ -6,23 +6,31 @@ For further discussions on this topic, see section \hyperref[sec:futurework]{Fut
 \newcommand{\navigatorApi}{\footnote{In LessPM's case, this is the \textit{navigator.credentials} API provided by the browser.}}
 
 
-WebAuthn, short for Web Authentication, is a collaborative project between the FIDO Alliance and W3C that aims to
-implement a secure, robust key-based authentication system for the web, to strongly authenticate users~\cite{webauthn_level_2}.
-The concept relies on the use of a third-party device, called an Authenticator, which leverages asymmetric cryptography.
-These devices employ biometric or hardware-based mechanisms to provide a secure and reliable means of authenticating a
-user.
+WebAuthn, short for Web Authentication, is a collaborative project between the
+FIDO Alliance and W3C that aims to implement a secure, robust key-based
+authentication system for the web, to strongly authenticate users~\cite{webauthn_level_2}.
+The concept relies on the use of a third-party device, called an Authenticator,
+which leverages asymmetric cryptography.
+These devices employ biometric or hardware-based mechanisms to provide a secure
+and reliable means of authenticating a user.
 
 Upon registration, the Authenticator Device (AD) generates a key pair called a
 Passkey.
-This Passkey contains a credential ID uniquely generated for each registered key-pair~\cite{webauthn_credential_id,webauthn_public_key_credential}
-on the Authenticator.
-The unique generation of each key pair offers the advantage of making it much more difficult for trackers to follow a user
-\footnote{This is subject to the key-pair alone. A willing party could still track the user through their email or similar.}.
-Further, if an attacker gains access to an individual's Passkey, they might compromise one specific service, whereas
-a traditional password could potentially compromise multiple services where password reuse occurs\cite{wang2018next}.
+This Passkey contains a Credential ID (CID) uniquely generated for each
+registered key-pair~\cite{webauthn_credential_id,webauthn_public_key_credential}
+on the Authenticator, per service registered.
+The unique generation of each key pair offers the advantage of making it much
+more difficult for trackers to follow a user\footnote{
+  This is subject to the key-pair alone. A willing party could still track the
+  user through their email or similar.
+}.
+Further, if an attacker gains access to an individual's Passkey, they might
+compromise one specific service, whereas a traditional password could
+potentially compromise multiple services where password reuse occurs\cite{wang2018next}.
 
 \subsubsection{Registration}\label{subsubsec:registration}
-In order to register in a WebAuthn authentication system, the user (i.e., client, browser, phone, etc.) issues a registration request to a
+In order to register in a WebAuthn authentication system, the user (i.e.,
+client, browser, phone, etc.) issues a registration request to a
 WebAuthn implemented server, called a Relying Party (RP), asking to be
 registered~\cite{webauthn-2-rp}.
 The request contains a body with the relevant user identifier (UID. i.e.,

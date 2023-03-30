@@ -129,7 +129,15 @@ AX \todo[inline]{Ask Eva what kind of phone it is} to test authentication.\footn
   Other alternatives would include a YubiKey, NitroKey, etc.
 }
 We scanned the QR codes prompted through our phones, which initiates the
-key-pair generation on the device.
+key-pair generation on the device after a face scan\footnote{
+  There is a question of concern that facial recognistion can be bypassed
+  through using a photography.
+  Apple takes advantage of a built-in sensors to
+  scan depth, colors, and a dot projector to create a 3D scan of a person's
+  face.
+  This prevents usage of a photography to perform authentication through
+  their FaceID and TrueDepth technology~\cite{apple-support}.
+}.
 The public key then gets transmitted to the browser and sent to the Relying
 Party through a new request.
 Before the request reaches the Relying Party, there is an authentication
@@ -225,6 +233,20 @@ that LessPM sets in the browser, against a malefactor:
   This is important to avoid session hijacking.
 \end{itemize}
 
+\subsection{Password Encryption}\label{subsec:password-encryption}
+A password can be stored and hashed using a \texttt{salt} and in a typical
+authentication scheme.
+The user will provide their UID along with their password, this will get
+collected from the database and checked with a random salt\footnote{
+  Salting is the process of adding a randomly generated string consisting of
+  arbitrary characters to the password before creating a hash~\cite{
+    Kharod2015}.
+} that was generated when the user registered.
+
+This complicates the process compared to what is described above, since
+the passwords should be a randomly generated string that is unknown to the
+applicant.
+
 
 \subsection{Hashing}\label{subsec:hashing}
 
@@ -233,7 +255,6 @@ that LessPM sets in the browser, against a malefactor:
 
 \subsection{JWT \& JWE}\label{subsec:jwt}
 
-\subsection{Password Encryption}\label{subsec:password-encryption}
 
 
 % Content served over HTTPS through a self-signed certificate

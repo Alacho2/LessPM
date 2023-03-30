@@ -2435,7 +2435,9 @@
     <bcf:citekey order="78" intorder="1">lieberherr1990assuring</bcf:citekey>
     <bcf:citekey order="79" intorder="1">webauthn_level_2</bcf:citekey>
     <bcf:citekey order="80" intorder="1">statista-biometric-transactions</bcf:citekey>
-    <bcf:citekey order="81" intorder="1">he2019malicious</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">apple-support</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">he2019malicious</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">Kharod2015</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

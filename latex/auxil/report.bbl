@@ -109,6 +109,7 @@
       \field{labelalpha}{App23}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extraalpha}{1}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Secure Enclave}
@@ -120,6 +121,29 @@
       \verb{url}
       \verb https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
       \endverb
+    \endentry
+    \entry{apple-support}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=3325b015fbae57ba74629a53f1ead961}{%
+           family={{Apple Inc.}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{fullhash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{bibnamehash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{authorbibnamehash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{authornamehash}{3325b015fbae57ba74629a53f1ead961}
+      \strng{authorfullhash}{3325b015fbae57ba74629a53f1ead961}
+      \field{labelalpha}{App23}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extraalpha}{2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://support.apple.com/en-us/HT208108}}
+      \field{note}{Accessed: March 30, 2023}
+      \field{title}{How to use Control Center on your iPhone, iPad, and iPod touch}
+      \field{year}{2023}
     \endentry
     \entry{bonneau2012science}{inproceedings}{}
       \name{author}{1}{}{%
@@ -1065,6 +1089,39 @@
       \field{isbn}{978-1119096726}
       \field{title}{Applied Cryptography: Protocols, Algorithms, and Source Code in C}
       \field{year}{2015}
+    \endentry
+    \entry{Kharod2015}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=328023532f1eff2448c7a5b19a83b9f4}{%
+           family={Seema\bibnamedelima Kharod},
+           familyi={S\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Alok\bibnamedelima Sharma},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod},
+           suffix={Nidhi\bibnamedelima Sharma},
+           suffixi={N\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{328023532f1eff2448c7a5b19a83b9f4}
+      \strng{fullhash}{328023532f1eff2448c7a5b19a83b9f4}
+      \strng{bibnamehash}{328023532f1eff2448c7a5b19a83b9f4}
+      \strng{authorbibnamehash}{328023532f1eff2448c7a5b19a83b9f4}
+      \strng{authornamehash}{328023532f1eff2448c7a5b19a83b9f4}
+      \strng{authorfullhash}{328023532f1eff2448c7a5b19a83b9f4}
+      \field{labelalpha}{See15}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2015 4th International Conference on Reliability, Infocom Technologies and Optimization (ICRITO)}
+      \field{title}{An Improved Hashing Based Password Security Scheme Using Salting and Differential Masking}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ICRITO.2015.7359225
+      \endverb
     \endentry
     \entry{shibboleth}{misc}{}
       \name{author}{1}{}{%

@@ -20,9 +20,9 @@
 \contentsline {subsubsection}{\numberline {4.2.3}Password Creation \& Retrieval}{11}{subsubsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.3}Cors}{11}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Cookie}{12}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Hashing}{12}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}Hashing AES-key}{12}{subsubsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.6}JWT \& JWE}{12}{subsection.4.6}%
-\contentsline {subsection}{\numberline {4.7}Password Encryption}{12}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.5}Password Encryption}{12}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Hashing}{12}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}Hashing AES-key}{12}{subsubsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.7}JWT \& JWE}{12}{subsection.4.7}%
 \contentsline {section}{\numberline {5}Conclusion}{12}{section.5}%
 \contentsline {section}{\numberline {6}Future work}{12}{section.6}%

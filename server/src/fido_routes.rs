@@ -487,12 +487,12 @@ async fn retrieve_one_password(
     nonce,
     uuid: _,
     key_padding,
-    random_padding,
-    salt
+    key_salt: random_padding,
+    argon_salt: salt
   } = value.unwrap();
   let process = EncryptionProcess {
-    salt,
-    random_padding,
+    argon_salt: salt,
+    key_salt: random_padding,
     nonce,
     key_padding,
     base64: password,
@@ -527,8 +527,8 @@ async fn password_creation(
   }
 
   let EncryptionProcess {
-    salt,
-    random_padding,
+    argon_salt: salt,
+    key_salt: random_padding,
     nonce,
     key_padding,
     base64
@@ -540,11 +540,11 @@ async fn password_creation(
     username: username_to_store,
     password: base64,
     website,
-    random_padding,
+    key_salt: random_padding,
     uuid: uuid_as_str,
     nonce,
     key_padding,
-    salt,
+    argon_salt: salt,
   };
 
   let db = DbConnection::new().await;

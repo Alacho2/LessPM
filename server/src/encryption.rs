@@ -120,10 +120,10 @@ impl Keys {
 }
 
 pub struct EncryptionProcess {
-  pub salt: [u8; 16],
+  pub argon_salt: [u8; 16],
   pub nonce: [u8; 12],
   pub key_padding: Vec<u8>,
-  pub random_padding: [u8; 12],
+  pub key_salt: [u8; 16],
   pub base64: String,
 }
 
@@ -131,7 +131,7 @@ impl EncryptionProcess {
   // this function should ONLY return the values needed to store. NOT store.
   pub fn start(validator_vec: &Vec<u8>, input: &str) -> EncryptionProcess {
     let (cred_id_as_arr, bits, random_padding)
-      = EncryptionProcess::generate_416bit_arr_of_vec(validator_vec);
+      = EncryptionProcess::generate_448bit_arr_of_vec(validator_vec);
     let pretended_salt = EncryptionProcess::generate_a_salt();
     let key_for_aes
       = EncryptionProcess::hash_construct_helper(cred_id_as_arr, pretended_salt);
@@ -145,9 +145,9 @@ impl EncryptionProcess {
     ).unwrap();
 
     EncryptionProcess {
-      salt: pretended_salt,
+      argon_salt: pretended_salt,
       key_padding: bits,
-      random_padding,
+      key_salt: random_padding,
       nonce,
       base64,
     }
@@ -160,7 +160,7 @@ impl EncryptionProcess {
     let cred_id_as_arr
       = EncryptionProcess::recreate_key(&validator_vec, &process);
 
-    let pretended_salt = process.salt;
+    let pretended_salt = process.argon_salt;
     let key_for_aes = EncryptionProcess::hash_construct_helper(cred_id_as_arr, pretended_salt);
 
     let nonce = process.nonce;
@@ -174,7 +174,7 @@ impl EncryptionProcess {
     salt
   }
 
-  fn hash_construct_helper(arr: [u8; 52], pretended_salt: [u8; 16]) -> [u8; 32] {
+  fn hash_construct_helper(arr: [u8; 56], pretended_salt: [u8; 16]) -> [u8; 32] {
     // You gone goofed up if you didn't configure these in an .env file
     let memory: u32 = std::env::var("MEMORY").unwrap().parse().unwrap();
     let iterations: u32 = std::env::var("ITERATIONS").unwrap().parse().unwrap();
@@ -200,9 +200,9 @@ impl EncryptionProcess {
   }
   
   // MAX 24 bytes of the validator
-  // At LEAST 12 bytes of padding/salt
+  // At LEAST 16 bytes of padding/salt
   // 16 bytes of pepper.
-  fn generate_416bit_arr_of_vec(validator_vec: &Vec<u8>) -> ([u8; 52], Vec<u8>, [u8; 12]) {
+  fn generate_448bit_arr_of_vec(validator_vec: &Vec<u8>) -> ([u8; 56], Vec<u8>, [u8; 16]) {
     let pepper = std::env::var("PEPPER").unwrap();
     let pepper_as_bytes = pepper.as_bytes();
 
@@ -215,7 +215,7 @@ impl EncryptionProcess {
     let initial_bytes
       = if vec_len >= length_of_key { length_of_key } else { vec_len };
 
-    let mut arr = [0u8; 52];
+    let mut arr = [0u8; 56];
 
     // Take the necessary parts off of the validator
     for i in 0..initial_bytes {
@@ -235,7 +235,7 @@ impl EncryptionProcess {
 
     // add 12 bytes of random padding. You can all this SALT, if you want.
     let padding_pos = initial_bytes + remaining_bytes_to_reach_desired_length;
-    let random_padding: [u8; 12] = rand::thread_rng().gen();
+    let random_padding: [u8; 16] = rand::thread_rng().gen();
     for i in 0..random_padding.len() {
       arr[i + padding_pos] = random_padding[i];
     }
@@ -255,11 +255,11 @@ impl EncryptionProcess {
   fn recreate_key(
     validator_vec: &Vec<u8>,
     process: &EncryptionProcess
-  ) -> [u8; 52] {
+  ) -> [u8; 56] {
     let pepper = std::env::var("PEPPER").unwrap();
     let pepper_as_bytes = pepper.as_bytes();
 
-    let mut arr = [0u8; 52];
+    let mut arr = [0u8; 56];
 
     let vec_len = validator_vec.len();
     let length_of_key = 24;
@@ -278,11 +278,11 @@ impl EncryptionProcess {
     }
 
     let padding_pos = initial_bytes + bits.len();
-    let random_padding_len = process.random_padding.len();
+    let random_padding_len = process.key_salt.len();
 
     // padding of the key
     for i in 0..random_padding_len {
-      arr[i + padding_pos] = process.random_padding[i];
+      arr[i + padding_pos] = process.key_salt[i];
     }
 
     let pepper_pos

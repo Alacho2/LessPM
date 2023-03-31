@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  31 MAR 2023 13:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  31 MAR 2023 19:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1262,61 +1262,81 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1391: Ille
-gal parameter number in definition of \NewValue.
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:993: Illeg
+al parameter number in definition of \NewValue.
 <to be read again> 
-                   w
-l.1391 .../TR/webauthn-2/#webauthn-relying-party}}
+                   s
+l.993 ....dev/reference/react/Component#setstate}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1395: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:996: Illeg
+al parameter number in definition of \abx@field@howpublished.
+<to be read again> 
+                   s
+l.996     \endentry
+                   
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1412: Ille
+gal parameter number in definition of \NewValue.
+<to be read again> 
+                   w
+l.1412 .../TR/webauthn-2/#webauthn-relying-party}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1416: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    w
-l.1395     \endentry
+l.1416     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1415: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1436: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
                    r
-l.1415 ...g/TR/webauthn-2/#registration-ceremony}}
+l.1436 ...g/TR/webauthn-2/#registration-ceremony}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1419: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1440: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    r
-l.1419     \endentry
+l.1440     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1439: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1460: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
                    s
-l.1439 ...n-2/#sctn-registering-a-new-credential}}
+l.1460 ...n-2/#sctn-registering-a-new-credential}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1443: Ille
+/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1464: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
                    s
-l.1443     \endentry
+l.1464     \endentry
                     
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
@@ -1341,7 +1361,7 @@ most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
 loading the todonotes package. on input line 75.
 
-<images/HR_logo_hringur_transparent.png, id=122, 593.21625pt x 593.21625pt>
+<images/HR_logo_hringur_transparent.png, id=126, 593.21625pt x 593.21625pt>
 File: images/HR_logo_hringur_transparent.png Graphic file (type png)
 <use images/HR_logo_hringur_transparent.png>
 Package pdftex.def Info: images/HR_logo_hringur_transparent.png  used on input 
@@ -1386,6 +1406,9 @@ CUTED [rightcolumn badness]: 0
 LaTeX Warning: Citation 'lol' on page 1 undefined on input line 164.
 
 (introduction.tex
+Underfull \vbox (badness 3407) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1448,10 +1471,8 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 65.
 
-Underfull \hbox (badness 2351) in paragraph at lines 56--65
+Underfull \hbox (badness 2351) in paragraph at lines 56--66
 []\T1/cmr/m/n/10 This re-port ex-plores the im-ple-men-ta-tion of
  []
 
@@ -1487,51 +1508,51 @@ Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 17--30
+Underfull \hbox (badness 1708) in paragraph at lines 17--34
 []\T1/cmr/m/n/10 Upon reg-is-tra-tion, the Au-then-ti-ca-tor De-vice
  []
 
-methodology/webauthn.tex:35: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:39: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    w
-l.35 registered~\cite{webauthn-2-rp}.
+l.39 registered~\cite{webauthn-2-rp}.
                                      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:39: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:43: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    r
-l.39 ...h is sent to the client~\cite{webauthn-2}.
+l.43 ...h is sent to the client~\cite{webauthn-2}.
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:50: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:54: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    s
-l.50 private key~\cite{webauthn-2-registering}.
+l.54 private key~\cite{webauthn-2-registering}.
                                                
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-<images/Registration.png, id=223, 1728.4575pt x 1299.85625pt>
+<images/Registration.png, id=227, 1877.0125pt x 1093.08376pt>
 File: images/Registration.png Graphic file (type png)
 <use images/Registration.png>
-Package pdftex.def Info: images/Registration.png  used on input line 65.
-(pdftex.def)             Requested size: 352.31625pt x 264.94502pt.
+Package pdftex.def Info: images/Registration.png  used on input line 68.
+(pdftex.def)             Requested size: 352.31625pt x 205.16953pt.
 [3]
-<images/Authentication.png, id=244, 1710.39pt x 1288.815pt>
+<images/Authentication.png, id=247, 1656.1875pt x 1029.8475pt>
 File: images/Authentication.png Graphic file (type png)
 <use images/Authentication.png>
-Package pdftex.def Info: images/Authentication.png  used on input line 101.
-(pdftex.def)             Requested size: 352.31625pt x 265.46739pt.
+Package pdftex.def Info: images/Authentication.png  used on input line 103.
+(pdftex.def)             Requested size: 352.31625pt x 219.07149pt.
 ) (methodology/aes.tex
 Underfull \hbox (badness 1264) in paragraph at lines 1--49
 \T1/cmr/m/n/10 sup-port-ing keys of sizes 128-, 192-, and 256-
@@ -1540,11 +1561,7 @@ Underfull \hbox (badness 1264) in paragraph at lines 1--49
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4 <./images/Registration.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(methodology/argon2.tex [5 <./images/Authentication.png>]
+ [4 <./images/Registration.png>]) (methodology/argon2.tex
 Underfull \hbox (badness 1102) in paragraph at lines 28--33
 \T1/cmr/m/n/10 cess. This con-fig-u-ra-tion is more suit-able
  []
@@ -1555,525 +1572,562 @@ Underfull \hbox (badness 2269) in paragraph at lines 37--37
 
  []
 
+[5 <./images/Authentication.png>]
 
 LaTeX Warning: Reference `subsec:hashing-aes-key' on page 6 undefined on input 
 line 48.
 
 ) (methodology/JWT.tex [6])) (litrev.tex
-Underfull \hbox (badness 1577) in paragraph at lines 35--47
+Underfull \hbox (badness 1577) in paragraph at lines 36--48
 []\T1/cmr/m/n/10 There are many ap-proaches to pass-word-less
  []
 
-[7]
-Underfull \vbox (badness 3019) has occurred while \output is active []
-
- [8]
-Underfull \hbox (badness 3735) in paragraph at lines 106--114
+[7] [8]
+Underfull \hbox (badness 3735) in paragraph at lines 109--117
 []\T1/cmr/m/n/10 As the tech-nol-ogy evolved from FIDO to
  []
 
 
-Underfull \hbox (badness 2680) in paragraph at lines 123--127
+Underfull \hbox (badness 2680) in paragraph at lines 126--130
 []\T1/cmr/m/n/10 However, the on-go-ing evo-lu-tion of se-cu-rity
  []
 
-) (methodology/methodology.tex [9] [10]
-Underfull \hbox (badness 1057) in paragraph at lines 106--122
-\T1/cmr/m/n/10 fore get-ting en-crypted with AES256 (See Sec-
+
+Underfull \vbox (badness 2582) has occurred while \output is active []
+
+)
+(methodology/methodology.tex [9]
+methodology/methodology.tex:89: Illegal parameter number in definition of \abx@
+field@howpublished.
+<to be read again> 
+                   s
+l.89 re-render~\cite{react-component} 
+                                      of the client.
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Underfull \hbox (badness 2158) in paragraph at lines 91--103
+[]\T1/cmr/m/n/10 When the de-vel-op-ment of the project first
  []
 
-
-Underfull \vbox (badness 2073) has occurred while \output is active []
-
-
-Underfull \hbox (badness 1132) in paragraph at lines 195--197
+[10] [11]
+Underfull \hbox (badness 1132) in paragraph at lines 240--242
 \T1/cmr/m/n/10 With the server and client run-ning sep-a-rately
  []
 
 
-Underfull \vbox (badness 2495) has occurred while \output is active []
-
- [11]
-Underfull \hbox (badness 10000) in paragraph at lines 221--231
+Underfull \hbox (badness 10000) in paragraph at lines 266--276
 \T1/cmr/m/n/10 JavaScript can ac-cess and ma-nip-u-late
  []
 
 
-Underfull \hbox (badness 1173) in paragraph at lines 231--235
+Underfull \hbox (badness 1173) in paragraph at lines 276--280
 []\T1/cmr/bx/n/10 Strict Same-Site\T1/cmr/m/n/10 : This en-sures that the
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 235--238
+Underfull \hbox (badness 1701) in paragraph at lines 280--283
 \T1/cmr/m/n/10 cookie gets a sim-i-lar Time-to-Live (TTL)
  []
 
-
-Underfull \hbox (badness 5316) in paragraph at lines 243--247
+[12]
+Underfull \hbox (badness 5316) in paragraph at lines 288--292
 []\T1/cmr/bx/n/10 HttpOnly\T1/cmr/m/n/10 : Set-ting HttpOnly tells the
  []
 
 
-Underfull \hbox (badness 3343) in paragraph at lines 243--247
+Underfull \hbox (badness 3343) in paragraph at lines 288--292
 \T1/cmr/m/n/10 browser to make this cookie in-ac-ces-si-ble
  []
 
-[12] [13]) (futurework.tex
-Underfull \hbox (badness 1092) in paragraph at lines 15--28
+[13]) (conclusion.tex) [14] (futurework.tex
+Underfull \hbox (badness 1092) in paragraph at lines 53--66
 \T1/cmr/m/n/10 ports a sin-gle reg-is-tered au-then-ti-ca-tor per
  []
 
-)
-report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
+[15]) (acknowledgement.tex)
+Underfull \hbox (badness 1072) in paragraph at lines 7--187
+[]\T1/cmr/bx/n/10 ChatGPT \T1/cmr/m/n/10 Through-out the re-port, we used
+ []
+
+report.tex:189: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    c
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:189: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    d
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 3049) in paragraph at lines 184--184
+Underfull \hbox (badness 3049) in paragraph at lines 189--189
 \T1/cmtt/m/n/10 2 / #dom -[] publickeycredential -[]
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 184--184
+Underfull \hbox (badness 1259) in paragraph at lines 189--189
 \T1/cmtt/m/n/10 identifier -[] slot$[]\T1/cmr/m/n/10 . Ac-cessed: 2023-
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 184--184
+Underfull \hbox (badness 1067) in paragraph at lines 189--189
 []\T1/cmr/m/it/10 CTSS Pro-gram-mers Guide\T1/cmr/m/n/10 . 2nd ed.
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 184--184
+Underfull \hbox (badness 1394) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Alex Biryukov Et al. \T1/cmr/m/it/10 Ar-gon2: The
  []
 
 
-Underfull \hbox (badness 2635) in paragraph at lines 184--184
+Underfull \hbox (badness 2635) in paragraph at lines 189--189
 \T1/cmr/m/it/10 memory-hard func-tion for pass-word
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 184--184
+Underfull \hbox (badness 1436) in paragraph at lines 189--189
 \T1/cmr/m/n/10 rep. Ac-cessed on: March 25, 2023.
  []
 
 
-Underfull \hbox (badness 4505) in paragraph at lines 184--184
+Underfull \hbox (badness 4505) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Joseph Bon-neau. ``The Sci-ence of
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 184--184
+Underfull \hbox (badness 1436) in paragraph at lines 189--189
 \T1/cmr/m/it/10 2012 IEEE Sym-po-sium on Se-cu-rity
  []
 
-[14]
-Underfull \hbox (badness 1189) in paragraph at lines 184--184
+
+Underfull \hbox (badness 1189) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Faulty Pro-cess''. In: \T1/cmr/m/it/10 Jour-nal of the
  []
 
 
-Underfull \hbox (badness 3189) in paragraph at lines 184--184
+Underfull \hbox (badness 3189) in paragraph at lines 189--189
 \T1/cmr/m/n/10 the kingslayer of User au-then-ti-ca-
  []
 
-
-Underfull \hbox (badness 3179) in paragraph at lines 184--184
+[16]
+Underfull \hbox (badness 3179) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Ionel et al. Gordin. ``Mov-ing for-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 ward pass-word-less au-then-ti-ca-tion:
  []
 
 
-Underfull \hbox (badness 2735) in paragraph at lines 184--184
+Underfull \hbox (badness 2735) in paragraph at lines 189--189
 \T1/cmr/m/n/10 chal-lenges and im-ple-men-ta-tions for
  []
 
 
-Underfull \hbox (badness 3623) in paragraph at lines 184--184
+Underfull \hbox (badness 3623) in paragraph at lines 189--189
 \T1/cmr/m/n/10 the pri-vate cloud''. In: \T1/cmr/m/it/10 2021 20th
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Last Ac-cessed: 2023-03-28. IEEE.
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 184--184
+Underfull \hbox (badness 1648) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 184--184
+Underfull \hbox (badness 1286) in paragraph at lines 189--189
 \T1/cmr/m/n/10 its in-te-gra-tion with Sam-sung Se-cu-
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 184--184
+Underfull \hbox (badness 1939) in paragraph at lines 189--189
 \T1/cmr/m/n/10 rity Sys-tem''. In: \T1/cmr/m/it/10 2021 IEEE Cus-
  []
 
 
-Underfull \hbox (badness 4279) in paragraph at lines 184--184
+Underfull \hbox (badness 4279) in paragraph at lines 189--189
 \T1/cmr/m/it/10 tom In-te-grated Cir-cuits Con-fer-ence
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 184--184
+Underfull \hbox (badness 1648) in paragraph at lines 189--189
 \T1/cmr/m/it/10 (CICC)\T1/cmr/m/n/10 . Last Ac-cessed: 2023-03-28.
  []
 
-[15]
-Underfull \hbox (badness 2237) in paragraph at lines 184--184
+
+Underfull \hbox (badness 2237) in paragraph at lines 189--189
 \T1/cmtt/m/n/10 / / www . mongodb . com / nosql -[]
  []
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 184--184
+Underfull \hbox (badness 2401) in paragraph at lines 189--189
 \T1/cmr/m/it/10 2017 IEEE 41st An-nual Com-puter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Neal Muller. \T1/cmr/m/it/10 Cre-den-tial Stuff-ing\T1/cmr/m/n
 /10 .
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 184--184
+Underfull \hbox (badness 1648) in paragraph at lines 189--189
 \T1/cmr/m/it/10 Un-clas-si-fied In-for-ma-tion in Non-fed-
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 184--184
+Underfull \hbox (badness 1005) in paragraph at lines 189--189
 \T1/cmr/m/n/10 24, Chap-ter 3. 2020. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1
 /cmtt/m/n/10 https :
  []
 
 
-Underfull \hbox (badness 5970) in paragraph at lines 184--184
+Underfull \hbox (badness 5970) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 NIST. \T1/cmr/m/it/10 Com-merce De-part-ment An-
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 184--184
+Underfull \hbox (badness 1442) in paragraph at lines 189--189
 \T1/cmtt/m/n/10 department -[] announces -[] winner -[]
  []
 
-
-Underfull \hbox (badness 6510) in paragraph at lines 184--184
+[17]
+Underfull \hbox (badness 6510) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 OWASP. \T1/cmr/m/it/10 PHISH-ING IN DEPTH\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 184--184
+Underfull \hbox (badness 2119) in paragraph at lines 189--189
 \T1/cmtt/m/n/10 ghana / assets / slides / OWASP _
  []
 
 
-Underfull \hbox (badness 1077) in paragraph at lines 184--184
+Underfull \hbox (badness 1077) in paragraph at lines 189--189
 \T1/cmr/m/it/10 Sci-ence (IC-SCDS)\T1/cmr/m/n/10 . 2022. \T1/cmr/m/sc/10 doi\T1
 /cmr/m/n/10 : []$\T1/cmtt/m/n/10 10 .
  []
 
 
-Underfull \hbox (badness 4120) in paragraph at lines 184--184
+Underfull \hbox (badness 4120) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 James L. Fen-ton Paul A. Grassi
  []
 
 
-Underfull \hbox (badness 1742) in paragraph at lines 184--184
+Underfull \hbox (badness 1742) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Michael E. Gar-cia. \T1/cmr/m/it/10 Dig-i-tal Iden-tity
  []
 
+report.tex:189: Illegal parameter number in definition of \abx@field@howpublish
+ed.
+<to be read again> 
+                   s
+l.189 
+      
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
 
-Underfull \hbox (badness 1596) in paragraph at lines 184--184
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   s
+l.189 
+      
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   s
+l.189 
+      
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 189--189
 \T1/cmr/m/n/10 fense Tech-ni-cal In-for-ma-tion Cen-ter,
  []
 
 
-Underfull \hbox (badness 3019) in paragraph at lines 184--184
+Underfull \hbox (badness 3019) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Bruce Schneier. \T1/cmr/m/it/10 Ap-plied Cryp-tog-ra-
  []
 
-[16]
-Underfull \hbox (badness 1521) in paragraph at lines 184--184
+
+Underfull \hbox (badness 1521) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Alok Sharma Seema Kharod Nidhi
  []
 
 
-Underfull \hbox (badness 3815) in paragraph at lines 184--184
+Underfull \hbox (badness 3815) in paragraph at lines 189--189
 \T1/cmr/m/n/10 ing and Dif-fer-en-tial Mask-ing''. In:
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 184--184
+Underfull \hbox (badness 1112) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Shibboleth Con-sor-tium. \T1/cmr/m/it/10 Shib-bo-leth -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 184--184
+Underfull \hbox (badness 1616) in paragraph at lines 189--189
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 6348) in paragraph at lines 184--184
+Underfull \hbox (badness 6348) in paragraph at lines 189--189
 \T1/cmr/m/n/10 dards Pub-li-ca-tion 197. 3.1 In-put
  []
 
 
-Underfull \hbox (badness 3758) in paragraph at lines 184--184
+Underfull \hbox (badness 3758) in paragraph at lines 189--189
 \T1/cmr/m/n/10 and Out-put, p7-8. Last Ac-cessed:
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 184--184
+Underfull \hbox (badness 1424) in paragraph at lines 189--189
 \T1/cmr/m/n/10 2023-03-26. NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 :
 
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 184--184
+Underfull \hbox (badness 1565) in paragraph at lines 189--189
 []$\T1/cmtt/m/n/10 https : / / nvlpubs . nist . gov /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 184--184
+Underfull \hbox (badness 1616) in paragraph at lines 189--189
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Fed-eral In-for-ma-tion Pro-cess-ing
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 184--184
+Underfull \hbox (badness 6825) in paragraph at lines 189--189
 \T1/cmr/m/n/10 NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmtt
 /m/n/10 https :
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 184--184
+Underfull \hbox (badness 1616) in paragraph at lines 189--189
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 dards Pub-li-ca-tion 197. Al-go-rithm
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 184--184
+Underfull \hbox (badness 1424) in paragraph at lines 189--189
 \T1/cmr/m/n/10 2023-03-26. NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 :
 
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 184--184
+Underfull \hbox (badness 1565) in paragraph at lines 189--189
 []$\T1/cmtt/m/n/10 https : / / nvlpubs . nist . gov /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 In-for-ma-tion Pro-cess-ing Stan-dards
  []
 
 
-Underfull \hbox (badness 2707) in paragraph at lines 184--184
+Underfull \hbox (badness 2707) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Pub-li-ca-tion 197. Ap-pendix C, C3,
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 184--184
+Underfull \hbox (badness 4156) in paragraph at lines 189--189
 \T1/cmr/m/n/10 p42-46. Last Ac-cessed: 2023-03-26.
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 184--184
+Underfull \hbox (badness 6825) in paragraph at lines 189--189
 \T1/cmr/m/n/10 NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmtt
 /m/n/10 https :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 The Pass-word Hash-ing Com-pe-ti-
  []
 
-report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:189: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    w
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    w
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    w
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:189: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    r
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    r
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    r
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:189: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    s
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 184--184
+Underfull \hbox (badness 2065) in paragraph at lines 189--189
 \T1/cmtt/m/n/10 ceremony$[]\T1/cmr/m/n/10 . Ac-cessed on: March 25,
  []
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    s
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:184: Illegal parameter number in definition of \Hy@tempa.
+report.tex:189: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    s
-l.184 
+l.189 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[17]
-Underfull \hbox (badness 1502) in paragraph at lines 184--184
+
+Underfull \hbox (badness 1502) in paragraph at lines 189--189
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
 
 
-Underfull \hbox (badness 5345) in paragraph at lines 184--184
+Underfull \hbox (badness 5345) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[18
-
-] (appendix.tex
+[19] (appendix.tex
 Overfull \hbox (3.73863pt too wide) in paragraph at lines 6--7
 [][] 
  []
@@ -3434,7 +3488,7 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-) [19
+) [20
 
 ] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
@@ -3445,19 +3499,31 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: CD46663A07F9F1D3C7AE185DDD15153F;3909.
+(rerunfilecheck)             Checksum: 6FF152C0EF9C777625274F31D91171D4;4080.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33365 strings out of 476344
- 641858 string characters out of 5785310
+ 33316 strings out of 476344
+ 640550 string characters out of 5785310
  1958346 words of memory out of 5000000
- 53084 multiletter control sequences out of 15000+600000
+ 53020 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,94p,681b,1917s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.47} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.46} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.45} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.44} has been referenced but does not exis
 t, replaced by a fixed one
@@ -3670,9 +3736,9 @@ msy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public
 /amsfonts/latxfont/lcircle1.pfb></Library/Application Support/MiKTeX/texmfs/ins
 tall/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (20 pages, 593667 bytes).
+t.pdf (21 pages, 563082 bytes).
 PDF statistics:
- 1394 PDF objects out of 1440 (max. 8388607)
- 180 named destinations out of 1000 (max. 500000)
- 260 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1428 PDF objects out of 1440 (max. 8388607)
+ 189 named destinations out of 1000 (max. 500000)
+ 268 words of extra memory for PDF output out of 10000 (max. 10000000)
 

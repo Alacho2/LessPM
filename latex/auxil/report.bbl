@@ -973,6 +973,27 @@
       \verb http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D6%3Achapter%3D34
       \endverb
     \endentry
+    \entry{react-component}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=469f82077005f36b70952ba3b78ecb0e}{%
+           family={{React developers}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{469f82077005f36b70952ba3b78ecb0e}
+      \strng{fullhash}{469f82077005f36b70952ba3b78ecb0e}
+      \strng{bibnamehash}{469f82077005f36b70952ba3b78ecb0e}
+      \strng{authorbibnamehash}{469f82077005f36b70952ba3b78ecb0e}
+      \strng{authornamehash}{469f82077005f36b70952ba3b78ecb0e}
+      \strng{authorfullhash}{469f82077005f36b70952ba3b78ecb0e}
+      \field{labelalpha}{Rea}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://react.dev/reference/react/Component#setstate}}
+      \field{note}{Last Accessed 2023-03-23}
+      \field{title}{React Component}
+    \endentry
     \entry{rivera2019preserving}{report}{}
       \name{author}{1}{}{%
         {{hash=7079e2adef7c268214bd82db00ddb027}{%

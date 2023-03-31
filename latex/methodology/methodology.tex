@@ -64,6 +64,7 @@ React is a JavaScript library for building user interfaces, offering a
 efficient and flexible approach to web development.
 We focused on following The Law of Demeter (LoD)~\cite{lieberherr1990assuring},
 and using a least-knowledge principle.
+
 This assures that the client only retains the necessary information needed to
 function, having no knowledge of the server nor its implementation between each
 performed request.
@@ -71,16 +72,34 @@ performed request.
 As is customary when developing a system containing authentication and
 authorization, we are taking advantage of JWT/JWE
 (Section~\ref{subsec:json-web-tokens})
-to pertain some information, in order to authorize the client between
+to retain some information, in order to authorize the client between
 requested resources.
 The Base64-encoded data that is passed between the server and client is
-strongly encrypted through AES256 (Section~\ref{subsec:aes}).
+strongly encrypted through AES-256 (Section~\ref{subsec:aes}).
+
 We took advantage of React's ability to construct a single-page application with
 no routing capabilities, avoiding the possibility of utilizing any kind of URL
 tampering or manipulation\footnote{
   URL Manipulation is a technique performed by malefactors where a URL can be
   modified to request resources that should otherwise be inaccessbile to a user.
 } to attempt privilege escalation.
+Further, every time a request is performed to the server, the token gets
+checked and verified before continuing the request.
+This information is updated and check between each
+re-render~\cite{react-component} of the client.
+
+When the development of the project first started, we had a strong wish of
+running the client in an extension for Chromium-based browsers.\footnote{
+  In the client's folder of the project, you can see traces of a
+  manifest.json file, as well as build scripts to have the client run in an
+  extension.
+}
+However, as we quickly discovered, the Rust-cargo used to perform WebAuthn
+requests does not have this support implemented.
+This issue was reported
+\href{https://github.com/kanidm/webauthn-rs/issues/288}{upstream to the authors}
+of the cargo, and we will continue to work with the authors to assure a proper
+implementation of this functionality in the future.
 
 \subsection{WebAuthn}\label{subsec:webauthn-methodology}
 We used WebAuthn to perform the passwordless authentication.
@@ -104,7 +123,7 @@ If there are no user with that name within the system, we generate a unique ID
 using UUID V4, and starts the necessary Registration Ceremony.
 
 We generate a JWE during this process, which is signed with RSASSA-PSS
-using SHA-512 before getting encrypted with AES256 (See
+using SHA-512 before getting encrypted with AES-256 (See
 Section~\ref{sec:futurework}).
 This claim is then attached to the request's \texttt{Authorization} header,
 along with the Creation options from WebAuthn (See
@@ -143,6 +162,7 @@ key-pair generation on the device after a successful facial recognition.
 }
 The public key then gets transmitted to the browser and sent to the Relying
 Party through a new request.
+
 Before the request reaches the Relying Party, there is an authentication
 middleware, which checks for the JWE that got sent earlier and denies the
 request with an \texttt{Unauthorized} status code if the request is not valid.
@@ -177,19 +197,44 @@ challenge.
 
 Finally, the user then has a 15-minute timeframe to perform necessary
 activity within the server.
-The specification for JWT~\cite{RFC7519} does not specify bounds for this value.
+The specification for JWT does not specify bounds for this value~\cite{RFC7519}.
 
 \subsubsection{Password Creation \& Retrieval}\label{subsubsec:creation-and-retrieval}
-Passwords are sensitive in nature, and so it seems only natural in security
-project to enforce an extra level of authentication upon retrieving and
+Passwords are sensitive in nature, and so it seems only natural in a security
+context to enforce an extra level of authentication upon retrieving and
 creating one individual password.\footnote{
   As soon as the user is authenticated, we retreieve a full list of these
   passwords.
   The actual password is stripped off of the returned values so to protect
   and enforce security.
 }
-\todo[inline]{Make sure to write that a password can only be retreived after a
-new authentication process is performed.}
+
+A user is presented with the following options when they initiate a password
+creation:
+
+\begin{itemize}
+  \item \textbf{User Identifier}: An identification that the user wants to
+  associate with the password entry they are storing.
+  \item \textbf{Website}: A url or similar where the password belongs.
+  \item \textbf{Password}: The user is prompted with the input to create a
+  strong password automatically, choosing options such as numbers, special
+  symbols, smaller or larger characters, and the length.
+  As an option, the user is also permitted to construct their own password,
+  but prompted by a warning saying that this option is less secure.
+\end{itemize}
+
+As a final step before a password can is created and stored, the user is
+prompted to reauthenticate with their AD\@.
+If this authentication process is performed successfully, the password is
+created and stored in the database.
+
+A new authentication request is needed in the situations where the user wants to
+retrieve the plaintext version of the password.
+This is done in part to validate the user's presence\footnote{
+  To avoid situations where a user might have left their computer in an
+  unlocked state.
+} but also to gather the necessary bits of the key-reconstruction (See
+Section~\ref{subsec:password-encryption}).
 
 \subsection{Cors}\label{subsec:cors}
 With the server and client running separately on different ports, Cross-Origin
@@ -291,6 +336,8 @@ We saw this as a good solution for the project but after performing more
 research into the topic, we ended up with Argon2.
 Since LessPM is required to run in as safe of an environment as possible,
 Argon2's configuration option seemed like the perfect solution.
+Upon hashing, each key is also subject to a 128-bit salt generated
+specifically for the key.
 
 \subsubsection{Configuring Argon2}
 Argon2's hashing output is dependable on configurations~\cite{argon2specs}.\footnote{
@@ -303,16 +350,17 @@ Argon2's hashing output is dependable on configurations~\cite{argon2specs}.\foot
 Given that we emphasize security, we opted for the \texttt{Argon2id}
 configuration, giving us equal protection against side-channel and brute
 force attacks.
+
 A part of the brilliant aspect that Argon2 has to offer is the option to set
 a required amount of memory to do the hashing.
 This forces a malefactor to use a specific amount of memory for each attempt
 at constructing the hash.
-
 The only way a malefactor can get passed this requirement is to purchase more
 memory.\footnote{
   As a sidenote, we imagine that the increase of memory usage will scale as
   technology evolves and more memory is installed in computers.
 }
+
 For LessPM, we are using 128 Megabyte of memory when constructing the hash.\footnote{
   According to~\cite{argon2specs}, the reference implementation using Argon2d
   with 4Gb of memory and 8 degree pararellism should let the hashing process
@@ -349,7 +397,7 @@ discarded.\footnote{
 The tokens are not encrypted by default.
 It is out of the question to expose any sensitive details about the server's
 inner workings unnecessarily.
-Therefore, we decided to incorporate a part of JWE.\footnote{
+Therefore, we decided to incorporate a part inspired from JWE.\footnote{
   In a proper implementation of JWE, some metadata about the algorithm should
   be encoded into the token, such as what algorithm is used to perform the
   encryption~\cite{rfc7516}. For further expansion, see
@@ -391,19 +439,6 @@ the request to further respond accurately to the request.
 % A longer text about WebAuthn, part of the FIDO-2 standard, a validator key that is UNIQUE across all registrations
 % - makes it more difficult to track (suseptiable to email and the likes still).
 % The key is stored in the database with the user
-
-% Explain the encryption process in detail
-% From generating a 416-bit HASH; 192 from the client validator, 96 from a random padding, 128 from the pepper.
-
-% First, we generate a "key". This key consists of:
-% - 192 bits from the client validator.
-%   - The validator is different in size, tested on an iPhone 13 pro max, Samsung S21, MacBook Pro 16 inch Intel i9.
-%   - Since the validator is different in size, we stop at 24 byte. If the validator is shorter, we PAD.
-%   - So password A has the validator + a potential, necessary padding to reach 24 byte
-%   - Password B has the validator + a potential, necessary padding to reach 24 byte.
-%   - The padding is unique for each password and each validator.
-% - 96 bits of randomly generated padding.
-% - 128 bits from a pepper.
 
 % After the key construction, we generate a salt of 96 bit. This salt gets mixed
 % into the Argon2 hash.

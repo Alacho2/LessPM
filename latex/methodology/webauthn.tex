@@ -26,7 +26,11 @@ more difficult for trackers to follow a user\footnote{
 }.
 Further, if an attacker gains access to an individual's Passkey, they might
 compromise one specific service, whereas a traditional password could
-potentially compromise multiple services where password reuse occurs\cite{wang2018next}.
+potentially compromise multiple services where password reuse
+occurs~\cite{wang2018next}.
+This suggests that WebAuthn could serve a stronger level of security, whereas
+a traditional password exposed in a leak will expose users who are reusing
+password across services and devices.
 
 \subsubsection{Registration}\label{subsubsec:registration}
 In order to register in a WebAuthn authentication system, the user (i.e.,
@@ -57,9 +61,8 @@ The server verifies the authenticity of the signed challenge and the public key 
 If successful, the server stores the user's public key and other relevant information (e.g., user identifier, credential ID)
 for future authentication.
 
-Thus completing the RC\@.
-
-The process can be seen in Figure~\ref{fig:registration}.
+Thus completing the RC, the process can be seen in
+Figure~\ref{fig:registration}.
 \begin{figure*}[htbp]
   \centering
   \includegraphics[width=0.75\linewidth]{images/Registration}
@@ -87,12 +90,11 @@ The RP can then determine the next steps, such as deciding the authentication
 duration and establishing methods for persisting and validating the
 authentication.\footnote{
   In the case of LessPM, the system sets an authentication duration of 15 minutes.
-  It stores this information within an AES256 encrypted~\ref{subsec:aes} JSON
+  It stores this information within an AES-256 encrypted~\ref{subsec:aes} JSON
   Web Token.
   For more details about this process, refer to Section~\ref{subsec:jsonwebtokens}.
 } If the authentication process is unsuccessful at any point in the ceremony,
 the ceremony is aborted and considered invalid.
-
 
 This process can be seen in Figure~\ref{fig:authentication}.
 
@@ -102,6 +104,3 @@ This process can be seen in Figure~\ref{fig:authentication}.
   \caption{\footnotesize A diagram dipicting the authentication process through WebAuthn and Authenticator Device.}
   \label{fig:authentication}
 \end{figure*}
-
-\todo[inline]{Consider adding some sort of information about the footnote in
-litreview that details pasword reuse.}

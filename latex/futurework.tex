@@ -7,11 +7,49 @@ discussed as a way to highlight potential drawbacks of the current version.
 
     \begin{enumerate}[label=$\blacktriangleright$]
         \item \textbf{Authorization Headers}
-        \item \textbf{AES Key Encryption for Password}
+        \newline Even if~\cite{RFC7519} specifies the \texttt{Authorization}
+        header as the appropriate place to append the header, in a system
+        using WebAuthn it would be better to construct a cookie with similar
+        settings as mentioned earlier in the report.
+        This is of particular concern as the HTTP framework we used requires
+        to specify exposure of the \texttt{Authorization} header in order for
+        JavaScript to read it.
+        Exposing it to the client entails exposing it to malefactors as well.
+        \item \textbf{Hashing the stored password}
+        \newline We emphasized and recognized that only constructing a hash
+        for the AES key leaves the stored password exposed \textbf{iff} AES
+        gets broken or have an unknown zero-day failure.
+        Adding some form of hashing for the password before encrypting it would
+        serve an exceptional benefit.
+        As of thies writing, we are unsure how this hash would be properly
+        implemented, given that we have nothing to construct the hash for the
+        password.
         \item \textbf{Hardcoded AES for JWT}
+        \newline Each JWT is encrypted with the same AES\@.
+        This serves as a great treat to the whole system and was implemented
+        this way due to the lack of time during the implementation phase.
+        In a perfect scenario, we would have applied the same technique for
+        the JWT token as for the passwords.
         \item \textbf{Encrypted Passkey}
+        \newline The Passkey that gets stored on the user object could be
+        beneficial
+        to encrypt.
+        While the Argon2 hash of the key serves as a great way to require an
+        attacker to get access to the codebase as well as the database,
+        the passkey could be encrypted with AES and the Credential ID serve
+        as part of the key to decrypt it.
         \item \textbf{Attaching connecting IP to JWT}
+        \newline We would have liked to attach the connecting IP address to the
+        JWT\@.
+        Seeing that a JWT token is exposed to the client and then a form of
+        session hijacking, attaching an IP address to the token serves as a
+        first-line defence in order to avoid exposure unencrypted
+        tokens.\footnote{
+            This would not work on a mobile device connected to mobile data,
+            seeing that the IP address switches between connections.
+        }
         \item \textbf{Properly implement JWE}
+        \newline During development, we
         \item \textbf{Multiple Authenticators}
         \newline In its current implementation, LessPM supports a single
         registered authenticator per username to maintain a focused security
@@ -25,4 +63,7 @@ discussed as a way to highlight potential drawbacks of the current version.
         As the system evolves, considering addition of support for multiple
         authenticators can be weighed against potential security risks and
         benefits.
+        \item \textbf{Return Passwords with Authentication}
+        \newline Enforces a user to authenticate with their face to get the
+        list.
     \end{enumerate}

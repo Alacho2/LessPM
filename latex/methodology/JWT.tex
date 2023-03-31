@@ -42,24 +42,26 @@ stateless mechanism for transmitting information about the user's identity,
 permissions, and other relevant data~\cite{karande2018securingnode}.
 
 The process functions as follows:
-\begin{itemize}
+\begin{enumerate}
   \item The client completed an authentication request.
-  \item A token is constructed and created through a claim on the server.
-  \item The claim can be any data the server wishes to use to authenticate the
-  legitimacy of a future request.
-  \item The claim gets signed with the desired algorithm.
-  This can also be a secret, stored on the server.
-  \item As part of the response to a request, the server appends the token.\footnote{
-    A common place to embed these tokens is in the Authroization part of the
+  \item A token was constructed and created through a claim on the server.
+  The claim could have been any data the server wished to use to authenticate
+  the legitimacy of a future request.
+  \item The claim was signed with the desired algorithm.
+  This could also have been a secret, stored on the server.
+  \item As part of the response to a request, the server appended the
+  token.\footnote{
+    A common place to embed these tokens is in the Authorization part of the
     HTTP header~\cite{RFC7519}.
   }
-  \item The client receives the token and carries it upon the next performed
+  \item The client received the token and carried it upon the next performed
   request.
-  \item When the server receives the token again, it validates the \texttt{exp}
-  property of the JSON object and takes action accordingly.
-\end{itemize}
+  \item When the server received the token again,
+  it validated the \texttt{exp} property of the JSON object and took action
+  accordingly.
+\end{enumerate}
 
-\subsubsection{JSON Web Encryption}
+\subsubsection{JSON Web Encryption (RFC 7516)}
 Complimenting the JWT standard are JWEs (RFC 7516).
 Introduced around the same time as JWTs, in May 2015, there are many parallels
 between the two, but the significant distinction between them is that JWEs are

@@ -1,0 +1,37 @@
+This report describes the details of implementing a passwordless password
+manager, using WebAuthn to authenticate users.
+The aim of the project was to create a secure and efficient solutions for
+managing passwords that doesn't rely on the need for a traditional password.
+
+We came up with an intuitive way to encrypt passwords, instead of the
+traditional hash.
+To achieve this, AES-256 was applied and Argon2 was used to construct a hash out
+of a key supplied through WebAuthn's Credential ID and a randomly generated
+salt for both key-derivation function and the AES-256 key, combined with a
+pepper for the latter.
+
+The backend where WebAuthn and the password manager was running consisted of a
+HTTPS server, serving content through a self-signed certificate.
+Because the server and client were independent of each other, we also
+configured CORS\@.
+
+To keep a user authenticated between requests, we used an encrypted version
+of a JWT, inspired by the JWE RFC\@.
+This was achieved by storing the token in a fortified cookie in the client,
+being encrypted on the server before it was stored.
+
+Despite its potential benefits, our report also highlights some limitations
+and challenges associated with passwordless authentication.
+These include the potential lack of adaptability by users and the
+possibility of losing the authenticator device.
+
+Our findings suggest that future studies should explore ways to address the
+issue of device loss in the context of passwordless authentication.
+In particular, research should focus on developing methods for securely
+recovering access to accounts and data when a user’s primary authentication
+device is lost or stolen.
+This could include the use of backup authentication methods, such as biometric
+verification or recovery codes, as well as the development of secure protocols
+for remotely revoking access to lost devices.
+By addressing this challenge, we can enhance the security and reliability of
+passwordless authentication systems.

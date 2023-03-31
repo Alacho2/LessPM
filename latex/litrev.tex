@@ -15,7 +15,8 @@ brute-force attacks~\cite{bonneau2012science} through data leakages by hacking
 or purchasing information on the dark Web.
 
 Following NIST~\cite{NIST:SP:800-171r2, NISTSP800-63-3}, authentication should
-consist of covering one of the three following principles:
+consist of covering one of the three principles in
+Figure~\ref{fig:secprinciples}:
 
 \begin{figure}[htbp]
   \begin{itemize}
@@ -57,9 +58,11 @@ On a successful request, the Remote Authentication Dial-In User Service (RADIUS)
 as a response to the end-user, permitting them to copy and paste it into the necessary client, alternatively to construct a batch file which would establish the correct connection~\cite{huseynov2022passwordless}.
 The study suggested creating a solution for a VPN client which embedded some browser components~\cite{huseynov2022passwordless}.
 
-Gordin et al.~\cite{gordin2021moving} implemented PA into an OpenStack environment using WebAuthn, which increases security and bypasses the risk of malefactors employing leaked passwords on other services.\footnote{
+Gordin et al.~\cite{gordin2021moving} implemented PA into an OpenStack
+environment using WebAuthn, which increases security and bypasses the risk of
+malefactors employing leaked passwords on other services.\footnote{
   See Section~\ref{subsec:webauthn} for further explanation as to how this
-  works.\todo[inline]{Decide on this footnote.}
+  works.
 }
 The PA process considerably reduces the number of attacks towards a server because the server no longer has user authentication secrets~\cite{gordin2021moving}.
 They, however, utilized a fingerprint as the primary biometrics, citing cost as a primary factor to discourage the use of FIDO2~\cite{gordin2021moving}.\footnote{

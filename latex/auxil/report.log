@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  30 MAR 2023 18:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  31 MAR 2023 13:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1121,24 +1121,24 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1174,7 +1174,7 @@ LaTeX Font Info:    ... okay on input line 68.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 68.
+Package hyperref Info: Link coloring OFF on input line 75.
 (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.out)
 (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.out)
 \@outlinefile=\write5
@@ -1330,8 +1330,8 @@ Package biblatex Warning: The following entry could not be found
 (biblatex)                LaTeX afterwards.
 
 )
-Package biblatex Info: Reference section=0 on input line 68.
-Package biblatex Info: Reference segment=0 on input line 68.
+Package biblatex Info: Reference section=0 on input line 75.
+Package biblatex Info: Reference segment=0 on input line 75.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
@@ -1339,17 +1339,17 @@ Package caption Info: End \AtBeginDocument code.
 Package todonotes Warning: The length marginparwidth is less than 2cm and will 
 most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
-loading the todonotes package. on input line 68.
+loading the todonotes package. on input line 75.
 
-<images/HR_logo_hringur_transparent.png, id=114, 593.21625pt x 593.21625pt>
+<images/HR_logo_hringur_transparent.png, id=122, 593.21625pt x 593.21625pt>
 File: images/HR_logo_hringur_transparent.png Graphic file (type png)
 <use images/HR_logo_hringur_transparent.png>
 Package pdftex.def Info: images/HR_logo_hringur_transparent.png  used on input 
-line 71.
+line 78.
 (pdftex.def)             Requested size: 237.28229pt x 237.28229pt.
 
 LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <153.57375> not available
-(Font)              size <35.83> substituted on input line 105.
+(Font)              size <35.83> substituted on input line 112.
 
 [1{/Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdfte
 x/pdftex.map}
@@ -1383,12 +1383,9 @@ CUTED [leftcolumn badness]: 0
 CUTED [rightcolumn badness]: 0
 
 
-LaTeX Warning: Citation 'lol' on page 1 undefined on input line 157.
+LaTeX Warning: Citation 'lol' on page 1 undefined on input line 164.
 
 (introduction.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1396,8 +1393,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.5 T
-     his is not a novel approach. [1
+l.4 
+     [1
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
@@ -1459,81 +1456,81 @@ Underfull \hbox (badness 2351) in paragraph at lines 56--65
  []
 
 ) (background.tex [2] (methodology/webauthn.tex
-methodology/webauthn.tex:17: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:20: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    c
-l.17 ...dential_id,webauthn_public_key_credential}
+l.20 ...dential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:17: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:20: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    c
-l.17 ...dential_id,webauthn_public_key_credential}
+l.20 ...dential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:17: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:20: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    d
-l.17 ...dential_id,webauthn_public_key_credential}
+l.20 ...dential_id,webauthn_public_key_credential}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 15--23
+Underfull \hbox (badness 1708) in paragraph at lines 17--30
 []\T1/cmr/m/n/10 Upon reg-is-tra-tion, the Au-then-ti-ca-tor De-vice
  []
 
-methodology/webauthn.tex:27: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:35: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    w
-l.27 registered~\cite{webauthn-2-rp}.
+l.35 registered~\cite{webauthn-2-rp}.
                                      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:31: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:39: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    r
-l.31 ...h is sent to the client~\cite{webauthn-2}.
+l.39 ...h is sent to the client~\cite{webauthn-2}.
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:42: Illegal parameter number in definition of \abx@fie
+methodology/webauthn.tex:50: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
                    s
-l.42 private key~\cite{webauthn-2-registering}.
+l.50 private key~\cite{webauthn-2-registering}.
                                                
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-<images/Registration.png, id=213, 1728.4575pt x 1299.85625pt>
+<images/Registration.png, id=223, 1728.4575pt x 1299.85625pt>
 File: images/Registration.png Graphic file (type png)
 <use images/Registration.png>
-Package pdftex.def Info: images/Registration.png  used on input line 57.
+Package pdftex.def Info: images/Registration.png  used on input line 65.
 (pdftex.def)             Requested size: 352.31625pt x 264.94502pt.
 [3]
-<images/Authentication.png, id=234, 1710.39pt x 1288.815pt>
+<images/Authentication.png, id=244, 1710.39pt x 1288.815pt>
 File: images/Authentication.png Graphic file (type png)
 <use images/Authentication.png>
-Package pdftex.def Info: images/Authentication.png  used on input line 93.
+Package pdftex.def Info: images/Authentication.png  used on input line 101.
 (pdftex.def)             Requested size: 352.31625pt x 265.46739pt.
 ) (methodology/aes.tex
 Underfull \hbox (badness 1264) in paragraph at lines 1--49
@@ -1543,8 +1540,11 @@ Underfull \hbox (badness 1264) in paragraph at lines 1--49
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4 <./images/Registration.png>]) (methodology/argon2.tex [5 <./images/Authenti
-cation.png>]
+ [4 <./images/Registration.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+(methodology/argon2.tex [5 <./images/Authentication.png>]
 Underfull \hbox (badness 1102) in paragraph at lines 28--33
 \T1/cmr/m/n/10 cess. This con-fig-u-ra-tion is more suit-able
  []
@@ -1565,509 +1565,1878 @@ Underfull \hbox (badness 1577) in paragraph at lines 35--47
  []
 
 [7]
-Underfull \vbox (badness 4673) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3019) has occurred while \output is active []
 
  [8]
 Underfull \hbox (badness 3735) in paragraph at lines 106--114
 []\T1/cmr/m/n/10 As the tech-nol-ogy evolved from FIDO to
  []
 
-) (methodology/methodology.tex [9]
-Underfull \hbox (badness 1057) in paragraph at lines 105--121
+
+Underfull \hbox (badness 2680) in paragraph at lines 123--127
+[]\T1/cmr/m/n/10 However, the on-go-ing evo-lu-tion of se-cu-rity
+ []
+
+) (methodology/methodology.tex [9] [10]
+Underfull \hbox (badness 1057) in paragraph at lines 106--122
 \T1/cmr/m/n/10 fore get-ting en-crypted with AES256 (See Sec-
  []
 
-[10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Underfull \vbox (badness 2073) has occurred while \output is active []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 159--174
-[]\T1/cmr/m/n/10 Further, the server at-tempts an Au-then-ti-ca-
- []
-
-
-Underfull \hbox (badness 1132) in paragraph at lines 182--184
+Underfull \hbox (badness 1132) in paragraph at lines 195--197
 \T1/cmr/m/n/10 With the server and client run-ning sep-a-rately
  []
 
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 208--218
+
+Underfull \vbox (badness 2495) has occurred while \output is active []
+
+ [11]
+Underfull \hbox (badness 10000) in paragraph at lines 221--231
 \T1/cmr/m/n/10 JavaScript can ac-cess and ma-nip-u-late
  []
 
 
-Underfull \hbox (badness 1173) in paragraph at lines 218--222
+Underfull \hbox (badness 1173) in paragraph at lines 231--235
 []\T1/cmr/bx/n/10 Strict Same-Site\T1/cmr/m/n/10 : This en-sures that the
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 222--225
+Underfull \hbox (badness 1701) in paragraph at lines 235--238
 \T1/cmr/m/n/10 cookie gets a sim-i-lar Time-to-Live (TTL)
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 230--234
+Underfull \hbox (badness 5316) in paragraph at lines 243--247
 []\T1/cmr/bx/n/10 HttpOnly\T1/cmr/m/n/10 : Set-ting HttpOnly tells the
  []
 
 
-Underfull \hbox (badness 3343) in paragraph at lines 230--234
+Underfull \hbox (badness 3343) in paragraph at lines 243--247
 \T1/cmr/m/n/10 browser to make this cookie in-ac-ces-si-ble
  []
 
-) (futurework.tex)
-report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
+[12] [13]) (futurework.tex
+Underfull \hbox (badness 1092) in paragraph at lines 15--28
+\T1/cmr/m/n/10 ports a sin-gle reg-is-tered au-then-ti-ca-tor per
+ []
+
+)
+report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    c
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    d
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[12]
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 3049) in paragraph at lines 177--177
+Underfull \hbox (badness 3049) in paragraph at lines 184--184
 \T1/cmtt/m/n/10 2 / #dom -[] publickeycredential -[]
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 177--177
+Underfull \hbox (badness 1259) in paragraph at lines 184--184
 \T1/cmtt/m/n/10 identifier -[] slot$[]\T1/cmr/m/n/10 . Ac-cessed: 2023-
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 177--177
+Underfull \hbox (badness 1067) in paragraph at lines 184--184
 []\T1/cmr/m/it/10 CTSS Pro-gram-mers Guide\T1/cmr/m/n/10 . 2nd ed.
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 177--177
+Underfull \hbox (badness 1394) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 Alex Biryukov Et al. \T1/cmr/m/it/10 Ar-gon2: The
  []
 
 
-Underfull \hbox (badness 2635) in paragraph at lines 177--177
+Underfull \hbox (badness 2635) in paragraph at lines 184--184
 \T1/cmr/m/it/10 memory-hard func-tion for pass-word
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 177--177
+Underfull \hbox (badness 1436) in paragraph at lines 184--184
 \T1/cmr/m/n/10 rep. Ac-cessed on: March 25, 2023.
  []
 
 
-Underfull \hbox (badness 4505) in paragraph at lines 177--177
+Underfull \hbox (badness 4505) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 Joseph Bon-neau. ``The Sci-ence of
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 177--177
+Underfull \hbox (badness 1436) in paragraph at lines 184--184
 \T1/cmr/m/it/10 2012 IEEE Sym-po-sium on Se-cu-rity
  []
 
-
-Underfull \hbox (badness 1189) in paragraph at lines 177--177
+[14]
+Underfull \hbox (badness 1189) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Faulty Pro-cess''. In: \T1/cmr/m/it/10 Jour-nal of the
  []
 
 
-Underfull \hbox (badness 3189) in paragraph at lines 177--177
+Underfull \hbox (badness 3189) in paragraph at lines 184--184
 \T1/cmr/m/n/10 the kingslayer of User au-then-ti-ca-
  []
 
 
-Underfull \hbox (badness 3179) in paragraph at lines 177--177
+Underfull \hbox (badness 3179) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 Ionel et al. Gordin. ``Mov-ing for-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 \T1/cmr/m/n/10 ward pass-word-less au-then-ti-ca-tion:
  []
 
 
-Underfull \hbox (badness 2735) in paragraph at lines 177--177
+Underfull \hbox (badness 2735) in paragraph at lines 184--184
 \T1/cmr/m/n/10 chal-lenges and im-ple-men-ta-tions for
  []
 
 
-Underfull \hbox (badness 3623) in paragraph at lines 177--177
+Underfull \hbox (badness 3623) in paragraph at lines 184--184
 \T1/cmr/m/n/10 the pri-vate cloud''. In: \T1/cmr/m/it/10 2021 20th
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Last Ac-cessed: 2023-03-28. IEEE.
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 177--177
+Underfull \hbox (badness 1648) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
  []
 
-[13]
-Underfull \hbox (badness 1286) in paragraph at lines 177--177
+
+Underfull \hbox (badness 1286) in paragraph at lines 184--184
 \T1/cmr/m/n/10 its in-te-gra-tion with Sam-sung Se-cu-
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 177--177
+Underfull \hbox (badness 1939) in paragraph at lines 184--184
 \T1/cmr/m/n/10 rity Sys-tem''. In: \T1/cmr/m/it/10 2021 IEEE Cus-
  []
 
 
-Underfull \hbox (badness 4279) in paragraph at lines 177--177
+Underfull \hbox (badness 4279) in paragraph at lines 184--184
 \T1/cmr/m/it/10 tom In-te-grated Cir-cuits Con-fer-ence
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 177--177
+Underfull \hbox (badness 1648) in paragraph at lines 184--184
 \T1/cmr/m/it/10 (CICC)\T1/cmr/m/n/10 . Last Ac-cessed: 2023-03-28.
  []
 
-
-Underfull \hbox (badness 2237) in paragraph at lines 177--177
+[15]
+Underfull \hbox (badness 2237) in paragraph at lines 184--184
 \T1/cmtt/m/n/10 / / www . mongodb . com / nosql -[]
  []
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 177--177
+Underfull \hbox (badness 2401) in paragraph at lines 184--184
 \T1/cmr/m/it/10 2017 IEEE 41st An-nual Com-puter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 Neal Muller. \T1/cmr/m/it/10 Cre-den-tial Stuff-ing\T1/cmr/m/n
 /10 .
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 177--177
+Underfull \hbox (badness 1648) in paragraph at lines 184--184
 \T1/cmr/m/it/10 Un-clas-si-fied In-for-ma-tion in Non-fed-
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 177--177
+Underfull \hbox (badness 1005) in paragraph at lines 184--184
 \T1/cmr/m/n/10 24, Chap-ter 3. 2020. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1
 /cmtt/m/n/10 https :
  []
 
 
-Underfull \hbox (badness 5970) in paragraph at lines 177--177
+Underfull \hbox (badness 5970) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 NIST. \T1/cmr/m/it/10 Com-merce De-part-ment An-
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 177--177
+Underfull \hbox (badness 1442) in paragraph at lines 184--184
 \T1/cmtt/m/n/10 department -[] announces -[] winner -[]
  []
 
 
-Underfull \hbox (badness 6510) in paragraph at lines 177--177
+Underfull \hbox (badness 6510) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 OWASP. \T1/cmr/m/it/10 PHISH-ING IN DEPTH\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 177--177
+Underfull \hbox (badness 2119) in paragraph at lines 184--184
 \T1/cmtt/m/n/10 ghana / assets / slides / OWASP _
  []
 
 
-Underfull \hbox (badness 1077) in paragraph at lines 177--177
+Underfull \hbox (badness 1077) in paragraph at lines 184--184
 \T1/cmr/m/it/10 Sci-ence (IC-SCDS)\T1/cmr/m/n/10 . 2022. \T1/cmr/m/sc/10 doi\T1
 /cmr/m/n/10 : []$\T1/cmtt/m/n/10 10 .
  []
 
-[14]
-Underfull \hbox (badness 4120) in paragraph at lines 177--177
+
+Underfull \hbox (badness 4120) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 James L. Fen-ton Paul A. Grassi
  []
 
 
-Underfull \hbox (badness 1742) in paragraph at lines 177--177
+Underfull \hbox (badness 1742) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Michael E. Gar-cia. \T1/cmr/m/it/10 Dig-i-tal Iden-tity
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 177--177
+Underfull \hbox (badness 1596) in paragraph at lines 184--184
 \T1/cmr/m/n/10 fense Tech-ni-cal In-for-ma-tion Cen-ter,
  []
 
 
-Underfull \hbox (badness 3019) in paragraph at lines 177--177
+Underfull \hbox (badness 3019) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 Bruce Schneier. \T1/cmr/m/it/10 Ap-plied Cryp-tog-ra-
  []
 
-
-Underfull \hbox (badness 1521) in paragraph at lines 177--177
+[16]
+Underfull \hbox (badness 1521) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 Alok Sharma Seema Kharod Nidhi
  []
 
 
-Underfull \hbox (badness 3815) in paragraph at lines 177--177
+Underfull \hbox (badness 3815) in paragraph at lines 184--184
 \T1/cmr/m/n/10 ing and Dif-fer-en-tial Mask-ing''. In:
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 177--177
+Underfull \hbox (badness 1112) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 Shibboleth Con-sor-tium. \T1/cmr/m/it/10 Shib-bo-leth -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 177--177
+Underfull \hbox (badness 1616) in paragraph at lines 184--184
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 6348) in paragraph at lines 177--177
+Underfull \hbox (badness 6348) in paragraph at lines 184--184
 \T1/cmr/m/n/10 dards Pub-li-ca-tion 197. 3.1 In-put
  []
 
 
-Underfull \hbox (badness 3758) in paragraph at lines 177--177
+Underfull \hbox (badness 3758) in paragraph at lines 184--184
 \T1/cmr/m/n/10 and Out-put, p7-8. Last Ac-cessed:
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 177--177
+Underfull \hbox (badness 1424) in paragraph at lines 184--184
 \T1/cmr/m/n/10 2023-03-26. NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 :
 
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 177--177
+Underfull \hbox (badness 1565) in paragraph at lines 184--184
 []$\T1/cmtt/m/n/10 https : / / nvlpubs . nist . gov /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 177--177
+Underfull \hbox (badness 1616) in paragraph at lines 184--184
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Fed-eral In-for-ma-tion Pro-cess-ing
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 177--177
+Underfull \hbox (badness 6825) in paragraph at lines 184--184
 \T1/cmr/m/n/10 NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmtt
 /m/n/10 https :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 177--177
+Underfull \hbox (badness 1616) in paragraph at lines 184--184
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 \T1/cmr/m/n/10 dards Pub-li-ca-tion 197. Al-go-rithm
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 177--177
+Underfull \hbox (badness 1424) in paragraph at lines 184--184
 \T1/cmr/m/n/10 2023-03-26. NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 :
 
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 177--177
+Underfull \hbox (badness 1565) in paragraph at lines 184--184
 []$\T1/cmtt/m/n/10 https : / / nvlpubs . nist . gov /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 \T1/cmr/m/n/10 In-for-ma-tion Pro-cess-ing Stan-dards
  []
 
 
-Underfull \hbox (badness 2707) in paragraph at lines 177--177
+Underfull \hbox (badness 2707) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Pub-li-ca-tion 197. Ap-pendix C, C3,
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 177--177
+Underfull \hbox (badness 4156) in paragraph at lines 184--184
 \T1/cmr/m/n/10 p42-46. Last Ac-cessed: 2023-03-26.
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 177--177
+Underfull \hbox (badness 6825) in paragraph at lines 184--184
 \T1/cmr/m/n/10 NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmtt
 /m/n/10 https :
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 177--177
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
 []\T1/cmr/m/n/10 The Pass-word Hash-ing Com-pe-ti-
  []
 
-report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    w
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    w
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    w
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    r
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    r
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    r
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:184: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    s
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 177--177
+Underfull \hbox (badness 2065) in paragraph at lines 184--184
 \T1/cmtt/m/n/10 ceremony$[]\T1/cmr/m/n/10 . Ac-cessed on: March 25,
  []
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    s
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:177: Illegal parameter number in definition of \Hy@tempa.
+report.tex:184: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    s
-l.177 \end
-          {document}
+l.184 
+      
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-
-Underfull \hbox (badness 1502) in paragraph at lines 177--177
+[17]
+Underfull \hbox (badness 1502) in paragraph at lines 184--184
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
 
 
-Underfull \hbox (badness 5345) in paragraph at lines 177--177
+Underfull \hbox (badness 5345) in paragraph at lines 184--184
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[16] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
+[18
+
+] (appendix.tex
+Overfull \hbox (3.73863pt too wide) in paragraph at lines 6--7
+[][] 
+ []
+
+
+appendix.tex:10: LaTeX Error: Unicode character ^^F (U+0006)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 ^^F
+        ^^WKH0
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:10: LaTeX Error: Unicode character ^^W (U+0017)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 ^^F^^W
+           KH0
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^\ (U+001C)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 Vi3z8:Mv:RqU;^^\
+                     ^^L"UWy^^W^^R^^eb^^9a^^816`5<#^^A{^^Oqa^^Vkpj.O^^Q^^c8^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^W (U+0017)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 Vi3z8:Mv:RqU;^^\^^L"UWy^^W
+                               ^^R^^eb^^9a^^816`5<#^^A{^^Oqa^^Vkpj.O^^Q^^c8^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^R (U+0012)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 Vi3z8:Mv:RqU;^^\^^L"UWy^^W^^R
+                                  ^^eb^^9a^^816`5<#^^A{^^Oqa^^Vkpj.O^^Q^^c8^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Invalid UTF-8 byte sequence (^^eb\expandafter\lst
+@FillFixed@).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 Vi3z8:Mv:RqU;^^\^^L"UWy^^W^^R^^eb^^9a^^816`
+                                                5<#^^A{^^Oqa^^Vkpj.O^^Q^^c8^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:11: LaTeX Error: Invalid UTF-8 byte "9A.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 Vi3z8:Mv:RqU;^^\^^L"UWy^^W^^R^^eb^^9a^^816`
+                                                5<#^^A{^^Oqa^^Vkpj.O^^Q^^c8^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:11: LaTeX Error: Invalid UTF-8 byte "81.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 Vi3z8:Mv:RqU;^^\^^L"UWy^^W^^R^^eb^^9a^^816`
+                                                5<#^^A{^^Oqa^^Vkpj.O^^Q^^c8^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^A (U+0001)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...v:RqU;^^\^^L"UWy^^W^^R^^eb^^9a^^816`5<#^^A
+                                                  {^^Oqa^^Vkpj.O^^Q^^c8^^94^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^O (U+000F)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...U;^^\^^L"UWy^^W^^R^^eb^^9a^^816`5<#^^A{^^O
+                                                  qa^^Vkpj.O^^Q^^c8^^94^^KU7...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^V (U+0016)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...^^L"UWy^^W^^R^^eb^^9a^^816`5<#^^A{^^Oqa^^V
+                                                  kpj.O^^Q^^c8^^94^^KU7pWT^^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^Q (U+0011)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...^W^^R^^eb^^9a^^816`5<#^^A{^^Oqa^^Vkpj.O^^Q
+                                                  ^^c8^^94^^KU7pWT^^EEu*^^d4...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^K (U+000B)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...9a^^816`5<#^^A{^^Oqa^^Vkpj.O^^Q^^c8^^94^^K
+                                                  U7pWT^^EEu*^^d4^^a5
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Unicode character ^^E (U+0005)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...5<#^^A{^^Oqa^^Vkpj.O^^Q^^c8^^94^^KU7pWT^^E
+                                                  Eu*^^d4^^a5
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:11: LaTeX Error: Invalid UTF-8 byte sequence (^^c8\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...^^A{^^Oqa^^Vkpj.O^^Q^^c8^^94^^KU7pWT^^EEu*
+                                                  ^^d4^^a5
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:11: LaTeX Error: Invalid UTF-8 byte "94.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...^^A{^^Oqa^^Vkpj.O^^Q^^c8^^94^^KU7pWT^^EEu*
+                                                  ^^d4^^a5
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:11: LaTeX Error: Invalid UTF-8 byte sequence (^^d4\lst@FillFixed@)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...a^^Vkpj.O^^Q^^c8^^94^^KU7pWT^^EEu*^^d4^^a5
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:11: LaTeX Error: Invalid UTF-8 byte "A5.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...a^^Vkpj.O^^Q^^c8^^94^^KU7pWT^^EEu*^^d4^^a5
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Unicode character ^^V (U+0016)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ^^V
+        pF^^^d5^^bbVN(&E^^A)jD=FE=)?A^^c7^^9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte sequence (^^d5\lst@FillFixed@)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ^^VpF^^^d5^^bbVN(
+                      &E^^A)jD=FE=)?A^^c7^^9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte "BB.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ^^VpF^^^d5^^bbVN(
+                      &E^^A)jD=FE=)?A^^c7^^9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Unicode character ^^A (U+0001)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ^^VpF^^^d5^^bbVN(&E^^A
+                           )jD=FE=)?A^^c7^^9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte sequence (^^c7\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...d5^^bbVN(&E^^A)jD=FE=)?A^^c7^^9c^^d0^^b1v%
+                                                  BI^^A^^ef^^bf^^bdn^^I^^c9^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte "9C.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...d5^^bbVN(&E^^A)jD=FE=)?A^^c7^^9c^^d0^^b1v%
+                                                  BI^^A^^ef^^bf^^bdn^^I^^c9^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte sequence (^^d0\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...d5^^bbVN(&E^^A)jD=FE=)?A^^c7^^9c^^d0^^b1v%
+                                                  BI^^A^^ef^^bf^^bdn^^I^^c9^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte "B1.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...d5^^bbVN(&E^^A)jD=FE=)?A^^c7^^9c^^d0^^b1v%
+                                                  BI^^A^^ef^^bf^^bdn^^I^^c9^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Unicode character ^^A (U+0001)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...bVN(&E^^A)jD=FE=)?A^^c7^^9c^^d0^^b1v%BI^^A
+                                                  ^^ef^^bf^^bdn^^I^^c9^^8e*(...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte sequence (^^ef\expandafter\lst
+@FillFixed@).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...)?A^^c7^^9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I
+                                                  ^^c9^^8e*(^^Dq^^UeIr}
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte "BF.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...)?A^^c7^^9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I
+                                                  ^^c9^^8e*(^^Dq^^UeIr}
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte "BD.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...)?A^^c7^^9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I
+                                                  ^^c9^^8e*(^^Dq^^UeIr}
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte sequence (^^c9\lst@FillFixed@)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I^^c9^^8e*
+                                                  (^^Dq^^UeIr}
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Invalid UTF-8 byte "8E.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...9c^^d0^^b1v%BI^^A^^ef^^bf^^bdn^^I^^c9^^8e*
+                                                  (^^Dq^^UeIr}
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:12: LaTeX Error: Unicode character ^^D (U+0004)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...d0^^b1v%BI^^A^^ef^^bf^^bdn^^I^^c9^^8e*(^^D
+                                                  q^^UeIr}
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:12: LaTeX Error: Unicode character ^^U (U+0015)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 ...b1v%BI^^A^^ef^^bf^^bdn^^I^^c9^^8e*(^^Dq^^U
+                                                  eIr}
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^D (U+0004)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D
+        ^^I?(fb^^K*^^\R^^S^^]^^NlX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^K (U+000B)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D^^I?(fb^^K
+                  *^^\R^^S^^]^^NlX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^\ (U+001C)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D^^I?(fb^^K*^^\
+                      R^^S^^]^^NlX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^S (U+0013)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D^^I?(fb^^K*^^\R^^S
+                          ^^]^^NlX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^] (U+001D)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D^^I?(fb^^K*^^\R^^S^^]
+                             ^^NlX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^N (U+000E)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D^^I?(fb^^K*^^\R^^S^^]^^N
+                                lX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^\ (U+001C)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D^^I?(fb^^K*^^\R^^S^^]^^NlX^^\
+                                     "nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte sequence (^^cd\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D^^I?(fb^^K*^^\R^^S^^]^^NlX^^\"nz^^cd^^92'
+                                                 wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte "92.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ^^D^^I?(fb^^K*^^\R^^S^^]^^NlX^^\"nz^^cd^^92'
+                                                 wm1^^^:NrS6^^e8^^ad^^ac,^^I...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^^ (U+001E)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...fb^^K*^^\R^^S^^]^^NlX^^\"nz^^cd^^92'wm1^^^
+                                                  :NrS6^^e8^^ad^^ac,^^I^^c2^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte sequence (^^e8\expandafter\lst
+@FillFixed@).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...NlX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,
+                                                  ^^I^^c2^^99tnB5^^Wf<^^cf^^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte "AD.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...NlX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,
+                                                  ^^I^^c2^^99tnB5^^Wf<^^cf^^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte "AC.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...NlX^^\"nz^^cd^^92'wm1^^^:NrS6^^e8^^ad^^ac,
+                                                  ^^I^^c2^^99tnB5^^Wf<^^cf^^...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^W (U+0017)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...wm1^^^:NrS6^^e8^^ad^^ac,^^I^^c2^^99tnB5^^W
+                                                  f<^^cf^^a0OF0|^^H^^d4^^87^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte sequence (^^c2\lst@FillFixed@)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...1^^^:NrS6^^e8^^ad^^ac,^^I^^c2^^99tnB5^^Wf<
+                                                  ^^cf^^a0OF0|^^H^^d4^^87^^O...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte "99.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...1^^^:NrS6^^e8^^ad^^ac,^^I^^c2^^99tnB5^^Wf<
+                                                  ^^cf^^a0OF0|^^H^^d4^^87^^O...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte sequence (^^cf\lst@FillFixed@)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...8^^ad^^ac,^^I^^c2^^99tnB5^^Wf<^^cf^^a0OF0|
+                                                  ^^H^^d4^^87^^O^^^PI+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte "A0.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...8^^ad^^ac,^^I^^c2^^99tnB5^^Wf<^^cf^^a0OF0|
+                                                  ^^H^^d4^^87^^O^^^PI+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^H (U+0008)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...ad^^ac,^^I^^c2^^99tnB5^^Wf<^^cf^^a0OF0|^^H
+                                                  ^^d4^^87^^O^^^PI+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^O (U+000F)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...^c2^^99tnB5^^Wf<^^cf^^a0OF0|^^H^^d4^^87^^O
+                                                  ^^^PI+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte sequence (^^d4\lst@FillFixed@)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...c2^^99tnB5^^Wf<^^cf^^a0OF0|^^H^^d4^^87^^O^
+                                                  ^^PI+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Invalid UTF-8 byte "87.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...c2^^99tnB5^^Wf<^^cf^^a0OF0|^^H^^d4^^87^^O^
+                                                  ^^PI+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:13: LaTeX Error: Unicode character ^^P (U+0010)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 ...^99tnB5^^Wf<^^cf^^a0OF0|^^H^^d4^^87^^O^^^P
+                                                  I+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:14: LaTeX Error: Unicode character ^^Z (U+001A)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14 ^^Z
+        *7L^^OOB~j.^^?d^^P
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:14: LaTeX Error: Unicode character ^^O (U+000F)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14 ^^Z*7L^^O
+              OB~j.^^?d^^P
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:14: LaTeX Error: Unicode character ^^P (U+0010)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14 ^^Z*7L^^OOB~j.^^?d^^P
+                          
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:16: LaTeX Error: Unicode character ^^C (U+0003)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 F^^C
+         mljq|].rm^^]^^ZM0^^?5X^V^^Ul\^^cf^^869Q^^ef^^bf^^bdp^^X|
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:16: LaTeX Error: Unicode character ^^] (U+001D)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 F^^Cmljq|].rm^^]
+                     ^^ZM0^^?5X^V^^Ul\^^cf^^869Q^^ef^^bf^^bdp^^X|
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:16: LaTeX Error: Unicode character ^^Z (U+001A)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 F^^Cmljq|].rm^^]^^Z
+                        M0^^?5X^V^^Ul\^^cf^^869Q^^ef^^bf^^bdp^^X|
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:16: LaTeX Error: Unicode character ^^U (U+0015)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 F^^Cmljq|].rm^^]^^ZM0^^?5X^V^^U
+                                    l\^^cf^^869Q^^ef^^bf^^bdp^^X|
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:16: LaTeX Error: Unicode character ^^X (U+0018)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...^ZM0^^?5X^V^^Ul\^^cf^^869Q^^ef^^bf^^bdp^^X
+                                                  |
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:16: LaTeX Error: Invalid UTF-8 byte sequence (^^cf\lst@FillFixed@)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...ZM0^^?5X^V^^Ul\^^cf^^869Q^^ef^^bf^^bdp^^X|
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:16: LaTeX Error: Invalid UTF-8 byte "86.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...ZM0^^?5X^V^^Ul\^^cf^^869Q^^ef^^bf^^bdp^^X|
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:16: LaTeX Error: Invalid UTF-8 byte sequence (^^ef\lst@EC^^bf\lst@
+EC^^bd).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...ZM0^^?5X^V^^Ul\^^cf^^869Q^^ef^^bf^^bdp^^X|
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:17: LaTeX Error: Unicode character ^^N (U+000E)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 *T^^c9^^a4W^^N
+                   ^^c8^^8d[(
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:17: LaTeX Error: Invalid UTF-8 byte sequence (^^c9\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 *T^^c9^^a4W^^N^^c8^^8d[
+                            (
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:17: LaTeX Error: Invalid UTF-8 byte "A4.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 *T^^c9^^a4W^^N^^c8^^8d[
+                            (
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:17: LaTeX Error: Invalid UTF-8 byte sequence (^^c8\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 *T^^c9^^a4W^^N^^c8^^8d[
+                            (
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:17: LaTeX Error: Invalid UTF-8 byte "8D.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 *T^^c9^^a4W^^N^^c8^^8d[
+                            (
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^P (U+0010)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 nY^^P
+          Us^^UudF^^de^^93_^^VJ&+,nodsS<M;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^b...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^U (U+0015)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 nY^^PUs^^U
+               udF^^de^^93_^^VJ&+,nodsS<M;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^b...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^V (U+0016)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 nY^^PUs^^UudF^^de^^93_^^V
+                              J&+,nodsS<M;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^b...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Invalid UTF-8 byte sequence (^^de\expandafter).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 nY^^PUs^^UudF^^de^^93_^^VJ&
+                                +,nodsS<M;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^b...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:18: LaTeX Error: Invalid UTF-8 byte "93.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 nY^^PUs^^UudF^^de^^93_^^VJ&
+                                +,nodsS<M;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^b...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^G (U+0007)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 nY^^PUs^^UudF^^de^^93_^^VJ&+,nodsS<M;Uy9^^G
+                                                o^^\^^EL^^P^^EJ U^^ef^^bf^^b...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^\ (U+001C)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...Us^^UudF^^de^^93_^^VJ&+,nodsS<M;Uy9^^Go^^\
+                                                  ^^EL^^P^^EJ U^^ef^^bf^^bdM...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^E (U+0005)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...^UudF^^de^^93_^^VJ&+,nodsS<M;Uy9^^Go^^\^^E
+                                                  L^^P^^EJ U^^ef^^bf^^bdM!=^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^P (U+0010)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...F^^de^^93_^^VJ&+,nodsS<M;Uy9^^Go^^\^^EL^^P
+                                                  ^^EJ U^^ef^^bf^^bdM!=^^[^^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^E (U+0005)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...de^^93_^^VJ&+,nodsS<M;Uy9^^Go^^\^^EL^^P^^E
+                                                  J U^^ef^^bf^^bdM!=^^[^^W^^...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Invalid UTF-8 byte sequence (^^ef\expandafter\lst
+@FillFixed@).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...sS<M;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^bdM!
+                                                  =^^[^^W^^B:^^E}^^cd^^be^^^?:)
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:18: LaTeX Error: Invalid UTF-8 byte "BF.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...sS<M;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^bdM!
+                                                  =^^[^^W^^B:^^E}^^cd^^be^^^?:)
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:18: LaTeX Error: Invalid UTF-8 byte "BD.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...sS<M;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^bdM!
+                                                  =^^[^^W^^B:^^E}^^cd^^be^^^?:)
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^[ (U+001B)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...;Uy9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^bdM!=^^[
+                                                  ^^W^^B:^^E}^^cd^^be^^^?:)
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^W (U+0017)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...9^^Go^^\^^EL^^P^^EJ U^^ef^^bf^^bdM!=^^[^^W
+                                                  ^^B:^^E}^^cd^^be^^^?:)
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^B (U+0002)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...Go^^\^^EL^^P^^EJ U^^ef^^bf^^bdM!=^^[^^W^^B
+                                                  :^^E}^^cd^^be^^^?:)
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^E (U+0005)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...\^^EL^^P^^EJ U^^ef^^bf^^bdM!=^^[^^W^^B:^^E
+                                                  }^^cd^^be^^^?:)
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Unicode character ^^^ (U+001E)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ... U^^ef^^bf^^bdM!=^^[^^W^^B:^^E}^^cd^^be^^^
+                                                  ?:)
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+appendix.tex:18: LaTeX Error: Invalid UTF-8 byte sequence (^^cd\lst@FillFixed@)
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...U^^ef^^bf^^bdM!=^^[^^W^^B:^^E}^^cd^^be^^^?
+                                                  :)
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+appendix.tex:18: LaTeX Error: Invalid UTF-8 byte "BE.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...U^^ef^^bf^^bdM!=^^[^^W^^B:^^E}^^cd^^be^^^?
+                                                  :)
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+) [19
+
+] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 117.74374pt have occurred.
@@ -2076,19 +3445,47 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 2A5E8FB79AF2FD3ED7ADC3229D61483F;3639.
+(rerunfilecheck)             Checksum: CD46663A07F9F1D3C7AE185DDD15153F;3909.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33049 strings out of 476344
- 638982 string characters out of 5785310
- 1871346 words of memory out of 5000000
- 52801 multiletter control sequences out of 15000+600000
+ 33365 strings out of 476344
+ 641858 string characters out of 5785310
+ 1958346 words of memory out of 5000000
+ 53084 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,94p,681b,1917s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.44} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.43} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.42} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.41} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.40} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.39} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.38} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.37} has been referenced but does not exis
 t, replaced by a fixed one
@@ -2239,9 +3636,9 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 
  </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/
 jknappen/ec/dpi600/eccc1000.pk> </Users/havard/Library/Application Support/MiKT
-eX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk> </Users/havard/L
+eX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ectt0800.pk> </Users/havard/L
 ibrary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi60
-0/ectt0800.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
+0/tcrm1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
 nts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk> </Users/havard/Library/Applicatio
 n Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti0800.pk> </
 Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jkn
@@ -2270,11 +3667,12 @@ TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Applicatio
 n Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Lib
 rary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public
-/amsfonts/symbols/msam10.pfb>
+/amsfonts/latxfont/lcircle1.pfb></Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (17 pages, 560399 bytes).
+t.pdf (20 pages, 593667 bytes).
 PDF statistics:
- 1275 PDF objects out of 1440 (max. 8388607)
- 149 named destinations out of 1000 (max. 500000)
- 244 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1394 PDF objects out of 1440 (max. 8388607)
+ 180 named destinations out of 1000 (max. 500000)
+ 260 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,6 +2,7 @@ Exploring the development and implementation of LessPM, a passwordless password
 manager, our focus will be on the key components, technologies, and steps
 that form the system's development process.
 A crucial part of the development and system is its security and robustness.
+
 Our approach encompasses an explanation of the system architecture, the
 technologies and tools utilized and the development process to create the
 prototype.
@@ -47,8 +48,8 @@ for the sensitive data.\footnote{
 }
 The Chromium developers mandate this constraint to guarantee that the pertinent
 API is invoked exclusively within a secure context~\cite{webdev2021credential}.
-During development, the secure connection was performed through self-signed
-certificate for \texttt{``localhost''} domain.
+During development, the secure connection was performed through a self-signed
+certificate for the \texttt{``localhost''} domain.
 
 To serve as a persistent storage to maintain the passwords, user accounts,
 and other related data, LessPM adopted MongoDB\@.
@@ -67,7 +68,7 @@ This assures that the client only retains the necessary information needed to
 function, having no knowledge of the server nor its implementation between each
 performed request.
 
-As is customery when developing a system containing authentication and
+As is customary when developing a system containing authentication and
 authorization, we are taking advantage of JWT/JWE
 (Section~\ref{subsec:json-web-tokens})
 to pertain some information, in order to authorize the client between
@@ -125,11 +126,13 @@ Section~\ref{subsec:webauthn}).
 At this point, it is entirely up to the user how they decide to perform the
 authentication.
 In our case, we used an Apple iPhone 13 Pro Max, a Samsung S21, and a Samsung
-AX \todo[inline]{Ask Eva what kind of phone it is} to test authentication.\footnote{
+Galaxy A52 to test authentication.\footnote{
   Other alternatives would include a YubiKey, NitroKey, etc.
 }
+
 We scanned the QR codes prompted through our phones, which initiates the
-key-pair generation on the device after a face scan\footnote{
+key-pair generation on the device after a successful facial recognition.
+\footnote{
   There is a question of concern that facial recognistion can be bypassed
   through using a photography.
   Apple takes advantage of a built-in sensors to
@@ -137,7 +140,7 @@ key-pair generation on the device after a face scan\footnote{
   face.
   This prevents usage of a photography to perform authentication through
   their FaceID and TrueDepth technology~\cite{apple-support}.
-}.
+}
 The public key then gets transmitted to the browser and sent to the Relying
 Party through a new request.
 Before the request reaches the Relying Party, there is an authentication
@@ -157,7 +160,7 @@ The server immediately rejects the request if the user does not exist in the
 database.
 
 Further, the server attempts an Authentication Ceremony by collecting the
-public key from database.
+public key from the database.
 Upon validation\footnote{
   Validation in this context only means that the key stored in the database
   is a valid key.
@@ -172,11 +175,21 @@ challenge.
 The user is considered authenticated if the Relying Party accepts the signed
 challenge.
 
+Finally, the user then has a 15-minute timeframe to perform necessary
+activity within the server.
+The specification for JWT~\cite{RFC7519} does not specify bounds for this value.
 
-
-\todo[inline]{Make sure to mention the 15 minutes when you write this.}
-
-\subsubsection{Password Creation \& Retrieval}
+\subsubsection{Password Creation \& Retrieval}\label{subsubsec:creation-and-retrieval}
+Passwords are sensitive in nature, and so it seems only natural in security
+project to enforce an extra level of authentication upon retrieving and
+creating one individual password.\footnote{
+  As soon as the user is authenticated, we retreieve a full list of these
+  passwords.
+  The actual password is stripped off of the returned values so to protect
+  and enforce security.
+}
+\todo[inline]{Make sure to write that a password can only be retreived after a
+new authentication process is performed.}
 
 \subsection{Cors}\label{subsec:cors}
 With the server and client running separately on different ports, Cross-Origin
@@ -234,7 +247,7 @@ that LessPM sets in the browser, against a malefactor:
 \end{itemize}
 
 \subsection{Password Encryption}\label{subsec:password-encryption}
-A password can be stored and hashed using a \texttt{salt} and in a typical
+A password can be stored and hashed using a \texttt{salt} in a typical
 authentication scheme.
 The user will provide their UID along with their password, this will get
 collected from the database and checked with a random salt\footnote{
@@ -245,31 +258,128 @@ collected from the database and checked with a random salt\footnote{
 
 This complicates the process compared to what is described above, since
 the passwords should be a randomly generated string that is unknown to the
-applicant.
+applicant, we cannot hash it and compare the input from the user.
+We decided on the AES-256 (See Section~\ref{subsec:aes}), as a high form of
+encryption is paramount to secure our passwords.
+AES requires a 256-bit key to encrypt and decrypt the data.
+Since the CID generated by WebAuthn is unique and random for each application,
+this serves as a basis to construct the key.
 
+The key for each password is based on the following premise:
+\begin{enumerate}
+  \item
+  We take advantage of the fact that each CID is unique in every
+  application (See Section~\ref{subsec:webauthn}). So we grab 192-bits of the
+  string that is the CID\@.
+  This string is converted to integers.
+  Since every CID is unique depending on device, we generate a padding in the
+  situations where the key does not contain 192-bit to reach the remaining
+  difference.
+  \item
+  Each key consists of a random salt of 128-bit of integers.
+  These numbers are stored with the entry in the database.
+  \item
+  Then we add 128-bit of pepper which is collected from the environment
+  variable to finish it off.
+\end{enumerate}
+These 448-bit are then used to serve as the input for the key-derivation
+function, Argon2 (See Section~\ref{subsec:hashing-through-argon2}).
 
 \subsection{Hashing}\label{subsec:hashing}
+When searching for a good key-derivation function, we first came across PBKDF2.
+We saw this as a good solution for the project but after performing more
+research into the topic, we ended up with Argon2.
+Since LessPM is required to run in as safe of an environment as possible,
+Argon2's configuration option seemed like the perfect solution.
 
-\subsubsection{Hashing AES-key}\label{subsubsec:hashing-aes-key}
+\subsubsection{Configuring Argon2}
+Argon2's hashing output is dependable on configurations~\cite{argon2specs}.\footnote{
+  Dependable in this context is referring to each configuration that can
+  possibly be constructed.
+  An instance of Argon2 with 256 Megabyte of \texttt{memory} will not return the
+  same hash as 255 Megabyte.
+  The same is true for amount of \texttt{iterations} and \texttt{parallelism}.
+}
+Given that we emphasize security, we opted for the \texttt{Argon2id}
+configuration, giving us equal protection against side-channel and brute
+force attacks.
+A part of the brilliant aspect that Argon2 has to offer is the option to set
+a required amount of memory to do the hashing.
+This forces a malefactor to use a specific amount of memory for each attempt
+at constructing the hash.
 
+The only way a malefactor can get passed this requirement is to purchase more
+memory.\footnote{
+  As a sidenote, we imagine that the increase of memory usage will scale as
+  technology evolves and more memory is installed in computers.
+}
+For LessPM, we are using 128 Megabyte of memory when constructing the hash.\footnote{
+  According to~\cite{argon2specs}, the reference implementation using Argon2d
+  with 4Gb of memory and 8 degree pararellism should let the hashing process
+  take 0.5 seconds on a CPU with 2Gz. However, we were unsuccessful in seeing
+  anywhere close to similar results.
+}
+We went for the default suggestion of two iterations to compliment the memory.
+To finalize the configuration, we added 8 degree of parallelism, since the
+system where we developed it consists of 8 cores~\footnote{
+  The degree of parallelism is affected by many cores a CPU
+  contains~\cite{argon2specs}.
+}
+
+%\subsubsection{Hashing AES-key}\label{subsubsec:hashing-aes-key}
 
 \subsection{JWT \& JWE}\label{subsec:jwt}
+A JWT is a base64-encoded string containing some data that can be used to
+validate an authenticated user between HTTP-requests (See
+Section~\ref{subsec:json-web-tokens}).
+According to~\cite{RFC7519}, these should be attached to the authorization
+part of a request, along with a \texttt{Bearer} part.
+These tokens are cryptographically signed with RSASSA-PSS using SHA-512 with
+a key-pair stored on the server to avoid forgery, before being encoded and to a
+Base64-encoded string.
+For each step in registration~\ref{subsubsec:registration},
+authentication~\ref{subsubsec:authentication}, and
+password creation/retrieval~\ref{subsubsec:creation-and-retrieval}, different
+tokens with different information are constructed, verified, and
+discarded.\footnote{
+  The token for password creation/retrieval is the same as being verified
+  that a user is signed in authorized to create entries on behalf of the user.
+}
 
-
+The tokens are not encrypted by default.
+It is out of the question to expose any sensitive details about the server's
+inner workings unnecessarily.
+Therefore, we decided to incorporate a part of JWE.\footnote{
+  In a proper implementation of JWE, some metadata about the algorithm should
+  be encoded into the token, such as what algorithm is used to perform the
+  encryption~\cite{rfc7516}. For further expansion, see
+  Section~\ref{sec:futurework}.
+}
+Before any token is attached to a response from the server, the token is
+encrypted using AES\@.
+The Base64 gets encrypted into a ciphertext and then turned into a new Base64
+encoding.
+An example of this can be found in~\ref{subsec:base64-and-ciphertext}.
+We decode the Base64, decrypt the ciphertext, and then decode the JWT-Base64 to
+reconstruct the claim when a new request is performed to the server.
+This claim is then used to gather any details about the user that performed
+the request to further respond accurately to the request.
 
 % Content served over HTTPS through a self-signed certificate
 % Axum as a framework to serve HTTP-content
 % Cors configuration X
 % Preflight-mention to the client X
 % Allow authorization and cookie X
-% cookie stored in HttpOnly (inaccessible to JS). And expiry time which is the same as the JWT.
+% cookie stored in HttpOnly (inaccessible to JS). And expiry time which is
+% the same as the JWT. X
 % JWT - you only have one minute to login after the request is performed. RSASSA-PSS using SHA-512
 % Find some information about the JWT and use as a reference to talk about the transiton to JWE
 % From JWT -> JWE
 % - For security purposes, there should have been a new key for EACH JWT
 % process (future work)
 %
-% There are 15 minutes to interact and do what you want after you're signed in.
+% There are 15 minutes to interact and do what you want after you're signed
+% in. X
 % Password is copiable from the client but does disappear after 15 seconds.
 % The server acts as a one source of truth, client is ONLY rendering and doesn't store anything
 % (other than the cookie)

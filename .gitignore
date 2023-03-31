@@ -4,7 +4,6 @@
 /client/dist
 /client/node_modules
 /client/.parcel-cache
-/server/keys
 .pnp.*
 client/.yarn/*
 !client/.yarn/patches

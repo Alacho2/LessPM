@@ -11,14 +11,18 @@ discussed as a way to highlight potential drawbacks of the current version.
         \item \textbf{Hardcoded AES for JWT}
         \item \textbf{Encrypted Passkey}
         \item \textbf{Attaching connecting IP to JWT}
-        \iffalse
-        \item \textbf{Credential ID} \newline In its current implementation, LessPM supports a single registered
-        authenticator per username to maintain a focused security approach.
-        During registration, the server checks the database for an existing username similar to the incoming one
-        and aborts the registration ceremony if a match is found.
-        While WebAuthn permits users to have multiple authenticators, limiting this feature in the initial iteration of
-        LessPM helps ensure a more controlled security environment.
-        As the system evolves, considering the addition of support for multiple authenticators can be weighed against
-        potential security risks and benefits.
-        \fi
+        \item \textbf{Properly implement JWE}
+        \item \textbf{Multiple Authenticators}
+        \newline In its current implementation, LessPM supports a single
+        registered authenticator per username to maintain a focused security
+        approach.
+        During registration, the server checks the database for an existing
+        username similar to the incoming one and aborts the registration
+        ceremony if a match is found.
+        While WebAuthn permits users to have multiple authenticators, limiting
+        this feature in the initial iteration of LessPM helps ensure a more
+        controlled security environment.
+        As the system evolves, considering addition of support for multiple
+        authenticators can be weighed against potential security risks and
+        benefits.
     \end{enumerate}

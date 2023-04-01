@@ -47,26 +47,6 @@
 \author{Håvard Nordlie Mathisen}
 \date{January, 2023}
 
-\iffalse
-
-"Breaking the Chains: Unleashing LessPM's Passwordless Revolution"
-"Pass-go Paradox: The Magical Mystery of LessPM's Passwordless Power"
-"No More Hide-and-Seek: Discovering LessPM's Cryptographic Wonderland"
-"Keyless Kingdom: A Journey into LessPM's Ultra-Secure Realm"
-"The Fort Knox of Password Managers: Unlocking LessPM's Passwordless Potential"
-"Less is More: The Art of Mastering Passwordless Security with LessPM"
-"CryptoChronicles: The Adventures of LessPM's Passwordless Pioneers"
-
-"Phantom Passcodes: LessPM's Invisible Path to Ironclad Security"
-"Unraveling the Enigma: Exploring LessPM's Passwordless Universe"
-"Now You See Me, Now You Don't: LessPM's Passwordless Sleight of Hand"
-"Cryptic Conundrums: Solving the Passwordless Puzzle with LessPM"
-"The Digital Decoder Ring: Unlocking the Secrets of LessPM's Passwordless Mastery"
-"Mission: Impeccable – LessPM's Quest for Ultimate Passwordless Security"
-"Pass-Free Paradise: The Utopian World of LessPM's Passwordless Ecosystem"
-
-\fi
-
 \newboolean{draftmode}
 \setboolean{draftmode}{true}
 
@@ -111,57 +91,13 @@
         \end{center}
     \end{titlepage}
 
+    \begin{titlepage}
+        \tableofcontents
+    \end{titlepage}
 
-    \iffalse
-
-    Purpose:
-    Executive Summary: The primary goal of an executive summary is to present a condensed version of the report's main
-    findings, conclusions, and recommendations. It is targeted at decision-makers or executives who may not have the
-    time to read the entire report. The executive summary aims to persuade the reader to take action based on the
-    presented information.
-
-    Content:
-    Executive Summary: The executive summary typically includes background information, the problem or issue addressed,
-    methodology, key findings, conclusions, and recommendations.
-    It may also emphasize the report's significance or the implications of the findings.
-
-    LEngth:
-    Executive Summary: Executive summaries are usually longer than abstracts, ranging from a few paragraphs to a
-    few pages, depending on the length and complexity of the report.
-    The executive summary aims to provide enough detail to give a comprehensive understanding of the report's key
-    points while still being concise.
-
-    \fi
-
-
-    \ifthenelse{\boolean{draftmode}}{
-        \begin{strip}
-            \tableofcontents
-        \end{strip}
-    }
-
-
-    \iffalse
-
-    Abstract: The purpose of an abstract is to provide a brief, comprehensive
-    overview of the report's content, including its objectives, methodology,
-    results, and conclusions.
-    It is primarily intended for researchers, academics, or other professionals who want to quickly assess whether the
-    report is relevant to their interests before deciding to read the entire document.
-
-    Abstract: An abstract usually contains a brief introduction to the topic, the research question or problem,
-    the methodology used, a summary of the results, and the main conclusions drawn from the study.
-    It does not typically include recommendations or opinions.
-
-    Abstract: Abstracts are typically shorter than executive summaries, usually limited to a single paragraph or around
-    150--300 words.
-    The abstract provides a high-level overview of the report's content and is meant to be as concise as possible.
-
-    \fi
 
     \section*{Abstract}\label{sec:abstract}
-
-    Test\cite{lol}
+    \input{abstract}
 
     \addtocontents{TOC}{\protect\setcounter{tocdepth}{1}}
     \section{Introduction}\label{sec:introduction}

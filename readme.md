@@ -65,8 +65,7 @@ Requirements (these were the versions I used):
 The client is, I hope, a little bit simpler. Well, depends how much 
 javascript you have been using recently. 
 You need yarn, as that was the building system that I chose.
-After these are installed, you can run
-Before running these commands, you need to be in the client folder.
+After these are installed, you can run these commands from the client-folder.
 ```
 yarn install;
 yarn website:https

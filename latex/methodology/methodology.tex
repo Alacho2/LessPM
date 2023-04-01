@@ -81,8 +81,9 @@ or manipulation\footnote{
   Malefactors can perform URL Manipulation, which involves modifying a URL to
   request resources that would otherwise be inaccessible to a user.
 } to attempt privilege escalation or accessing data restricted from them.
+
 Further, the server checked and verified the token before proceeding with any
-request made to it.
+requests made to it.
 This information is updated and inspected between each
 re-render~\cite{react-component} of the client.
 
@@ -101,7 +102,7 @@ implementation of this functionality in the future.
 \subsection{WebAuthn}\label{subsec:webauthn-methodology}
 We used WebAuthn to perform passwordless authentication.
 As an open standard, WebAuthn aims to provide a key-based authentication scheme
-to authenticate users strongly.
+to strongly authenticate users.
 When users sign up for a new service, their device generates a new key-pair
 (See Section~\ref{subsec:webauthn}).
 
@@ -111,7 +112,7 @@ By leveraging the increasing market of smartphones with
 biometrics~\cite{statista-biometric-transactions}, WebAuthn becomes a natural
 extension in terms of authentication.
 
-\subsubsection{Registration}
+\subsubsection{Registration}\label{subsubsec:metho-registration}
 When a user tried registering in LessPM, we first check whether a user with a
 similar name existed.
 We would deny the registration if the user existed.
@@ -124,6 +125,7 @@ SHA-512 before getting encrypted with AES-256
 This claim is then attached to the request's \texttt{Authorization} header,
 along with the Creation options from WebAuthn
 (See Section~\ref{subsec:webauthn}).
+
 The \texttt{expiration} time for this claim is set to one minute to allow the
 user some time to authenticate.\footnote{
   WebAuthn describes a timeout performed within the system. In our case, this
@@ -159,15 +161,14 @@ Party through a new request.
 
 Before the request reaches the Relying Party, an authentication middleware
 checks for the JWE sent earlier and denies the request with an
-\texttt{Unauthorized} status code if the request is invalid.
+\texttt{Unauthorized} HTTP status code if the request is invalid.
 \footnote{
   Validity in this context means not timed out, tampered with, or similar.
 }
-The user is then stored in the database if WebAuthn can validate the key and
-metadata sent with the request, and then the user gets stored in the database,
-along with the UUID generated.
+If WebAuthn can validate the key and metadata sent with the request, the user
+gets stored in the database, along with the UUID generated.
 
-\subsubsection{Authentication}
+\subsubsection{Authentication}\label{subsubsec:metho-authentication}
 Authentication worked similarly to the registration process.
 Upon receiving an incoming request, the server checked the database.
 The server immediately rejected the request if the user did not exist in the
@@ -191,7 +192,8 @@ signed challenge.
 
 Finally, the user had a 15-minute timeframe to perform the necessary activity
 within LessPM\@.
-The specification for JWT does not specify bounds for this value~\cite{RFC7519}.
+The specification for JWT does not specify upper- or lower bounds for this
+value ~\cite{RFC7519}.
 
 \subsubsection{Password Creation \& Retrieval}\label{subsubsec:creation-and-retrieval}
 Passwords are sensitive in nature, so it seems only natural in a security
@@ -207,16 +209,17 @@ creation:
 \begin{itemize}
   \item \textbf{User Identifier}: An identification that the user wants to
   associate with the password entry they are storing.
+  Such as a username, phone number, or email.
   \item \textbf{Website}: A URL or similar where the password belongs.
-  \item \textbf{password}: The user is prompted with the input to create a
+  \item \textbf{Password}: The user is prompted with the input to create a
   strong password automatically, choosing options such as numbers, special
   symbols, smaller or larger characters, and the length.
   As an option, the user was also permitted to construct their password but
   warned by a warning saying that this option is less secure.
 \end{itemize}
 
-As a final step before a password can is created and stored, the user is
-prompted to reauthenticate with their AD\@.
+As a final step before a password is created and stored, the user is prompted to
+reauthenticate with their AD\@.
 The password is created and stored in the database if this authentication
 process is successful.
 
@@ -225,20 +228,21 @@ the plaintext version of the password.
 This step is done in part to validate the user's presence\footnote{
   This approach is also used in password managers on phones to avoid situations
   where a user might have left their computer unlocked.
-} but also to gather the necessary bits of the key reconstruction
+} but also to gather the necessary bits for the key-reconstruction
 (See Section~\ref{subsec:password-encryption}).
 
 \subsection{Cors}\label{subsec:cors}
-Cross-Origin Resource Sharing (CORS) must be configured correctly with the
-server and client running separately on different ports.
+Cross-Origin Resource Sharing (CORS) must be configured correctly when the
+server and client are running separately on different ports.
 
 When a web page tries to access a resource hosted on another domain, browsers
 perform an additional request to the server, called a \texttt{``preflight''}.
 The preflight request determines whether the
 request that the web page is trying to make to the server is allowed.
 This request is done through the \texttt{OPTIONS} method in HTTP and contains
-some information about the origin, accepted Content-Type, and similar to the
+some information about the origin, accepted Content-Type, and similar for the
 actual request.
+
 The server responds to this with what methods and headers are allowed, denying
 the actual request from ever happening if the preflight is not successful.
 
@@ -272,9 +276,8 @@ LessPM set in the browser against a malefactor:
   Once the system authenticated the user, it gave the cookie a Time-to-Live
   (TTL) mechanism similar to the JWE, which remained valid for only 15 minutes.
   \item \textbf{Secure}:
-  We applied the HttpOnly attribute to ensure that the cookie was only
-  accessible through HTTP or HTTPS protocols, and we transmitted it only over a
-  secure HTTPS connection.
+  We applied the \texttt{Secure} attribute to ensure that the cookie was only
+  accessible through the HTTPS protocol.
   This protocol encrypts the data being sent back and forth between the client
   and the server, attempting to avoid eavesdroppers.
   \item \textbf{HttpOnly}:
@@ -295,19 +298,21 @@ salt\footnote{
 
 Securing the applicant's passwords made the process more complicated than the
 one described above.
-Furthermore, since the passwords should be a randomly generated string unknown
-to the applicant, we cannot hash it and compare the input from the user.
-We decided on the AES-256 (See Section~\ref{subsec:aes}), as a high form of
+Furthermore, since the passwords in a password manager should be a randomly
+generated string unknown to the applicant, we cannot hash it and compare the
+input from the user.
+
+We decided on the AES-256 (see Section~\ref{subsec:aes}), as a high form of
 encryption is paramount to securing the passwords.
 AES requires a 256-bit key to encrypt and decrypt the data.
-Since the CID generated by WebAuthn is unique and random for each application,
-this serves as a basis for constructing the key.
+Since the CID generated by WebAuthn is unique and random for each application
+and device, this serves as a basis for constructing the key.
 
 We based the key for each password on the following premise:
 \begin{enumerate}
   \item
   We take advantage of the fact that each CID is unique in every application
-  (See Section~\ref{subsec:webauthn}).
+  (see Section~\ref{subsec:webauthn}).
   We therefore used 192-bits of the string that is the CID\@, converting it to
   integers.
   Since every CID is unique depending on the device, we generated padding to
@@ -321,16 +326,17 @@ We based the key for each password on the following premise:
 \end{enumerate}
 We used this 448-bit as the input for the key-derivation function,
 Argon2 (See Section~\ref{subsec:hashing-through-argon2}).
+Upon hashing, each key is also subject to a 128-bit salt explicitly generated
+for the key.
 
 \subsection{Hashing}\label{subsec:hashing}
 When we searched for a good key-derivation function, we first came across
 PBKDF2.
 We saw this as a good solution for the project, but after researching the topic
 further, we ended up with Argon2.
+
 Since LessPM is required to run in as safe of an environment as possible,
 Argon2's configuration option is an excellent solution.
-Upon hashing, each key is also subject to a 128-bit salt explicitly generated
-for the key.
 
 \subsubsection{Configuring Argon2}
 Argon2's hashing output is dependable on
@@ -364,7 +370,7 @@ For LessPM, we used 128 Megabytes of memory to construct the hash.\footnote{
 }
 We went for the default suggestion of two iterations to complement the memory.
 To finalize the configuration, we added 8 degrees of parallelism since the
-system where we developed it consists of 8 cores~\footnote{
+system where we developed it consists of 8 cores.~\footnote{
   The degree of parallelism is affected by how many cores a CPU
   contains~\cite{argon2specs}.
 }
@@ -377,8 +383,9 @@ According to~\cite{RFC7519}, these should be attached to the authorization part
 of a request, along with a \texttt{Bearer} part.
 These tokens are cryptographically signed with RSASSA-PSS using SHA-512 with a
 key-pair stored on the server to avoid forgery.
-For each step in registration~\ref{subsubsec:registration},
-authentication~\ref{subsubsec:authentication}, and
+
+For each step in registration~\ref{subsubsec:metho-registration},
+authentication~\ref{subsubsec:metho-authentication}, and
 password creation/retrieval~\ref{subsubsec:creation-and-retrieval}, different
 tokens with different information are constructed, verified, and
 discarded.\footnote{
@@ -397,10 +404,11 @@ Therefore, we decided to incorporate a part inspired by JWE.\footnote{
   explanation, see Section~\ref{sec:futurework}.
 }
 Before any token is attached to a response from the server, the token is
-encrypted using AES\@.
+encrypted using AES-256\@.
 The Base64 gets encrypted into a ciphertext and then turned into a new Base64
 encoding.
-An example of this can be seen in~\ref{subsec:base64-and-ciphertext}.
+An example of this can be seen in ~Appendix\ref{subsec:base64-and-ciphertext}.
+
 We decoded the Base64, decrypted the ciphertext, and decoded the JWT-Base64 to
 reconstruct the claim when the server received a new request.
 We used this claim to gather details about the user who made the request and

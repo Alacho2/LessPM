@@ -11,19 +11,20 @@ FIDO Alliance and W3C that aims to implement a secure, robust key-based
 authentication system for the web, to strongly authenticate users~\cite{webauthn_level_2}.
 The concept relies on the use of a third-party device, called an Authenticator,
 which leverages asymmetric cryptography.
-These devices employ biometric or hardware-based mechanisms to provide a secure
+These devices employ biometric or hardware-based mechanisms to provide secure
 and reliable means of authenticating a user.
 
-Upon registration, the Authenticator Device (AD) generates a key pair called a
+Upon registration, the Authenticator Device (AD) generates a key-pair called a
 Passkey.
 This Passkey contains a Credential ID (CID) uniquely generated for each
 registered key-pair~\cite{webauthn_credential_id,webauthn_public_key_credential}
 on the Authenticator, per service registered.
-The unique generation of each key pair offers the advantage of making it much
+The unique generation of each key-pair offers the advantage of making it much
 more difficult for trackers to follow a user\footnote{
   This is subject to the key-pair alone. A willing party could still track the
   user through their email or similar.
 }.
+
 Further, if an attacker gains access to an individual's Passkey, they might
 compromise one specific service, whereas a traditional password could
 potentially compromise multiple services where password reuse
@@ -34,17 +35,17 @@ password across services and devices.
 
 \subsubsection{Registration}\label{subsubsec:registration}
 In order to register in a WebAuthn authentication system, the user (i.e.,
-client, browser, phone, etc.) issues a registration request to a
+client, browser, phone, Etc.) issues a registration request to a
 WebAuthn implemented server, called a Relying Party (RP), asking to be
 registered~\cite{webauthn-2-rp}.
 The request contains a body with the relevant user identifier (UID. i.e.,
-username, phone number, email, etc.).
+username, phone number, email, Etc.).
 The server responds by initiating a Registration Ceremony (RC) and generates a
 challenge, which is sent to the client~\cite{webauthn-2}.
 
 The client then calls the browser-integrated WebAuthn API, requesting the
-Authenticator (i.e., phone, hardware authenticator device, or similar)
-to create a new public key credential through the Client to Authenticator 2
+Authenticator (i.e., phone, hardware authenticator device, Etc.)
+to create a new public key credential through the Client to Authenticator
 Protocol (CTAP2).\footnote{
   The user is prompted to use their Authenticator to prove their presence, which can involve scanning a QR code,
   providing a fingerprint, or any other modality supported by the device.}
@@ -83,7 +84,7 @@ The client calls the browser-integrated WebAuthn API, prompting the use of the
 Authenticator to validate and sign the challenge.
 Unlike the registration process, the Authenticator now yields a signature, which is forwarded to the RP along with
 Authenticator-specific data~\cite{webauthn_authenticator_data}.
-Upon receiving the data, the Relying Party (RP) validates the signed challenge using the stored credentials.
+Upon receiving the data, the RP validates the signed challenge using the stored credentials.
 If the validation succeeds, the server authenticates the user.
 
 The RP can then determine the next steps, such as deciding the authentication

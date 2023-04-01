@@ -28,7 +28,7 @@ function will run and what the risk and threat models are:
     \item \textbf{Argon2i} uses data-independent memory access.
     This configuration is more suitable for password hashing and key-derivation
     functions.\protect\footnotemark
-    ~This configuration is slower due to making more passes over the memory as
+    ~The configuration is slower due to making more passes over the memory as
     the hashing progresses.
     \item \textbf{Argon2id} is a combination of the two, beginning with
     data-dependent memory access before transitioning to data-independent
@@ -58,6 +58,7 @@ using such attacks.
 The algorithm's customizability allows users to adjust its behaviour based on
 memory, parallelism, and iterations, catering to specific security requirements
 and performance needs.
+
 As these configurations are crucial for computing the original hash, Argon2
 provides robust resilience against brute-force and side-channel attacks~\cite{
   argon2specs}.

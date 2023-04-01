@@ -24,7 +24,7 @@
 \contentsline {subsection}{\numberline {4.6}Hashing}{13}{subsection.4.6}%
 \contentsline {subsubsection}{\numberline {4.6.1}Configuring Argon2}{13}{subsubsection.4.6.1}%
 \contentsline {subsection}{\numberline {4.7}JWT \& JWE}{13}{subsection.4.7}%
-\contentsline {section}{\numberline {5}Summary}{14}{section.5}%
+\contentsline {section}{\numberline {5}Conclusion}{14}{section.5}%
 \contentsline {section}{\numberline {6}Future work}{14}{section.6}%
 \contentsline {section}{\numberline {7}Acknowledgement}{15}{section.7}%
 \contentsline {section}{\numberline {A}Appendix}{20}{appendix.A}%

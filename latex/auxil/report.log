@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  31 MAR 2023 19:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  1 APR 2023 10:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1643,12 +1643,12 @@ Underfull \hbox (badness 3343) in paragraph at lines 288--292
  []
 
 [13]) (conclusion.tex) [14] (futurework.tex
-Underfull \hbox (badness 1092) in paragraph at lines 53--66
+Underfull \hbox (badness 1092) in paragraph at lines 60--73
 \T1/cmr/m/n/10 ports a sin-gle reg-is-tered au-then-ti-ca-tor per
  []
 
 [15]) (acknowledgement.tex)
-Underfull \hbox (badness 1072) in paragraph at lines 7--187
+Underfull \hbox (badness 1072) in paragraph at lines 14--187
 []\T1/cmr/bx/n/10 ChatGPT \T1/cmr/m/n/10 Through-out the re-port, we used
  []
 
@@ -1748,7 +1748,7 @@ Underfull \hbox (badness 1436) in paragraph at lines 189--189
 \T1/cmr/m/it/10 2012 IEEE Sym-po-sium on Se-cu-rity
  []
 
-
+[16]
 Underfull \hbox (badness 1189) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Faulty Pro-cess''. In: \T1/cmr/m/it/10 Jour-nal of the
  []
@@ -1758,7 +1758,7 @@ Underfull \hbox (badness 3189) in paragraph at lines 189--189
 \T1/cmr/m/n/10 the kingslayer of User au-then-ti-ca-
  []
 
-[16]
+
 Underfull \hbox (badness 3179) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Ionel et al. Gordin. ``Mov-ing for-
  []
@@ -1813,7 +1813,7 @@ Underfull \hbox (badness 2237) in paragraph at lines 189--189
 \T1/cmtt/m/n/10 / / www . mongodb . com / nosql -[]
  []
 
-
+[17]
 Underfull \hbox (badness 2401) in paragraph at lines 189--189
 \T1/cmr/m/it/10 2017 IEEE 41st An-nual Com-puter
  []
@@ -1845,7 +1845,7 @@ Underfull \hbox (badness 1442) in paragraph at lines 189--189
 \T1/cmtt/m/n/10 department -[] announces -[] winner -[]
  []
 
-[17]
+
 Underfull \hbox (badness 6510) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 OWASP. \T1/cmr/m/it/10 PHISH-ING IN DEPTH\T1/cmr/m/n/10 .
  []
@@ -1919,7 +1919,7 @@ Underfull \hbox (badness 3815) in paragraph at lines 189--189
 \T1/cmr/m/n/10 ing and Dif-fer-en-tial Mask-ing''. In:
  []
 
-
+[18]
 Underfull \hbox (badness 1112) in paragraph at lines 189--189
 []\T1/cmr/m/n/10 Shibboleth Con-sor-tium. \T1/cmr/m/it/10 Shib-bo-leth -
  []
@@ -1976,7 +1976,7 @@ Underfull \hbox (badness 6825) in paragraph at lines 189--189
 /m/n/10 https :
  []
 
-[18]
+
 Underfull \hbox (badness 10000) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
@@ -2122,12 +2122,14 @@ Underfull \hbox (badness 1502) in paragraph at lines 189--189
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
 
-
+[19]
 Underfull \hbox (badness 5345) in paragraph at lines 189--189
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[19] (appendix.tex
+[20
+
+] (appendix.tex
 Overfull \hbox (3.73863pt too wide) in paragraph at lines 6--7
 [][] 
  []
@@ -3488,7 +3490,7 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-) [20
+) [21
 
 ] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
@@ -3505,8 +3507,8 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33316 strings out of 476344
- 640550 string characters out of 5785310
+ 33317 strings out of 476344
+ 640557 string characters out of 5785310
  1958346 words of memory out of 5000000
  53020 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
@@ -3736,9 +3738,9 @@ msy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public
 /amsfonts/latxfont/lcircle1.pfb></Library/Application Support/MiKTeX/texmfs/ins
 tall/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (21 pages, 563082 bytes).
+t.pdf (22 pages, 565151 bytes).
 PDF statistics:
- 1428 PDF objects out of 1440 (max. 8388607)
- 189 named destinations out of 1000 (max. 500000)
+ 1435 PDF objects out of 1440 (max. 8388607)
+ 190 named destinations out of 1000 (max. 500000)
  268 words of extra memory for PDF output out of 10000 (max. 10000000)
 

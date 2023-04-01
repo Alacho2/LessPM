@@ -49,7 +49,14 @@ discussed as a way to highlight potential drawbacks of the current version.
             seeing that the IP address switches between connections.
         }
         \item \textbf{Properly implement JWE}
-        \newline During development, we
+        \newline During development, we thought that JWTs were encrypted and
+        not just signed.
+        We discovered the JWEs~\cite{rfc7516} late in the process and these
+        were new to us.
+        Due to lack of time, we therefore took the shortcut of just
+        implementing the encryption process of JWE, not the remaining metadata.
+        In the future, we would like to properly implement these and follow
+        the standard.
         \item \textbf{Multiple Authenticators}
         \newline In its current implementation, LessPM supports a single
         registered authenticator per username to maintain a focused security
@@ -64,6 +71,15 @@ discussed as a way to highlight potential drawbacks of the current version.
         authenticators can be weighed against potential security risks and
         benefits.
         \item \textbf{Return Passwords with Authentication}
-        \newline Enforces a user to authenticate with their face to get the
-        list.
+        \newline As part of the authentication process, we could make sure
+        that the password list is returned with the last request to
+        authenticate.
+        This would further emphasize security by not exposing passwords in a
+        separate end-point.
+        On the same note, it would be good to handle the decryption part of
+        the JWE better, seeing that a misconfigured cookie sent to this
+        endpoint now returns an error.
+        Yet another technical debt as a cause of lack of time.
+        This is, however, not something that brings the system to a halt,
+        rather an error that needs handling.
     \end{enumerate}

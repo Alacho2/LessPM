@@ -1,25 +1,25 @@
 [0] Config.pm:306> INFO - This is Biber 2.18
 [0] Config.pm:309> INFO - Logfile is 'report.blg'
-[90] biber-darwin:340> INFO - === Thu Apr 13, 2023, 13:55:21
-[112] Biber.pm:418> INFO - Reading 'report.bcf'
-[234] Biber.pm:978> INFO - Found 51 citekeys in bib section 0
-[260] Biber.pm:4401> INFO - Processing section 0
-[278] Biber.pm:4592> INFO - Looking for bibtex file 'main.bib' for section 0
-[283] bibtex.pm:1713> INFO - LaTeX decoding ...
-[347] bibtex.pm:1518> INFO - Found BibTeX data source '/Users/havard/Programmering/skole/dada/lesspm/latex/main.bib'
-[710] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[710] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[710] Biber.pm:4221> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[710] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
-[773] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[800] bbl.pm:757> INFO - Output to report.bbl
-[801] Biber.pm:130> WARN - legacy month field 'September' in entry 'yan2000password' is not an integer - this will probably not sort properly.
-[801] Biber.pm:130> WARN - legacy month field 'March' in entry 'wang2018next' is not an integer - this will probably not sort properly.
-[801] Biber.pm:130> WARN - legacy month field 'oct' in entry 'nist_aes_winner' is not an integer - this will probably not sort properly.
-[801] Biber.pm:130> WARN - legacy month field 'May' in entry 'RFC7519' is not an integer - this will probably not sort properly.
-[801] Biber.pm:130> WARN - legacy month field 'May' in entry 'rfc7516' is not an integer - this will probably not sort properly.
-[801] Biber.pm:130> WARN - ISBN '9781491999644' in entry 'karande2018securingnode' is invalid - run biber with '--validate_datamodel' for details.
-[801] Biber.pm:130> WARN - legacy year field 'n.d.' in entry 'ripa2021emergence' is not an integer - this will probably not sort properly.
-[801] Biber.pm:130> WARN - legacy year field 'n.d.' in entry 'owasp-credential-stuffing' is not an integer - this will probably not sort properly.
-[801] Biber.pm:130> WARN - legacy month field 'June' in entry 'statista-biometric-transactions' is not an integer - this will probably not sort properly.
-[801] Biber.pm:132> INFO - WARNINGS: 9
+[104] biber-darwin:340> INFO - === Thu Apr 13, 2023, 13:58:58
+[127] Biber.pm:418> INFO - Reading 'report.bcf'
+[270] Biber.pm:978> INFO - Found 51 citekeys in bib section 0
+[291] Biber.pm:4401> INFO - Processing section 0
+[306] Biber.pm:4592> INFO - Looking for bibtex file 'main.bib' for section 0
+[310] bibtex.pm:1713> INFO - LaTeX decoding ...
+[382] bibtex.pm:1518> INFO - Found BibTeX data source '/Users/havard/Programmering/skole/dada/lesspm/latex/main.bib'
+[809] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[809] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[809] Biber.pm:4221> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[809] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
+[884] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[915] bbl.pm:757> INFO - Output to report.bbl
+[915] Biber.pm:130> WARN - legacy month field 'September' in entry 'yan2000password' is not an integer - this will probably not sort properly.
+[915] Biber.pm:130> WARN - legacy month field 'March' in entry 'wang2018next' is not an integer - this will probably not sort properly.
+[915] Biber.pm:130> WARN - legacy month field 'oct' in entry 'nist_aes_winner' is not an integer - this will probably not sort properly.
+[915] Biber.pm:130> WARN - legacy month field 'May' in entry 'RFC7519' is not an integer - this will probably not sort properly.
+[915] Biber.pm:130> WARN - legacy month field 'May' in entry 'rfc7516' is not an integer - this will probably not sort properly.
+[915] Biber.pm:130> WARN - ISBN '9781491999644' in entry 'karande2018securingnode' is invalid - run biber with '--validate_datamodel' for details.
+[915] Biber.pm:130> WARN - legacy year field 'n.d.' in entry 'ripa2021emergence' is not an integer - this will probably not sort properly.
+[915] Biber.pm:130> WARN - legacy year field 'n.d.' in entry 'owasp-credential-stuffing' is not an integer - this will probably not sort properly.
+[915] Biber.pm:130> WARN - legacy month field 'June' in entry 'statista-biometric-transactions' is not an integer - this will probably not sort properly.
+[915] Biber.pm:132> INFO - WARNINGS: 9

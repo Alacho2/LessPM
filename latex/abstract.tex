@@ -2,11 +2,13 @@ We describe the implementation of LessPM, a passwordless password manager
 using Rust as a programming language.
 While traditional passwords have a long and respectable history, they have
 become increasingly vulnerable to attacks such as brute-forcing, phishing, and
+keylogging.
 \todo[inline]{
-  LessPM seeks to address these deficiencies with WebAuthn's sophisticated
-  authentication methods through asymmetric cryptography to provide a
-  secure authentication experience with the help of user-owned devices such as
-  smartphones or hardware authenticator devices.
+  LessPM seeks to address these deficiencies with a sophisticated
+  authentication methods, called WebAuthn.
+  Through asymmetric cryptography, WebAuthn provides a secure authentication
+  experience with the help of user-owned devices such as smartphones or hardware
+  authenticator devices.
   This would eliminate the use of traditional passwords.
 }
 To secure LessPM's passwords on the server, we employ AES-256 and Argon2 for

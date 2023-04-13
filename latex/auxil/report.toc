@@ -26,7 +26,7 @@
 \contentsline {subsection}{\numberline {4.7}JWT \& JWE}{14}{subsection.4.7}%
 \contentsline {subsection}{\numberline {4.8}Security Analysis}{15}{subsection.4.8}%
 \contentsline {section}{\numberline {5}Conclusion}{17}{section.5}%
-\contentsline {section}{\numberline {6}Future work}{17}{section.6}%
-\contentsline {section}{\numberline {7}Acknowledgement}{18}{section.7}%
-\contentsline {section}{\numberline {A}Appendix}{23}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Base64 and ciphertext}{23}{subsection.A.1}%
+\contentsline {section}{\numberline {6}Future work}{18}{section.6}%
+\contentsline {section}{\numberline {7}Acknowledgement}{19}{section.7}%
+\contentsline {section}{\numberline {A}Appendix}{24}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Base64 and ciphertext}{24}{subsection.A.1}%

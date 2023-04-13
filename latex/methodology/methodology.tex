@@ -486,6 +486,8 @@ These defensive measures collectively aim to provide a robust and secure
   RSASSA-PSS is a robust and secure signature algorithm that provides protection
   against various attacks, such as collision attacks and length extension
   attacks.
+  To further impose a level of security, LessPM takes advantage of different
+  tokens for registration, authentication, and authorization.
 
   \item \textbf{JSON Web Encryption (JWE}
 
@@ -534,6 +536,30 @@ These defensive measures collectively aim to provide a robust and secure
   database and the source code to be able to quickly compute a hash.
   The salt and pepper are added to the key of the AES-256
 
+  \item \textbf{Password Authentication}
+
+  \textbf{Weakness}
+  A password is something a secret that a user knows.
+  Secrets belonging to an individual will always be potentially accessible to
+  a malefactor.
+  There are multiple vectors that can be used, such as a user being careless
+  and writing the password down on a piece of paper or storing the secret in an
+  unencrypted file.
+  Further, a password is required to be stored somewhere for a server to
+  authenticate the user, preferably with an email for recovery.
+  This creates two new vectors for a malefactor to exploit, the persisted
+  storage on the server or the recovery process.
+
+  \textbf{Defensive Mechanism}
+  LessPM takes advantage of WebAuthn to avoid the usage of passwords to
+  authenticate the user.
+  The user is required to have two vectors for authentication; their
+  authenticator device and the biometrics, which is the user itself.
+  It is, however, important to mention that any authenticator device is
+  vulnerable to being compromised.
+  Should a device be compromised or infected with malicious software (Malware),
+  it could be used to intercept or manipulate authentication requests.
+
   \item \textbf{Storing passwords in plaintext}
 
   \textbf{Weakness:}
@@ -556,11 +582,60 @@ These defensive measures collectively aim to provide a robust and secure
   The salt is stored with the entry in the database.
   Using both salt and pepper enhances the security of the derived key.
 
-  \item \textbf{CORS configured for different ports:} CORS (Cross-Origin Resource Sharing) is configured to allow communication between the client and server, even though they are running on different ports. This ensures that only authorized clients can access the server's resources, preventing unauthorized cross-origin requests and protecting against cross-site scripting (XSS) and cross-site request forgery (CSRF) attacks.
+  \item \textbf{
+    Cross-Site Scripting,
+    Cross-Site Request Forgery
+    \& Unauthorized Access}
 
-  \item \textbf{Cookie with strict security measures:} A cookie is used to store the JWT on the client side for authentication purposes. The cookie is secured with strict SameSite attribute to prevent cross-site scripting (XSS) attacks, it expires after 15 minutes to limit the window of opportunity for attackers, it is set to be secure for HTTPS only to prevent interception in transit, and it is HttpOnly so that it cannot be accessed from JavaScript, reducing the risk of cross-site scripting (XSS) attacks.
+  \textbf{Weakness:}
+  Any HTTP server improperly configured is subject Cross-Site Scripting (XSS)
+  and CSRF\@.
+  XSS is a process where a malefactor could inject a malicious script from a
+  different origin, and execute said script in the context of a user's browser.
+  This could lead to a situation where a malefactor could get access tokens
+  or cookies, or interact with the webpage a user is viewing through the
+  script.
+  CSRF is a type of security vulnerability where a malefactor tricks a user
+  to unknowingly make unauthorized requests on a trusted website, such as a
+  bank or similar.
+  This can lead to actions being performed on a user's behalf unintentionally,
+  without the user's consent, leading to unauthorized access.
 
-  \item \textbf{Different tokens for registration, authentication, and password creation/retrieval:} Different JWTs and encryption keys are used for registration, authentication, and password creation/retrieval. This approach minimizes the risk of exposure, as compromising one token or key does not compromise the security of all functions. It adds an additional layer of protection and reduces the potential impact of a single token or key being exposed or compromised.
+  \textbf{Defensive Mechanism:}
+  CORS is a measure that enforces a strict policy for which domains and services
+  are permitted to access certain resources on the server.
+  LessPM takes advantage of CORS by permitting the server itself and the
+  client associated domain to access resources on the server.
+  This is a preventive measure put in place to allow the communication
+  between the client and the serve, even though they are running on different
+  ports, and potentially different domains.
+  This ensures that only authorized clients can access the server's resources,
+  preventing unauthorized cross-origin requests and protecting against
+  cross-site scripting (XSS) and cross-site request forgery (CSRF) attacks.
+
+  \item \textbf{Cookies}
+  \textbf{Weakness:}
+  A cookie is vulnerable to many aspects of security.
+  Improperly stored, a cookie can be accessed through JavaScript, sent to
+  different domains, get hijacked, excessive expire time, or even poisoned.\footnote{
+    Cookie Poisoning is the process where an attacker modifies the content of
+    the cookie to inject malicious data or bypass security controls.
+  }
+
+  \textbf{Defensive Mechanism:}
+  LessPM only uses one cookie, which contains the encrypted JWT\@.
+  The cookie is protected through built-in browser-features such as
+  restricted to the same origin that the cookie came from, and cannot be sent
+  anywhere else, further preventing XSS of sensitive information\@.
+  The cookie is expired after 15 minutes, which is extensive amount of time
+  for a user to have authorized access to their passwords, before the need to
+  reauthenticate their identity.
+  Upon creation, LessPM makes sure that the cookie becomes set to secure.
+  This prevents the cookie from being sent over an insecure HTTP connection,
+  limiting it to HTTPS\@.
+  Finally, the cookie is HttpOnly, so that the cookie can't be access through
+  JavaScript, reducing the attack vector of SS further.
+
 \end{enumerate}
 
 %\todo[inline]{The preceeding section.}

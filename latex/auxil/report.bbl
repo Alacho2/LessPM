@@ -1390,7 +1390,7 @@
       \verb https://www.w3.org/TR/webauthn-2/#authenticator-data
       \endverb
     \endentry
-    \entry{webauthn-2-rp}{misc}{}
+    \entry{webauthn-2-registering}{misc}{}
       \name{author}{1}{}{%
         {{hash=446a1ae6601a5c59360c7d591c3992da}{%
            family={{W3C}},
@@ -1407,6 +1407,30 @@
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
       \field{extraalpha}{2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#sctn-registering-a-new-credential}}
+      \field{note}{Accessed on: March 25, 2023}
+      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
+      \field{year}{2021}
+    \endentry
+    \entry{webauthn-2-rp}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=446a1ae6601a5c59360c7d591c3992da}{%
+           family={{W3C}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{fullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{bibnamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authorbibnamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
+      \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
+      \field{extraname}{3}
+      \field{labelalpha}{W3C21}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extraalpha}{3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#webauthn-relying-party}}
@@ -1426,30 +1450,6 @@
       \strng{authorbibnamehash}{446a1ae6601a5c59360c7d591c3992da}
       \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
       \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
-      \field{extraname}{3}
-      \field{labelalpha}{W3C21}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extraalpha}{3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#registration-ceremony}}
-      \field{note}{Accessed on: March 25, 2023}
-      \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
-      \field{year}{2021}
-    \endentry
-    \entry{webauthn-2-registering}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=446a1ae6601a5c59360c7d591c3992da}{%
-           family={{W3C}},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{446a1ae6601a5c59360c7d591c3992da}
-      \strng{fullhash}{446a1ae6601a5c59360c7d591c3992da}
-      \strng{bibnamehash}{446a1ae6601a5c59360c7d591c3992da}
-      \strng{authorbibnamehash}{446a1ae6601a5c59360c7d591c3992da}
-      \strng{authornamehash}{446a1ae6601a5c59360c7d591c3992da}
-      \strng{authorfullhash}{446a1ae6601a5c59360c7d591c3992da}
       \field{extraname}{4}
       \field{labelalpha}{W3C21}
       \field{sortinit}{W}
@@ -1457,7 +1457,7 @@
       \field{extraalpha}{4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#sctn-registering-a-new-credential}}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#registration-ceremony}}
       \field{note}{Accessed on: March 25, 2023}
       \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
       \field{year}{2021}

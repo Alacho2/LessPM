@@ -1,18 +1,19 @@
-In today's digital landscape, utilizing various identifiers (such as usernames, email addresses, or phone numbers)
-combined with passwords has become a prevalent method for verifying an individual's identity and ensuring
-their authorization to access restricted materials.
+In today's digital landscape, utilizing various identifiers (such as usernames,
+email addresses, or phone numbers) combined with passwords has become a
+prevalent method for verifying an individual's identity and ensuring their
+authorization to access restricted materials.
 
 This is not a novel approach.
-Polybius' \textit{The Histories}~\cite{perseus_tufts} contains the first documented use
-of passwords, describing
-how
-the Romans employed ``\textit{watchwords}'' to verify identities within the military.
-This provided a transparent, simple way to allow or deny entry to restricted areas of authorized personnel only.
+Polybius' \textit{The Histories}~\cite{perseus_tufts} contains the first
+documented use of passwords, describing how the Romans employed
+``\textit{watchwords}'' to verify identities within the military.
+This provided a transparent, simple way to allow or deny entry to restricted
+areas of authorized personnel only.
 The story of secret writing (in this context referenced as cryptography) goes
 back the past 3000 years~\cite{history_cryptography_cryptanalysis}, where the
 need to protect and preserve privacy between two or more individuals blossomed.
 
-Fernando J. Corbató is widely credited as the all-father of the first
+Fernando J. Corbató is widely credited as the father of the first
 computer password when he was responsible for the Compatible Time-Sharing
 System (CTSS) in 1961 at MIT~\cite{levy1984hackers}.
 The system had a \texttt{"LOGIN"} command, which, when the user followed it by
@@ -41,27 +42,53 @@ key-pair consisting of public and private keys. The public key encrypts data,
 while the private key decrypts it. The keys are mathematically related, but
     deriving one from the other is infeasible, ensuring secure communication and
     data exchange.}}
-\newcommand{\jsonwebLibrary}{\footnote{
-    \textbf{Note:} According to the library used to implement
-    \href{https://docs.rs/jsonwebtoken/latest/jsonwebtoken/index.html}{jsonwebtokens in Rust}
-    it is the private key that encrypts and the public key is responsible for \href{https://docs.rs/jsonwebtoken/latest/jsonwebtoken/struct.DecodingKey.html#method.from_rsa_pem}
-    {decrypting}. \textit{Last Accessed: 2023-03-25}.}}
-
-WebAuthn, short for Web Authentication, is an open standard for web-based
-authentication that enables users to securely access online web services without
-relying on a traditional password.
-Through a collaborative effort between FIDO and W3C, WebAuthn is developed to
-leverage asymmetric cryptography\assymetricCrypto\jsonwebLibrary~and biometric
-or hardware-based authenticators to provide a more secure and robust
-authentication experience.
 
 This report explores the implementation of LessPM, a passwordless password
-manager that leverages WebAuthn to provide a secure authentication experience,
-free from the constraints of traditional passwords, while placing a strong
+manager that leverages WebAuthn (Web Authentication), an open standard and
+collaborative development effort between FIDO and W3C to provide a secure
+authentication experience through biometric scanners on devices such as a
+smartphone or a hardware authenticator device to provide a secure experience.
+Free from the constraints of traditional passwords, while placing a strong
 emphasis on security.
+\todo[inline]{
+    LessPM is designed with a multi-layer security approach to ensure
+    confidentiality and integrity of user authentication and the passwords
+    belonging to other services that user's are registered on.
+    By utilizing WebAuthn's asymmetric
+    cryptographic~\assymetricCrypto nature~\cite{webauthn-2-registering},
+    LessPM authenticates users strongly through the help of authenticator
+    devices such as a smartphone or hardware authentication device in possession
+    of the user.
+    When registering in LessPM, the user is prompted to use a biometric
+    sensor on their device. The device constructs a keypair that the
+    implemented WebAuthn server receives and stores the public key of the
+    keypair before registering the user.
+    This process can be seen in Figure~\ref{fig:registration}.
+
+    When the user attempts to authenticate in the future, the user is again
+    prompted to use the biometric sensors on their device. Upon initiating this
+    process, the server issues a challenge which is signed by the private key on
+    the authenticator device, yielding a signature back when a biometric
+    sensor is successful in authenticating the authenticity of the user.
+    The server can then verify this signature with the help of the public key
+    stored int he previous step to authenticate the user.
+    This process can be seen in Figure~\ref{fig:authentication}.
+
+    The aforementioned described processes constructs an environment such that a
+    malefactor is required to first access the authenticator device and then
+    to bypass the device's biometric sensors security in order to authenticate
+    as the user.
+
+    Passwords are encrypted using AES-256, a widely recognized symmetric
+    encryption algorithm~\cite{schneier2000secrets,rijndael_book}, with a
+    Credential ID (CID) that is derived from the public key belonging to the
+    keypair from WebAuthn, a 128-bit randomly generated salt, unique for each
+    password, and a 128-bit pepper.
+}
 By examining recent advancements in authentication mechanisms and the related
 innovative potential of WebAuthn, we hope to illuminate the prospects of a
 passwordless future in digital security.
+
 The findings in this report is not an attempt of getting rid of trivial
 concepts such as session hijacking, nor is it an empirical study of user's
 perception of the technology seen.

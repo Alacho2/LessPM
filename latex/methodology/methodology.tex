@@ -50,10 +50,9 @@ API is invoked exclusively within a secure context~\cite{webdev2021credential}.
 During development, we established a secure connection by using a self-signed
 certificate for the \texttt{``localhost''} domain.
 
-To serve as persistent storage to maintain the passwords, user accounts, and
-other related data, LessPM adopted MongoDB\@.
-MongoDB allowed us to use their NoSQL architecture, permitting storing
-Object-like structures~\cite{mongodb2021nosql}.
+As a deliberate decision, we opted for MongoDB due to its NoSQL architecture,
+which facilitated the storage of Object-like structures~\cite{mongodb2021nosql}
+including passwords, user accounts, and other related data that LessPM stores.
 
 \subsubsection{Client}
 An essential part of the implementation was to create a viable client that could
@@ -61,12 +60,11 @@ function as a visual entry point to the server.
 For the simplicity of the project, we chose React as a framework.
 React is a JavaScript library for building user interfaces, offering an
 efficient and flexible approach to web development.
-We focused on following The Law of Demeter (LoD)~\cite{lieberherr1990assuring},
-and using a least-knowledge principle.
-
-This approach ensured that the client only retained the necessary information
-to function, maintaining no knowledge of the server or its implementation
-between each performed request.
+The design of LessPM was influenced by the principles of least-knowledge,
+often referred to as The Law of Demeter~\cite{lieberherr1990assuring}.
+This influenced the decision to ensure that the client only retained
+necessary information to function properly, containing no knowledge of
+the server nor its implementation.
 
 As is customary when developing a system containing authentication and
 authorization, we took advantage of JWT/JWE
@@ -87,10 +85,13 @@ requests made to it.
 This information is updated and inspected between each
 re-render~\cite{react-component} of the client.
 
-When the development of the project first started, we had a strong wish for the
-client to be an extension for Chromium-based browsers.\footnote{
-  In the client's project folder are traces of a manifest.json file and build
-  scripts to have the client run in an extension.
+\todo[inline]{
+  When initiating the project's development, we had a strong vision of creating
+  a client that could seamlessly integrate with Chromium-based browsers as
+  an extension.\footnote{
+    In the client's project folder are traces of a manifest.json file and build
+    scripts to have the client run in an extension.
+  }
 }
 However, we quickly discovered that the Rust cargo used to perform WebAuthn
 requests did not implement this support.
@@ -330,10 +331,21 @@ Upon hashing, each key is also subject to a 128-bit salt explicitly generated
 for the key.
 
 \subsection{Hashing}\label{subsec:hashing}
+\todo[inline]{
 When we searched for a good key-derivation function, we first came across
-PBKDF2.
-We saw this as a good solution for the project, but after researching the topic
-further, we ended up with Argon2.
+  Password-Based Key Derivation Function 2 (PBKDF2).
+We saw PBKDF2 as a good solution for the project, but after researching the
+topic further, we ended up with Argon2.
+
+Argon2 is regarded by some to be more secure than PBKDF2 due to its modern
+design considerations, including protection against side-channel attacks and
+memory-hardness, which make it more resistant to brute-forced and rainbow
+table attacks.
+Argon2 also offers customization of parameters for flexibility in adapting to
+changing hardware technologies and security requirements.
+PBKDF2 offers to set an amount of iterations to construct the hash and which
+pseudorandom function to use.
+}
 
 Since LessPM is required to run in as safe of an environment as possible,
 Argon2's configuration option is an excellent solution.
@@ -352,8 +364,11 @@ Given that we emphasized security, we opted for the \texttt{Argon2id}
 configuration, which gave us equal protection against side-channel and
 brute-force attacks.
 
-A part of the brilliant aspect that Argon2 offered is the option to set a
-required amount of memory to do the hashing.
+\todo[inline]{
+
+A part of Argon2 is the offer to set the option for a required amount of memory
+to do the hashing.
+}
 These options would force a malefactor to use a specific amount of memory for
 each attempt to construct the hash.
 The only way a malefactor can get passed this requirement is to purchase more
@@ -407,9 +422,145 @@ Before any token is attached to a response from the server, the token is
 encrypted using AES-256\@.
 The Base64 gets encrypted into a ciphertext and then turned into a new Base64
 encoding.
-An example of this can be seen in ~Appendix\ref{subsec:base64-and-ciphertext}.
+An example of this can be seen in Appendix~\ref{subsec:base64-and-ciphertext}.
 
 We decoded the Base64, decrypted the ciphertext, and decoded the JWT-Base64 to
 reconstruct the claim when the server received a new request.
 We used this claim to gather details about the user who made the request and
 responded accurately to the request accordingly.
+
+\todo[inline]{The following section}
+
+\subsection{Security Analysis}\label{subsec:security-analysis}
+The security of a passwordless password manager is of paramount importance to
+protect sensitive user infromation and prevent unauthorized access.
+In this subsection, we conduct a comprehensive security analysis, identifying
+  potential attack vectors and outlining the defensive measures that have
+  been implemented to mitigate tehse risks.
+
+The defensive measures include industry-standard security protocols such as
+  HTTPS, JWT/JWE, Argon2 hashing, salt and pepper techniques, CORS
+  configuration, and secure cookie management.
+Additionally, different JWTs are used for registration, authentication, and
+  password creation/retrieval to minimize the risk of exposure.
+These defensive measures collectively aim to provide a robust and secure
+  architecture for LessPM, safeguarding against various threats and ensuring
+  the confidentiality, integrity, and availability of user data.
+\begin{enumerate}[label=$\blacktriangleright$]
+  \item \textbf{HTTP}
+
+  \textbf{Weakness:}
+  Any server running HTTP (Hypertext Transfer Protocol) is passing data
+  between a server and a connecting client.
+  With HTTP, this data is unencrypted.
+  A malefactor can eavesdrop this data, performing a man-in-the-middle attack,
+  replacing information, reading tokens, perform header inections, Etc. with 
+  this unencrypted traffic.
+
+  \textbf{Defensive Mechanism:}
+  Upgrading the HTTP connection to HTTPS ensures that communication between the
+  client and server is encrypted through Transport Layer Security (TLS).
+  It provides confidentiality and integrity of data transmitted over the
+  network, making it more difficult for attackers to intercept or tamper with
+  sensitive information.
+
+  \item \textbf{JSON Web Tokens (JWT)}
+
+  \textbf{Weakness:}
+  JWTs are signed with a secret specific to the server.
+  However, if this secret is discovered or leaked, a malefactor could use this
+  information to sign their own tokens and provide their own information.
+  Since JWTs are signed and not encrypted, any malefactor who receives access
+  to a token can decode the Base64 format and read the tokens information in
+  clear text.
+
+  \textbf{Defensive Mechanism:}
+  Properly signining the tokens with a strong algorithm prevents information
+  from being tampered with.
+  An attacker can still read the information in clear-text but can not forge
+  their own tokens.
+  LessPM uses RSASSA-PSS with Sha-512 to sign and encode tokens, decoding
+  them with the keypair when received.
+  This ensures integrity and authenticity of the JWT, as the signature is
+  verified by the server.
+  RSASSA-PSS is a robust and secure signature algorithm that provides protection
+  against various attacks, such as collision attacks and length extension
+  attacks.
+
+  \item \textbf{JSON Web Encryption (JWE}
+
+  \textbf{Weakness:}
+  JSON Web Encryption are JWTs signed and encrypted using an algorithm for
+  signing and encryption.
+  However, if this encryption algorithm is not potent or weak (such as a
+  Caesar Cipher), an attacker can break the encryption or even encrypt their own
+  tokens.
+  JWEs are also subject to scenarios such as lack of key rotation, insecure
+  length of the encryption key and improper implementation (See
+  Section~\ref{sec:futurework}).
+
+  \textbf{Defensive Mechanism:}
+  To combat these weaknesses, LessPM implements encryption partly inspired by
+  the JWE standard.
+  LessPM encrypts the token using AES-256, a strong encryption scheme capable
+  of $2^{256}$ different keys.
+  This ensures that the data is confidentially kept and protected from
+  unauthorized access.
+  While inspired, it is important to note that JWEs have not been properly
+  implemented in LessPM (See Section~\ref{sec:futurework}).
+
+  \item \textbf{Hashing Passwords \& Keys}
+
+  \textbf{Weakness:}
+  Hashing is a one-way process to convert information (such as passwords)
+  into a fixed-size string of characters, typically a fixed-length hash value.
+  However, the hashing process is susceptible to a malefactor using
+  precomputed hash-values for large number of possible passwords, stored in a
+  lookup table called a Rainbow table attack.
+  Hashes are also vulnerable to dictionary attacks, and not being properly
+  implemented without using a salt and preferable a pepper, or brute-force
+  attacks.
+
+  \textbf{Defensive Mechanism}
+  LessPM takes advantage of the latest within public hashing functionality,
+  through Argon2.
+  Argon2 constructs a memory-hard and computationally expensive hash that
+  provides protection against brute-force, rainbow table, dictionary and
+  side-channel attacks by requiring a significant amount of computational
+  resources and time to compute the hash.
+  Finally, LessPM takes advantage of using both a random salt unique for each
+  password and a pepper stored in the source code of 128-bit for both.
+  This creates a higher threshold for a malefactor by requiring access to the
+  database and the source code to be able to quickly compute a hash.
+  The salt and pepper are added to the key of the AES-256
+
+  \item \textbf{Storing passwords in plaintext}
+
+  \textbf{Weakness:}
+  Storing a password can be done in plaintext in a database protected by a
+  password.
+  However, should an attacker get access to the database, all passwords and
+  their plaintext are compromised.
+  Storing the passwords in plaintext makes the information accessible to any
+  individual with access to the database, which causes a privacy risk.
+
+  \textbf{Defensive Mechanism:}
+  LessPM encrypt all passwords with one of the strongest public symmetric
+  encryption processes, AES-256.
+  Each key for each password is unique, and consists of the 192-bit CID from
+  WebAuthn generated when the user registered (See
+  Section~\ref{subsec:password-encryption}).
+  This CID is unique to each service the user is registered with.
+  Along the 192-bit CID, 128-bit is used from a salt and 128-bit used from a
+  pepper.
+  The salt is stored with the entry in the database.
+  Using both salt and pepper enhances the security of the derived key.
+
+  \item \textbf{CORS configured for different ports:} CORS (Cross-Origin Resource Sharing) is configured to allow communication between the client and server, even though they are running on different ports. This ensures that only authorized clients can access the server's resources, preventing unauthorized cross-origin requests and protecting against cross-site scripting (XSS) and cross-site request forgery (CSRF) attacks.
+
+  \item \textbf{Cookie with strict security measures:} A cookie is used to store the JWT on the client side for authentication purposes. The cookie is secured with strict SameSite attribute to prevent cross-site scripting (XSS) attacks, it expires after 15 minutes to limit the window of opportunity for attackers, it is set to be secure for HTTPS only to prevent interception in transit, and it is HttpOnly so that it cannot be accessed from JavaScript, reducing the risk of cross-site scripting (XSS) attacks.
+
+  \item \textbf{Different tokens for registration, authentication, and password creation/retrieval:} Different JWTs and encryption keys are used for registration, authentication, and password creation/retrieval. This approach minimizes the risk of exposure, as compromising one token or key does not compromise the security of all functions. It adds an additional layer of protection and reduces the potential impact of a single token or key being exposed or compromised.
+\end{enumerate}
+
+%\todo[inline]{The preceeding section.}

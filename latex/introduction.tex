@@ -1,67 +1,111 @@
-In today's digital landscape, utilizing various identifiers (such as usernames, email addresses, or phone numbers)
-combined with passwords has become a prevalent method for verifying an individual's identity and ensuring
-their authorization to access restricted materials.
 
-This is not a novel approach.
-Polybius' \textit{The Histories}~\cite{perseus_tufts} contains the first documented use
-of passwords, describing
-how
-the Romans employed ``\textit{watchwords}'' to verify identities within the military.
-This provided a transparent, simple way to allow or deny entry to restricted areas of authorized personnel only.
-The story of secret writing (in this context referenced as cryptography) goes
-back the past 3000 years~\cite{history_cryptography_cryptanalysis}, where the
-need to protect and preserve privacy between two or more individuals blossomed.
-
-Fernando J. Corbató is widely credited as the all-father of the first
-computer password when he was responsible for the Compatible Time-Sharing
-System (CTSS) in 1961 at MIT~\cite{levy1984hackers}.
-The system had a \texttt{"LOGIN"} command, which, when the user followed it by
-typing \texttt{"PASSWORD"}, had its printing mechanism turned off to offer
-the applicant privacy while typing the password~\cite{ctss_programmers_guide}.
-Given the long history of passwords and their importance, one could argue that
-it was a natural and judicious step in the evolution of computer systems.
-
-The study \textif{"The Memorability and Security of Passwords"}, conducted in
-2004, provides insights into password creation strategies, including tips on
-improving password entropy and methods for easy recall of passwords~\cite{
-    yan2000password}.
-With an emphasis on diversity in character selection, password length, and
-avoiding dictionary words, the study suggests that acronym-based passwords offer
-a delicate balance between memorability and security~\cite{yan2000password}.
-
-However, as technology has advanced, the limitations of password-based
-authentication have become increasingly apparent, leading to the development of
-more sophisticated methods like Universal Authentication Framework
-(UAF)~\cite{fido_uaf_overview} and WebAuthn~\cite{webauthn_level_2} through the
-Fast IDentity Online Alliance \href{https://fidoalliance.org}{(FIDO)} and
-The \href{https://www.w3.org}{World Wide Web Consortium} (W3C).
-
-\newcommand{\assymetricCrypto}{\footnote{Asymmetric cryptography uses a
-key-pair consisting of public and private keys. The public key encrypts data,
-while the private key decrypts it. The keys are mathematically related, but
-    deriving one from the other is infeasible, ensuring secure communication and
-    data exchange.}}
-\newcommand{\jsonwebLibrary}{\footnote{
-    \textbf{Note:} According to the library used to implement
-    \href{https://docs.rs/jsonwebtoken/latest/jsonwebtoken/index.html}{jsonwebtokens in Rust}
-    it is the private key that encrypts and the public key is responsible for \href{https://docs.rs/jsonwebtoken/latest/jsonwebtoken/struct.DecodingKey.html#method.from_rsa_pem}
-    {decrypting}. \textit{Last Accessed: 2023-03-25}.}}
-
-WebAuthn, short for Web Authentication, is an open standard for web-based
-authentication that enables users to securely access online web services without
-relying on a traditional password.
-Through a collaborative effort between FIDO and W3C, WebAuthn is developed to
-leverage asymmetric cryptography\assymetricCrypto\jsonwebLibrary~and biometric
-or hardware-based authenticators to provide a more secure and robust
-authentication experience.
+In today's digital landscape, utilizing various identifiers (such as usernames,
+email addresses, or phone numbers) combined with passwords has become a
+prevalent method for verifying an individual's identity and ensuring their
+authorization to access restricted materials.
 
 This report explores the implementation of LessPM, a passwordless password
-manager that leverages WebAuthn to provide a secure authentication experience,
-free from the constraints of traditional passwords, while placing a strong
-emphasis on security.
+manager that leverages Web Authentication (WebAuthn).
+LessPM aims to provide an experience free from the constraints and security
+implications of traditional passwords by placing a strong emphasis on
+security.
+
+LessPM is designed with a multi-layer security approach to protect
+confidentiality and integrity of the user authentication process and passwords
+stored for other registered services.
+By leveraging WebAuthn's asymmetric cryptographic\footnote{
+  Asymmetric cryptography uses a key-pair consisting of public and private
+  keys.
+  The public key encrypts data, while the private key decrypts it.
+  The keys are mathematically related, but deriving one from the other is
+  infeasible, ensuring secure communication and data exchange.
+} nature, LessPM creates a robust user authentication mechanism for sensitive
+data.
+This is achieved by utilizing authenticators, such as smartphones or
+hardware authenticator devices, with biometric scanners to authenticate a
+user through strong means.
+
+WebAuthn, an open standard developed collaboratively by The Fast IDentity
+Online Alliance (FIDO) and World Wide Web Consortium (W3C), aims to provide a
+more secure authentication experience through biometric scanners on these
+devices~\cite{webauthn-2}.
+
+When a user initiates the process to register in LessPM, the system issues a
+challenge constructed by WebAuthn from LessPM's server to the client.
+The user is prompted to use a biometric scanner on their device, which then
+constructs a keypair, signing this challenge, before sending this information
+back to LessPM\@.
+LessPM receives and stores the public key-part of the keypair for later
+authentication.
+This process can be seen in Figure~\ref{fig:webauthn}.
+
+\begin{figure*}[htbp]
+  \begin{center}
+    \includegraphics[scale=0.49]{images/webauthn}
+    \caption{The process depicting the WebAuthn ceremonies in LessPM,
+      starting with the LessPM client issuing a registration. Steps marked
+      with Asterix indicate the Registration Ceremony, non-Asterix indicate
+      Authentication Ceremony. }
+    \label{fig:webauthn}
+  \end{center}
+\end{figure*}
+
+When the user attempts to sign in, LessPM again issues a challenge,
+prompting the user to use their authenticator's biometric scanner to verify
+their identity and presence.
+This time, however, the challenge is signed by the private key on the
+authenticator device.
+The device yields the signature back upon the device successfully verifying the
+authenticity of the user.
+LessPM then verifies this signature with the help of the public key
+stored in the previous step.
+This process can be seen in Figure~\ref{fig:webauthn}.
+
+The aforementioned described processes constructs an environment such that a
+malefactor is required to first access the authenticator device, and then
+to bypass the device's biometric security in order to authenticate as the user
+in LessPM\@.
+
+Passwords stored in LessPM are encrypted using AES-256, a widely recognized
+symmetric encryption
+algorithm~\cite{schneier2000secrets,rijndael_book,nistfips197256}.
+The encryption process includes using a Credential ID (CID) that is derived from
+the metadata of the public key in WebAuthn, a 128-bit randomly generated salt
+that is unique for each password, and a 128-bit pepper.
+This is followed by a hash of the key using Argon2, with a separate 128-bit
+salt.
+
+To maintain authentication, LessPM uses an encrypted version of JSON Web
+Tokens~\cite{RFC7519} (JWT, RFC7519), inspired by JSON Web
+Encryption~\cite{rfc7516} (JWE, RFC7516) which are also encrypted with AES-256
+and attached to HTTPS requests.
+
+The registration, authentication, and password creation/retrieval processes
+all use these encrypted tokens but LessPM manages and maintains different
+tokens for each step, providing an extra level of security.
+Each token is valid for a limited amount of time before expiring.
+An expired token prompts LessPM to deny access to unauthorized content and
+forces the user to restart the process.
+
+LessPM's client stores the token for authentication in a cookie.
+This cookie is protected by various built-in functionality in browsers, using
+the attribute \texttt{secure} to transfer the cookie over a secure connection
+only, such as HTTPS\@.
+Other attributes include \texttt{HttpOnly} to make sure the cookie is
+inaccessible to JavaScript and Cross-Site Scripting (XSS),
+\texttt{SameSite=Strict} to ensure the cookie is only sent to the same origin
+it came from, and \texttt{Expires} to limit the amount the life-time of the
+cookie.
+
+LessPM uses this cookie to verify the authenticity of requests between the
+client and the server.
+All data the server provides to the client is dependent on the validity of
+this cookie, and no information leaves the server unless it is valid.
+
 By examining recent advancements in authentication mechanisms and the related
 innovative potential of WebAuthn, we hope to illuminate the prospects of a
 passwordless future in digital security.
+
 The findings in this report is not an attempt of getting rid of trivial
 concepts such as session hijacking, nor is it an empirical study of user's
 perception of the technology seen.

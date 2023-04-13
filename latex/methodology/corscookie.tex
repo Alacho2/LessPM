@@ -1,0 +1,55 @@
+Cross-Origin Resource Sharing (CORS) must be configured correctly when the
+server and client are running separately on different ports.
+
+When a web page tries to access a resource hosted on another domain, browsers
+perform an additional request to the server, called a \texttt{``preflight''}.
+The preflight request determines whether the
+request that the web page is trying to make to the server is allowed.
+This request is done through the \texttt{OPTIONS} method in HTTP and contains
+some information about the origin, accepted Content-Type, and similar for the
+actual request.
+
+LessPM responds to this with what methods and headers are allowed, denying
+the actual request from ever happening if the preflight is not successful.
+
+We constructed a CORS \texttt{layer}\footnote{
+  In this context, we referred to a layer as a wrapper around all other
+  requests.
+} which contained the
+two domains for the server and client, permitted 
+credentials\footnote{
+  To pass the JWT token back and forth between the server
+} and then permitted the two HTTP methods 
+\texttt{POST} and \texttt{GET}.
+We also ensured the \texttt{Content-Type, Authorization}, and \texttt{Cookie}
+headers are permitted.
+
+Any other methods or headers should abort the request in the preflight.
+
+\subsection{Cookie}\label{subsec:cookie}
+JavaScript can access and manipulate \texttt{Cookies}~\cite{he2019malicious}.
+We utilized the browser's local cookie storage to attempt secure authentication
+between requests.\footnote{
+  The cookie storage in a browser is subject to any vulnerabilities that can be
+  performed on an SQLite database while having access to the computer where it
+  is running.
+}
+We attempted a couple of strategies listed below to fortify the cookie that
+LessPM set in the browser against a malefactor:
+\begin{itemize}
+  \item \textbf{Strict SameSite}:
+  This ensures that the cookie is safeguarded against Cross-Site Request Forgery
+  (CSRF) attacks and remains restricted to its original origin domain.
+  \item \textbf{Expires}:
+  Once the system authenticated the user, it gave the cookie a Time-to-Live
+  (TTL) mechanism similar to the JWE, which remained valid for only 15 minutes.
+  \item \textbf{Secure}:
+  We applied the \texttt{Secure} attribute to ensure that the cookie was only
+  accessible through the HTTPS protocol.
+  This protocol encrypts the data being sent back and forth between the client
+  and the server, attempting to avoid eavesdroppers.
+  \item \textbf{HttpOnly}:
+  Setting HttpOnly tells the browser to make this cookie inaccessible through
+  JavaScript.
+  This property is important to mitigate session hijacking.
+\end{itemize}

@@ -16,7 +16,7 @@ Because the server and client were independent of each other, we also
 configured CORS\@.
 
 To keep a user authenticated between requests, we used an encrypted version
-of a JWT, inspired by the JWE RFC\@.
+of a JWT, inspired by the JWE~\cite{rfc7516}\@.
 This was achieved by storing the token in a fortified cookie in the client,
 being encrypted on the server before it was stored.
 

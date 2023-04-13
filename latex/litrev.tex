@@ -1,3 +1,38 @@
+
+The history of traditional passwords is a long and respectable one.
+Polybius' \textit{The Histories}~\cite{perseus_tufts} contains the first
+documented use of passwords, describing how the Romans employed
+``\textit{watchwords}'' to verify identities within the military.
+This provided a transparent, simple way to allow or deny entry to restricted
+areas of authorized personnel only.
+The story of secret writing (in this context referenced as cryptography) goes
+back the past 3000 years~\cite{history_cryptography_cryptanalysis}, where the
+need to protect and preserve privacy between two or more individuals blossomed.
+
+Fernando J. Corbató is widely credited as the father of the first
+computer password when he was responsible for the Compatible Time-Sharing
+System (CTSS) in 1961 at MIT~\cite{levy1984hackers}.
+The system had a \texttt{"LOGIN"} command, which, when the user followed it by
+typing \texttt{"PASSWORD"}, had its printing mechanism turned off to offer
+the applicant privacy while typing the password~\cite{ctss_programmers_guide}.
+Given the long history of passwords and their importance, one could argue that
+it was a natural and judicious step in the evolution of computer systems.
+
+The study \textif{"The Memorability and Security of Passwords"}, conducted in
+2004, provides insights into password creation strategies, including tips on
+improving password entropy and methods for easy recall of passwords~\cite{
+  yan2000password}.
+With an emphasis on diversity in character selection, password length, and
+avoiding dictionary words, the study suggests that acronym-based passwords offer
+a delicate balance between memorability and security~\cite{yan2000password}.
+
+However, as technology has advanced, the limitations of password-based
+authentication have become increasingly apparent, leading to the development of
+more sophisticated methods like Universal Authentication Framework
+(UAF)~\cite{fido_uaf_overview} and WebAuthn~\cite{webauthn_level_2} through the
+Fast IDentity Online Alliance \href{https://fidoalliance.org}{(FIDO)} and
+The \href{https://www.w3.org}{World Wide Web Consortium} (W3C).
+
 Passwordless Authentication (PA) is a growing field of study within Computer
 Science, as traditional authentication methods like passwords are increasingly
 recognized as vulnerable to attacks such as phishing\footnote{
@@ -8,7 +43,8 @@ recognized as vulnerable to attacks such as phishing\footnote{
 } and credential stuffing.\footnote{
   Credential stuffing refers to the practice of using automated tools to
   inject compromised or stolen username and password combinations into web login
-  forms to gain unauthorized access to user accounts~\cite{owasp-credential-stuffing}.
+  forms to gain unauthorized access to user
+  accounts~\cite{owasp-credential-stuffing}.
 }
 Passwords and sensitive information can also be a victim of successful
 brute-force attacks~\cite{bonneau2012science} through data leakages by hacking
@@ -29,46 +65,64 @@ Figure~\ref{fig:secprinciples}.
     Biometrics of any sort or kind.
     Facial recognition, retina scan, fingerprint and similar.
   \end{itemize}
-  \caption{The Three Principles of Password Security~\cite{schneier2000secrets, NIST:SP:800-171r2}.}
+  \caption{
+    The Three Principles of Password Security~\cite{schneier2000secrets, NIST:SP:800-171r2}.
+  }
   \label{fig:secprinciples}
 \end{figure}
 
 There are many approaches to passwordless authentication or a second
-step to authenticate with a common password.\footnote{
+step to authenticate with a one-time password.\footnote{
   Often referenced as Two-Factor Authentication or Multi-Factor Authentication.
 }
-In 2022, Parmar et al.\cite{parmar2022} described several attractive solutions, along with their advantages and drawbacks, for performing PA using the most common methods.
-The study discovered that PA commonly gets accepted as the most frictionless authentication system for User Interfaces (UI)~\cite{parmar2022}.
-Biometrics was mentioned as one of the authentication methods, concluding that it captures universal human traits, encouraging differentiation from one another~\cite{parmar2022}.
-The same study raises the caution surrounding the loss of authentication devices and how fingerprints can be compromised~\cite{parmar2022}.\footnote{
-  The security implication of using the core concept of FIDO2's WebAuthn is subject to storage in the system on Apple-specific devices~\cite{appleSecureEnclave}.
-  On an Android device, the implementation is up to the manufacturer of the device, where Samsung has implemented a Physically Unclonable
-  Function~\cite{lee2021samsung}.
+In 2022, Parmar et al.\cite{parmar2022} described several attractive solutions,
+along with their advantages and drawbacks, for performing PA using the most
+common methods.
+The study discovered that PA commonly gets accepted as the most frictionless
+authentication system for User Interfaces (UI)~\cite{parmar2022}.
+Biometrics was mentioned as one of the authentication methods, concluding that
+it captures universal human traits, encouraging differentiation from one
+another~\cite{parmar2022}.
+The same study raises the caution surrounding the loss of authentication
+devices and how fingerprints can be compromised~\cite{parmar2022}.\footnote{
+  The security implication of using the core concept of FIDO2's WebAuthn is
+  subject to storage in the system on Apple-specific
+  devices~\cite{appleSecureEnclave}.
+  On an Android device, the implementation is up to the manufacturer of the
+  device, where Samsung has implemented a Physically Unclonable
+  Function~\cite{lee2021samsung} (PUF).
 }
 
-One promising approach is using the FIDO Alliance's collaborative work with W3C to create WebAuthn.
+One promising approach is using the FIDO Alliance's collaborative work with W3C
+to create WebAuthn.
 WebAuthn permits users to authenticate through biometric information
 stored on a device in the user's possession (i.e.\ phone, computer) or a
 physical security key (i.e.\ YubiKey, Nitrokey, Etc.)~\cite{webauthn_level_2}.
 
-In ~\cite{huseynov2022passwordless}, Huseynov utilized a
-Web interface with WebAuthn to create credentials that users could use for a VPN\@.
-The client required a user to authenticate through the procedure of WebAuthn (see Section~\ref{subsec:webauthn}).
-On a successful request, the Remote Authentication Dial-In User Service (RADIUS) creates a temporary username and password, which would then be transferred
-as a response to the end-user, permitting them to copy and paste it into the necessary client, alternatively to construct a batch file which would establish the correct connection~\cite{huseynov2022passwordless}.
-The study suggested creating a solution for a VPN client which embedded some browser components~\cite{huseynov2022passwordless}.
+In ~\cite{huseynov2022passwordless}, Huseynov utilized a Web interface with
+WebAuthn to create credentials that users could use for a VPN\@.
+The client required a user to authenticate through the procedure of WebAuthn.
+On a successful request, the Remote Authentication Dial-In User Service (RADIUS)
+creates a temporary username and password, which would then be transferred
+as a response to the end-user, permitting them to copy and paste it into the
+necessary client, alternatively to construct a batch file which would establish
+the correct connection~\cite{huseynov2022passwordless}.
+The study suggested creating a solution for a VPN client which embedded some
+browser components~\cite{huseynov2022passwordless}.
 
 Gordin et al.~\cite{gordin2021moving} implemented PA into an OpenStack
-environment using WebAuthn, which increases security and bypasses the risk of
-malefactors employing leaked passwords on other services.\footnote{
-  See Section~\ref{subsec:webauthn} for further explanation as to how this
+environment using WebAuthn, which increased security and bypasses the risk of
+malefactors employing leaked passwords on other
+services~\cite{gordin2021moving}.\footnote{
+  See Section~\ref{subsec:webauthn-methodology} for further explanation as to how this
   works.
 }
 The PA process considerably reduced the number of attacks towards a server
 because the server no longer has user authentication
 secrets~\cite{gordin2021moving}.
 They, however, utilized a fingerprint as the primary biometrics, citing cost as
-a primary factor to discourage the use of FIDO2~\cite{gordin2021moving}.\footnote{
+a primary factor to discourage the use of
+FIDO2~\cite{gordin2021moving}.\footnote{
   Authentication was provided through the Keystone environment on the OpenStack
   platform.
 }
@@ -78,7 +132,8 @@ of biometric scanner built into their
 device~\cite{statista-biometric-transactions}.
 Gorin, Et al.\ continue by mentioning that some individuals have trouble
 using their biometric scanner or getting it to work correctly on their
-device~\cite{gordin2021moving}, which can be a potential drawback for user adaptability.
+device~\cite{gordin2021moving}, which can be a potential drawback for user
+adaptability.
 
 According to a study conducted by Lyastani et al.\ in
 2020~\cite{ghrobany2020fido2}, a significant portion of users found the usage
@@ -118,17 +173,17 @@ persisted, such as session hijacking\footnote{
   Session hijacking refers to an attacker gaining unauthorized access to a
   user's authenticated session, often exploiting weaknesses in the handling of
   cookies, sessions, or JSON Web Tokens (JWT).
-  See Section~\ref{subsec:json-web-tokens}.
-}, which can compromise user accounts~\cite{morii2017research}, highlighting
-the need to protect these.
+  See Section~\ref{subsec:auth-and-auth}.
+}, which can compromise
+user accounts~\cite{morii2017research}, highlighting the need to protect these.
 
 Since the publication of Morii et al.'s research, browser support for FIDO2 and
 WebAuthn has significantly improved, with major browsers like Google Chrome,
 Mozilla Firefox, Apple Safari, Microsoft Edge, and Vivaldi now offering
 support for these standards.
-This broader adoption has enabled the more widespread deployment of PA solutions,
-providing increased security and improved user experiences across various online
-services.
+This broader adoption has enabled the more widespread deployment of PA
+solutions, providing increased security and improved user experiences across
+various online services.
 
 However, the ongoing evolution of security threats and the increasing
 sophistication of attackers highlights the need for continuous research and
@@ -143,7 +198,7 @@ applications, such as password managers, independent of other login systems, is
 a critical aspect that requires thorough investigation.
 
 In the following section, we will examine the methodology employed in this
-study to integrate a passwordless system into a password manager,
+report to integrate a passwordless system into a password manager,
 taking into account the challenges and concerns identified in the literature.
 By doing so, we aim to contribute to the growing body of knowledge on
 passwordless authentication and its practical applications.

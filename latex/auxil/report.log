@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  13 APR 2023 13:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  14 APR 2023 11:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3616,9 +3616,6 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 28E67EA8C51629ABB1A5EB84331D5EED;4241.
 Package logreq Info: Writing requests to 'report.run.xml'.
@@ -3860,7 +3857,7 @@ ort/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></L
 ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/sy
 mbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (26 pages, 593376 bytes).
+t.pdf (26 pages, 593374 bytes).
 PDF statistics:
  1486 PDF objects out of 1728 (max. 8388607)
  209 named destinations out of 1000 (max. 500000)

@@ -1390,7 +1390,7 @@
       \verb https://www.w3.org/TR/webauthn-2/#authenticator-data
       \endverb
     \endentry
-    \entry{webauthn-2-registering}{misc}{}
+    \entry{webauthn-2}{misc}{}
       \name{author}{1}{}{%
         {{hash=446a1ae6601a5c59360c7d591c3992da}{%
            family={{W3C}},
@@ -1409,7 +1409,7 @@
       \field{extraalpha}{2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#sctn-registering-a-new-credential}}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#registration-ceremony}}
       \field{note}{Accessed on: March 25, 2023}
       \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
       \field{year}{2021}
@@ -1438,7 +1438,7 @@
       \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
       \field{year}{2021}
     \endentry
-    \entry{webauthn-2}{misc}{}
+    \entry{webauthn-2-registering}{misc}{}
       \name{author}{1}{}{%
         {{hash=446a1ae6601a5c59360c7d591c3992da}{%
            family={{W3C}},
@@ -1457,7 +1457,7 @@
       \field{extraalpha}{4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#registration-ceremony}}
+      \field{howpublished}{\url{https://www.w3.org/TR/webauthn-2/#sctn-registering-a-new-credential}}
       \field{note}{Accessed on: March 25, 2023}
       \field{title}{Web Authentication: An API for accessing Public Key Credentials Level 2}
       \field{year}{2021}

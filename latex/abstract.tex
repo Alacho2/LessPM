@@ -3,17 +3,15 @@ using Rust as a programming language.
 While traditional passwords have a long and respectable history, they have
 become increasingly vulnerable to attacks such as brute-forcing, phishing, and
 keylogging.
-\todo[inline]{
-  LessPM seeks to address these deficiencies with a sophisticated
-  authentication method, called WebAuthn.
-  Through asymmetric cryptography, WebAuthn provides a secure authentication
-  experience with the help of user-owned devices such as smartphones or hardware
-  authenticator devices.
-  This would eliminate the use of traditional passwords.
-}
-To secure LessPM's passwords on the server, we employ AES-256 and Argon2 for
-encryption, WebAuthn's Credential ID, randomly generated salts, and pepper for
-key derivation.
+LessPM seeks to address these deficiencies with a sophisticated
+authentication method, called WebAuthn.
+Through asymmetric cryptography, WebAuthn provides a secure authentication
+experience with the help of user-owned devices such as smartphones or hardware
+authenticator devices.
+This would eliminate the use of traditional passwords.
+To secure passwords stored in LessPM's, we employ AES-256 for encryption and
+Argon2 for hashing, WebAuthn's Credential ID serves as a key, combined with
+randomly generated salts and pepper.
 
 We also use Hypertext Transfer Protocol Secure (HTTPS) to secure
 communication between client and server and configured Cross-Origin Request
@@ -22,15 +20,10 @@ Additionally, we used an encrypted version of JSON Web Tokens (JWT, RFC7519),
 inspired by JSON Web Encryption (JWE, RFC7516), to maintain user authentication
 between client requests.
 
-We created a separate client as a visual proof-of-concept to adhere to The
-Law of Demeter,
-\todo[inline]{
-  Ask Jacky whether she is sure about the footnote here, given that it is an
-  abstract.
-} while the server handles requests and securely stores user data.
-This approach offers promising prospects for a passwordless future in digital
-security.
-
-This report provides valuable insights into the implementation and potential
+We created a separate client as a visual proof-of-concept to adhere to a
+principle of least-knowledge, while the server handles requests and securely
+stores user data.
+The report provides valuable insights into the implementation and potential
 benefits of using WebAuthn and a passwordless approach, along with the security
-measures employed to protect user data on the server.
+measures employed to protect user data on the server, offering promising
+prospects for a passwordless future in digital security.

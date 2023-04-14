@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  14 APR 2023 12:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  14 APR 2023 16:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1285,8 +1285,8 @@ are all screwed up? I'm going to assume that you meant ##.
 /Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1412: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
-                   s
-l.1412 ...n-2/#sctn-registering-a-new-credential}}
+                   r
+l.1412 ...g/TR/webauthn-2/#registration-ceremony}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
@@ -1295,7 +1295,7 @@ are all screwed up? I'm going to assume that you meant ##.
 /Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1416: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
-                   s
+                   r
 l.1416     \endentry
                     
 You meant to type ## instead of #, right?
@@ -1325,8 +1325,8 @@ are all screwed up? I'm going to assume that you meant ##.
 /Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1460: Ille
 gal parameter number in definition of \NewValue.
 <to be read again> 
-                   r
-l.1460 ...g/TR/webauthn-2/#registration-ceremony}}
+                   s
+l.1460 ...n-2/#sctn-registering-a-new-credential}}
                                                   
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
@@ -1335,7 +1335,7 @@ are all screwed up? I'm going to assume that you meant ##.
 /Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.bbl:1464: Ille
 gal parameter number in definition of \abx@field@howpublished.
 <to be read again> 
-                   r
+                   s
 l.1464     \endentry
                     
 You meant to type ## instead of #, right?
@@ -1392,103 +1392,61 @@ l.96     \end{titlepage}
 
 
 ] (abstract.tex
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 13.
-
-Underfull \hbox (badness 1019) in paragraph at lines 18--24
+Underfull \hbox (badness 1019) in paragraph at lines 16--22
 \T1/cmr/m/n/10 RFC7519), in-spired by JSON Web En-cryp-tion
  []
 
 ) (introduction.tex
-Underfull \vbox (badness 7397) has occurred while \output is active []
+Underfull \hbox (badness 2351) in paragraph at lines 9--14
+[]\T1/cmr/m/n/10 This re-port ex-plores the im-ple-men-ta-tion of
+ []
 
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-9.
 
-(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-)
-introduction.tex:25: Undefined control sequence.
-l.25 The study \textif
-                      {"The Memorability and Security of Passwords"}, conduc...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 10000) in paragraph at lines 9--14
+\T1/cmr/m/n/10 lever-ages We-bAu-thn (Web Au-then-ti-ca-tion).
+ []
+
+introduction.tex:32: Illegal parameter number in definition of \abx@field@howpu
+blished.
+<to be read again> 
+                   r
+l.32 devices~\cite{webauthn-2}.
+                               
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 44.
+
+Underfull \vbox (badness 2512) has occurred while \output is active []
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.39 
+l.56 
       [1
 
 ]
-Runaway argument?
-{\@xfootnote }\def \reserved@b {\stepcounter \@mpfn \protected@xdef \@thefnmark
- \ETC.
-introduction.tex:87: Paragraph ended before \reserved@a was complete.
-<to be read again> 
-                   \par 
-l.87 }
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-Underfull \hbox (badness 2351) in paragraph at lines 46--87
-[]\T1/cmr/m/n/10 This re-port ex-plores the im-ple-men-ta-tion of
+Underfull \hbox (badness 1383) in paragraph at lines 57--61
+[]\T1/cmr/m/n/10 The afore-men-tioned de-scribed pro-cesses con-
  []
 
-
-Underfull \hbox (badness 1264) in paragraph at lines 46--87
-\T1/cmr/m/n/10 lever-ages We-bAu-thn (Web Au-then-ti-ca-tion), an
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
-[][]\T1/cmr/m/n/8 Asymmetric cryp-tog-ra-phy uses a key-pair con-sist-ing
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
-\T1/cmr/m/n/8 of pub-lic and pri-vate keys. The pub-lic key en-crypts
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
-\T1/cmr/m/n/8 data, while the pri-vate key de-crypts it. The keys are
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
-\T1/cmr/m/n/8 math-e-mat-i-cally re-lated, but de-riv-ing one from the other
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--87
-\T1/cmr/m/n/8 is in-fea-si-ble, en-sur-ing se-cure com-mu-ni-ca-tion and data
- []
-
-introduction.tex:87: Illegal parameter number in definition of \abx@field@howpu
-blished.
-<to be read again> 
-                   s
-l.87 }
-      
-You meant to type ## instead of #, right?
-Or maybe a } was forgotten somewhere earlier, and things
-are all screwed up? I'm going to assume that you meant ##.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (31.78838pt too high) has occurred while \output is active []
-
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
+2.
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)
+introduction.tex:124: Undefined control sequence.
+l.124 The study \textif
+                       {"The Memorability and Security of Passwords"}, condu...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 [2]) (background.tex (methodology/webauthn.tex
 methodology/webauthn.tex:20: Illegal parameter number in definition of \abx@fie
@@ -1572,12 +1530,8 @@ Underfull \hbox (badness 1264) in paragraph at lines 1--49
 \T1/cmr/m/n/10 sup-port-ing keys of sizes 128-, 192-, and 256-
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(methodology/argon2.tex [4] [5 <./images/Registration.png> <./images/Authentica
-tion.png>]
+) (methodology/argon2.tex [4] [5 <./images/Registration.png> <./images/Authenti
+cation.png>]
 Underfull \hbox (badness 1102) in paragraph at lines 28--33
 \T1/cmr/m/n/10 cess. This con-fig-u-ra-tion is more suit-able
  []
@@ -2146,7 +2100,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--125
 report.tex:125: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
-                   s
+                   r
 l.125 
       
 You meant to type ## instead of #, right?
@@ -2156,7 +2110,7 @@ are all screwed up? I'm going to assume that you meant ##.
 [22]
 report.tex:125: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
-                   s
+                   r
 l.125 
       
 You meant to type ## instead of #, right?
@@ -2165,7 +2119,7 @@ are all screwed up? I'm going to assume that you meant ##.
 
 report.tex:125: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
-                   s
+                   r
 l.125 
       
 You meant to type ## instead of #, right?
@@ -2176,52 +2130,6 @@ report.tex:125: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    w
-l.125 
-      
-You meant to type ## instead of #, right?
-Or maybe a } was forgotten somewhere earlier, and things
-are all screwed up? I'm going to assume that you meant ##.
-
-report.tex:125: Illegal parameter number in definition of \Hy@tempa.
-<to be read again> 
-                   w
-l.125 
-      
-You meant to type ## instead of #, right?
-Or maybe a } was forgotten somewhere earlier, and things
-are all screwed up? I'm going to assume that you meant ##.
-
-report.tex:125: Illegal parameter number in definition of \Hy@tempa.
-<to be read again> 
-                   w
-l.125 
-      
-You meant to type ## instead of #, right?
-Or maybe a } was forgotten somewhere earlier, and things
-are all screwed up? I'm going to assume that you meant ##.
-
-report.tex:125: Illegal parameter number in definition of \abx@field@howpublish
-ed.
-<to be read again> 
-                   r
-l.125 
-      
-You meant to type ## instead of #, right?
-Or maybe a } was forgotten somewhere earlier, and things
-are all screwed up? I'm going to assume that you meant ##.
-
-report.tex:125: Illegal parameter number in definition of \Hy@tempa.
-<to be read again> 
-                   r
-l.125 
-      
-You meant to type ## instead of #, right?
-Or maybe a } was forgotten somewhere earlier, and things
-are all screwed up? I'm going to assume that you meant ##.
-
-report.tex:125: Illegal parameter number in definition of \Hy@tempa.
-<to be read again> 
-                   r
 l.125 
       
 You meant to type ## instead of #, right?
@@ -2232,6 +2140,52 @@ are all screwed up? I'm going to assume that you meant ##.
 Underfull \hbox (badness 2065) in paragraph at lines 125--125
 \T1/cmtt/m/n/10 ceremony$[]\T1/cmr/m/n/10 . Ac-cessed on: March 25,
  []
+
+report.tex:125: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   w
+l.125 
+      
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:125: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   w
+l.125 
+      
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:125: Illegal parameter number in definition of \abx@field@howpublish
+ed.
+<to be read again> 
+                   s
+l.125 
+      
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:125: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   s
+l.125 
+      
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+report.tex:125: Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   s
+l.125 
+      
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
 
 
 Underfull \hbox (badness 1502) in paragraph at lines 125--125
@@ -3614,9 +3568,6 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 28E67EA8C51629ABB1A5EB84331D5EED;4241.
 Package logreq Info: Writing requests to 'report.run.xml'.
@@ -3624,13 +3575,13 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33450 strings out of 476344
- 643495 string characters out of 5785310
+ 33427 strings out of 476344
+ 643013 string characters out of 5785310
  1958346 words of memory out of 5000000
- 53129 multiletter control sequences out of 15000+600000
+ 53108 multiletter control sequences out of 15000+600000
  530795 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,13n,94p,1534b,2005s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,94p,849b,1910s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.47} has been referenced but does not exis
 t, replaced by a fixed one
@@ -3821,20 +3772,20 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 
  </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/
 jknappen/ec/dpi600/eccc1000.pk> </Users/havard/Library/Application Support/MiKT
-eX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0800.pk> </Users/havard/L
+eX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti0600.pk> </Users/havard/L
 ibrary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi60
-0/tcrm1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
-nts/pk/ljfour/jknappen/ec/dpi600/ectt0800.pk> </Users/havard/Library/Applicatio
-n Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0600.pk> </
+0/ecti0700.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
+nts/pk/ljfour/jknappen/ec/dpi600/ecbx0800.pk> </Users/havard/Library/Applicatio
+n Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk> </
 Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jkn
-appen/ec/dpi600/ecrm0700.pk> </Users/havard/Library/Application Support/MiKTeX/
+appen/ec/dpi600/ectt0800.pk> </Users/havard/Library/Application Support/MiKTeX/
 texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk> </Users/havard/Libr
 ary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/e
-crm0800.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts
-/pk/ljfour/jknappen/ec/dpi600/ecti0600.pk> </Users/havard/Library/Application S
-upport/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti0700.pk> </Use
+ctt1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts
+/pk/ljfour/jknappen/ec/dpi600/ecrm0800.pk> </Users/havard/Library/Application S
+upport/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0600.pk> </Use
 rs/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknapp
-en/ec/dpi600/ectt1000.pk> </Users/havard/Library/Application Support/MiKTeX/tex
+en/ec/dpi600/ecrm0700.pk> </Users/havard/Library/Application Support/MiKTeX/tex
 mfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk> </Users/havard/Library
 /Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm
 1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk
@@ -3858,9 +3809,9 @@ ort/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></L
 ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/sy
 mbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (26 pages, 594123 bytes).
+t.pdf (26 pages, 595822 bytes).
 PDF statistics:
  1489 PDF objects out of 1728 (max. 8388607)
- 211 named destinations out of 1000 (max. 500000)
+ 209 named destinations out of 1000 (max. 500000)
  276 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -50,9 +50,12 @@ API is invoked exclusively within a secure context~\cite{webdev2021credential}.
 During development, we established a secure connection by using a self-signed
 certificate for the \texttt{``localhost''} domain.
 
+\todo{
+
 As a deliberate decision, we opted for MongoDB due to its NoSQL architecture,
 which facilitated the storage of Object-like structures~\cite{mongodb2021nosql}
 including passwords, user accounts, and other related data that LessPM stores.
+}
 
 \subsubsection{Client}
 An essential part of the implementation was to create a viable client that could
@@ -60,11 +63,14 @@ function as a visual entry point to the server.
 For the simplicity of the project, we chose React as a framework.
 React is a JavaScript library for building user interfaces, offering an
 efficient and flexible approach to web development.
+
+\todo{
 The design of LessPM was influenced by the principles of least-knowledge,
 often referred to as The Law of Demeter~\cite{lieberherr1990assuring}.
 This influenced the decision to ensure that the client only retained
 necessary information to function properly, containing no knowledge of
 the server nor its implementation.
+}
 
 As is customary when developing a system containing authentication and
 authorization, we took advantage of JWT/JWE
@@ -365,9 +371,8 @@ configuration, which gave us equal protection against side-channel and
 brute-force attacks.
 
 \todo[inline]{
-
-A part of Argon2 is the offer to set the option for a required amount of memory
-to do the hashing.
+  A part of Argon2's customizability is the offer to set the option for a
+  required amount of memory to do the hashing.
 }
 These options would force a malefactor to use a specific amount of memory for
 each attempt to construct the hash.

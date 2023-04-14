@@ -16,7 +16,7 @@
 \contentsline {subsubsection}{\numberline {4.1.2}Client}{10}{subsubsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.2}WebAuthn}{11}{subsection.4.2}%
 \contentsline {subsubsection}{\numberline {4.2.1}Registration}{11}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Authentication}{12}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2}Authentication}{11}{subsubsection.4.2.2}%
 \contentsline {subsubsection}{\numberline {4.2.3}Password Creation \& Retrieval}{12}{subsubsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.3}Cors}{12}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Cookie}{13}{subsection.4.4}%

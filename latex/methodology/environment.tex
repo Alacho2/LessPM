@@ -1,0 +1,90 @@
+To implement the system, we approached the development from a type-safety
+environment.
+
+\subsubsection{Server}
+We chose Rust as the programming language for our backend, which provided
+significant benefits regarding the software development environment.
+
+Rust's emphasis on safety and performance allowed us to create a highly
+secure and efficient environment for our implementation without the risks
+typically associated with memory-related
+vulnerabilities~\cite{rivera2019preserving}.
+The built-in memory management and focus on concurrency ensures that the
+software runs smoothly, which is crucial~\cite{fischer1985impossibility} when
+dealing with sensitive user data.
+
+Additionally, Rust's surrounding ecosystem is at rapid
+growth~\cite{librs-stats}, containing a vast library of high-quality
+crates\footnote{
+  \texttt{Crate} is the Rust-specific name for a package or library.
+}, which enables expeditious development and easy integration of various
+functionality.
+Utilizing Rust's distinctive features, the LessPM achieves enhanced security and
+reliability in the context of user authentication~\cite{rivera2019preserving},
+showcasing the benefits of utilizing a modern programming language.
+
+LessPM ran an instance of an HTTPS server, serving as a wrapper for the
+sensitive data.\footnote{
+  We took advantage of the Authorization header during development, as specified
+  in RFC 7519.
+  However, the framework we used for the server required us to expose the usage
+  of \texttt{Authorization header} to access it in the client.
+  See Section~\ref{subsec:security-analysis} for further explanation.
+}
+The Chromium developers mandate this constraint to guarantee that the pertinent
+API is invoked exclusively within a secure context~\cite{webdev2021credential}.
+During development, we established a secure connection by using a self-signed
+certificate for the \texttt{``localhost''} domain.
+As a deliberate decision, we opted for MongoDB due to its NoSQL architecture,
+which facilitated the storage of Object-like structures~\cite{mongodb2021nosql}
+including passwords, user accounts, and other related data that LessPM stores.
+
+\subsubsection{Client}
+An essential part of the implementation was to create a viable client that could
+function as a visual entry point to LessPM and proof-of-concept.
+For the simplicity of the project, we chose React as a framework.
+React is a JavaScript library for building user interfaces, offering an
+efficient and flexible approach to web development.
+The design of LessPM was influenced by the principles of
+least-knowledge~\cite{lieberherr1990assuring}.
+This influenced the decision to ensure that the client only retained
+necessary information to function properly, containing no knowledge of
+the server nor its implementation.
+
+In a system that contains authentication and authorization in a stateless
+protocol such as HTTPS, some information is needed to authorize a client
+between requested resources.
+LessPM took advantage of JWT/JWE (
+Section~\ref{subsec:json-web-tokens}
+) for this purpose.
+\todo[inline]{
+  Put in some information about JWT and JWE.
+}
+We strongly encrypted the Base64-encoded data passed between the server and
+client using AES-256 (Section~\ref{subsec:aes}).
+
+We took advantage of React's ability to construct a single-page application with
+no routing capabilities, avoiding the possibility of utilizing any URL tampering
+or manipulation\footnote{
+  Malefactors can perform URL Manipulation, which involves modifying a URL to
+  request resources that would otherwise be inaccessible to a user.
+} to attempt privilege escalation or
+accessing restricted data.
+
+Further, the server checked and verified the token before proceeding with any
+requests made to it.
+This information is updated and inspected between each
+re-render~\cite{react-component} of the client.
+
+When initiating the project's development, we had a strong vision of creating
+a client that could seamlessly integrate with Chromium-based browsers as
+an extension.\footnote{
+    In the client's project folder are traces of a manifest.json file and build
+    scripts to have the client run in an extension.
+}
+However, we quickly discovered that the Rust cargo used to perform WebAuthn
+requests did not implement this support.
+We reported this issue
+\href{https://github.com/kanidm/webauthn-rs/issues/288}{upstream to the authors}
+of the cargo, and we will continue to work with the authors to ensure a proper
+implementation of this functionality in the future.

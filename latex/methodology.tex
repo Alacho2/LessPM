@@ -12,99 +12,10 @@ to enable readers to understand the technical aspects of our work as well
 as to assess the validity and relevance of our findings.
 
 \subsection{Environment}\label{subsec:environment}
-To implement the system, we approached the development from a type-safety
-environment.
-
-\subsubsection{Server}
-We chose Rust as the programming language for our backend, which provided
-significant benefits regarding the software development environment.
-
-Rust's emphasis on safety and performance allowed us to create a highly
-secure and efficient environment for our implementation without the risks
-typically associated with memory-related
-vulnerabilities~\cite{rivera2019preserving}.
-The built-in memory management and focus on concurrency ensures that the
-software runs smoothly, which is crucial~\cite{fischer1985impossibility} when
-dealing with sensitive user data.
-
-Additionally, Rust's surrounding ecosystem is at rapid
-growth~\cite{librs-stats}, containing a vast library of high-quality
-crates\footnote{
-  \texttt{Crate} is the Rust-specific name for a package or library.
-}, which enables expeditious development and easy integration of various
-functionality.
-Utilizing Rust's distinctive features, the LessPM achieves enhanced security and
-reliability in the context of user authentication~\cite{rivera2019preserving},
-showcasing the benefits of utilizing a modern programming language.
-
-LessPM ran an instance of an HTTPS server, serving as a wrapper for the
-sensitive data.\footnote{
-  We took advantage of the Authorization header during development, as specified
-  in RFC 7519.
-  However, the framework we used for the server required us to expose the usage
-  of \texttt{Authorization header} to access it in the client.
-  See Section~\ref{subsec:security-analysis} for further explanation.
-}
-The Chromium developers mandate this constraint to guarantee that the pertinent
-API is invoked exclusively within a secure context~\cite{webdev2021credential}.
-During development, we established a secure connection by using a self-signed
-certificate for the \texttt{``localhost''} domain.
-As a deliberate decision, we opted for MongoDB due to its NoSQL architecture,
-which facilitated the storage of Object-like structures~\cite{mongodb2021nosql}
-including passwords, user accounts, and other related data that LessPM stores.
-
-\subsubsection{Client}
-An essential part of the implementation was to create a viable client that could
-function as a visual entry point to LessPM and proof-of-concept.
-For the simplicity of the project, we chose React as a framework.
-React is a JavaScript library for building user interfaces, offering an
-efficient and flexible approach to web development.
-The design of LessPM was influenced by the principles of
-least-knowledge~\cite{lieberherr1990assuring}.
-This influenced the decision to ensure that the client only retained
-necessary information to function properly, containing no knowledge of
-the server nor its implementation.
-
-In a system that contains authentication and authorization in a stateless
-protocol such as HTTPS, some information is needed to authorize a client
-between requested resources.
-LessPM took advantage of JWT/JWE (
-Section~\ref{subsec:json-web-tokens}
-) for this purpose.
-\todo[inline]{
-  Put in some information about JWT and JWE.
-}
-We strongly encrypted the Base64-encoded data passed between the server and
-client using AES-256 (Section~\ref{subsec:aes}).
-
-We took advantage of React's ability to construct a single-page application with
-no routing capabilities, avoiding the possibility of utilizing any URL tampering
-or manipulation\footnote{
-  Malefactors can perform URL Manipulation, which involves modifying a URL to
-  request resources that would otherwise be inaccessible to a user.
-} to attempt privilege escalation or
-accessing restricted data.
-
-Further, the server checked and verified the token before proceeding with any
-requests made to it.
-This information is updated and inspected between each
-re-render~\cite{react-component} of the client.
-
-When initiating the project's development, we had a strong vision of creating
-a client that could seamlessly integrate with Chromium-based browsers as
-an extension.\footnote{
-    In the client's project folder are traces of a manifest.json file and build
-    scripts to have the client run in an extension.
-}
-However, we quickly discovered that the Rust cargo used to perform WebAuthn
-requests did not implement this support.
-We reported this issue
-\href{https://github.com/kanidm/webauthn-rs/issues/288}{upstream to the authors}
-of the cargo, and we will continue to work with the authors to ensure a proper
-implementation of this functionality in the future.
+\input{methodology/environment}
 
 \subsection{WebAuthn}\label{subsec:webauthn-methodology}
-We used WebAuthn to perform passwordless authentication in LessPM.
+We used WebAuthn to perform passwordless authentication in LessPM\@.
 WebAuthn is a collaborative open standard between the FIDO Alliance and W3C\@.
 The aim of the standard is to implement a secure, robust key-based
 authentication system for the web, to strongly authenticate users through
@@ -115,7 +26,7 @@ These devices employ biometric or hardware-based mechanism to provide secure
 and reliable means of authenticating a user in LessPM\@.
 
 Upon registering in LessPM, the AD generates a key-pair called a Passkey.
-This key contains a CID uniquely generated for each registered
+This Passkey contains a CID uniquely generated for each registered
 key-pair~\cite{webauthn_credential_id,webauthn_public_key_credential}, per
 services registered on the AD\@.
 
@@ -126,44 +37,50 @@ occurs~\cite{wang2018next}.
 This suggests that WebAuthn could create a stronger level of security, whereas
 a traditional password exposed in a leak might leave a user susceptible to
 losing access across services and devices through the reused password.
+Preventing the potential security threat of password reuse is a top priority
+for LessPM\@.
+That is why WebAuthn has been chosen as the preferred standard for
+passwordless user authentication in LessPM\@.
 
-WebAuthn attempts to mitigate phishing, man-in-the-middle, and brute-force
-attacks through its intuitive design~\cite{webauthn_level_2}.
+WebAuthn further attempts to mitigate phishing, man-in-the-middle, and
+brute-force attacks through its intuitive design~\cite{webauthn_level_2}.
 By leveraging the increasing market of smartphones with
 biometrics~\cite{statista-biometric-transactions}, WebAuthn becomes a natural
-extension in terms of authentication.
+extension, not just for LessPM, but for general authentication.
 
 \subsubsection{Registration}\label{subsubsec:metho-registration}
-When a user tried registering in LessPM, the client performs a request to the
-server, called a Relying Party (RP), carrying a relevant User Identifier
-(UID. i.e.\ username, phone number, email, Etc.).
+When a user tried registering in LessPM, the client performs a
+registration request to the server, called a Relying Party (RP), carrying a
+relevant User Identifier (UID. i.e.\ username, phone number, email, Etc.).
 This is done to check whether a user with a similar UID existed\footnote{
   WebAuthn does not require to check whether the CID generated by the AD exists.
   However, accepting users with similar identifier might leave a risk of
   providing unauthorized access.
   Hence why LessPM performs such a check.
-} in the system, and LessPM denies the registration process if it existed.
+} in the system, and LessPM denies the registration process if it does.
 
 If there are no users with a similar UID, LessPM responds by initiating a
-Registration Ceremony (RC) and generate a challenge and a Unique User
-Identifier (UUID) version 4.
-
-which is sent to the client~\cite{webauthn-2}.
+Registration Ceremony (RC) and generated a challenge and a Unique User
+Identifier (UUID) version 4, which is sent to the client.
 
 Using this challenge, LessPM's client called the browser-integrated WebAuthn
-Application Programming Interface (API), prompting the user to utilize their
-AD to create a new Passkey credential through the Client To Authenticator
-Protocol (CTAP2)\footnote{
+Application Programming Interface (API)\footnote{
+  In LessPM's case, this is the \textit{navigator.credentials} API provided by
+  the browser.
+}, prompting the
+user to utilize their AD to create a new Passkey credential
+through the Client To Authenticator Protocol (CTAP2)\footnote{
   The user is prompted to use their AD to prove their presence, which can
   involve facial recognition, providing a fingerprint, or any other modality
   supported by the device that the user chooses.
-} for LessPM\@.
+} for
+LessPM\@.
 
 Finally, the AD signs the challenge using the private key stored on the
 device.
-The created public key, signed challenge, and additional metadata
-into are combined into a public key credential object, which is forwarded
-to the client through CTAP2 and then sent to LessPM\@.
+The created public key, signed challenge, and additional metadata are combined
+into a public key credential object, which is forwarded to the client
+through CTAP2 and then sent to LessPM\@.
 
 LessPM then verifies the authenticity of the signed challenge and public key
 through WebAuthn, before storing the key with the generated UUID and the
@@ -172,7 +89,6 @@ Thus completing the RC\@.
 \todo[inline]{
   This process can be sign in figure huhu.
 }
-
 
 We generated a JWE during this process, which was signed with RSASSA-PSS using
 SHA-512 before getting encrypted with AES-256

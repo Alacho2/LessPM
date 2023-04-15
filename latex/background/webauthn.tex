@@ -4,33 +4,6 @@
   by the Authenticator device exsits on the server.
   For further discussions on this topic, see section \hyperref[sec:futurework]{Future work}}}
 
-\newcommand{\navigatorApi}{\footnote{In LessPM's case, this is the \textit{navigator.credentials} API provided by the browser.}}
-
-
-WebAuthn, short for Web Authentication, is a collaborative project between the
-FIDO Alliance and W3C that aims to implement a secure, robust key-based
-authentication system for the web, to strongly authenticate users~\cite{webauthn_level_2}.
-The concept relies on the use of a third-party device, called an Authenticator,
-which leverages asymmetric cryptography.
-These devices employ biometric or hardware-based mechanisms to provide secure
-and reliable means of authenticating a user.
-
-Upon registration, the Authenticator Device (AD) generates a key-pair called a
-Passkey.
-This Passkey contains a CID uniquely generated for each registered
-key-pair~\cite{webauthn_credential_id,webauthn_public_key_credential} on the
-Authenticator, per service registered.
-The unique generation of each key-pair offers the advantage of making it much
-more difficult for trackers to follow a user.
-
-Further, if an attacker gains access to an individual's Passkey, they might
-compromise one specific service, whereas a traditional password could
-potentially compromise multiple services where password reuse
-occurs~\cite{wang2018next}.
-This suggests that WebAuthn could serve a stronger level of security, whereas
-a traditional password exposed in a leak will expose users who are reusing
-password across services and devices.
-
 \subsubsection{Registration}\label{subsubsec:registration}
 In order to register in a WebAuthn authentication system, the user (i.e.,
 client, browser, phone, Etc.) issues a registration request to a
@@ -57,9 +30,9 @@ The newly created public key, signed challenge, and additional metadata are
 combined into a public key credential object, which the client sends back to
 the server.
 
-The server verifies the authenticity of the signed challenge and the public key 
+The server verifies the authenticity of the signed challenge and the public key
 credential object.
-If successful, the server stores the user's public key and other relevant 
+If successful, the server stores the user's public key and other relevant
 information (e.g., user identifier, credential ID) for future authentication.
 
 Thus completing the RC, the process can be seen in

@@ -60,8 +60,8 @@ This is done to check whether a user with a similar UID existed\footnote{
 } in the system, and LessPM denies the registration process if it does.
 
 If there are no users with a similar UID, LessPM responds by initiating a
-Registration Ceremony (RC) and generated a challenge and a Unique User
-Identifier (UUID) version 4, which is sent to the client.
+Registration Ceremony (RC) and generated a challenge, a Unique User
+Identifier (UUID) version 4, and a JWE which is sent to the client.
 
 Using this challenge, LessPM's client called the browser-integrated WebAuthn
 Application Programming Interface (API)\footnote{
@@ -358,45 +358,6 @@ system where we developed it consists of 8 cores.~\footnote{
   The degree of parallelism is affected by how many cores a CPU
   contains~\cite{argon2specs}.
 }
-
-\subsection{JWT \& JWE}\label{subsec:jwt}
-The JWT contained data we could use to validate an authenticated user between
-HTTP requests, which we encoded as a URL-safe base64 string
-(See Section~\ref{subsec:json-web-tokens}).
-According to~\cite{RFC7519}, these should be attached to the authorization part
-of a request, along with a \texttt{Bearer} part.
-These tokens are cryptographically signed with RSASSA-PSS using SHA-512 with a
-key-pair stored on the server to avoid forgery.
-
-For each step in registration~\ref{subsubsec:metho-registration},
-authentication~\ref{subsubsec:metho-authentication}, and
-password creation/retrieval~\ref{subsubsec:creation-and-retrieval}, different
-tokens with different information are constructed, verified, and
-discarded.\footnote{
-  The token for password creation/retrieval is the same as verifying that a user
-  is signed in and authorized to create entries on behalf of the user.
-}
-We opted for this approach so that an exposed token could not serve as more than
-one entry point for one of the steps.
-
-By default, these tokens are not encrypted.
-It is out of the question to unnecessarily expose any sensitive details about
-the server's inner workings.
-Therefore, we decided to incorporate a part inspired by JWE.\footnote{
-  To properly implement JWE, metadata should be encoded into the token, such as
-  what algorithm performs the encryption~\cite{rfc7516}. For further
-  explanation, see Section~\ref{sec:futurework}.
-}
-Before any token is attached to a response from the server, the token is
-encrypted using AES-256\@.
-The Base64 gets encrypted into a ciphertext and then turned into a new Base64
-encoding.
-An example of this can be seen in Appendix~\ref{subsec:base64-and-ciphertext}.
-
-We decoded the Base64, decrypted the ciphertext, and decoded the JWT-Base64 to
-reconstruct the claim when the server received a new request.
-We used this claim to gather details about the user who made the request and
-responded accurately to the request accordingly.
 
 \todo[inline]{The following section}
 

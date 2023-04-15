@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  15 APR 2023 11:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  15 APR 2023 14:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1354,7 +1354,7 @@ most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
 loading the todonotes package. on input line 55.
 
-<images/HR_logo_hringur_transparent.png, id=130, 593.21625pt x 593.21625pt>
+<images/HR_logo_hringur_transparent.png, id=138, 593.21625pt x 593.21625pt>
 File: images/HR_logo_hringur_transparent.png Graphic file (type png)
 <use images/HR_logo_hringur_transparent.png>
 Package pdftex.def Info: images/HR_logo_hringur_transparent.png  used on input 
@@ -1448,9 +1448,9 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[2]) (background.tex (methodology/webauthn.tex
-methodology/webauthn.tex:11: Illegal parameter number in definition of \abx@fie
-ld@howpublished.
+[2]) (background.tex (background/webauthn.tex
+background/webauthn.tex:11: Illegal parameter number in definition of \abx@fiel
+d@howpublished.
 <to be read again> 
                    w
 l.11 registered~\cite{webauthn-2-rp}.
@@ -1459,8 +1459,8 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:15: Illegal parameter number in definition of \abx@fie
-ld@howpublished.
+background/webauthn.tex:15: Illegal parameter number in definition of \abx@fiel
+d@howpublished.
 <to be read again> 
                    r
 l.15 ...h is sent to the client~\cite{webauthn-2}.
@@ -1469,8 +1469,8 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/webauthn.tex:27: Illegal parameter number in definition of \abx@fie
-ld@howpublished.
+background/webauthn.tex:27: Illegal parameter number in definition of \abx@fiel
+d@howpublished.
 <to be read again> 
                    s
 l.27 private key~\cite{webauthn-2-registering}.
@@ -1479,18 +1479,18 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-<images/Registration.png, id=235, 1877.0125pt x 1093.08376pt>
+<images/Registration.png, id=245, 1877.0125pt x 1093.08376pt>
 File: images/Registration.png Graphic file (type png)
 <use images/Registration.png>
 Package pdftex.def Info: images/Registration.png  used on input line 42.
 (pdftex.def)             Requested size: 352.31625pt x 205.16953pt.
 [3]
-<images/Authentication.png, id=252, 1656.1875pt x 1029.8475pt>
+<images/Authentication.png, id=262, 1656.1875pt x 1029.8475pt>
 File: images/Authentication.png Graphic file (type png)
 <use images/Authentication.png>
 Package pdftex.def Info: images/Authentication.png  used on input line 77.
 (pdftex.def)             Requested size: 352.31625pt x 219.07149pt.
-) (methodology/aes.tex
+) (background/aes.tex
 Underfull \hbox (badness 1264) in paragraph at lines 1--49
 \T1/cmr/m/n/10 sup-port-ing keys of sizes 128-, 192-, and 256-
  []
@@ -1498,7 +1498,7 @@ Underfull \hbox (badness 1264) in paragraph at lines 1--49
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4 <./images/Registration.png>] (methodology/argon2.tex
+ [4 <./images/Registration.png>] (background/argon2.tex
 Underfull \hbox (badness 1102) in paragraph at lines 28--33
 \T1/cmr/m/n/10 cess. This con-fig-u-ra-tion is more suit-able
  []
@@ -1514,15 +1514,15 @@ Underfull \hbox (badness 2269) in paragraph at lines 37--37
 LaTeX Warning: Reference `subsec:hashing-aes-key' on page 6 undefined on input 
 line 48.
 
-) (methodology/JWT.tex [6])) (litrev.tex
+)) (litrev.tex
 Underfull \hbox (badness 1577) in paragraph at lines 36--48
 []\T1/cmr/m/n/10 There are many ap-proaches to pass-word-less
  []
 
-[7]
-Underfull \vbox (badness 5022) has occurred while \output is active []
+[6]
+Underfull \vbox (badness 1400) has occurred while \output is active []
 
- [8]
+ [7]
 Underfull \hbox (badness 3735) in paragraph at lines 116--124
 []\T1/cmr/m/n/10 As the tech-nol-ogy evolved from FIDO to
  []
@@ -1532,159 +1532,191 @@ Underfull \hbox (badness 2680) in paragraph at lines 133--137
 []\T1/cmr/m/n/10 However, the on-go-ing evo-lu-tion of se-cu-rity
  []
 
-
+)
 Underfull \vbox (badness 2582) has occurred while \output is active []
 
-)
-(methodology/methodology.tex [9]
-methodology/methodology.tex:91: Illegal parameter number in definition of \abx@
-field@howpublished.
-<to be read again> 
-                   s
-l.91 re-render~\cite{react-component} 
-                                      of the client.
-You meant to type ## instead of #, right?
-Or maybe a } was forgotten somewhere earlier, and things
-are all screwed up? I'm going to assume that you meant ##.
 
-
-Underfull \hbox (badness 1377) in paragraph at lines 93--105
+(methodology.tex (methodology/environment.tex [8]
+Underfull \hbox (badness 1377) in paragraph at lines 62--74
 \T1/cmr/m/n/10 had a strong vi-sion of cre-at-ing a client that
  []
 
-methodology/methodology.tex:119: Illegal parameter number in definition of \abx
+[9] [10]
+methodology/environment.tex:213: Illegal parameter number in definition of \abx
 @field@howpublished.
 <to be read again> 
+                   s
+l.213 }
+       
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+methodology/environment.tex:227: Argument of \reserved@a has an extra }.
+<inserted text> 
+                \par 
+l.227 }
+       
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+{\@xfootnote }\def \reserved@b {\stepcounter \@mpfn \protected@xdef \@thefnmark
+ \ETC.
+methodology/environment.tex:227: Paragraph ended before \reserved@a was complet
+e.
+<to be read again> 
+                   \par 
+l.227 }
+       
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--227
+[][]\T1/cmr/m/n/8 The to-ken for pass-word cre-ation/re-trieval is the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--227
+\T1/cmr/m/n/8 same as ver-i-fy-ing that a user is signed in and au-tho-
+ []
+
+)
+methodology.tex:30: Illegal parameter number in definition of \abx@field@howpub
+lished.
+<to be read again> 
                    c
-l.119 ...ntial_id,webauthn_public_key_credential},
+l.30 ...ential_id,webauthn_public_key_credential},
                                                    per
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/methodology.tex:119: Illegal parameter number in definition of \abx
-@field@howpublished.
+methodology.tex:30: Illegal parameter number in definition of \abx@field@howpub
+lished.
 <to be read again> 
                    c
-l.119 ...ntial_id,webauthn_public_key_credential},
+l.30 ...ential_id,webauthn_public_key_credential},
                                                    per
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology/methodology.tex:119: Illegal parameter number in definition of \abx
-@field@howpublished.
+methodology.tex:30: Illegal parameter number in definition of \abx@field@howpub
+lished.
 <to be read again> 
                    d
-l.119 ...ntial_id,webauthn_public_key_credential},
+l.30 ...ential_id,webauthn_public_key_credential},
                                                    per
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[10]
-Underfull \hbox (badness 1681) in paragraph at lines 155--167
+[11]
+Underfull \hbox (badness 1681) in paragraph at lines 66--78
 []\T1/cmr/m/n/10 Using this chal-lenge, LessPM's client called
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 200--209
+Underfull \hbox (badness 1072) in paragraph at lines 111--120
 \T1/cmr/m/n/10 used the browser's built-in We-bAu-thn API to
  []
 
-[11]
-Underfull \hbox (badness 2951) in paragraph at lines 222--230
+
+Underfull \hbox (badness 2951) in paragraph at lines 133--141
 \T1/cmr/m/n/10 sent ear-lier and de-nies the re-quest with an
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 322--332
+Underfull \hbox (badness 10000) in paragraph at lines 233--243
 \T1/cmr/m/n/10 JavaScript can ac-cess and ma-nip-u-late
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 322--332
+Underfull \hbox (badness 1259) in paragraph at lines 233--243
 \T1/cmtt/m/n/10 Cookies \T1/cmr/m/n/10 [[]HXC18[]]. We uti-lized the browser's
  []
 
-
-Underfull \hbox (badness 1173) in paragraph at lines 332--335
+[13]
+Underfull \hbox (badness 1173) in paragraph at lines 243--246
 []\T1/cmr/bx/n/10 Strict Same-Site\T1/cmr/m/n/10 : This en-sures that the
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 343--347
+Underfull \hbox (badness 5316) in paragraph at lines 254--258
 []\T1/cmr/bx/n/10 HttpOnly\T1/cmr/m/n/10 : Set-ting HttpOnly tells the
  []
 
 
-Underfull \hbox (badness 3343) in paragraph at lines 343--347
+Underfull \hbox (badness 3343) in paragraph at lines 254--258
 \T1/cmr/m/n/10 browser to make this cookie in-ac-ces-si-ble
  []
 
-[13]
-Underfull \hbox (badness 1609) in paragraph at lines 387--391
+
+Underfull \hbox (badness 1609) in paragraph at lines 298--302
 \T1/cmr/m/n/10 derivation func-tion, Ar-gon2 (See Sec-tion []2.3[]).
  []
 
 
-Underfull \vbox (badness 1867) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14]
-Underfull \hbox (badness 10000) in paragraph at lines 499--507
+Underfull \hbox (badness 10000) in paragraph at lines 371--379
 []\T1/cmr/m/n/10 The de-fen-sive mea-sures in-clude industry-
  []
 
 
-Underfull \hbox (badness 3919) in paragraph at lines 499--507
+Underfull \hbox (badness 3919) in paragraph at lines 371--379
 \T1/cmr/m/n/10 standard se-cu-rity pro-to-cols such as HTTPS,
  []
 
 
-Underfull \hbox (badness 1867) in paragraph at lines 499--507
+Underfull \hbox (badness 1867) in paragraph at lines 371--379
 \T1/cmr/m/n/10 JWT/JWE, Ar-gon2 hash-ing, salt and pep-per
  []
 
-
-Underfull \hbox (badness 3758) in paragraph at lines 518--524
+[15]
+Underfull \hbox (badness 3758) in paragraph at lines 390--396
 []\T1/cmr/bx/n/10 Defensive Mech-a-nism: \T1/cmr/m/n/10 Up-grad-ing the
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 535--549
+Underfull \hbox (badness 1242) in paragraph at lines 407--421
 \T1/cmr/m/n/10 text but can not forge their own to-kens.
  []
 
-[15]
-Underfull \hbox (badness 1629) in paragraph at lines 584--596
+
+Underfull \hbox (badness 1629) in paragraph at lines 456--468
 \T1/cmr/m/n/10 van-tage of the lat-est within pub-lic hash-
  []
 
 [16]
-Underfull \hbox (badness 1082) in paragraph at lines 631--642
+Underfull \hbox (badness 1082) in paragraph at lines 503--514
 []\T1/cmr/bx/n/10 Defensive Mech-a-nism: \T1/cmr/m/n/10 LessPM en-crypt
  []
 
 
-Underfull \hbox (badness 3780) in paragraph at lines 648--661
+Underfull \hbox (badness 3780) in paragraph at lines 520--533
 \T1/cmr/m/n/10 con-fig-ured is sub-ject Cross-Site Script-ing
  []
 
-
-Underfull \hbox (badness 1721) in paragraph at lines 683--696
+[17]
+Underfull \hbox (badness 1721) in paragraph at lines 555--568
 \T1/cmr/m/n/10 one cookie, which con-tains the en-crypted
  []
 
-) (conclusion.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [17])
-(futurework.tex [18]
+) (conclusion.tex) (futurework.tex [18]
 Underfull \hbox (badness 1092) in paragraph at lines 63--70
 \T1/cmr/m/n/10 ports a sin-gle reg-is-tered au-then-ti-ca-tor per
  []
 
-) (acknowledgement.tex)
+[19]) (acknowledgement.tex)
 report.tex:125: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
@@ -1723,7 +1755,6 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[19]
 report.tex:125: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
@@ -1792,7 +1823,7 @@ Underfull \hbox (badness 3189) in paragraph at lines 125--125
 \T1/cmr/m/n/10 the kingslayer of User au-then-ti-ca-
  []
 
-
+[20]
 Underfull \hbox (badness 3179) in paragraph at lines 125--125
 []\T1/cmr/m/n/10 Ionel et al. Gordin. ``Mov-ing for-
  []
@@ -1822,7 +1853,7 @@ Underfull \hbox (badness 1648) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
  []
 
-[20]
+
 Underfull \hbox (badness 1286) in paragraph at lines 125--125
 \T1/cmr/m/n/10 its in-te-gra-tion with Sam-sung Se-cu-
  []
@@ -1869,7 +1900,7 @@ Underfull \hbox (badness 1005) in paragraph at lines 125--125
 /cmtt/m/n/10 https :
  []
 
-
+[21]
 Underfull \hbox (badness 5970) in paragraph at lines 125--125
 []\T1/cmr/m/n/10 NIST. \T1/cmr/m/it/10 Com-merce De-part-ment An-
  []
@@ -1905,7 +1936,6 @@ Underfull \hbox (badness 1742) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Michael E. Gar-cia. \T1/cmr/m/it/10 Dig-i-tal Iden-tity
  []
 
-[21]
 report.tex:125: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
@@ -1990,7 +2020,7 @@ Underfull \hbox (badness 1565) in paragraph at lines 125--125
 []$\T1/cmtt/m/n/10 https : / / nvlpubs . nist . gov /
  []
 
-
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
@@ -2058,7 +2088,7 @@ Underfull \hbox (badness 6825) in paragraph at lines 125--125
 /m/n/10 https :
  []
 
-[22]
+
 Underfull \hbox (badness 10000) in paragraph at lines 125--125
 []\T1/cmr/m/n/10 The Pass-word Hash-ing Com-pe-ti-
  []
@@ -2162,7 +2192,9 @@ Underfull \hbox (badness 5345) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[23] (appendix.tex
+[23] [24
+
+] (appendix.tex
 Overfull \hbox (3.73863pt too wide) in paragraph at lines 6--7
 [][] 
  []
@@ -3523,7 +3555,7 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-) [24
+) [25
 
 ] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
@@ -3533,24 +3565,29 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 28E67EA8C51629ABB1A5EB84331D5EED;4241.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `report.out':
+(rerunfilecheck)             Before: 80C47EE7EFC1E74C13C71CFFB24FF4D2;4664
+(rerunfilecheck)             After:  19E54A571D8A53BAA501496F95EE6D87;3958.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33419 strings out of 476344
- 642848 string characters out of 5785310
- 1957346 words of memory out of 5000000
- 53100 multiletter control sequences out of 15000+600000
- 530107 words of font info for 71 fonts, out of 8000000 for 9000
+ 33448 strings out of 476344
+ 643309 string characters out of 5785310
+ 1958346 words of memory out of 5000000
+ 53114 multiletter control sequences out of 15000+600000
+ 531481 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,13n,94p,849b,1893s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{Hfootnote.49} has been referenced but does not exis
-t, replaced by a fixed one
-
+ 99i,13n,94p,849b,1904s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.48} has been referenced but does not exis
 t, replaced by a fixed one
@@ -3743,46 +3780,61 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
+
+pdfTeX warning (dest): name{subsubsection.2.4.2} has been referenced but does n
+ot exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsubsection.2.4.1} has been referenced but does n
+ot exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.4} has been referenced but does not ex
+ist, replaced by a fixed one
+
  </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/
 jknappen/ec/dpi600/eccc1000.pk> </Users/havard/Library/Application Support/MiKT
 eX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti0800.pk> </Users/havard/L
 ibrary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi60
-0/ecbx0800.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
-nts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk> </Users/havard/Library/Applicatio
-n Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ectt0800.pk> </
+0/ecti0600.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
+nts/pk/ljfour/jknappen/ec/dpi600/ecti0700.pk> </Users/havard/Library/Applicatio
+n Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx0800.pk> </
 Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jkn
-appen/ec/dpi600/ecbx1200.pk> </Users/havard/Library/Application Support/MiKTeX/
-texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk> </Users/havard/Libr
+appen/ec/dpi600/tcrm1000.pk> </Users/havard/Library/Application Support/MiKTeX/
+texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ectt0800.pk> </Users/havard/Libr
 ary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/e
-crm0800.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts
-/pk/ljfour/jknappen/ec/dpi600/ecrm0600.pk> </Users/havard/Library/Application S
-upport/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0700.pk> </Use
+cbx1200.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts
+/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk> </Users/havard/Library/Application S
+upport/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0800.pk> </Use
 rs/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknapp
-en/ec/dpi600/ecbx1000.pk> </Users/havard/Library/Application Support/MiKTeX/tex
-mfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1000.pk> </Users/havard/Library
-/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti
+en/ec/dpi600/ecrm0600.pk> </Users/havard/Library/Application Support/MiKTeX/tex
+mfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0700.pk> </Users/havard/Library
+/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx
 1000.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk
-/ljfour/jknappen/ec/dpi600/ecrm1440.pk> </Users/havard/Library/Application Supp
-ort/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1200.pk> </Users/
+/ljfour/jknappen/ec/dpi600/ecrm1000.pk> </Users/havard/Library/Application Supp
+ort/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti1000.pk> </Users/
 havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/
-ec/dpi600/ecbx1440.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs
-/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx2074.pk> </Users/havard/Library/Ap
-plication Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm358
-3.pk></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/ams
-fonts/cm/cmmi8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></Library/Application Support/MiKTeX/texmfs/in
-stall/fonts/type1/public/amsfonts/cm/cmr6.pfb></Library/Application Support/MiK
-TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Library/Applicatio
-n Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Libra
-ry/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/
-amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
-/type1/public/amsfonts/latxfont/lcircle1.pfb></Library/Application Support/MiKT
-eX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+ec/dpi600/ecrm1440.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs
+/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1200.pk> </Users/havard/Library/Ap
+plication Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx144
+0.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/lj
+four/jknappen/ec/dpi600/ecbx2074.pk> </Users/havard/Library/Application Support
+/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm3583.pk></Library/Ap
+plication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pf
+b></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1
+/public/amsfonts/cm/cmr6.pfb></Library/Application Support/MiKTeX/texmfs/instal
+l/fonts/type1/public/amsfonts/cm/cmr7.pfb></Library/Application Support/MiKTeX/
+texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Application Su
+pport/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Library
+/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/ams
+fonts/latxfont/lcircle1.pfb></Library/Application Support/MiKTeX/texmfs/install
+/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (26 pages, 600882 bytes).
+t.pdf (27 pages, 602446 bytes).
 PDF statistics:
- 1497 PDF objects out of 1728 (max. 8388607)
- 210 named destinations out of 1000 (max. 500000)
- 276 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1517 PDF objects out of 1728 (max. 8388607)
+ 221 named destinations out of 1000 (max. 500000)
+ 292 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2362,131 +2362,58 @@
     <bcf:citekey order="10" intorder="1">yan2000password</bcf:citekey>
     <bcf:citekey order="11" intorder="1">fido_uaf_overview</bcf:citekey>
     <bcf:citekey order="12" intorder="1">webauthn_level_2</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">webauthn-2-rp</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">webauthn-2</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">webauthn-2-registering</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">webauthn_authenticator_data</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">schneier2015applied</bcf:citekey>
-    <bcf:citekey order="17" intorder="2">rijndael_book</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">nist_aes_winner</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">nistfips197blocks</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">nistfips197intro</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">nistfips197specification</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">nistfips197256</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">nistfips197specification</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">nistfips197specification</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">schneier2015applied</bcf:citekey>
+    <bcf:citekey order="13" intorder="2">rijndael_book</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">nist_aes_winner</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">nistfips197blocks</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">nistfips197intro</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">nistfips197specification</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">nistfips197256</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">nistfips197specification</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">nistfips197specification</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">argon2specs</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">argon2specs</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">argon2specs</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="25" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="26" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="27" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="28" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="30" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">passwordhashing</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">ripa2021emergence</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">owasp-credential-stuffing</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">bonneau2012science</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">NIST:SP:800-171r2</bcf:citekey>
-    <bcf:citekey order="37" intorder="2">NISTSP800-63-3</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">schneier2000secrets</bcf:citekey>
-    <bcf:citekey order="38" intorder="2">NIST:SP:800-171r2</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">schneier2000secrets</bcf:citekey>
-    <bcf:citekey order="39" intorder="2">NIST:SP:800-171r2</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">parmar2022</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">parmar2022</bcf:citekey>
-    <bcf:citekey order="42" intorder="1">parmar2022</bcf:citekey>
-    <bcf:citekey order="43" intorder="1">parmar2022</bcf:citekey>
-    <bcf:citekey order="44" intorder="1">appleSecureEnclave</bcf:citekey>
-    <bcf:citekey order="45" intorder="1">lee2021samsung</bcf:citekey>
-    <bcf:citekey order="46" intorder="1">webauthn_level_2</bcf:citekey>
-    <bcf:citekey order="47" intorder="1">huseynov2022passwordless</bcf:citekey>
-    <bcf:citekey order="48" intorder="1">huseynov2022passwordless</bcf:citekey>
-    <bcf:citekey order="49" intorder="1">huseynov2022passwordless</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">passwordhashing</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">ripa2021emergence</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">owasp-credential-stuffing</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">bonneau2012science</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">NIST:SP:800-171r2</bcf:citekey>
+    <bcf:citekey order="33" intorder="2">NISTSP800-63-3</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">schneier2000secrets</bcf:citekey>
+    <bcf:citekey order="34" intorder="2">NIST:SP:800-171r2</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">schneier2000secrets</bcf:citekey>
+    <bcf:citekey order="35" intorder="2">NIST:SP:800-171r2</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">parmar2022</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">parmar2022</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">parmar2022</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">parmar2022</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">appleSecureEnclave</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">lee2021samsung</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">webauthn_level_2</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">huseynov2022passwordless</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">huseynov2022passwordless</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">huseynov2022passwordless</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">gordin2021moving</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">gordin2021moving</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">gordin2021moving</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">statista-biometric-transactions</bcf:citekey>
     <bcf:citekey order="50" intorder="1">gordin2021moving</bcf:citekey>
-    <bcf:citekey order="51" intorder="1">gordin2021moving</bcf:citekey>
-    <bcf:citekey order="52" intorder="1">gordin2021moving</bcf:citekey>
-    <bcf:citekey order="53" intorder="1">statista-biometric-transactions</bcf:citekey>
-    <bcf:citekey order="54" intorder="1">gordin2021moving</bcf:citekey>
-    <bcf:citekey order="55" intorder="1">ghrobany2020fido2</bcf:citekey>
-    <bcf:citekey order="56" intorder="1">ghrobany2020fido2</bcf:citekey>
-    <bcf:citekey order="57" intorder="1">ghrobany2020fido2</bcf:citekey>
-    <bcf:citekey order="58" intorder="1">ghrobany2020fido2</bcf:citekey>
-    <bcf:citekey order="59" intorder="1">morii2017research</bcf:citekey>
-    <bcf:citekey order="60" intorder="1">morii2017research</bcf:citekey>
-    <bcf:citekey order="61" intorder="1">shibboleth</bcf:citekey>
-    <bcf:citekey order="61" intorder="2">morii2017research</bcf:citekey>
-    <bcf:citekey order="62" intorder="1">morii2017research</bcf:citekey>
-    <bcf:citekey order="63" intorder="1">rivera2019preserving</bcf:citekey>
-    <bcf:citekey order="64" intorder="1">fischer1985impossibility</bcf:citekey>
-    <bcf:citekey order="65" intorder="1">librs-stats</bcf:citekey>
-    <bcf:citekey order="66" intorder="1">rivera2019preserving</bcf:citekey>
-    <bcf:citekey order="67" intorder="1">webdev2021credential</bcf:citekey>
-    <bcf:citekey order="68" intorder="1">mongodb2021nosql</bcf:citekey>
-    <bcf:citekey order="69" intorder="1">lieberherr1990assuring</bcf:citekey>
-    <bcf:citekey order="70" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="71" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="72" intorder="1">karande2018securingnode</bcf:citekey>
-    <bcf:citekey order="73" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="74" intorder="1">rfc7516</bcf:citekey>
-    <bcf:citekey order="75" intorder="1">rfc7516</bcf:citekey>
-    <bcf:citekey order="76" intorder="1">react-component</bcf:citekey>
-    <bcf:citekey order="77" intorder="1">webauthn_level_2</bcf:citekey>
-    <bcf:citekey order="78" intorder="1">webauthn_credential_id</bcf:citekey>
-    <bcf:citekey order="78" intorder="2">webauthn_public_key_credential</bcf:citekey>
-    <bcf:citekey order="79" intorder="1">wang2018next</bcf:citekey>
-    <bcf:citekey order="80" intorder="1">webauthn_level_2</bcf:citekey>
-    <bcf:citekey order="81" intorder="1">statista-biometric-transactions</bcf:citekey>
-    <bcf:citekey order="82" intorder="1">apple-support</bcf:citekey>
-    <bcf:citekey order="83" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="84" intorder="1">he2019malicious</bcf:citekey>
-    <bcf:citekey order="85" intorder="1">Kharod2015</bcf:citekey>
-    <bcf:citekey order="86" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="87" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="88" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="89" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="90" intorder="1">rfc7516</bcf:citekey>
-  </bcf:section>
-  <!-- SORTING TEMPLATES -->
-  <bcf:sortingtemplate name="anyt">
-    <bcf:sort order="1">
-      <bcf:sortitem order="1">presort</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="2">
-      <bcf:sortitem order="1">labelalpha</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="3" final="1">
-      <bcf:sortitem order="1">sortkey</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="4">
-      <bcf:sortitem order="1">sortname</bcf:sortitem>
-      <bcf:sortitem order="2">author</bcf:sortitem>
-      <bcf:sortitem order="3">editor</bcf:sortitem>
-      <bcf:sortitem order="4">translator</bcf:sortitem>
-      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="6">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="5">
-      <bcf:sortitem order="1">sortyear</bcf:sortitem>
-      <bcf:sortitem order="2">year</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="6">
-      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="2">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="7">
-      <bcf:sortitem order="1">volume</bcf:sortitem>
-      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
-    </bcf:sort>
-  </bcf:sortingtemplate>
-  <!-- DATALISTS -->
-  <bcf:datalist section="0"
-                name="anyt/global//global/global"
-                type="entry"
-                sortingtemplatename="anyt"
-                sortingnamekeytemplatename="global"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global">
-  </bcf:datalist>
-</bcf:controlfile>
+    <bcf:citekey order="51" intorder="1">ghrobany2020fido2</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">ghrobany2020fido2</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">ghrobany2020fido2</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">ghrobany2020fido2</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">morii2017research</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">morii2017research</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">shibboleth</bcf:citekey>
+    <bcf:citekey order="57" intorder="2">morii2017research</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">morii2017research</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">rivera2019preserving</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">fischer1985impossibility</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">librs-stats</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">rivera2019preserving</bcf:citekey

@@ -53,7 +53,7 @@ of security compared to its counterpats with shorter key lengths and fewer
 rounds~\cite{nistfips197256}.
 In each round of encryption, AES-256 undergoes four primary transformations,
 operating on a $4\times4$ block, as described below:
-\newpage
+
   \begin{enumerate}
     \item \textbf{SubBytes} is a non-linear substitution step where each byte is
     replaced with another according to a predefined lookup table.
@@ -69,7 +69,7 @@ operating on a $4\times4$ block, as described below:
     }
     ~by applying a bitwise XOR operation.
   \end{enumerate}
-\newline
+
 The larger key-size in AES-256 provides an exponential increase in the number
 of possible keys for each password encrypted in LessPM, making it
 significantly more resilient to brute-force attacks and further solidifying

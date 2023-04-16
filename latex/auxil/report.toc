@@ -2,28 +2,29 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {section}{\numberline {2}Background}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Hashing through Argon2}{2}{subsection.2.1}%
-\contentsline {section}{\numberline {3}Literature Review}{3}{section.3}%
-\contentsline {section}{\numberline {4}Methodology}{6}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Environment}{6}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Server}{6}{subsubsection.4.1.1}%
+\contentsline {section}{\numberline {3}Literature Review}{2}{section.3}%
+\contentsline {section}{\numberline {4}Methodology}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Environment}{5}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Server}{5}{subsubsection.4.1.1}%
 \contentsline {subsubsection}{\numberline {4.1.2}Client}{6}{subsubsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.2}Authentication \& Authorization}{7}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}JSON Web Tokens}{7}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}JSON Web Encryption}{8}{subsubsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.3}WebAuthn}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.2}Authentication \& Authorization}{6}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}JSON Web Tokens}{6}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}JSON Web Encryption}{7}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}WebAuthn}{8}{subsection.4.3}%
 \contentsline {subsubsection}{\numberline {4.3.1}Registration}{9}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}Authentication}{10}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2}Authentication}{9}{subsubsection.4.3.2}%
 \contentsline {subsubsection}{\numberline {4.3.3}Password Creation \& Retrieval}{10}{subsubsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.4}Cors}{11}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.4}Cors}{10}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5}Cookie}{11}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}Password Encryption}{12}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.6}Password Encryption}{11}{subsection.4.6}%
 \contentsline {subsubsection}{\numberline {4.6.1}Advanced Encryption Standard}{12}{subsubsection.4.6.1}%
-\contentsline {subsubsection}{\numberline {4.6.2}AES-256 in LessPM}{13}{subsubsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.2}AES-256 in LessPM}{12}{subsubsection.4.6.2}%
 \contentsline {subsection}{\numberline {4.7}Hashing}{13}{subsection.4.7}%
-\contentsline {subsubsection}{\numberline {4.7.1}Configuring Argon2}{14}{subsubsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.1}Argon2}{13}{subsubsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.2}Configuring Argon2}{14}{subsubsection.4.7.2}%
 \contentsline {subsection}{\numberline {4.8}Security Analysis}{14}{subsection.4.8}%
 \contentsline {section}{\numberline {5}Conclusion}{17}{section.5}%
 \contentsline {section}{\numberline {6}Future work}{17}{section.6}%
-\contentsline {section}{\numberline {7}Acknowledgement}{18}{section.7}%
+\contentsline {section}{\numberline {7}Acknowledgement}{19}{section.7}%
 \contentsline {section}{\numberline {A}Appendix}{23}{appendix.A}%
 \contentsline {subsection}{\numberline {A.1}Base64 and ciphertext}{23}{subsection.A.1}%

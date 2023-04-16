@@ -1,15 +1,26 @@
 
-Exploring the development and implementation of LessPM, our focus will be on the
-key components, technologies, and steps that form LessPM's development process
-and encapsulation.
-A crucial part of the development and system was its security and robustness.
+In today's world of rapidly evolving technology, it is crucial to have a
+solid foundation in the underlying concepts and protocols that drive modern
+systems.
+This section aims to provide a comprehensive understanding of the key
+technologies and principles that are relevant to LessPM\@.
+As we explore the development and implementation of LessPM, our focus will be
+on the key components, technologies, principles, and steps that form LessPM's
+development process an encapsulation.
 
-Our approach encompasses an explanation of the system architecture, the
-technologies and tools utilized and the development process to create the
-prototype.
+Our approach encompasses an explanation of the system architecture, as well as
+an in-depth description of the key components, technologies, tools, and steps
+that are involved in LessPM's encapsulation and development process to create
+the prototype.
+By thoroughly exploring these fundamental topics, we can better appreciate their
+significance and application in the context of the implementation, design, and
+architecture presented in LessPM\@.
+
+One critical aspect of the development and system is its security and
+robustness.
 By providing a comprehensive account of the system development process, we aim
-to enable readers to understand the technical aspects of our work as well
-as to assess the validity and relevance of our findings.
+to enable readers to understand the technical aspects of our work and assess the
+validity and relevance of our findings.
 
 \subsection{Environment}\label{subsec:environment}
 \input{methodology/environment}
@@ -76,24 +87,83 @@ LessPM set in the browser against a malefactor:
 \input{methodology/encryption}
 
 \subsection{Hashing}\label{subsec:hashing}
-\todo[inline]{
 When we searched for a good key-derivation function, we first came across
-  Password-Based Key Derivation Function 2 (PBKDF2).
+Password-Based Key Derivation Function 2 (PBKDF2).
 We saw PBKDF2 as a good solution for the project, but after researching the
 topic further, we ended up with Argon2.
 
 Argon2 is regarded by some to be more secure than PBKDF2 due to its modern
-design considerations, including protection against side-channel attacks and
-memory-hardness, which make it more resistant to brute-forced and rainbow
+design considerations, including memory-hardness and protection against
+side-channel attacks, which makes it more resistant to brute-force and rainbow
 table attacks.
-Argon2 also offers customization of parameters for flexibility in adapting to
-changing hardware technologies and security requirements.
 PBKDF2 offers to set an amount of iterations to construct the hash and which
 pseudorandom function to use.
+
+\subsubsection{Argon2}
+Argon2 aims to provide a highly customizable function, tailored to the needs
+of distinct contexts~\cite{argon2specs}.
+Additionally, the design offers resistance to both time-memory trade-off
+and side-channel attacks as a memory-hard function~\cite{argon2specs}.
+
+The Key-Derivation Function (KDF) fills large memory blocks with pseudorandom
+data derived from the input parameters, such as password and salt.\footnote{
+  Argon2's intension is to have a 128-bit salt for all applications but this
+  can be sliced in half, if storage is a concern~\cite{argon2specs}.
+}
+The algorithm then proceeds to process these blocks non-linearly for a specific
+number of iterations~\cite{argon2specs}.
+
+The KDF offers three configurations, depending on the environment where
+the function will run and what the risk and threat models are, which we take
+advantage of in LessPM\@.
+These can be seen in Figure~\ref{fig:argon2conf}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{itemize}
+    \item \textbf{Argon2d} is a faster configuration and uses data-depending
+    memory access.
+    This makes it suitable for cryptocurrencies and applications with little to
+    no threat of side-channel timing attacks.\protect\footnotemark
+    \item \textbf{Argon2i} uses data-independent memory access.
+    This configuration is more suitable for password hashing and key-derivation
+    functions.\protect\footnotemark
+    ~The configuration is slower due to making more passes over the memory as
+    the hashing progresses.
+    \item \textbf{Argon2id} is a combination of the two, beginning with
+    data-dependent memory access before transitioning to data-independent
+    memory access after progressing halfway through the process.
+  \end{itemize}
+  \caption{The three configurations offered by Argon2~\cite{argon2specs}.}
+  \label{fig:argon2conf}
+\end{figure}
+
+\footnotetext{
+  Side-channel timing attacks analyze execution time variations in cryptographic
+  systems to reveal confidential data, exploiting differences in time caused by
+  varying inputs, branching conditions, or memory access patterns.
+}
+\footnotetext{
+  Due to the nature of prioritizing security, LessPM uses the third
+  configuration.
 }
 
 Since LessPM is required to run in as safe of an environment as possible,
 Argon2's configuration option is an excellent solution.
+
+Argon2, as a memory-intensive hashing function, demands substantial
+computational resources from attackers attempting dictionary-\footnote{
+  A dictionary attack is an approach where an attacker tries to find a hash by
+  searching through a dictionary of pre-computed hashes or generating hashes
+  based on a dictionary commonly used by individuals or businesses.
+} or rainbow table attack.
+This characteristic significantly hampers the feasibility of cracking
+passwords using such attacks, constructing an ideal scenario for LessPM's
+password vault.
+The algorithm's customizability allowed us to adjust its behaviour
+based on memory, parallelism, and iterations, catering to LessPM's security
+requirements and performance needs.
+All of these benefits contributed to why LessPM uses Argon2 instead of PBKDF2.
 
 \subsubsection{Configuring Argon2}
 Argon2's hashing output is dependable on
@@ -108,6 +178,23 @@ configurations~\cite{argon2specs}.\footnote{
 Given that we emphasized security, we opted for the \texttt{Argon2id}
 configuration, which gave us equal protection against side-channel and
 brute-force attacks.
+
+\todo[inline]{
+  This paragraph needs to go somewhere in this section.
+
+  As these configurations are crucial for computing the original hash, Argon2
+  provides robust resilience against brute-force and side-channel attacks~\cite{
+    argon2specs}.
+  The resulting enhanced security makes Argon2 suitable for password storage and
+  key-derivation in various applications and systems.
+
+  In 2015, Argon2 won the Password Hashing
+  Competition~\cite{passwordhashing}.\footnote{
+    NIST's competition to find an encryption algorithm inspired the Password
+    Hashing Competition, but it took place without NIST's endorsement.
+  }
+
+}
 
 \todo[inline]{
   A part of Argon2's customizability is the offer to set the option for a

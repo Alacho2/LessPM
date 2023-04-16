@@ -307,10 +307,82 @@ on implemented and unimplemented.
 
   \textbf{Defensive Mechanism:}
 
-  The Passkey could be encrypted in the same process seen in the passwords.
+  The Passkey could be encrypted with the same process used with passwords.
   This would require a user to present their AD every time the CID is
   necessary, which is already the case in LessPM\@.
 
-  \item \textbf{Session Hijacking} [Rating 1 - Status: Implemented]
+  \item \textbf{Session Hijack Preventions} [Rating 1 - Status: Implemented]
+
+  \textbf{Weakness/Attack Vector:}
+  In a stateless protocol such as HTTP, measures are needed to be taken in
+  order to maintain authentication and authorization (See
+  Section~\ref{subsec:auth-and-auth}).
+  These measures include a session or a token of authorization.
+  In both cases, these tokens are needed to be stored somewhere in a client,
+  such as a cookie or client-side variable.
+  Protecting these storage areas is desired at the highest level, so to
+  mitigate the risk of a session hijacking.
+
+  \textbf{Defensive Mechanism:}
+  In LessPM, we implemented cookies protected by various in-browser
+  mechanisms, such as setting the cookie's \texttt{Secure}, \texttt{HttpOnly},
+  \texttt{SameSite=Strict}, and \texttt{expiry} time.r
+  All of these measure help LessPM to mitigate session hijacking through and
+  ensuring user authenticity and authentication integrity in LessPM\@.
+  As a side note, it would have been advantageous to further implement a
+  mechanism surrounding the attachment of the connecting IP address to the
+  JWT\@.
+  This could serve as a first-line of defence in order to avoid exposure of
+  unencrypted tokens.\footnote{
+    This would not work on a mobile device connected to mobile data,
+    seeing that the IP address switches between connections.
+  }
+
+  \item \textbf{Properly Implemented JWE} [Rating 1 - Status: Partially
+  Implemented]
+
+  \textbf{Weakness/Attack Vector:}
+  Incorrect implementation of JWE can lead to vulnerabilities and attack
+  vectors.
+  We discovered fairly late during the development of LessPM that the
+  standard implementation of JWT does not encrypt the claims~\cite{RFC7519}.
+  In itself, a malefactor can decode the Base64-encoding of a JWT and then
+  read the claim in plaintext.
+  This prompted us to hastily create an inspired version of JWE~\cite{rfc7516
+  }, which could encrypt the token.
+  This can be exploited by a malefactor, seeing that the key to encrypt the
+  token is hardcoded\footnote{
+    It would still take $2^{256}$ attempts in the worst-case scenario for a
+    malefactor.
+  }
+
+  \textbf{Defensive Mechanism:}
+
+  LessPM should properly implement JWEs.
+  Proper implementation, adherence to best practices, and staying updated with
+  the latest standards and guidelines are crucial to mitigate the risks
+  associated with incorrectly implemented JWE versions.
+  Regular security audits and testing are essential for identifying and
+  addressing vulnerabilities.
+  
+  \item \textbf{Multiple Authenticators} [Rating 2 - Status: Unimplemented]
+  
+  \textbf{Weakness/Attack Vector:}
+
+  In its current implementation, LessPM supports only a single registered
+  authenticators per username to maintain a focused security approach.
+  During registration, LessPM checks the database for an existing username
+  similar to the incoming one and aborts the Registration Ceremony if a match
+  is found.
+  However, not fully implementing support for multiple ADs in LessPM creates
+  a case of single point of failure, where if an authenticator is lost,
+  damaged, or compromised, a user might lose access and be locked out of
+  their account.
+  This also leads to reduced scalability and flexibility, where new and
+  elaborated technologies might now be supported.
+  
+  \textbf{Defensive Mechanism:}
+  WebAuthn permits users to have multiple authenticators.
+  It then follows that LessPM should also support multiple authenticators.
 
 \end{enumerate}

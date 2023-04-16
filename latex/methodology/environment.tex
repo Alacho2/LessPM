@@ -77,7 +77,7 @@ encrypted JSON Web Token (JWT, RFC7519), inspired by JSON Web
 Encryption (JWE, RFC7516), passed back and forth between the server and client.
 
 
-\subsection{Authentication \& Authorization}\label{subsec:jwt}
+\subsection{Authentication \& Authorization}\label{subsec:auth-and-auth}
 A system that maintains authentication and authorization through a stateless
 protocol such as HTTPS, requires some information to authorize a
 client between requested resources.
@@ -110,12 +110,9 @@ and permissions~\cite{karande2018securingnode}.
 According to~\cite{RFC7519}, these should be attached to the
 \texttt{Authorization} part of the HTTPS header, along with a hardcoded
 \texttt{Bearer} part, preceding the token as the value of the header.
-\todo[inline]{
-  Mention this in the security analysis.
-}
-In LessPM, the JWT claim contained data we could use to validate and
-authenticate a user between HTTPS requests.
 
+In LessPM, the JWT claim contained data we could use to validate and
+authenticate a user between stateless HTTPS requests.
 LessPM utilizes two functionalities of JWTs to ensure the validity of the
 Base64-encoded token.
 

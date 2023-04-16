@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  16 APR 2023 16:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  16 APR 2023 20:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1453,18 +1453,18 @@ Underfull \hbox (badness 1377) in paragraph at lines 62--74
 \T1/cmr/m/n/10 had a strong vi-sion of cre-at-ing a client that
  []
 
-[6] [7]
-methodology/environment.tex:209: Illegal parameter number in definition of \abx
+[6]
+methodology/environment.tex:206: Illegal parameter number in definition of \abx
 @field@howpublished.
 <to be read again> 
                    s
-l.209 re-render~\cite{react-component} 
+l.206 re-render~\cite{react-component} 
                                        of LessPM's client.
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-) (methodology/webauthn.tex
+) [7] (methodology/webauthn.tex
 methodology/webauthn.tex:13: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
@@ -1630,15 +1630,30 @@ Underfull \hbox (badness 1708) in paragraph at lines 296--297
 []\T1/cmr/bx/n/10 Encrypted Passkey \T1/cmr/m/n/10 [Rat-ing 1 - Sta-tus:
  []
 
-[17])) (conclusion.tex) (futurework.tex [18]
-Underfull \hbox (badness 1092) in paragraph at lines 29--36
+[17]
+Underfull \hbox (badness 2512) in paragraph at lines 326--340
+\T1/cmr/m/n/10 browser mech-a-nisms, such as set-ting the
+ []
+
+
+LaTeX Warning: Citation 'rfc7516 ' on page 18 undefined on input line 352.
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 361--367
+[]\T1/cmr/m/n/10 LessPM should prop-erly im-ple-ment JWEs.
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 361--367
+\T1/cmr/m/n/10 Proper im-ple-men-ta-tion, ad-her-ence to best
+ []
+
+)) (conclusion.tex [18]) (futurework.tex
+Underfull \hbox (badness 1092) in paragraph at lines 10--17
 \T1/cmr/m/n/10 ports a sin-gle reg-is-tered au-then-ti-ca-tor per
  []
 
-) (acknowledgement.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
+) (acknowledgement.tex [19])
 report.tex:122: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
@@ -1725,7 +1740,7 @@ Underfull \hbox (badness 1436) in paragraph at lines 122--122
 \T1/cmr/m/n/10 rep. Ac-cessed on: March 25, 2023.
  []
 
-[19]
+
 Underfull \hbox (badness 4505) in paragraph at lines 122--122
 []\T1/cmr/m/n/10 Joseph Bon-neau. ``The Sci-ence of
  []
@@ -1770,12 +1785,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--122
 \T1/cmr/m/n/10 Last Ac-cessed: 2023-03-28. IEEE.
  []
 
-
+[20]
 Underfull \hbox (badness 1648) in paragraph at lines 122--122
 \T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
  []
 
-[20]
+
 Underfull \hbox (badness 1286) in paragraph at lines 122--122
 \T1/cmr/m/n/10 its in-te-gra-tion with Sam-sung Se-cu-
  []
@@ -1832,7 +1847,7 @@ Underfull \hbox (badness 1442) in paragraph at lines 122--122
 \T1/cmtt/m/n/10 department -[] announces -[] winner -[]
  []
 
-
+[21]
 Underfull \hbox (badness 6510) in paragraph at lines 122--122
 []\T1/cmr/m/n/10 OWASP. \T1/cmr/m/it/10 PHISH-ING IN DEPTH\T1/cmr/m/n/10 .
  []
@@ -1891,7 +1906,7 @@ Underfull \hbox (badness 1596) in paragraph at lines 122--122
 \T1/cmr/m/n/10 fense Tech-ni-cal In-for-ma-tion Cen-ter,
  []
 
-[21]
+
 Underfull \hbox (badness 3019) in paragraph at lines 122--122
 []\T1/cmr/m/n/10 Bruce Schneier. \T1/cmr/m/it/10 Ap-plied Cryp-tog-ra-
  []
@@ -1963,7 +1978,7 @@ Underfull \hbox (badness 6825) in paragraph at lines 122--122
 /m/n/10 https :
  []
 
-
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 122--122
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
@@ -2048,7 +2063,7 @@ Underfull \hbox (badness 2065) in paragraph at lines 122--122
 \T1/cmtt/m/n/10 ceremony$[]\T1/cmr/m/n/10 . Ac-cessed on: March 25,
  []
 
-[22]
+
 Underfull \hbox (badness 1502) in paragraph at lines 122--122
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
@@ -2058,9 +2073,7 @@ Underfull \hbox (badness 5345) in paragraph at lines 122--122
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[23
-
-] (appendix.tex
+[23] (appendix.tex
 Overfull \hbox (3.73863pt too wide) in paragraph at lines 6--7
 [][] 
  []
@@ -3431,20 +3444,32 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: C472EB87EFF0B855222D77476DFECF71;3583.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                report
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33385 strings out of 476344
- 641918 string characters out of 5785310
- 1957346 words of memory out of 5000000
- 53064 multiletter control sequences out of 15000+600000
+ 33383 strings out of 476344
+ 641888 string characters out of 5785310
+ 1958346 words of memory out of 5000000
+ 53062 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,94p,681b,1893s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.50} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.49} has been referenced but does not exis
 t, replaced by a fixed one
@@ -3678,9 +3703,9 @@ amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
 /type1/public/amsfonts/latxfont/lcircle1.pfb></Library/Application Support/MiKT
 eX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (26 pages, 499968 bytes).
+t.pdf (26 pages, 501543 bytes).
 PDF statistics:
- 1438 PDF objects out of 1440 (max. 8388607)
+ 1439 PDF objects out of 1440 (max. 8388607)
  211 named destinations out of 1000 (max. 500000)
  234 words of extra memory for PDF output out of 10000 (max. 10000000)
 

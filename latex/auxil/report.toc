@@ -22,7 +22,7 @@
 \contentsline {subsubsection}{\numberline {3.7.2}Configuring Argon2 for LessPM}{13}{subsubsection.3.7.2}%
 \contentsline {subsection}{\numberline {3.8}Security Analysis}{14}{subsection.3.8}%
 \contentsline {section}{\numberline {4}Conclusion}{18}{section.4}%
-\contentsline {section}{\numberline {5}Future work}{18}{section.5}%
+\contentsline {section}{\numberline {5}Future work}{19}{section.5}%
 \contentsline {section}{\numberline {6}Acknowledgement}{19}{section.6}%
 \contentsline {section}{\numberline {A}Appendix}{24}{appendix.A}%
 \contentsline {subsection}{\numberline {A.1}Base64 and ciphertext}{24}{subsection.A.1}%

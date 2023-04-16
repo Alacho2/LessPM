@@ -47,9 +47,9 @@ React is a JavaScript library for building user interfaces, offering an
 efficient and flexible approach to web development.
 The design of LessPM was influenced by the principles of
 least-knowledge~\cite{lieberherr1990assuring}.
-This influenced the decision to ensure that the client only retained
+This influenced the decision to ensure that the LessPM client only retained
 necessary information to function properly, containing no knowledge of
-the server nor its implementation.
+the LessPM's server nor its implementation.
 
 We took advantage of React's ability to construct a single-page application with
 no routing capabilities, avoiding the possibility of utilizing any URL tampering
@@ -75,6 +75,7 @@ implementation of this functionality in the future.
 LessPM's client maintains authentication and authorization through an
 encrypted JSON Web Token (JWT, RFC7519), inspired by JSON Web
 Encryption (JWE, RFC7516), passed back and forth between the server and client.
+
 
 \subsection{Authentication \& Authorization}\label{subsec:jwt}
 A system that maintains authentication and authorization through a stateless
@@ -161,9 +162,7 @@ RFC7516~\cite{rfc7516}.\footnote{
   what algorithm performs the encryption~\cite{rfc7516}. For further
   explanation, see Section~\ref{sec:futurework}.
 }
-\todo[inline]{
-  Diagram that shows the operation
-}
+
 Before the RSASSA-PSS signed JWT is attached to the HTTPS header,
 LessPM encrypted the Base64-encoded data using AES-256, before turning them into
 a new Base64 encoded string.
@@ -204,11 +203,7 @@ The process functions as follows in LessPM:
   action accordingly.
 \end{enumerate}
 
-\todo[inline]{
-  Put this paragraph somewhere in the WebAuthn section
-  Further, the server checked and verified the token before proceeding with any
-  requests made to it.
-  This information is updated and inspected between each
-  re-render~\cite{react-component} of the client.
-}
-
+Further, the LessPM's server checked and verified the token before proceeding
+with any requests made to it.
+This information is updated and inspected between each
+re-render~\cite{react-component} of LessPM's client.

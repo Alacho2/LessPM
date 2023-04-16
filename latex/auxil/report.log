@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  16 APR 2023 15:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  16 APR 2023 16:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1509,7 +1509,10 @@ Underfull \hbox (badness 1259) in paragraph at lines 30--40
 \T1/cmtt/m/n/10 Cookies \T1/cmr/m/n/10 [[]HXC18[]]. We uti-lized the browser's
  []
 
-[10]
+
+Underfull \vbox (badness 1231) has occurred while \output is active []
+
+ [10]
 Underfull \hbox (badness 1173) in paragraph at lines 40--43
 []\T1/cmr/bx/n/10 Strict Same-Site\T1/cmr/m/n/10 : This en-sures that the
  []
@@ -1524,12 +1527,12 @@ Underfull \hbox (badness 3343) in paragraph at lines 51--55
 \T1/cmr/m/n/10 browser to make this cookie in-ac-ces-si-ble
  []
 
-) (methodology/encryption.tex [11])
-Underfull \hbox (badness 1117) in paragraph at lines 109--36
+) (methodology/encryption.tex [11]
+Underfull \hbox (badness 1117) in paragraph at lines 109--119
 \T1/cmr/m/n/10 We used these 448 bits as the in-put for the
  []
 
-(methodology/hashing.tex
+) (methodology/hashing.tex
 Underfull \hbox (badness 2285) in paragraph at lines 2--6
 \T1/cmr/m/n/10 When we searched for a good key-derivation
  []
@@ -1545,7 +1548,7 @@ Underfull \hbox (badness 1102) in paragraph at lines 40--45
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3098) has occurred while \output is active []
 
  [13])
 (methodology/analysis.tex
@@ -1579,29 +1582,63 @@ Underfull \hbox (badness 4328) in paragraph at lines 31--37
  []
 
 [14]
-Underfull \hbox (badness 1005) in paragraph at lines 80--88
+Underfull \hbox (badness 1005) in paragraph at lines 79--87
 \T1/cmr/m/n/10 by the JWE stan-dard. LessPM en-crypts
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--118
+Underfull \hbox (badness 1253) in paragraph at lines 103--114
+\T1/cmr/m/n/10 sive hash that pro-vides pro-tec-tion against
+ []
+
+
+Underfull \hbox (badness 1688) in paragraph at lines 103--114
+\T1/cmr/m/n/10 brute-force, rain-bow ta-ble, dic-tio-nary and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
 []\T1/cmr/bx/n/10 Mitigating Pass-word Au-then-ti-ca-tion
  []
 
 [15] [16]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 227.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 230.
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--237
-[]\T1/cmr/bx/n/10 Weakness/Attack Vec-tor: \T1/cmr/m/n/10 The
+Underfull \hbox (badness 10000) in paragraph at lines 235--241
+[]\T1/cmr/m/n/10 The RFC7519 [[]JBS15[]] spec-i-fies the
  []
 
-)) (conclusion.tex) (futurework.tex [17]
-Underfull \hbox (badness 1092) in paragraph at lines 63--70
+
+Underfull \hbox (badness 2126) in paragraph at lines 235--241
+\T1/cmtt/m/n/10 Authorization \T1/cmr/m/n/10 header as the ap-pro-pri-ate
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 235--241
+\T1/cmr/m/n/10 tic-u-lar con-cern in LessPM as the HTTP
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 244--250
+[]\T1/cmr/m/n/10 Since ex-pos-ing the \T1/cmtt/m/n/10 Authorization \T1/cmr/m/n
+/10 header
+ []
+
+
+Underfull \hbox (badness 1708) in paragraph at lines 296--297
+[]\T1/cmr/bx/n/10 Encrypted Passkey \T1/cmr/m/n/10 [Rat-ing 1 - Sta-tus:
+ []
+
+[17])) (conclusion.tex) (futurework.tex [18]
+Underfull \hbox (badness 1092) in paragraph at lines 29--36
 \T1/cmr/m/n/10 ports a sin-gle reg-is-tered au-then-ti-ca-tor per
  []
 
-[18]) (acknowledgement.tex)
+) (acknowledgement.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
 report.tex:122: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
@@ -1688,7 +1725,7 @@ Underfull \hbox (badness 1436) in paragraph at lines 122--122
 \T1/cmr/m/n/10 rep. Ac-cessed on: March 25, 2023.
  []
 
-
+[19]
 Underfull \hbox (badness 4505) in paragraph at lines 122--122
 []\T1/cmr/m/n/10 Joseph Bon-neau. ``The Sci-ence of
  []
@@ -1708,7 +1745,7 @@ Underfull \hbox (badness 3189) in paragraph at lines 122--122
 \T1/cmr/m/n/10 the kingslayer of User au-then-ti-ca-
  []
 
-[19]
+
 Underfull \hbox (badness 3179) in paragraph at lines 122--122
 []\T1/cmr/m/n/10 Ionel et al. Gordin. ``Mov-ing for-
  []
@@ -1738,7 +1775,7 @@ Underfull \hbox (badness 1648) in paragraph at lines 122--122
 \T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
  []
 
-
+[20]
 Underfull \hbox (badness 1286) in paragraph at lines 122--122
 \T1/cmr/m/n/10 its in-te-gra-tion with Sam-sung Se-cu-
  []
@@ -1785,7 +1822,7 @@ Underfull \hbox (badness 1005) in paragraph at lines 122--122
 /cmtt/m/n/10 https :
  []
 
-[20]
+
 Underfull \hbox (badness 5970) in paragraph at lines 122--122
 []\T1/cmr/m/n/10 NIST. \T1/cmr/m/it/10 Com-merce De-part-ment An-
  []
@@ -1854,7 +1891,7 @@ Underfull \hbox (badness 1596) in paragraph at lines 122--122
 \T1/cmr/m/n/10 fense Tech-ni-cal In-for-ma-tion Cen-ter,
  []
 
-
+[21]
 Underfull \hbox (badness 3019) in paragraph at lines 122--122
 []\T1/cmr/m/n/10 Bruce Schneier. \T1/cmr/m/it/10 Ap-plied Cryp-tog-ra-
  []
@@ -1905,7 +1942,7 @@ Underfull \hbox (badness 1565) in paragraph at lines 122--122
 []$\T1/cmtt/m/n/10 https : / / nvlpubs . nist . gov /
  []
 
-[21]
+
 Underfull \hbox (badness 10000) in paragraph at lines 122--122
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
@@ -2011,7 +2048,7 @@ Underfull \hbox (badness 2065) in paragraph at lines 122--122
 \T1/cmtt/m/n/10 ceremony$[]\T1/cmr/m/n/10 . Ac-cessed on: March 25,
  []
 
-
+[22]
 Underfull \hbox (badness 1502) in paragraph at lines 122--122
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
@@ -2021,7 +2058,9 @@ Underfull \hbox (badness 5345) in paragraph at lines 122--122
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[22] (appendix.tex
+[23
+
+] (appendix.tex
 Overfull \hbox (3.73863pt too wide) in paragraph at lines 6--7
 [][] 
  []
@@ -3382,7 +3421,7 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-) [23
+) [24
 
 ] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
@@ -3399,13 +3438,17 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33383 strings out of 476344
- 641899 string characters out of 5785310
- 1958346 words of memory out of 5000000
+ 33385 strings out of 476344
+ 641918 string characters out of 5785310
+ 1957346 words of memory out of 5000000
  53064 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,94p,681b,1893s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.49} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.48} has been referenced but does not exis
 t, replaced by a fixed one
@@ -3635,9 +3678,9 @@ amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
 /type1/public/amsfonts/latxfont/lcircle1.pfb></Library/Application Support/MiKT
 eX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (25 pages, 496701 bytes).
+t.pdf (26 pages, 499968 bytes).
 PDF statistics:
- 1429 PDF objects out of 1440 (max. 8388607)
- 209 named destinations out of 1000 (max. 500000)
+ 1438 PDF objects out of 1440 (max. 8388607)
+ 211 named destinations out of 1000 (max. 500000)
  234 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2439,8 +2439,7 @@
     <bcf:citekey order="81" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="82" intorder="1">passwordhashing</bcf:citekey>
     <bcf:citekey order="83" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="84" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="85" intorder="1">rfc7516</bcf:citekey>
+    <bcf:citekey order="84" intorder="1">rfc7516</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

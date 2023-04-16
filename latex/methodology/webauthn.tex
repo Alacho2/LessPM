@@ -163,7 +163,6 @@ within LessPM\@.
   This process can be seen in figure HUHUHUH.
 }
 
-
 \subsubsection{Password Creation \& Retrieval}\label{subsubsec:creation-and-retrieval}
 Passwords are sensitive in nature, so it seems only natural in a security
 context to enforce an extra level of authentication upon retrieving and creating
@@ -189,18 +188,18 @@ creation process in LessPM:
 
 As a final step before a password is created and stored, the user is prompted to
 reauthenticate with their AD\@.
-The password is created and stored in LessPM if tha authentication process
-proves successful, in a similar manner as described for registration (See
+This is done in a similar manner as described for registration (See
 Section~\ref{subsubsec:metho-registration}) and authentication (See
 Section~\ref{subsubsec:metho-authentication}).
 
 To retrieve the plaintext version of the password, LessPM enforces a new
 authentication request through the AD\@.
-We made this decision in LessPM to attempt to assure the owner\footnote{
+We made this decision to attempt to ensure the owner\footnote{
   In this context, we distinguish between \texttt{user} and \texttt{owner}
   as the person that created the password, not the person currently using
   LessPM.
-} of the password's presence\footnote{
+} of
+the password's presence\footnote{
   This approach is also used in password managers on phones to avoid situations
   where a user might have left their computer unlocked.
 }.

@@ -35,7 +35,7 @@ on implemented and unimplemented.
   network, making it more difficult for attackers to intercept or tamper with
   sensitive information.
 
-  \item \textbf{JSON Web Tokens (JWT)} [Rating: 4 -- Status: Implemented]
+  \item \textbf{JSON Web Tokens (JWT)} [Rating: 5 -- Status: Implemented]
 
   \textbf{Weakness/Attack Vector:}
 
@@ -62,7 +62,7 @@ on implemented and unimplemented.
   To further impose a level of security, LessPM takes advantage of different
   tokens for registration, authentication, and authorization.
 
-  \item \textbf{JSON Web Encryption (JWE} [Rating: 5 -- Status: Implemented]
+  \item \textbf{JSON Web Encryption (JWE} [Rating: 3 -- Status: Implemented]
 
   \textbf{Weakness/Attack Vector:}
 
@@ -72,8 +72,7 @@ on implemented and unimplemented.
   Caesar Cipher), an attacker can break the encryption or even encrypt their own
   tokens.
   JWEs are also subject to scenarios such as lack of key rotation, insecure
-  length of the encryption key and improper implementation (See
-  Section~\ref{sec:futurework}).
+  length of the encryption key and improper implementation.
 
   \textbf{Defensive Mechanism:}
 
@@ -102,13 +101,13 @@ on implemented and unimplemented.
   \textbf{Defensive Mechanism:}
 
   LessPM takes advantage of the latest within public hashing functionality,
-  through Argon2.
+  through Argon2 to hash the AES-256 key.
   Argon2 constructs a memory-hard and computationally expensive hash that
   provides protection against brute-force, rainbow table, dictionary and
   side-channel attacks by requiring a significant amount of computational
   resources and time to compute the hash.
   Finally, LessPM takes advantage of using both a random salt unique for each
-  password and a pepper stored in the source code of 128-bit for both.
+  password and a pepper (stored in the source code) of 128-bit for both.
   This creates a higher threshold for a malefactor by requiring access to the
   database and the source code to be able to quickly compute a hash.
   The salt and pepper are added to the key of the AES-256
@@ -196,7 +195,11 @@ on implemented and unimplemented.
   ports, and potentially different domains.
   This ensures that only authorized clients can access the server's resources,
   preventing unauthorized cross-origin requests and protecting against
-  cross-site scripting (XSS) and cross-site request forgery (CSRF) attacks.
+  cross-site scripting (XSS) and cross-site request forgery (CSRF)\footnote{
+    It would be beneficial to properly implement a CSRF token in submitted
+    user data as well, which the server could validate when a user performs a
+    request.
+  } attacks.
 
   \item \textbf{Cookies} [Rating: 5 -- Status: Implemented]
 
@@ -228,6 +231,7 @@ on implemented and unimplemented.
   [Rating: 3 -- Status: Unimplemented]
   
   \textbf{Weakness/Attack Vector:}
+
   The RFC7519~\cite{RFC7519} specifies the \texttt{Authorization} header as
   the appropriate place to append the token.
   This is of particular concern in LessPM as the HTTP framework we used requires
@@ -236,11 +240,77 @@ on implemented and unimplemented.
   Exposing it to the client entails exposing it to the malefactors as well.
 
   \textbf{Defensive Mechanism:}
+
   Since exposing the \texttt{Authorization} header opens up an attack surface
   to malefactors, storing this value in a secured cookie similar to other
   cookies handled in LessPM would leave out an attack surface.
   This would further increase security in LessPM, as a malefactor would then
   not be able to read the token out of the Authorization header directly and
   act on behalf of the user.
+
+  \item \textbf{Password Hashing} [Rating: 1 -- Status: Unimplemented]
+
+  \textbf{Weakness/Attack Vector:}
+
+  An unhashed password can have severe consequences.
+  It leaves passwords vulnerable to unauthorized access, increasing the risk of
+  security breaches and password reuse attacks.
+  Insiders with access to password storage may misuse or abuse plaintext
+  passwords, violating best practices for security and compliance requirements.
+  Proper password hashing with strong cryptographic algorithms and salt is
+  critical to protect user passwords, prevent unauthorized access, and ensure
+  compliance with security standards.
+
+  \textbf{Defensive Mechanism:}
+
+  We emphasized and recognized that only constructing a hash
+  for the AES key leaves the stored password exposed \textbf{iff} AES
+  gets broken or have an unknown zero-day failure.
+  Adding some form of hashing for the password before encrypting it would
+  serve a minor benefit, in case of encryption breakage.
+  As of this writing, we are unsure how this hash would be properly
+  implemented, given that we have nothing to construct the hash for the
+  password.
+  A potential suggestion would be to apply similar methods to how the
+  encryption was performed.
+
+  \item \textbf{Hardcoded AES for JWT} [Rating: 3 -- Status: Unimplemented]
+
+  \textbf{Weakness/Attack Vector:}
+
+  Each JWT is encrypted with the same AES-256 key.
+  This serves as a threat to the whole system, and was implemented this way
+  due to the lack of time during the implementation phase.
+  This leaves LessPM exposed in scenario that one key becomes broken and all
+  the tokens passed between LessPM's client and server can be decrypted by a
+  malefactor.
+
+  \textbf{Defensive Mechanism:}
+
+  LessPM could benefit from implementing some kind of key rotation that would
+  construct a new key for each day or each user.
+  In a perfect scenario, we would have applied the same techniques for the
+  JWT token as for previously described for the password, using the CID, a
+  salt, and a pepper constructed upon authenticating.
+
+  \item \textbf{Encrypted Passkey} [Rating 1 - Status: Unimplmented]
+
+  \textbf{Weakness/Attack Vector:}
+
+  The public key part stored in LessPM is unencrypted and stored in plaintext.
+  This leaves the key exposed to being read directly from a malefactor.
+  The CID of the key is used for vital information such as serving as part of
+  the key for the password encryption.
+  However, seeing that this CID is useless without proper access to the code
+  to see key-construction, and the database to get access to stored, encrypted
+  passwords, this receives a lower rating.
+
+  \textbf{Defensive Mechanism:}
+
+  The Passkey could be encrypted in the same process seen in the passwords.
+  This would require a user to present their AD every time the CID is
+  necessary, which is already the case in LessPM\@.
+
+  \item \textbf{Session Hijacking} [Rating 1 - Status: Implemented]
 
 \end{enumerate}

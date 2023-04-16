@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  16 APR 2023 10:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  16 APR 2023 13:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1406,81 +1406,85 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
 2.
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-)
-introduction.tex:124: Undefined control sequence.
-l.124 The study \textif
-                       {"The Memorability and Security of Passwords"}, condu...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+))
+(background.tex
 
-[2]) (background.tex
+LaTeX Warning: Reference `subsec:webauthn' on page 2 undefined on input line 14
+.
 
-LaTeX Warning: Reference `subsec:jsonwebtokens' on page 3 undefined on input li
+
+LaTeX Warning: Reference `subsec:jsonwebtokens' on page 2 undefined on input li
 ne 15.
 
 
-LaTeX Warning: Reference `subsec:jsonwebtokens' on page 3 undefined on input li
+LaTeX Warning: Reference `subsec:jsonwebtokens' on page 2 undefined on input li
 ne 16.
 
-(background/webauthn.tex) (background/aes.tex
-Underfull \hbox (badness 1264) in paragraph at lines 1--49
-\T1/cmr/m/n/10 sup-port-ing keys of sizes 128-, 192-, and 256-
- []
 
+LaTeX Warning: Reference `subsec:aes' on page 2 undefined on input line 18.
 
-Underfull \vbox (badness 2351) has occurred while \output is active []
-
- [3])
-(background/argon2.tex
+(background/argon2.tex [2]
 Underfull \hbox (badness 1102) in paragraph at lines 28--33
 \T1/cmr/m/n/10 cess. This con-fig-u-ra-tion is more suit-able
  []
 
 
 Underfull \hbox (badness 2269) in paragraph at lines 37--37
-[]\T1/cmr/bx/n/10 Figure 2: |\T1/cmr/m/n/10 The three con-fig-u-ra-tions of Ar-
+[]\T1/cmr/bx/n/10 Figure 1: |\T1/cmr/m/n/10 The three con-fig-u-ra-tions of Ar-
 
  []
 
 
-LaTeX Warning: Reference `subsec:hashing-aes-key' on page 4 undefined on input 
+LaTeX Warning: Reference `subsec:hashing-aes-key' on page 3 undefined on input 
 line 48.
 
-)) (litrev.tex [4]
-Underfull \hbox (badness 1577) in paragraph at lines 36--48
+)) (litrev.tex
+litrev.tex:21: Undefined control sequence.
+l.21 The study \textif
+                      {"The Memorability and Security of Passwords"}, conduc...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[3]
+Underfull \hbox (badness 1577) in paragraph at lines 74--95
 []\T1/cmr/m/n/10 There are many ap-proaches to pass-word-less
  []
 
 
-Underfull \vbox (badness 3657) has occurred while \output is active []
+Underfull \vbox (badness 3019) has occurred while \output is active []
 
- [5]
+ [4]
 
-LaTeX Warning: Reference `subsec:json-web-tokens' on page 6 undefined on input 
-line 122.
+LaTeX Warning: Reference `subsec:webauthn' on page 5 undefined on input line 11
+8.
 
 
-Underfull \hbox (badness 3735) in paragraph at lines 116--124
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+LaTeX Warning: Reference `subsec:json-web-tokens' on page 5 undefined on input 
+line 176.
+
+
+Underfull \hbox (badness 3735) in paragraph at lines 170--178
 []\T1/cmr/m/n/10 As the tech-nol-ogy evolved from FIDO to
  []
 
 
-Underfull \hbox (badness 2680) in paragraph at lines 133--137
+Underfull \hbox (badness 2680) in paragraph at lines 187--191
 []\T1/cmr/m/n/10 However, the on-go-ing evo-lu-tion of se-cu-rity
  []
 
-) (methodology.tex (methodology/environment.tex [6]
+[5]) (methodology.tex (methodology/environment.tex [6]
 Underfull \hbox (badness 1377) in paragraph at lines 62--74
 \T1/cmr/m/n/10 had a strong vi-sion of cre-at-ing a client that
  []
 
 [7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
 methodology/environment.tex:213: Illegal parameter number in definition of \abx
 @field@howpublished.
 <to be read again> 
@@ -1491,122 +1495,111 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-)
-methodology.tex:30: Illegal parameter number in definition of \abx@field@howpub
-lished.
+) (methodology/webauthn.tex [8]
+methodology/webauthn.tex:13: Illegal parameter number in definition of \abx@fie
+ld@howpublished.
 <to be read again> 
                    c
-l.30 ...ential_id,webauthn_public_key_credential},
+l.13 ...ential_id,webauthn_public_key_credential},
                                                    per
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology.tex:30: Illegal parameter number in definition of \abx@field@howpub
-lished.
+methodology/webauthn.tex:13: Illegal parameter number in definition of \abx@fie
+ld@howpublished.
 <to be read again> 
                    c
-l.30 ...ential_id,webauthn_public_key_credential},
+l.13 ...ential_id,webauthn_public_key_credential},
                                                    per
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-methodology.tex:30: Illegal parameter number in definition of \abx@field@howpub
-lished.
+methodology/webauthn.tex:13: Illegal parameter number in definition of \abx@fie
+ld@howpublished.
 <to be read again> 
                    d
-l.30 ...ential_id,webauthn_public_key_credential},
+l.13 ...ential_id,webauthn_public_key_credential},
                                                    per
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[9]
-Underfull \vbox (badness 2310) has occurred while \output is active []
 
- [10]
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 248--258
+Underfull \vbox (badness 3386) has occurred while \output is active []
+
+
+Underfull \vbox (badness 7186) has occurred while \output is active []
+
+ [9]
+Underfull \vbox (badness 1137) has occurred while \output is active []
+
+ [10])
+Underfull \hbox (badness 10000) in paragraph at lines 48--58
 \T1/cmr/m/n/10 JavaScript can ac-cess and ma-nip-u-late
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 248--258
+Underfull \hbox (badness 1259) in paragraph at lines 48--58
 \T1/cmtt/m/n/10 Cookies \T1/cmr/m/n/10 [[]HXC18[]]. We uti-lized the browser's
  []
 
-
-Underfull \hbox (badness 1173) in paragraph at lines 258--261
+[11]
+Underfull \hbox (badness 1173) in paragraph at lines 58--61
 []\T1/cmr/bx/n/10 Strict Same-Site\T1/cmr/m/n/10 : This en-sures that the
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 269--273
+Underfull \hbox (badness 5316) in paragraph at lines 69--73
 []\T1/cmr/bx/n/10 HttpOnly\T1/cmr/m/n/10 : Set-ting HttpOnly tells the
  []
 
 
-Underfull \hbox (badness 3343) in paragraph at lines 269--273
+Underfull \hbox (badness 3343) in paragraph at lines 69--73
 \T1/cmr/m/n/10 browser to make this cookie in-ac-ces-si-ble
  []
 
-[12]
-Underfull \hbox (badness 1609) in paragraph at lines 313--317
-\T1/cmr/m/n/10 derivation func-tion, Ar-gon2 (See Sec-tion []2.3[]).
+(methodology/encryption.tex [12]
+
+methodology/encryption.tex:72: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.72 \newline
+             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+)
+Underfull \hbox (badness 1117) in paragraph at lines 109--77
+\T1/cmr/m/n/10 We used these 448 bits as the in-put for the
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 386--394
+Underfull \hbox (badness 10000) in paragraph at lines 146--154
 []\T1/cmr/m/n/10 The de-fen-sive mea-sures in-clude industry-
  []
 
 
-Underfull \hbox (badness 3919) in paragraph at lines 386--394
+Underfull \hbox (badness 3919) in paragraph at lines 146--154
 \T1/cmr/m/n/10 standard se-cu-rity pro-to-cols such as HTTPS,
  []
 
 
-Underfull \hbox (badness 1867) in paragraph at lines 386--394
+Underfull \hbox (badness 1867) in paragraph at lines 146--154
 \T1/cmr/m/n/10 JWT/JWE, Ar-gon2 hash-ing, salt and pep-per
  []
 
-
-Underfull \hbox (badness 3758) in paragraph at lines 405--411
-[]\T1/cmr/bx/n/10 Defensive Mech-a-nism: \T1/cmr/m/n/10 Up-grad-ing the
- []
-
-
-Underfull \hbox (badness 1242) in paragraph at lines 422--436
-\T1/cmr/m/n/10 text but can not forge their own to-kens.
- []
-
-[14]
-Underfull \hbox (badness 1629) in paragraph at lines 471--483
-\T1/cmr/m/n/10 van-tage of the lat-est within pub-lic hash-
- []
-
-
-Underfull \hbox (badness 1082) in paragraph at lines 518--529
-[]\T1/cmr/bx/n/10 Defensive Mech-a-nism: \T1/cmr/m/n/10 LessPM en-crypt
- []
-
-
-Underfull \hbox (badness 3780) in paragraph at lines 535--548
-\T1/cmr/m/n/10 con-fig-ured is sub-ject Cross-Site Script-ing
- []
-
-[15]
-Underfull \hbox (badness 1721) in paragraph at lines 570--583
-\T1/cmr/m/n/10 one cookie, which con-tains the en-crypted
- []
-
-) (conclusion.tex) [16] (futurework.tex
+[14] [15] [16]) (conclusion.tex) (futurework.tex [17]
 Underfull \hbox (badness 1092) in paragraph at lines 63--70
 \T1/cmr/m/n/10 ports a sin-gle reg-is-tered au-then-ti-ca-tor per
  []
 
-[17]) (acknowledgement.tex)
+) (acknowledgement.tex [18])
 report.tex:125: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
@@ -1703,7 +1696,7 @@ Underfull \hbox (badness 1436) in paragraph at lines 125--125
 \T1/cmr/m/it/10 2012 IEEE Sym-po-sium on Se-cu-rity
  []
 
-[18]
+
 Underfull \hbox (badness 1189) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Faulty Pro-cess''. In: \T1/cmr/m/it/10 Jour-nal of the
  []
@@ -1738,7 +1731,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Last Ac-cessed: 2023-03-28. IEEE.
  []
 
-
+[19]
 Underfull \hbox (badness 1648) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
  []
@@ -1763,7 +1756,7 @@ Underfull \hbox (badness 1648) in paragraph at lines 125--125
 \T1/cmr/m/it/10 (CICC)\T1/cmr/m/n/10 . Last Ac-cessed: 2023-03-28.
  []
 
-[19]
+
 Underfull \hbox (badness 2237) in paragraph at lines 125--125
 \T1/cmtt/m/n/10 / / www . mongodb . com / nosql -[]
  []
@@ -1800,7 +1793,7 @@ Underfull \hbox (badness 1442) in paragraph at lines 125--125
 \T1/cmtt/m/n/10 department -[] announces -[] winner -[]
  []
 
-
+[20]
 Underfull \hbox (badness 6510) in paragraph at lines 125--125
 []\T1/cmr/m/n/10 OWASP. \T1/cmr/m/it/10 PHISH-ING IN DEPTH\T1/cmr/m/n/10 .
  []
@@ -1859,7 +1852,7 @@ Underfull \hbox (badness 1596) in paragraph at lines 125--125
 \T1/cmr/m/n/10 fense Tech-ni-cal In-for-ma-tion Cen-ter,
  []
 
-[20]
+
 Underfull \hbox (badness 3019) in paragraph at lines 125--125
 []\T1/cmr/m/n/10 Bruce Schneier. \T1/cmr/m/it/10 Ap-plied Cryp-tog-ra-
  []
@@ -1931,7 +1924,7 @@ Underfull \hbox (badness 6825) in paragraph at lines 125--125
 /m/n/10 https :
  []
 
-
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
@@ -2021,14 +2014,12 @@ Underfull \hbox (badness 1502) in paragraph at lines 125--125
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
 
-[21]
+
 Underfull \hbox (badness 5345) in paragraph at lines 125--125
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[22
-
-] (appendix.tex
+[22] (appendix.tex
 Overfull \hbox (3.73863pt too wide) in paragraph at lines 6--7
 [][] 
  []
@@ -3400,19 +3391,23 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: E75D7619C6E7B8E05683A3B3643B8C6B;3692.
+(rerunfilecheck)             Checksum: 6E92897067AB33272B122332C46541C3;3692.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
  33398 strings out of 476344
- 642089 string characters out of 5785310
+ 642057 string characters out of 5785310
  1958346 words of memory out of 5000000
- 53080 multiletter control sequences out of 15000+600000
+ 53076 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,13n,94p,849b,1904s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,94p,849b,1906s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{Hfootnote.48} has been referenced but does not exis
+t, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{Hfootnote.47} has been referenced but does not exis
 t, replaced by a fixed one
@@ -3570,15 +3565,15 @@ pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist
 , replaced by a fixed one
 
 
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
+, replaced by a fixed one
+
+
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
 , replaced by a fixed one
 
 
 pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
 , replaced by a fixed one
 
 
@@ -3605,8 +3600,8 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 jknappen/ec/dpi600/eccc1000.pk> </Users/havard/Library/Application Support/MiKT
 eX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/ecti0800.pk> </Users/havard/L
 ibrary/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi60
-0/ecbx0800.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
-nts/pk/ljfour/jknappen/ec/dpi600/ectt0800.pk> </Users/havard/Library/Applicatio
+0/ectt0800.pk> </Users/havard/Library/Application Support/MiKTeX/texmfs/data/fo
+nts/pk/ljfour/jknappen/ec/dpi600/ecbx0800.pk> </Users/havard/Library/Applicatio
 n Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk> </
 Users/havard/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jkn
 appen/ec/dpi600/ecbx1200.pk> </Users/havard/Library/Application Support/MiKTeX/
@@ -3638,9 +3633,9 @@ amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
 /type1/public/amsfonts/latxfont/lcircle1.pfb></Library/Application Support/MiKT
 eX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (25 pages, 496442 bytes).
+t.pdf (25 pages, 498072 bytes).
 PDF statistics:
- 1439 PDF objects out of 1440 (max. 8388607)
- 209 named destinations out of 1000 (max. 500000)
+ 1438 PDF objects out of 1440 (max. 8388607)
+ 213 named destinations out of 1000 (max. 500000)
  242 words of extra memory for PDF output out of 10000 (max. 10000000)
 

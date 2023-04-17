@@ -1,28 +1,28 @@
 \babel@toc {english}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {section}{\numberline {2}Literature Review}{2}{section.2}%
+\contentsline {section}{\numberline {2}Literature Review}{3}{section.2}%
 \contentsline {section}{\numberline {3}Methodology}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Environment}{5}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Server}{5}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Client}{5}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.1}Server}{6}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Client}{6}{subsubsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.2}Authentication \& Authorization}{6}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}JSON Web Tokens}{6}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1}JSON Web Tokens}{7}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}JSON Web Encryption}{7}{subsubsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.3}WebAuthn}{8}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Registration}{8}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}Authentication}{9}{subsubsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.3}Password Creation \& Retrieval}{10}{subsubsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.4}Cors}{10}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Cookie}{10}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Password Encryption}{11}{subsection.3.6}%
-\contentsline {subsubsection}{\numberline {3.6.1}Advanced Encryption Standard}{11}{subsubsection.3.6.1}%
-\contentsline {subsubsection}{\numberline {3.6.2}AES-256 in LessPM}{12}{subsubsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.7}Hashing}{12}{subsection.3.7}%
-\contentsline {subsubsection}{\numberline {3.7.1}Argon2}{12}{subsubsection.3.7.1}%
-\contentsline {subsubsection}{\numberline {3.7.2}Configuring Argon2 for LessPM}{13}{subsubsection.3.7.2}%
-\contentsline {subsection}{\numberline {3.8}Security Analysis}{14}{subsection.3.8}%
-\contentsline {section}{\numberline {4}Conclusion}{18}{section.4}%
-\contentsline {section}{\numberline {5}Future work}{19}{section.5}%
-\contentsline {section}{\numberline {6}Acknowledgement}{19}{section.6}%
-\contentsline {section}{\numberline {A}Appendix}{24}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Base64 and ciphertext}{24}{subsection.A.1}%
+\contentsline {subsubsection}{\numberline {3.3.1}Registration}{10}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Authentication}{10}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Password Creation \& Retrieval}{11}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Cors}{12}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Cookie}{12}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Password Encryption}{12}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Advanced Encryption Standard}{13}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}AES-256 in LessPM}{13}{subsubsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.7}Hashing}{14}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Argon2}{14}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}Configuring Argon2 for LessPM}{15}{subsubsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.8}Security Analysis}{15}{subsection.3.8}%
+\contentsline {section}{\numberline {4}Conclusion}{20}{section.4}%
+\contentsline {section}{\numberline {5}Future work}{21}{section.5}%
+\contentsline {section}{\numberline {6}Acknowledgement}{21}{section.6}%
+\contentsline {section}{\numberline {A}Appendix}{25}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Base64 and ciphertext}{25}{subsection.A.1}%

@@ -114,9 +114,8 @@ If the RP/LessPM can validate the authenticity of the signed challenge and
 public key through WebAuthn, the user was stored in the database, along with the
 UUID generated.
 Thus completing the RC\@.
-\todo[inline]{
-  This process can be sign in figure huhu.
-}
+This process can be seen in Figure~\ref{fig:webauthn}
+
 
 \subsubsection{Authentication}\label{subsubsec:metho-authentication}
 When a user wishes to perform authentication (commonly referred to as
@@ -154,14 +153,13 @@ If the AC is unsuccessful at any point in the ceremony, the ceremony is
 aborted and considered invalid.
 
 Upon success a new JWE is generated.
-This time, the \texttt{expiry} time is set to a 15-minute\footnote{
+This time, the \texttt{expiry} time-to-live is set to a 15-minute\footnote{
   The specification does not specify any upper- or lower bounds for the
   expiry time~\cite{RFC7519}
-} timeframe, allowing the user some time to perform necessary activities
-within LessPM\@.
-\todo[inline]{
-  This process can be seen in figure HUHUHUH.
 }
+timeframe, allowing the user some time to perform necessary activities
+within LessPM\@.
+This process can be seen in Figure~\ref{fig:JWT-process}
 
 \subsubsection{Password Creation \& Retrieval}\label{subsubsec:creation-and-retrieval}
 Passwords are sensitive in nature, so it seems only natural in a security

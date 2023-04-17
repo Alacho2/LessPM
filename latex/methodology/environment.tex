@@ -143,7 +143,6 @@ LessPM uses RSASSA-PSS with SHA-512 due to the asymmetric operations the
 algorithms perform on the encryption and decryption, whereas HMAC and ECDSA is
 based on symmetric- and elliptic curve cryptography.
 
-
 \subsubsection{JSON Web Encryption}
 By default, JWTs are not encrypted.
 It is out of the question to unnecessarily expose any sensitive details about
@@ -173,13 +172,11 @@ user who made the request and responded to the request accordingly.
 An example of this encoding can be seen in
 Appendix~\ref{subsec:base64-and-ciphertext}.
 
-\todo[inline]{
-  Turn this into a diagram, because Jacky love those.
-}
-The process functions as follows in LessPM:
+The process functions as follows in LessPM, and can also be seen in
+Figure~\ref{fig:JWT-process}:
 \begin{enumerate}
   \item The client completed an authentication request.
-  \item A claim was constructed and created on the server
+  \item A claim was constructed and created on the server.
   The claim could have been any data the server wished to use to authenticate
   the legitimacy of a future request.
   \item The claim was signed with the desired algorithm.
@@ -199,6 +196,17 @@ The process functions as follows in LessPM:
   \item The \texttt{exp} property of the JWT is validated and LessPM takes
   action accordingly.
 \end{enumerate}
+
+\begin{figure*}[htbp]
+  \begin{center}
+
+  \includegraphics[scale=0.50]{images/JWT-JWE-process}
+  \caption{The Process LessPM performs each time a token is initated.
+  Starting with the finish of the Authentication Ceremony. The Y-axis depicts
+  the time in which the actions are taken.}
+  \label{fig:JWT-process}
+  \end{center}
+\end{figure*}
 
 Further, the LessPM's server checked and verified the token before proceeding
 with any requests made to it.

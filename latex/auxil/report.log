@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  16 APR 2023 20:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.2.25)  17 APR 2023 10:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1352,7 +1352,7 @@ l.96     \end{titlepage}
 
 
 ] (abstract.tex
-Underfull \hbox (badness 1019) in paragraph at lines 16--22
+Underfull \hbox (badness 1019) in paragraph at lines 17--23
 \T1/cmr/m/n/10 RFC7519), in-spired by JSON Web En-cryp-tion
  []
 
@@ -1376,38 +1376,41 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
+<images/webauthn.png, id=164, 995.72pt x 514.92375pt>
+File: images/webauthn.png Graphic file (type png)
+<use images/webauthn.png>
+Package pdftex.def Info: images/webauthn.png  used on input line 45.
+(pdftex.def)             Requested size: 487.90707pt x 252.31483pt.
 
-LaTeX Warning: Reference `fig:registration' on page 1 undefined on input line 4
-1.
-
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 44.
-
-LaTeX Warning: Reference `fig:authentication' on page 1 undefined on input line
- 55.
-
-
-Underfull \vbox (badness 2512) has occurred while \output is active []
+Overfull \hbox (18.15205pt too wide) in paragraph at lines 45--49
+ [] 
+ []
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.56 
+l.64 
       [1
 
 ]
-Underfull \hbox (badness 1383) in paragraph at lines 57--61
+Underfull \hbox (badness 1383) in paragraph at lines 65--69
 []\T1/cmr/m/n/10 The afore-men-tioned de-scribed pro-cesses con-
  []
 
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
-2.
+
+Underfull \vbox (badness 5077) has occurred while \output is active []
+
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 9
+0.
+
 (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-))
-(litrev.tex
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <./images/webauthn.png>]) (litrev.tex
 litrev.tex:21: Undefined control sequence.
 l.21 The study \textif
                       {"The Memorability and Security of Passwords"}, conduc...
@@ -1417,54 +1420,55 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[2]
+
 Underfull \hbox (badness 1577) in paragraph at lines 74--95
 []\T1/cmr/m/n/10 There are many ap-proaches to pass-word-less
  []
 
-
-Underfull \vbox (badness 2635) has occurred while \output is active []
-
- [3]
-
-LaTeX Warning: Reference `subsec:webauthn' on page 4 undefined on input line 11
-8.
+[3]
+Underfull \vbox (badness 3019) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [4]
+
+LaTeX Warning: Reference `subsec:json-web-tokens' on page 5 undefined on input 
+line 177.
 
 
-LaTeX Warning: Reference `subsec:json-web-tokens' on page 4 undefined on input 
-line 176.
-
-
-Underfull \hbox (badness 3735) in paragraph at lines 170--178
+Underfull \hbox (badness 3735) in paragraph at lines 171--179
 []\T1/cmr/m/n/10 As the tech-nol-ogy evolved from FIDO to
  []
 
 
-Underfull \hbox (badness 2680) in paragraph at lines 187--191
+Underfull \hbox (badness 2680) in paragraph at lines 188--192
 []\T1/cmr/m/n/10 However, the on-go-ing evo-lu-tion of se-cu-rity
  []
 
-[4]) (methodology.tex (methodology/environment.tex [5]
+) (methodology.tex (methodology/environment.tex [5]
 Underfull \hbox (badness 1377) in paragraph at lines 62--74
 \T1/cmr/m/n/10 had a strong vi-sion of cre-at-ing a client that
  []
 
-[6]
-methodology/environment.tex:206: Illegal parameter number in definition of \abx
+[6] [7]
+<images/JWT-JWE-process.png, id=341, 863.225pt x 827.09pt>
+File: images/JWT-JWE-process.png Graphic file (type png)
+<use images/JWT-JWE-process.png>
+Package pdftex.def Info: images/JWT-JWE-process.png  used on input line 203.
+(pdftex.def)             Requested size: 431.61145pt x 413.54398pt.
+
+methodology/environment.tex:214: Illegal parameter number in definition of \abx
 @field@howpublished.
 <to be read again> 
                    s
-l.206 re-render~\cite{react-component} 
+l.214 re-render~\cite{react-component} 
                                        of LessPM's client.
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-) [7] (methodology/webauthn.tex
+) (methodology/webauthn.tex
 methodology/webauthn.tex:13: Illegal parameter number in definition of \abx@fie
 ld@howpublished.
 <to be read again> 
@@ -1495,11 +1499,7 @@ You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-[8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9])
-(methodology/corscookie.tex
+[8] [9 <./images/JWT-JWE-process.png>] [10]) [11] (methodology/corscookie.tex
 Underfull \hbox (badness 10000) in paragraph at lines 30--40
 \T1/cmr/m/n/10 JavaScript can ac-cess and ma-nip-u-late
  []
@@ -1510,9 +1510,6 @@ Underfull \hbox (badness 1259) in paragraph at lines 30--40
  []
 
 
-Underfull \vbox (badness 1231) has occurred while \output is active []
-
- [10]
 Underfull \hbox (badness 1173) in paragraph at lines 40--43
 []\T1/cmr/bx/n/10 Strict Same-Site\T1/cmr/m/n/10 : This en-sures that the
  []
@@ -1527,7 +1524,10 @@ Underfull \hbox (badness 3343) in paragraph at lines 51--55
 \T1/cmr/m/n/10 browser to make this cookie in-ac-ces-si-ble
  []
 
-) (methodology/encryption.tex [11]
+) (methodology/encryption.tex [12] [13]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 119.
+
 Underfull \hbox (badness 1117) in paragraph at lines 109--119
 \T1/cmr/m/n/10 We used these 448 bits as the in-put for the
  []
@@ -1542,16 +1542,12 @@ Underfull \hbox (badness 1152) in paragraph at lines 2--6
 \T1/cmr/m/n/10 func-tion, we first came across Password-Based
  []
 
-[12]
+
 Underfull \hbox (badness 1102) in paragraph at lines 40--45
 \T1/cmr/m/n/10 cess. This con-fig-u-ra-tion is more suit-able
  []
 
-
-Underfull \vbox (badness 3098) has occurred while \output is active []
-
- [13])
-(methodology/analysis.tex
+[14]) (methodology/analysis.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--17
 []\T1/cmr/m/n/10 The de-fen-sive mea-sures in-clude industry-
  []
@@ -1581,7 +1577,7 @@ Underfull \hbox (badness 4328) in paragraph at lines 31--37
 \T1/cmr/m/n/10 LessPM's client and server is en-crypted
  []
 
-[14]
+[15]
 Underfull \hbox (badness 1005) in paragraph at lines 79--87
 \T1/cmr/m/n/10 by the JWE stan-dard. LessPM en-crypts
  []
@@ -1596,12 +1592,12 @@ Underfull \hbox (badness 1688) in paragraph at lines 103--114
 \T1/cmr/m/n/10 brute-force, rain-bow ta-ble, dic-tio-nary and
  []
 
-
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 115--117
 []\T1/cmr/bx/n/10 Mitigating Pass-word Au-then-ti-ca-tion
  []
 
-[15] [16]
+[17]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 230.
 
@@ -1625,20 +1621,20 @@ Underfull \hbox (badness 1783) in paragraph at lines 244--250
 /10 header
  []
 
-
+[18]
 Underfull \hbox (badness 1708) in paragraph at lines 296--297
 []\T1/cmr/bx/n/10 Encrypted Passkey \T1/cmr/m/n/10 [Rat-ing 1 - Sta-tus:
  []
 
-[17]
+
 Underfull \hbox (badness 2512) in paragraph at lines 326--340
 \T1/cmr/m/n/10 browser mech-a-nisms, such as set-ting the
  []
 
 
-LaTeX Warning: Citation 'rfc7516 ' on page 18 undefined on input line 352.
+LaTeX Warning: Citation 'rfc7516 ' on page 19 undefined on input line 352.
 
-
+[19]
 Underfull \hbox (badness 1057) in paragraph at lines 361--367
 []\T1/cmr/m/n/10 LessPM should prop-erly im-ple-ment JWEs.
  []
@@ -1648,432 +1644,431 @@ Underfull \hbox (badness 1629) in paragraph at lines 361--367
 \T1/cmr/m/n/10 Proper im-ple-men-ta-tion, ad-her-ence to best
  []
 
-)) (conclusion.tex [18]) (futurework.tex
-Underfull \hbox (badness 1092) in paragraph at lines 10--17
-\T1/cmr/m/n/10 ports a sin-gle reg-is-tered au-then-ti-ca-tor per
- []
+)) (conclusion.tex
+Underfull \vbox (badness 1728) has occurred while \output is active []
 
-) (acknowledgement.tex [19])
-report.tex:122: Illegal parameter number in definition of \abx@field@howpublish
+) [20]
+(acknowledgement.tex)
+report.tex:129: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    c
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \Hy@tempa.
+report.tex:129: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \Hy@tempa.
+report.tex:129: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    c
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:129: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    d
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \Hy@tempa.
+report.tex:129: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \Hy@tempa.
+report.tex:129: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    d
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 3049) in paragraph at lines 122--122
+Underfull \hbox (badness 3049) in paragraph at lines 129--129
 \T1/cmtt/m/n/10 2 / #dom -[] publickeycredential -[]
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 122--122
+Underfull \hbox (badness 1259) in paragraph at lines 129--129
 \T1/cmtt/m/n/10 identifier -[] slot$[]\T1/cmr/m/n/10 . Ac-cessed: 2023-
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 122--122
+Underfull \hbox (badness 1067) in paragraph at lines 129--129
 []\T1/cmr/m/it/10 CTSS Pro-gram-mers Guide\T1/cmr/m/n/10 . 2nd ed.
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 122--122
+Underfull \hbox (badness 1394) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 Alex Biryukov Et al. \T1/cmr/m/it/10 Ar-gon2: The
  []
 
 
-Underfull \hbox (badness 2635) in paragraph at lines 122--122
+Underfull \hbox (badness 2635) in paragraph at lines 129--129
 \T1/cmr/m/it/10 memory-hard func-tion for pass-word
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 122--122
+Underfull \hbox (badness 1436) in paragraph at lines 129--129
 \T1/cmr/m/n/10 rep. Ac-cessed on: March 25, 2023.
  []
 
 
-Underfull \hbox (badness 4505) in paragraph at lines 122--122
+Underfull \hbox (badness 4505) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 Joseph Bon-neau. ``The Sci-ence of
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 122--122
+Underfull \hbox (badness 1436) in paragraph at lines 129--129
 \T1/cmr/m/it/10 2012 IEEE Sym-po-sium on Se-cu-rity
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 122--122
+Underfull \hbox (badness 1189) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Faulty Pro-cess''. In: \T1/cmr/m/it/10 Jour-nal of the
  []
 
-
-Underfull \hbox (badness 3189) in paragraph at lines 122--122
+[21]
+Underfull \hbox (badness 3189) in paragraph at lines 129--129
 \T1/cmr/m/n/10 the kingslayer of User au-then-ti-ca-
  []
 
 
-Underfull \hbox (badness 3179) in paragraph at lines 122--122
+Underfull \hbox (badness 3179) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 Ionel et al. Gordin. ``Mov-ing for-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \T1/cmr/m/n/10 ward pass-word-less au-then-ti-ca-tion:
  []
 
 
-Underfull \hbox (badness 2735) in paragraph at lines 122--122
+Underfull \hbox (badness 2735) in paragraph at lines 129--129
 \T1/cmr/m/n/10 chal-lenges and im-ple-men-ta-tions for
  []
 
 
-Underfull \hbox (badness 3623) in paragraph at lines 122--122
+Underfull \hbox (badness 3623) in paragraph at lines 129--129
 \T1/cmr/m/n/10 the pri-vate cloud''. In: \T1/cmr/m/it/10 2021 20th
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Last Ac-cessed: 2023-03-28. IEEE.
  []
 
-[20]
-Underfull \hbox (badness 1648) in paragraph at lines 122--122
+
+Underfull \hbox (badness 1648) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Us-ing FIDO2 Se-cu-rity Keys: Mod-
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 122--122
+Underfull \hbox (badness 1286) in paragraph at lines 129--129
 \T1/cmr/m/n/10 its in-te-gra-tion with Sam-sung Se-cu-
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 122--122
+Underfull \hbox (badness 1939) in paragraph at lines 129--129
 \T1/cmr/m/n/10 rity Sys-tem''. In: \T1/cmr/m/it/10 2021 IEEE Cus-
  []
 
 
-Underfull \hbox (badness 4279) in paragraph at lines 122--122
+Underfull \hbox (badness 4279) in paragraph at lines 129--129
 \T1/cmr/m/it/10 tom In-te-grated Cir-cuits Con-fer-ence
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 122--122
+Underfull \hbox (badness 1648) in paragraph at lines 129--129
 \T1/cmr/m/it/10 (CICC)\T1/cmr/m/n/10 . Last Ac-cessed: 2023-03-28.
  []
 
 
-Underfull \hbox (badness 2237) in paragraph at lines 122--122
+Underfull \hbox (badness 2237) in paragraph at lines 129--129
 \T1/cmtt/m/n/10 / / www . mongodb . com / nosql -[]
  []
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 122--122
+Underfull \hbox (badness 2401) in paragraph at lines 129--129
 \T1/cmr/m/it/10 2017 IEEE 41st An-nual Com-puter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 Neal Muller. \T1/cmr/m/it/10 Cre-den-tial Stuff-ing\T1/cmr/m/n
 /10 .
  []
 
-
-Underfull \hbox (badness 1648) in paragraph at lines 122--122
+[22]
+Underfull \hbox (badness 1648) in paragraph at lines 129--129
 \T1/cmr/m/it/10 Un-clas-si-fied In-for-ma-tion in Non-fed-
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 122--122
+Underfull \hbox (badness 1005) in paragraph at lines 129--129
 \T1/cmr/m/n/10 24, Chap-ter 3. 2020. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1
 /cmtt/m/n/10 https :
  []
 
 
-Underfull \hbox (badness 5970) in paragraph at lines 122--122
+Underfull \hbox (badness 5970) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 NIST. \T1/cmr/m/it/10 Com-merce De-part-ment An-
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 122--122
+Underfull \hbox (badness 1442) in paragraph at lines 129--129
 \T1/cmtt/m/n/10 department -[] announces -[] winner -[]
  []
 
-[21]
-Underfull \hbox (badness 6510) in paragraph at lines 122--122
+
+Underfull \hbox (badness 6510) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 OWASP. \T1/cmr/m/it/10 PHISH-ING IN DEPTH\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 122--122
+Underfull \hbox (badness 2119) in paragraph at lines 129--129
 \T1/cmtt/m/n/10 ghana / assets / slides / OWASP _
  []
 
 
-Underfull \hbox (badness 1077) in paragraph at lines 122--122
+Underfull \hbox (badness 1077) in paragraph at lines 129--129
 \T1/cmr/m/it/10 Sci-ence (IC-SCDS)\T1/cmr/m/n/10 . 2022. \T1/cmr/m/sc/10 doi\T1
 /cmr/m/n/10 : []$\T1/cmtt/m/n/10 10 .
  []
 
 
-Underfull \hbox (badness 4120) in paragraph at lines 122--122
+Underfull \hbox (badness 4120) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 James L. Fen-ton Paul A. Grassi
  []
 
 
-Underfull \hbox (badness 1742) in paragraph at lines 122--122
+Underfull \hbox (badness 1742) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Michael E. Gar-cia. \T1/cmr/m/it/10 Dig-i-tal Iden-tity
  []
 
-report.tex:122: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:129: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    s
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \Hy@tempa.
+report.tex:129: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    s
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \Hy@tempa.
+report.tex:129: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    s
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 122--122
+Underfull \hbox (badness 1596) in paragraph at lines 129--129
 \T1/cmr/m/n/10 fense Tech-ni-cal In-for-ma-tion Cen-ter,
  []
 
 
-Underfull \hbox (badness 3019) in paragraph at lines 122--122
+Underfull \hbox (badness 3019) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 Bruce Schneier. \T1/cmr/m/it/10 Ap-plied Cryp-tog-ra-
  []
 
 
-Underfull \hbox (badness 1521) in paragraph at lines 122--122
+Underfull \hbox (badness 1521) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 Alok Sharma Seema Kharod Nidhi
  []
 
 
-Underfull \hbox (badness 3815) in paragraph at lines 122--122
+Underfull \hbox (badness 3815) in paragraph at lines 129--129
 \T1/cmr/m/n/10 ing and Dif-fer-en-tial Mask-ing''. In:
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 122--122
+Underfull \hbox (badness 1112) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 Shibboleth Con-sor-tium. \T1/cmr/m/it/10 Shib-bo-leth -
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 122--122
+Underfull \hbox (badness 1616) in paragraph at lines 129--129
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 6348) in paragraph at lines 122--122
+Underfull \hbox (badness 6348) in paragraph at lines 129--129
 \T1/cmr/m/n/10 dards Pub-li-ca-tion 197. 3.1 In-put
  []
 
 
-Underfull \hbox (badness 3758) in paragraph at lines 122--122
+Underfull \hbox (badness 3758) in paragraph at lines 129--129
 \T1/cmr/m/n/10 and Out-put, p7-8. Last Ac-cessed:
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 122--122
+Underfull \hbox (badness 1424) in paragraph at lines 129--129
 \T1/cmr/m/n/10 2023-03-26. NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 :
 
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 122--122
+Underfull \hbox (badness 1565) in paragraph at lines 129--129
 []$\T1/cmtt/m/n/10 https : / / nvlpubs . nist . gov /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 122--122
+Underfull \hbox (badness 1616) in paragraph at lines 129--129
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Fed-eral In-for-ma-tion Pro-cess-ing
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 122--122
+Underfull \hbox (badness 6825) in paragraph at lines 129--129
 \T1/cmr/m/n/10 NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmtt
 /m/n/10 https :
  []
 
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Tech-nol-ogy. \T1/cmr/m/it/10 An-nounc-ing the Ad-
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 122--122
+Underfull \hbox (badness 1616) in paragraph at lines 129--129
 \T1/cmr/m/it/10 vanced En-cryp-tion Stan-dard (AES)\T1/cmr/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \T1/cmr/m/n/10 dards Pub-li-ca-tion 197. Al-go-rithm
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 122--122
+Underfull \hbox (badness 1424) in paragraph at lines 129--129
 \T1/cmr/m/n/10 2023-03-26. NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 :
 
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 122--122
+Underfull \hbox (badness 1565) in paragraph at lines 129--129
 []$\T1/cmtt/m/n/10 https : / / nvlpubs . nist . gov /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 \T1/cmr/m/n/10 In-for-ma-tion Pro-cess-ing Stan-dards
  []
 
 
-Underfull \hbox (badness 2707) in paragraph at lines 122--122
+Underfull \hbox (badness 2707) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Pub-li-ca-tion 197. Ap-pendix C, C3,
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 122--122
+Underfull \hbox (badness 4156) in paragraph at lines 129--129
 \T1/cmr/m/n/10 p42-46. Last Ac-cessed: 2023-03-26.
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 122--122
+Underfull \hbox (badness 6825) in paragraph at lines 129--129
 \T1/cmr/m/n/10 NIST, Nov. 2001. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : []$\T1/cmtt
 /m/n/10 https :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--122
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
 []\T1/cmr/m/n/10 The Pass-word Hash-ing Com-pe-ti-
  []
 
-report.tex:122: Illegal parameter number in definition of \abx@field@howpublish
+report.tex:129: Illegal parameter number in definition of \abx@field@howpublish
 ed.
 <to be read again> 
                    r
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \Hy@tempa.
+report.tex:129: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    r
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-report.tex:122: Illegal parameter number in definition of \Hy@tempa.
+report.tex:129: Illegal parameter number in definition of \Hy@tempa.
 <to be read again> 
                    r
-l.122 
+l.129 
       
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 122--122
+Underfull \hbox (badness 2065) in paragraph at lines 129--129
 \T1/cmtt/m/n/10 ceremony$[]\T1/cmr/m/n/10 . Ac-cessed on: March 25,
  []
 
 
-Underfull \hbox (badness 1502) in paragraph at lines 122--122
+Underfull \hbox (badness 1502) in paragraph at lines 129--129
 []$\T1/cmtt/m/n/10 https : / / web . dev / security -[]
  []
 
 
-Underfull \hbox (badness 5345) in paragraph at lines 122--122
+Underfull \hbox (badness 5345) in paragraph at lines 129--129
 \T1/cmr/m/n/10 Com-puter Lab-o-ra-tory, Sept. 2000.
  []
 
-[23] (appendix.tex
+[24] (appendix.tex
 Overfull \hbox (3.73863pt too wide) in paragraph at lines 6--7
 [][] 
  []
@@ -3434,7 +3429,7 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-) [24
+) [25
 
 ] (/Users/havard/Programmering/skole/dada/lesspm/latex/auxil/report.aux)
 
@@ -3443,9 +3438,6 @@ LaTeX Font Warning: Size substitutions with differences
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: C472EB87EFF0B855222D77476DFECF71;3583.
@@ -3459,10 +3451,10 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33383 strings out of 476344
- 641888 string characters out of 5785310
+ 33387 strings out of 476344
+ 642117 string characters out of 5785310
  1958346 words of memory out of 5000000
- 53062 multiletter control sequences out of 15000+600000
+ 53071 multiletter control sequences out of 15000+600000
  530107 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,94p,681b,1893s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3703,9 +3695,9 @@ amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
 /type1/public/amsfonts/latxfont/lcircle1.pfb></Library/Application Support/MiKT
 eX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on /Users/havard/Programmering/skole/dada/lesspm/latex/out/repor
-t.pdf (26 pages, 501543 bytes).
+t.pdf (27 pages, 593360 bytes).
 PDF statistics:
- 1439 PDF objects out of 1440 (max. 8388607)
- 211 named destinations out of 1000 (max. 500000)
- 234 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1446 PDF objects out of 1728 (max. 8388607)
+ 208 named destinations out of 1000 (max. 500000)
+ 244 words of extra memory for PDF output out of 10000 (max. 10000000)
 

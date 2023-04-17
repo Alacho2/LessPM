@@ -38,10 +38,18 @@ constructs a keypair, signing this challenge, before sending this information
 back to LessPM\@.
 LessPM receives and stores the public key-part of the keypair for later
 authentication.
-This process can be seen in Figure~\ref{fig:registration}.
-\todo[inline]{
-  Rework diagram to relate to LessPM
-}
+This process can be seen in Figure~\ref{fig:webauthn}.
+
+\begin{figure*}[htbp]
+  \begin{center}
+    \includegraphics[scale=0.49]{images/webauthn}
+    \caption{The process depicting the WebAuthn ceremonies in LessPM,
+      starting with the LessPM client issuing a registration. Steps marked
+      with Asterix indicate the Registration Ceremony, non-Asterix indicate
+      Authentication Ceremony. }
+    \label{fig:webauthn}
+  \end{center}
+\end{figure*}
 
 When the user attempts to sign in, LessPM again issues a challenge,
 prompting the user to use their authenticator's biometric scanner to verify
@@ -52,7 +60,7 @@ The device yields the signature back upon the device successfully verifying the
 authenticity of the user.
 LessPM then verifies this signature with the help of the public key
 stored in the previous step.
-This process can be seen in Figure~\ref{fig:authentication}.
+This process can be seen in Figure~\ref{fig:webauthn}.
 
 The aforementioned described processes constructs an environment such that a
 malefactor is required to first access the authenticator device, and then

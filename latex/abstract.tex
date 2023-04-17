@@ -5,6 +5,7 @@ become increasingly vulnerable to attacks such as brute-forcing, phishing, and
 keylogging.
 LessPM seeks to address these deficiencies with a sophisticated
 authentication method, called WebAuthn.
+
 Through asymmetric cryptography, WebAuthn provides a secure authentication
 experience with the help of user-owned devices such as smartphones or hardware
 authenticator devices.
@@ -18,12 +19,13 @@ communication between client and server and configured Cross-Origin Request
 Sharing (CORS).
 Additionally, we used an encrypted version of JSON Web Tokens (JWT, RFC7519),
 inspired by JSON Web Encryption (JWE, RFC7516), to maintain user authentication
-between client requests.
+between HTTPS requests.
 
 We created a separate client as a visual proof-of-concept to adhere to a
 principle of least-knowledge, while the server handles requests and securely
-stores user data.
+stores user data separately.
 Finally, we include a security analysis in LessPM's context.
+
 The report provides valuable insights into the implementation and potential
 benefits of using WebAuthn and a passwordless approach, along with the security
 measures employed to protect user data on the server, offering promising

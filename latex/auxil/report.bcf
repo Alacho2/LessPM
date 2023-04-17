@@ -2352,6 +2352,7 @@
     <bcf:citekey order="1" intorder="1">webauthn-2</bcf:citekey>
     <bcf:citekey order="2" intorder="1">schneier2000secrets</bcf:citekey>
     <bcf:citekey order="2" intorder="2">rijndael_book</bcf:citekey>
+    <bcf:citekey order="2" intorder="3">nistfips197256</bcf:citekey>
     <bcf:citekey order="3" intorder="1">RFC7519</bcf:citekey>
     <bcf:citekey order="4" intorder="1">rfc7516</bcf:citekey>
     <bcf:citekey order="5" intorder="1">perseus_tufts</bcf:citekey>
@@ -2419,15 +2420,15 @@
     <bcf:citekey order="62" intorder="1">apple-support</bcf:citekey>
     <bcf:citekey order="63" intorder="1">webauthn_authenticator_data</bcf:citekey>
     <bcf:citekey order="64" intorder="1">RFC7519</bcf:citekey>
-    <bcf:citekey order="65" intorder="1">he2019malicious</bcf:citekey>
-    <bcf:citekey order="66" intorder="1">Kharod2015</bcf:citekey>
-    <bcf:citekey order="67" intorder="1">schneier2015applied</bcf:citekey>
-    <bcf:citekey order="67" intorder="2">rijndael_book</bcf:citekey>
-    <bcf:citekey order="68" intorder="1">nist_aes_winner</bcf:citekey>
-    <bcf:citekey order="69" intorder="1">nistfips197blocks</bcf:citekey>
-    <bcf:citekey order="70" intorder="1">nistfips197intro</bcf:citekey>
-    <bcf:citekey order="71" intorder="1">nistfips197specification</bcf:citekey>
-    <bcf:citekey order="72" intorder="1">nistfips197256</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">Kharod2015</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">schneier2015applied</bcf:citekey>
+    <bcf:citekey order="66" intorder="2">rijndael_book</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">nist_aes_winner</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">nistfips197blocks</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">nistfips197intro</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">nistfips197specification</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">nistfips197256</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="73" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="74" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="75" intorder="1">argon2specs</bcf:citekey>
@@ -2437,11 +2438,12 @@
     <bcf:citekey order="79" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="80" intorder="1">argon2specs</bcf:citekey>
     <bcf:citekey order="81" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="82" intorder="1">argon2specs</bcf:citekey>
-    <bcf:citekey order="83" intorder="1">passwordhashing</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">passwordhashing</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">he2019malicious</bcf:citekey>
     <bcf:citekey order="84" intorder="1">RFC7519</bcf:citekey>
     <bcf:citekey order="85" intorder="1">RFC7519</bcf:citekey>
     <bcf:citekey order="86" intorder="1">rfc7516</bcf:citekey>
+    <bcf:citekey order="87" intorder="1">rfc7516</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

@@ -1,4 +1,4 @@
-To implement the system, we approached the development from a type-safety
+To implement LessPM, we approached the development from a type-safety
 environment.
 
 \subsubsection{Server}
@@ -6,11 +6,10 @@ We chose Rust as the programming language for our backend, which provided
 significant benefits regarding the software development environment.
 
 Rust's emphasis on safety and performance allowed us to create a highly
-secure and efficient environment for our implementation without the risks
-typically associated with memory-related
-vulnerabilities~\cite{rivera2019preserving}.
-The built-in memory management and focus on concurrency ensures that the
-software runs smoothly, which is crucial~\cite{fischer1985impossibility} when
+secure and efficient environment for LessPM without the risks typically
+associated with memory-related vulnerabilities~\cite{rivera2019preserving}.
+The built-in memory management and focus on concurrency ensures that LessPM
+ran smoothly, which is crucial~\cite{fischer1985impossibility} when
 dealing with sensitive user data.
 
 Additionally, Rust's surrounding ecosystem is at rapid
@@ -19,7 +18,7 @@ crates\footnote{
   \texttt{Crate} is the Rust-specific name for a package or library.
 }, which enables expeditious development and easy integration of various
 functionality.
-Utilizing Rust's distinctive features, the LessPM achieves enhanced security and
+Utilizing Rust's distinctive features, LessPM achieves enhanced security and
 reliability in the context of user authentication~\cite{rivera2019preserving},
 showcasing the benefits of utilizing a modern programming language.
 
@@ -31,10 +30,12 @@ sensitive data.\footnote{
   of \texttt{Authorization header} to access it in the client.
   See Section~\ref{subsec:security-analysis} for further explanation.
 }
-The Chromium developers mandate this constraint to guarantee that the pertinent
-API is invoked exclusively within a secure context~\cite{webdev2021credential}.
+The Chromium developers mandate the constraint of a secure connection to
+guarantee that the pertinent Application Programming Interface (API) is invoked
+exclusively within a secure context~\cite{webdev2021credential}.
 During development, we established a secure connection by using a self-signed
 certificate for the \texttt{``localhost''} domain.
+
 As a deliberate decision, we opted for MongoDB due to its NoSQL architecture,
 which facilitated the storage of Object-like structures~\cite{mongodb2021nosql}
 including passwords, user accounts, and other related data that LessPM stores.
@@ -46,18 +47,16 @@ For the simplicity of the project, we chose React as a framework.
 React is a JavaScript library for building user interfaces, offering an
 efficient and flexible approach to web development.
 The design of LessPM was influenced by the principles of
-least-knowledge~\cite{lieberherr1990assuring}.
-This influenced the decision to ensure that the LessPM client only retained
-necessary information to function properly, containing no knowledge of
-the LessPM's server nor its implementation.
+least-knowledge~\cite{lieberherr1990assuring}, which underlined by the decision
+to ensure that the LessPM client only retained necessary information to function
+properly, containing no knowledge of LessPM's server nor its implementation.
 
 We took advantage of React's ability to construct a single-page application with
-no routing capabilities, avoiding the possibility of utilizing any URL tampering
-or manipulation\footnote{
+no routing capabilities, avoiding the possibility of a malefactor utilizing URL
+tampering or manipulation\footnote{
   Malefactors can perform URL Manipulation, which involves modifying a URL to
   request resources that would otherwise be inaccessible to a user.
-} to attempt privilege escalation or
-accessing restricted data.
+} to attempt privilege escalation or accessing restricted data.
 
 When initiating the project's development, we had a strong vision of creating
 a client that could seamlessly integrate with Chromium-based browsers as
@@ -90,8 +89,7 @@ they serve as an essential backbone for secure data transfer in LessPM\@.
 JWT is a compact, URL-safe string intended to transfer data between two
 entities, often represented as a Base64 encoding.
 They are often used as part of authentication and authorization scheme within
-a web service, application, or Application Programming Interface (API), and
-LessPM does this as well.
+a web service, application, or API, and LessPM does this as well.
 The data in the string is delivered as a payload and is referred to as a
 \texttt{claim}~\cite{RFC7519}.
 
@@ -103,13 +101,14 @@ This permits larger bits of data to be sent in a compressed, safe\footnote{
   We reference safe as a way to transfer the data over the selected protocol,
   in LessPM's case this HTTPS.
 } format.
+
 JWTs are widely used for scenarios such as single sign-on (SSO), user
 authentication, and securing API endpoints by providing an efficient and
 stateless mechanism for transmitting information about the user's identity
 and permissions~\cite{karande2018securingnode}.
 According to~\cite{RFC7519}, these should be attached to the
 \texttt{Authorization} part of the HTTPS header, along with a hardcoded
-\texttt{Bearer} part, preceding the token as the value of the header.
+\texttt{Bearer} part preceding the token, as the value of the header.
 
 In LessPM, the JWT claim contained data we could use to validate and
 authenticate a user between stateless HTTPS requests.
@@ -125,9 +124,9 @@ passed.
 Second, The tokens used in LessPM are cryptographically signed with RSA
 Signature Scheme with Appendix - Probabilistic Signature Scheme (RSASSA-PSS)
 using Secure Hashing Algorithms with 512-bit size (SHA-512), and is derived
-from the Rivest-Shamir -Adleman (RSA) encryption.
-The encryption is performed with a key-pair stored on the server to mitigate
-the risk of token forgery and so LessPM can maintain the validity and
+from the Rivest-Shamir-Adleman (RSA) encryption.
+The encryption is performed with a key-pair stored on LessPM's server to
+mitigate the risk of token forgery and so LessPM can maintain the validity and
 authenticity of the tokens created.
 This prevents unknown authorities from constructing or hijacking tokens
 belonging to LessPM\@.\footnote{
@@ -146,11 +145,11 @@ based on symmetric- and elliptic curve cryptography.
 \subsubsection{JSON Web Encryption}
 By default, JWTs are not encrypted.
 It is out of the question to unnecessarily expose any sensitive details about
-the LessPM server's inner workings.
+LessPM's inner workings.
 This lead to the decision of finding a way to encrypt the contents of the 
 token before they are sent from LessPM's server.
-Without the encryption, any attacker could decode the Base64 encoding and
-gain access to the claim that LessPM uses to authorize and authenticate.
+Without the encryption, any malefactor could decode the Base64 encoding and
+gain read access to the claim that LessPM uses to authorize and authenticate.
 
 To perform this operation, LessPM seeks inspiration from JWEs and
 RFC7516~\cite{rfc7516}.\footnote{
@@ -165,6 +164,7 @@ a new Base64 encoded string.
 Encrypting the token with AES-256 elevated the overall security of the
 JWTs, making them more suitable for transferring sensitive data between the
 intercommunicating entities in LessPM\@.
+
 As a final step, the ciphertext created by AES-256 is again encoded into a
 new Base64.
 When LessPM again receives this claim, we used it to gather details about the

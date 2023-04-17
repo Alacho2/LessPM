@@ -1,8 +1,9 @@
 We used WebAuthn to perform passwordless authentication in LessPM\@.
-WebAuthn is a collaborative open standard between the FIDO Alliance and W3C\@.
+WebAuthn is a collaborative, open standard between the FIDO Alliance and W3C\@.
 The aim of the standard is to implement a secure, robust key-based
 authentication system for the web, to strongly authenticate users through
 biometrics~\cite{webauthn_level_2}.
+
 The concept relies on the use of a third-party device, called an
 Authenticator Device (AD), which leverages asymmetric cryptography.
 These devices employ biometric or hardware-based mechanism to provide secure
@@ -32,11 +33,11 @@ biometrics~\cite{statista-biometric-transactions}, WebAuthn becomes a natural
 extension, not just for LessPM, but for general authentication.
 
 In order to increase the security of authenticated requests, each of the
-steps, Registration~\ref{subsubsec:metho-registration},
+steps using WebAuthn, Registration~\ref{subsubsec:metho-registration},
 Authentication~\ref{subsubsec:metho-authentication} and
-Password- Creation \& Retrieval~\ref{subsubsec:creation-and-retrieval})
-in WebAuthn receives different tokens with different information and is
-constructed, verified, and discarded separately.\footnote{
+Password- Creation \& Retrieval~\ref{subsubsec:creation-and-retrieval})receives
+different tokens with different information and is constructed, verified, and
+discarded separately in LessPM.\footnote{
   The token for password creation/retrieval is the same as verifying that a user
   is signed in and authorized to create entries on behalf of the user.
 }
@@ -56,9 +57,9 @@ This is done to check whether a user with a similar UID existed\footnote{
 
 If there are no users with a similar UID, LessPM responds by initiating a
 Registration Ceremony (RC), generated a challenge and a Unique User
-Identifier (UUID) version 4, which serves as the body of the HTTPS response.
-LessPM also attached a JWE to the HTTPS response header's
-\texttt{Authorization} which is sent to the client.
+Identifier (UUID), which serves as the body of the HTTPS response.
+LessPM also attached a JWE to the HTTPS response \texttt{Authorization} header
+which is sent to the client.
 
 The \texttt{expiration} time for this claim is set to one minute to allow the
 user some time to authenticate.\footnote{
@@ -73,11 +74,10 @@ This expiration timer was a decision we made to emphasize security within LessPM
 further.
 
 Using the issued challenge, LessPM's client called the browser-integrated
-WebAuthn Application Programming Interface (API)\footnote{
+WebAuthn API\footnote{
   In LessPM's case, this is the \textit{navigator.credentials} API provided by
   the browser.
-},
-prompting the user to utilize their AD to create a new Passkey credential
+}, prompting the user to utilize their AD to create a new Passkey credential
 through the Client To Authenticator Protocol (CTAP2)\footnote{
   The user is prompted to use their AD to prove their presence, which can
   involve facial recognition, providing a fingerprint, or any other modality
@@ -86,7 +86,7 @@ through the Client To Authenticator Protocol (CTAP2)\footnote{
 LessPM\@.
 At this point, it is entirely up to the user to decide what device to use to
 authenticate.
-For our development, we used an Apple iPhone 13 Pro Max, a Samsung S21, and a
+For our development, we used an iPhone 13 Pro Max, a Samsung S21, and a
 Samsung Galaxy A52 to test authentication.\footnote{
   Other alternatives included a YubiKey, NitroKey, Etc.
 }
@@ -105,24 +105,27 @@ device.
 The created public key, signed challenge, and additional metadata are combined
 into a public key credential object, which is forwarded to the client
 through CTAP2 and then sent to LessPM in a new request.
+
 Before the new request reaches the RP/LessPM, an authentication middleware
-checks for the JWE and denies the request with an \texttt{Unauthorized} HTTPS
-status code if the request is invalid.\footnote{
+checks and validates the JWE, denying the request with an \texttt{Unauthorized}
+HTTPS status code if the request is invalid.\footnote{
   Validity in this context means not timed out, tampered with, or similar.
 }
 If the RP/LessPM can validate the authenticity of the signed challenge and
 public key through WebAuthn, the user was stored in the database, along with the
 UUID generated.
+
 Thus completing the RC\@.
 This process can be seen in Figure~\ref{fig:webauthn}
 
 
 \subsubsection{Authentication}\label{subsubsec:metho-authentication}
 When a user wishes to perform authentication (commonly referred to as
-\texttt{logging in}), much of the same procedure occurs.
+\texttt{logging in}), much of the same procedure occurs in LessPM.
 The user issued an authentication request in the LessPM's client, carrying
 the UID the user used to register.
 The client included this information in the body.
+
 Upon receiving an incoming request, the RP/LessPM checked the database for
 the containing UID\@.
 LessPM immediately rejected the request, should the user not exist in the
@@ -137,6 +140,7 @@ Upon validation\footnote{
 } of the public key, LessPM creates a new JWE, which, like registration, also
 receives an \texttt{expiry} time of one minute for the user to authenticate,
 attached to the HTTPS \texttt{Authorization} header.
+
 The challenge is issued and LessPM's client then calls the
 browser-integrated WebAuthn API again, prompting the use of the original AD
 to validate and sign the challenge through CTAP2.
@@ -144,8 +148,8 @@ Unlike the registration process, the AD now yields a signed signature based
 on the challenge issued by the RP/LessPM\@, which is transferred back to
 LessPM's client through CTAP2 with some AD specific
 data~\cite{webauthn_authenticator_data}.
-A new HTTPS request is then issued with the signed challenge and AD specific
-data and the RP/LessPM then validated the signature using the stored public
+A new HTTPS request is then issued with the signed challenge and the AD specific
+data, and the RP/LessPM then validated the signature using the stored public
 key.
 LessPM considers the user authenticated if the RP accepted and validated the
 signed challenge.
@@ -159,7 +163,8 @@ This time, the \texttt{expiry} time-to-live is set to a 15-minute\footnote{
 }
 timeframe, allowing the user some time to perform necessary activities
 within LessPM\@.
-This process can be seen in Figure~\ref{fig:JWT-process}
+The WebAuthn-related process can be seen in Figure~\ref{fig:webauthn} and the
+JWE-related process can be seen in Figure~\ref{fig:JWT-process}.
 
 \subsubsection{Password Creation \& Retrieval}\label{subsubsec:creation-and-retrieval}
 Passwords are sensitive in nature, so it seems only natural in a security
@@ -170,7 +175,7 @@ one unique password in LessPM.\footnote{
 }
 
 The following options are presented to a user when they initiate a password
-creation process in LessPM:
+creation process in LessPM's client:
 
 \begin{itemize}
   \item \textbf{User Identifier}: An identification that the user wants to

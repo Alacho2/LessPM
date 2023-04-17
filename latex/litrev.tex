@@ -102,7 +102,7 @@ physical security key (i.e.\ YubiKey, Nitrokey, Etc.)~\cite{webauthn_level_2}.
 In ~\cite{huseynov2022passwordless}, Huseynov utilized a Web interface with
 WebAuthn to create credentials that users could use for a VPN\@.
 The client required a user to authenticate through the procedure of WebAuthn.
-On a successful request, the Remote Authentication Dial-In User Service (RADIUS
+On a successful request, the Remote Authentication Dial-In User Service (RADIUS)
 creates a temporary username and password, which would then be transferred
 as a response to the end-user, permitting them to copy and paste it into the
 necessary client, alternatively to construct a batch file which would establish
@@ -173,7 +173,7 @@ persisted, such as session hijacking\footnote{
   Session hijacking refers to an attacker gaining unauthorized access to a
   user's authenticated session, often exploiting weaknesses in the handling of
   cookies, sessions, or JSON Web Tokens (JWT).
-  See Section~\ref{subsec:json-web-tokens}.
+  See Section~\ref{subsec:auth-and-auth}.
 }, which can compromise
 user accounts~\cite{morii2017research}, highlighting the need to protect these.
 
@@ -198,7 +198,7 @@ applications, such as password managers, independent of other login systems, is
 a critical aspect that requires thorough investigation.
 
 In the following section, we will examine the methodology employed in this
-study to integrate a passwordless system into a password manager,
+report to integrate a passwordless system into a password manager,
 taking into account the challenges and concerns identified in the literature.
 By doing so, we aim to contribute to the growing body of knowledge on
 passwordless authentication and its practical applications.

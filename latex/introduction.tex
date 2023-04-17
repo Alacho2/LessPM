@@ -1,19 +1,17 @@
 
-
-
 In today's digital landscape, utilizing various identifiers (such as usernames,
 email addresses, or phone numbers) combined with passwords has become a
 prevalent method for verifying an individual's identity and ensuring their
 authorization to access restricted materials.
 
 This report explores the implementation of LessPM, a passwordless password
-manager that leverages WebAuthn (Web Authentication).
+manager that leverages Web Authentication (WebAuthn).
 LessPM aims to provide an experience free from the constraints and security
 implications of traditional passwords by placing a strong emphasis on
 security.
 
 LessPM is designed with a multi-layer security approach to protect
-confidentiality and integrity of the user authentication process, and passwords
+confidentiality and integrity of the user authentication process and passwords
 stored for other registered services.
 By leveraging WebAuthn's asymmetric cryptographic\footnote{
   Asymmetric cryptography uses a key-pair consisting of public and private
@@ -26,13 +24,14 @@ data.
 This is achieved by utilizing authenticators, such as smartphones or
 hardware authenticator devices, with biometric scanners to authenticate a
 user through strong means.
+
 WebAuthn, an open standard developed collaboratively by The Fast IDentity
 Online Alliance (FIDO) and World Wide Web Consortium (W3C), aims to provide a
 more secure authentication experience through biometric scanners on these
 devices~\cite{webauthn-2}.
 
-When a user initiates the process to register, LessPM issues a challenge
-constructed by WebAuthn to the client.
+When a user initiates the process to register in LessPM, the system issues a
+challenge constructed by WebAuthn from LessPM's server to the client.
 The user is prompted to use a biometric scanner on their device, which then
 constructs a keypair, signing this challenge, before sending this information
 back to LessPM\@.
@@ -68,25 +67,28 @@ to bypass the device's biometric security in order to authenticate as the user
 in LessPM\@.
 
 Passwords stored in LessPM are encrypted using AES-256, a widely recognized
-symmetric encryption algorithm~\cite{schneier2000secrets,rijndael_book}.
+symmetric encryption
+algorithm~\cite{schneier2000secrets,rijndael_book,nistfips197256}.
 The encryption process includes using a Credential ID (CID) that is derived from
 the metadata of the public key in WebAuthn, a 128-bit randomly generated salt
 that is unique for each password, and a 128-bit pepper.
+This is followed by a hash of the key using Argon2, with a separate 128-bit
+salt.
 
 To maintain authentication, LessPM uses an encrypted version of JSON Web
 Tokens~\cite{RFC7519} (JWT, RFC7519), inspired by JSON Web
-Encryption~\cite{rfc7516} (JWE, RFC7516) which are encrypted with AES-256 as
-well and attached to HTTPS requests.
+Encryption~\cite{rfc7516} (JWE, RFC7516) which are also encrypted with AES-256
+and attached to HTTPS requests.
 
 The registration, authentication, and password creation/retrieval processes
 all use these encrypted tokens but LessPM manages and maintains different
 tokens for each step, providing an extra level of security.
 Each token is valid for a limited amount of time before expiring.
 An expired token prompts LessPM to deny access to unauthorized content and
-forcing the user to restart the process.
+forces the user to restart the process.
 
 LessPM's client stores the token for authentication in a cookie.
-This cookie is protected by various built-in functionality in browsers, such as
+This cookie is protected by various built-in functionality in browsers, using
 the attribute \texttt{secure} to transfer the cookie over a secure connection
 only, such as HTTPS\@.
 Other attributes include \texttt{HttpOnly} to make sure the cookie is

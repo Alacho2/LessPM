@@ -1,17 +1,18 @@
 The security of a passwordless password manager is of paramount importance to
-protect sensitive user infromation and prevent unauthorized access.
+protect sensitive user information and prevent unauthorized access.
 In this subsection, we conduct a comprehensive security analysis, identifying
-  potential attack vectors and outlining the defensive measures that have
-  been implemented to mitigate tehse risks.
+potential attack vectors and outlining the defensive measures that have been
+implemented to mitigate these risks.
 
 The defensive measures include industry-standard security protocols such as
-  HTTPS, JWT/JWE, Argon2 hashing, salt and pepper techniques, CORS
-  configuration, and secure cookie management.
+HTTPS, JWT/JWE, Argon2 hashing, salt and pepper techniques, CORS configuration,
+and secure cookie management.
+
 Additionally, different JWTs are used for registration, authentication, and
-  password creation/retrieval to minimize the risk of exposure.
+password creation/retrieval to minimize the risk of exposure.
 These defensive measures collectively aim to provide a robust and secure
-  architecture for LessPM, safeguarding against various threats and ensuring
-  the confidentiality, integrity, and availability of user data.
+architecture for LessPM, safeguarding against various threats and ensuring
+the confidentiality, integrity, and availability of user data.
 Each element in the security analysis contains a rating, as well as a status
 on implemented and unimplemented.
 \begin{enumerate}[label=$\blacktriangleright$]
@@ -52,6 +53,7 @@ on implemented and unimplemented.
   from being tampered with.
   An attacker can still read the information in clear-text but can not forge
   their own tokens.
+
   LessPM uses RSASSA-PSS with Sha-512 to sign and encode tokens, decoding
   them with the keypair when received.
   This ensures integrity and authenticity of the JWT, as the signature is
@@ -62,28 +64,32 @@ on implemented and unimplemented.
   To further impose a level of security, LessPM takes advantage of different
   tokens for registration, authentication, and authorization.
 
-  \item \textbf{JSON Web Encryption (JWE} [Rating: 3 -- Status: Implemented]
+  \item \textbf{Encrypted JWT, inspired by JWE} [Rating: 3 -- Status:
+  Implemented]
 
   \textbf{Weakness/Attack Vector:}
 
-  JSON Web Encryption are JWTs signed and encrypted using an algorithm for
+  Encrypted JWTs are JWTs signed and encrypted using an algorithm for
   signing and encryption.
   However, if this encryption algorithm is not potent or weak (such as a
   Caesar Cipher), an attacker can break the encryption or even encrypt their own
   tokens.
-  JWEs are also subject to scenarios such as lack of key rotation, insecure
-  length of the encryption key and improper implementation.
+  Encrypted JWTs are also subject to scenarios such as lack of key rotation,
+  insecure length of the encryption key and improper implementation.
 
   \textbf{Defensive Mechanism:}
 
-  To combat these Weakness/Attack Vectores, LessPM implements encryption partly inspired by
-  the JWE standard.
+  To combat these Weakness/Attack Vectors, LessPM implements encryption partly
+  inspired by the JWE standard.
   LessPM encrypts the token using AES-256, a strong encryption scheme capable
   of $2^{256}$ different keys.
   This ensures that the data is confidentially kept and protected from
   unauthorized access.
   While inspired, it is important to note that JWEs have not been properly
-  implemented in LessPM (See Section~\ref{sec:futurework}).
+  implemented in LessPM, and are subject to a hardcoded key for AES-256, that
+  a malefactor could potentially break.
+  Introducing some kind of key rotation or key-generation based on the user
+  would be beneficial.
 
   \item \textbf{Hashing Keys} [Rating: 5 -- Status: Implemented]
 
@@ -95,7 +101,7 @@ on implemented and unimplemented.
   precomputed hash-values for large number of possible passwords, stored in a
   lookup table called a Rainbow table attack.
   Hashes are also vulnerable to dictionary attacks, and not being properly
-  implemented without using a salt and preferable a pepper, or brute-force
+  implemented without using a salt, and preferably a pepper, or brute-force
   attacks.
 
   \textbf{Defensive Mechanism:}
@@ -106,6 +112,7 @@ on implemented and unimplemented.
   provides protection against brute-force, rainbow table, dictionary and
   side-channel attacks by requiring a significant amount of computational
   resources and time to compute the hash.
+
   Finally, LessPM takes advantage of using both a random salt unique for each
   password and a pepper (stored in the source code) of 128-bit for both.
   This creates a higher threshold for a malefactor by requiring access to the
@@ -117,7 +124,7 @@ on implemented and unimplemented.
 
   \textbf{Weakness/Attack Vector:}
 
-  A password is something a secret that a user knows.
+  A password is a secret that a user knows.
   Secrets belonging to an individual will always be potentially accessible to
   a malefactor.
   There are multiple vectors that can be used, such as a user being careless
@@ -171,17 +178,16 @@ on implemented and unimplemented.
 
   \textbf{Weakness/Attack Vector:}
 
-  Any HTTP server improperly configured is subject Cross-Site Scripting (XSS)
-  and CSRF\@.
+  Any HTTP server improperly configured is subject to XSS and CSRF\@.
   XSS is a process where a malefactor could inject a malicious script from a
   different origin, and execute said script in the context of a user's browser.
   This could lead to a situation where a malefactor could get access tokens
   or cookies, or interact with the webpage a user is viewing through the
   script.
   CSRF is a type of security vulnerability where a malefactor tricks a user
-  to unknowingly make unauthorized requests on a trusted website, such as a
+  to unknowingly make authorized requests to a trusted website, such as a
   bank or similar.
-  This can lead to actions being performed on a user's behalf unintentionally,
+  This can lead to actions being performed on a user's behalf, unintentionally,
   without the user's consent, leading to unauthorized access.
 
   \textbf{Defensive Mechanism:}
@@ -194,8 +200,8 @@ on implemented and unimplemented.
   between the client and the serve, even though they are running on different
   ports, and potentially different domains.
   This ensures that only authorized clients can access the server's resources,
-  preventing unauthorized cross-origin requests and protecting against
-  cross-site scripting (XSS) and cross-site request forgery (CSRF)\footnote{
+  preventing unauthorized cross-origin requests and protecting against XSS and
+  CSRF\footnote{
     It would be beneficial to properly implement a CSRF token in submitted
     user data as well, which the server could validate when a user performs a
     request.
@@ -207,7 +213,8 @@ on implemented and unimplemented.
 
   A cookie is vulnerable to many aspects of security.
   Improperly stored, a cookie can be accessed through JavaScript, sent to
-  different domains, get hijacked, excessive expire time, or even poisoned.\footnote{
+  different domains, get hijacked, contain excessive expire time, or even
+  poisoned.\footnote{
     Cookie Poisoning is the process where an attacker modifies the content of
     the cookie to inject malicious data or bypass security controls.
   }
@@ -218,14 +225,14 @@ on implemented and unimplemented.
   The cookie is protected through built-in browser-features such as
   restricted to the same origin that the cookie came from, and cannot be sent
   anywhere else, further preventing XSS of sensitive information\@.
-  The cookie is expired after 15 minutes, which is extensive amount of time
+  The cookie expired after 15 minutes, which is an extensive amount of time
   for a user to have authorized access to their passwords, before the need to
   reauthenticate their identity.
   Upon creation, LessPM makes sure that the cookie becomes set to secure.
   This prevents the cookie from being sent over an insecure HTTP connection,
   limiting it to HTTPS\@.
   Finally, the cookie is HttpOnly, so that the cookie can't be access through
-  JavaScript, reducing the attack vector of SS further.
+  JavaScript, reducing the attack vector on LessPM even further.
 
   \item \textbf{\texttt{Authorization} Header}
   [Rating: 3 -- Status: Unimplemented]
@@ -326,7 +333,7 @@ on implemented and unimplemented.
   \textbf{Defensive Mechanism:}
   In LessPM, we implemented cookies protected by various in-browser
   mechanisms, such as setting the cookie's \texttt{Secure}, \texttt{HttpOnly},
-  \texttt{SameSite=Strict}, and \texttt{expiry} time.r
+  \texttt{SameSite=Strict}, and \texttt{expiry} timer.
   All of these measure help LessPM to mitigate session hijacking through and
   ensuring user authenticity and authentication integrity in LessPM\@.
   As a side note, it would have been advantageous to further implement a

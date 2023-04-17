@@ -1,5 +1,10 @@
-A password can be stored and hashed using multiple vectors to increase
-security in a typical authentication scheme.
+
+Due to the nature of a password manager, where a user should not know their
+passwords in order to keep them secure, LessPM can't follow a typical
+authentication scheme.
+
+In a typical authentication scheme, a password can be stored and hashed using
+multiple vectors to increase security.
 Such measures include using a \texttt{salt}\footnote{
   Salting is the process of adding a randomly generated string consisting of
   arbitrary characters to the password before creating a hash~\cite{Kharod2015}.
@@ -18,6 +23,7 @@ any form from plaintext to a hashed variation through a hashing algorithm
 such as PBKDF2, Argon2, or the SHA-family.
 After the values are collected from the database, the authentication scheme
 checks them against the provided values from the user.
+
 If a \texttt{salt} and \texttt{pepper} is part of the authentication scheme,
 they are both required to be appended (in the correct order) to the
 user-provided password, before the hashing and validation can take place.
@@ -40,19 +46,21 @@ applications~\cite{schneier2015applied,rijndael_book}.
 In 2001, it was adopted as the successor of the leading Data Encryption
 standard (DES) by The National Institute of Standards and Technology (NIST)
 in 2001~\cite{nist_aes_winner}.
-AES operates on fixed-sizes units of data referred to as
+
+AES operates on fixed-sized units of data referred to as
 \texttt{blocks}~\cite{nistfips197blocks}, supporting keys of sizes 128-, 192-
 and 256-bit~\cite{nistfips197intro}.
 A Substitution-Permutation Network (SPN) structure forms the basis of the
 design, which achieves a high level of encryption and security in LessPM
 through multiple rounds of processing by combining substitution and
 permutation~\cite{nistfips197specification}.
-AES with 256-bit key length (hereafter referred to as AES-256) employs a 256
--bit key and consist of 14 rounds of encryption, offering an advanced level
-of security compared to its counterpats with shorter key lengths and fewer
-rounds~\cite{nistfips197256}.
+AES-256 employs a 256-bit key and consist of 14 rounds of encryption, offering
+an advanced level of security compared to its counterparts with shorter key
+lengths and fewer rounds~\cite{nistfips197256}.
+
 In each round of encryption, AES-256 undergoes four primary transformations,
 operating on a $4\times4$ block, as described below:
+\newpage
 
   \begin{enumerate}
     \item \textbf{SubBytes} is a non-linear substitution step where each byte is
@@ -108,12 +116,11 @@ We based the key for each password on the following premise:
 \end{enumerate}
 We used these 448 bits as the input for the key-derivation function,
 Argon2 (See Section~\ref{subsec:hashing}).
+
 Upon hashing, each key is also subject to a 128-bit salt explicitly generated
 for the password's key in LessPM\@.
-After encryption, the password stored in an encrypted Base64-encoded format in
-LessPM if the authentication process proves successful.
+After encryption, the password is stored in an encrypted Base64-encoded
+format in LessPM if the authentication process proved successful.
 This process happened individually for all passwords constructed and stored
 within LessPM\@.
-\todo[inline]{
-  Diagram?
-}
+

@@ -28,7 +28,7 @@ number of iterations~\cite{argon2specs}.
 The KDF offers three configurations, depending on the environment where
 the function will run and what the risk and threat models are, which we take
 advantage of in LessPM\@.
-These can be seen in Figure~\ref{fig:argon2conf}
+These can be seen in Figure~\ref{fig:argon2conf}.
 
 \begin{figure}[htbp]
   \centering
@@ -61,14 +61,15 @@ These can be seen in Figure~\ref{fig:argon2conf}
 }
 
 Since LessPM is required to run in as safe of an environment as possible,
-Argon2's configuration option is an excellent solution.
+Argon2's configurations offers a suitable solution.
 
 Argon2, as a memory-intensive hashing function, demands substantial
-computational resources from attackers attempting dictionary-\footnote{
+computational resources from attackers attempting
+dictionary-\footnote{
   A dictionary attack is an approach where an attacker tries to find a hash by
   searching through a dictionary of pre-computed hashes or generating hashes
   based on a dictionary commonly used by individuals or businesses.
-} or rainbow table attack.
+} or rainbow table attacks.
 This characteristic significantly hampers the feasibility of cracking
 passwords using such attacks, constructing an ideal scenario for LessPM's
 password vault.
@@ -114,7 +115,7 @@ system where we developed it consists of 8 cores.~\footnote{
 }
 
 As these configurations are crucial for computing the original hash, LessPM's
-password hashing provides robust resilience against brute-force and side-channel
+key hashing provides robust resilience against brute-force and side-channel
 attacks~\cite{argon2specs}.
 
 In 2015, Argon2 won the Password Hashing

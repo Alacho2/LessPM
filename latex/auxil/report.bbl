@@ -1171,7 +1171,7 @@
       \verb https://www.shibboleth.net/
       \endverb
     \endentry
-    \entry{nistfips197blocks}{report}{}
+    \entry{nistfips197256}{report}{}
       \name{author}{2}{}{%
         {{hash=91348c04260bd8fbee564adff6c9431e}{%
            family={Standards},
@@ -1198,6 +1198,48 @@
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{extraalpha}{1}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{11}
+      \field{note}{Appendix C, C3, p42-46. Last Accessed: 2023-03-26}
+      \field{number}{197}
+      \field{title}{Announcing the Advanced Encryption Standard (AES)}
+      \field{type}{Federal Information Processing Standards Publication}
+      \field{year}{2001}
+      \verb{urlraw}
+      \verb https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
+      \endverb
+      \verb{url}
+      \verb https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
+      \endverb
+    \endentry
+    \entry{nistfips197blocks}{report}{}
+      \name{author}{2}{}{%
+        {{hash=91348c04260bd8fbee564adff6c9431e}{%
+           family={Standards},
+           familyi={S\bibinitperiod},
+           given={National\bibnamedelima Institute},
+           giveni={N\bibinitperiod\bibinitdelim I\bibinitperiod},
+           prefix={of},
+           prefixi={o\bibinitperiod}}}%
+        {{hash=e7e767d7c0e58b16e57d3ab16150db80}{%
+           family={Technology},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NIST}%
+      }
+      \strng{namehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{fullhash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{bibnamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authorbibnamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
+      \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
+      \field{extraname}{2}
+      \field{labelalpha}{ST01}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extraalpha}{2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{11}
@@ -1235,11 +1277,11 @@
       \strng{authorbibnamehash}{e94f05990128e9f2bf16dd176922276f}
       \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
       \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{labelalpha}{ST01}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extraalpha}{2}
+      \field{extraalpha}{3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{11}
@@ -1277,48 +1319,6 @@
       \strng{authorbibnamehash}{e94f05990128e9f2bf16dd176922276f}
       \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
       \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
-      \field{extraname}{3}
-      \field{labelalpha}{ST01}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extraalpha}{3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{11}
-      \field{note}{Algorithm Specification, p13-14. Last Accessed: 2023-03-26}
-      \field{number}{197}
-      \field{title}{Announcing the Advanced Encryption Standard (AES)}
-      \field{type}{Federal Information Processing Standards Publication}
-      \field{year}{2001}
-      \verb{urlraw}
-      \verb https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
-      \endverb
-      \verb{url}
-      \verb https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
-      \endverb
-    \endentry
-    \entry{nistfips197256}{report}{}
-      \name{author}{2}{}{%
-        {{hash=91348c04260bd8fbee564adff6c9431e}{%
-           family={Standards},
-           familyi={S\bibinitperiod},
-           given={National\bibnamedelima Institute},
-           giveni={N\bibinitperiod\bibinitdelim I\bibinitperiod},
-           prefix={of},
-           prefixi={o\bibinitperiod}}}%
-        {{hash=e7e767d7c0e58b16e57d3ab16150db80}{%
-           family={Technology},
-           familyi={T\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {NIST}%
-      }
-      \strng{namehash}{e94f05990128e9f2bf16dd176922276f}
-      \strng{fullhash}{e94f05990128e9f2bf16dd176922276f}
-      \strng{bibnamehash}{e94f05990128e9f2bf16dd176922276f}
-      \strng{authorbibnamehash}{e94f05990128e9f2bf16dd176922276f}
-      \strng{authornamehash}{e94f05990128e9f2bf16dd176922276f}
-      \strng{authorfullhash}{e94f05990128e9f2bf16dd176922276f}
       \field{extraname}{4}
       \field{labelalpha}{ST01}
       \field{sortinit}{S}
@@ -1327,7 +1327,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{11}
-      \field{note}{Appendix C, C3, p42-46. Last Accessed: 2023-03-26}
+      \field{note}{Algorithm Specification, p13-14. Last Accessed: 2023-03-26}
       \field{number}{197}
       \field{title}{Announcing the Advanced Encryption Standard (AES)}
       \field{type}{Federal Information Processing Standards Publication}

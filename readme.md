@@ -1,5 +1,14 @@
-Dear Jacky,
+What is this? 
+This is my exam project for Computer Security: Defence Against the Dark Arts at Reykjavik University. It was also my first project in Rust. 
+Included is the Latex report so you can do a deep-dive into what was done and what it is.
 
+TL;DR, it is a passwordless password manager that integrates WebAuthn. 
+
+---
+
+Original: 
+
+Dear Prof. XYZ
 There are a few steps to run this project and get it setup.
 As the server is running under a self-signed certificate, the first thing 
 you have to do after cloning the project is to navigate into 
